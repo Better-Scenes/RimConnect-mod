@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>RimConnection</name>
+  <author>ARealPerson</author>
+  <url>http://rimworldgame.com</url>
+  <description>A connection mod</description>
+  <supportedVersions>
+    <li>1.0</li>
+  </supportedVersions>
+</ModMetaData>
