@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Timers;
+using Verse;
 
 namespace RimConnection
 {
@@ -17,6 +18,8 @@ namespace RimConnection
 
         private static void onTimerTimeout(Object source, ElapsedEventArgs e)
         {
+            Log.Message("Time timed out");
+
             DropPodManager.createDrop();
         }
 

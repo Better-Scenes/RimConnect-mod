@@ -21,6 +21,7 @@ namespace RimConnection
 
             string[] prefixes = { "http://localhost:8080/" };
             HttpThing.SimpleListenerExample(prefixes);
+            new ServerRequester(5000);
         }
     }
 }
