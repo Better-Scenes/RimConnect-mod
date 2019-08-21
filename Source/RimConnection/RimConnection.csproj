@@ -51,7 +51,7 @@
     <Compile Include="DropPodManager.cs" />
     <Compile Include="HttpThing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerTimer.cs" />
+    <Compile Include="ServerRequester.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
