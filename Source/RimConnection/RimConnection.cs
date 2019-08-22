@@ -19,8 +19,6 @@ namespace RimConnection
             this.settings = GetSettings<Settings>();
             Log.Message("Hello World!");
 
-            string[] prefixes = { "http://localhost:8080/" };
-            HttpThing.SimpleListenerExample(prefixes);
             new ServerRequester(5000);
         }
     }
