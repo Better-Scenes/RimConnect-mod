@@ -7,32 +7,33 @@ using System.Net;
 using Verse;
 using System.IO;
 
+using RestSharp;
+
 namespace RimConnection
 {
 
     class RequestHandler
     {
-        private const string HOST_URL = "http://localhost:8080/spawn/";
-        private static WebClient client = new WebClient();
+        private const string BASE_URL = "http://localhost:8080/";
 
+        private RestClient client;
+        private RestRequest baseRequest;
         public RequestHandler()
         {
+            client = new RestClient(BASE_URL);
+            baseRequest = new RestRequest("spawn");
             Log.Message("RequestHandler initialized");
         }
 
         public string getCommands()
         {
-            Log.Message("Opening stream at " + HOST_URL);
-            Stream stream = client.OpenRead(HOST_URL);
-            Log.Message("Stream open, reading now");
-            StreamReader sr = new StreamReader(stream);
-            String response = sr.ReadToEnd();
-            Log.Message("Got response..." + response);
-            stream.Close();
-            Log.Message("Closed Stream");
+            Log.Message("Requesting object from " + BASE_URL);
+            IRestResponse response = client.Execute(baseRequest);
+            Log.Message("Message response:");
+            Log.Message(response.Content);
             // do we convert to object here?
             // create a class/typedef for Commands and create a new one from the string
-            return response;
+            return response.Content;
         }
     }
 }
