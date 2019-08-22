@@ -10,12 +10,17 @@
 - Create a symlink in your rimworld mods folder to the top level project folder
   - Do this from command prompt, not powershell or git bash
   - eg `mklink /D D:\games\Steam\steamapps\common\RimWorld\Mods\RimConnection D:\Projects\twitchIntegration\RimConnection-mod`
+  - N.B. You may have to open command prompt as admin
+- Enable the mod
+ - Start Rimworld normally
+ - Navigate to the Mods menu
+ - Enable the mod by ticking the red X (should become a green tick)
 
 ## Running
 
 To run rimworld to test, you can run it through the exe and add a param to make it quick start
 
-- `./RimWorldWin61 -quicktest`
+- `./RimWorldWin64 -quicktest`
 
 ## Useful tools and links
 

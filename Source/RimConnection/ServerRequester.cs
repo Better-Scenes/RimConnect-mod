@@ -7,6 +7,7 @@ namespace RimConnection
     class ServerRequester
     {
         private static System.Timers.Timer timer;
+        private static RequestHandler requester = new RequestHandler();
 
         public ServerRequester(int intervalMs)
         {
@@ -20,6 +21,10 @@ namespace RimConnection
         {
             Log.Message("Time timed out");
 
+            string res = requester.getCommands();
+            // should return a Command object and not a string
+            Log.Message(res);
+            //DropPodManager should accept a Command object and spawn the specified 
             DropPodManager.createDrop();
         }
 
