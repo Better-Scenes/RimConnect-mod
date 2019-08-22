@@ -28,12 +28,12 @@ namespace RimConnection
         public string getCommands()
         {
             Log.Message("Requesting object from " + BASE_URL);
-            IRestResponse response = client.Execute(baseRequest);
+            var response = client.Execute<SpawnCommand>(baseRequest);
             Log.Message("Message response:");
-            Log.Message(response.Content);
+            Log.Message(response.Data.command);
             // do we convert to object here?
             // create a class/typedef for Commands and create a new one from the string
-            return response.Content;
+            return response.Data.command;
         }
     }
 }
