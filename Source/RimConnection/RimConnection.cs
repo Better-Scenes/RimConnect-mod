@@ -20,6 +20,7 @@ namespace RimConnection
             this.settings = GetSettings<Settings>();
             Log.Message("Hello World!");
 
+            new ServerInitialise();
             new ServerRequester(5000);
         }
 

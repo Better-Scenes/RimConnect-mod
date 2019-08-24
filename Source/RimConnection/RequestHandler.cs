@@ -14,14 +14,17 @@ namespace RimConnection
 
     class RequestHandler
     {
-        private const string BASE_URL = "http://localhost:8080/";
-
+        private string BASE_URL;
         private RestClient client;
         private RestRequest baseRequest;
+
         public RequestHandler()
         {
+            BASE_URL = Settings.BASE_URL;
             client = new RestClient(BASE_URL);
             baseRequest = new RestRequest("spawn");
+            baseRequest.AddHeader("Content-Type", "application/json");
+            baseRequest.AddHeader("username", Settings.username);
             Log.Message("RequestHandler initialized");
         }
 
