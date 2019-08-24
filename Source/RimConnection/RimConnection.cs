@@ -24,20 +24,6 @@ namespace RimConnection
         }
 
 
-        public override void DoSettingsWindowContents(Rect inRect)
-        {
-            Listing_Standard listingStandard = new Listing_Standard();
-            listingStandard.Begin(inRect);
-            listingStandard.CheckboxLabeled("exampleBoolExplanation", ref settings.exampleBool, "exampleBoolToolTip");
-            listingStandard.Label("exampleFloatExplanation");
-            settings.exampleFloat = listingStandard.Slider(settings.exampleFloat, 100f, 300f);
-
-            settings.exampleString = listingStandard.TextEntryLabeled("Example String", "something");
-
-            listingStandard.End();
-            base.DoSettingsWindowContents(inRect);
-        }
-
         public override string SettingsCategory()
         {
             return "RimConnection";
