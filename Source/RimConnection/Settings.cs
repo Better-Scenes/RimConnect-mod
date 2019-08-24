@@ -12,11 +12,13 @@ namespace RimConnection
     {
         public bool exampleBool;
         public string exampleString;
+        public float exampleFloat;
 
         public override void ExposeData()
         {
             Scribe_Values.Look(ref exampleBool, "exampleBool");
             Scribe_Values.Look(ref exampleString, "exampleString");
+            Scribe_Values.Look(ref exampleFloat, "exampleFloat");
             base.ExposeData();
         }
     }
