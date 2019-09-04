@@ -25,8 +25,9 @@ namespace RimConnection
             foreach (var command in commands)
             {
                 Log.Message($"could spawn: {command.id} {command.amount}");
+                var action = ActionList.actionList[int.Parse(command.id)];
+                action.execute(command.amount);
             }
-            //DropPodManager.createDrop();
         }
 
     }
