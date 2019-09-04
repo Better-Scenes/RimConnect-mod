@@ -17,15 +17,14 @@ namespace RimConnection
             Log.Message("Trying to intialise with server");
             Log.Message($"initialising for {Settings.username}");
             var BASE_URL = Settings.BASE_URL;
-            var validCommands = Settings.validCommands;
 
             client = new RestClient(BASE_URL);
             var request = new RestRequest("command/valid", Method.POST);
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("username", Settings.username);
-            request.AddJsonBody(new { validCommands });
+            request.AddJsonBody(ActionList.ActionListToApi());
 
-            //var response = client.Execute<SpawnCommand>(request);
+            var response = client.Execute<ValidCommand>(request);
         }
     }
 }

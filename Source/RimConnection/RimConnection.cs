@@ -7,8 +7,6 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-
-
 namespace RimConnection
 {
     public class RimConnection: Mod

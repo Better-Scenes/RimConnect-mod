@@ -5,10 +5,10 @@ namespace RimConnection
 {
     class DropPodManager
     {
-        public static void createDrop()
+        public static void createDrop(ThingDef thingDef, int amount )
         {
-            Thing newthing = ThingMaker.MakeThing(ThingDefOf.Gold);
-            newthing.stackCount = 100;
+            Thing newthing = ThingMaker.MakeThing(thingDef);
+            newthing.stackCount = amount;
             if(newthing != null)
             {
                 string labelString = "RimConnectionDroppodMailLabel".Translate() ;

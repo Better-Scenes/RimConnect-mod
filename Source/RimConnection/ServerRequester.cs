@@ -26,7 +26,7 @@ namespace RimConnection
             {
                 Log.Message($"could spawn: {command.id} {command.amount}");
             }
-            DropPodManager.createDrop();
+            //DropPodManager.createDrop();
         }
 
     }
