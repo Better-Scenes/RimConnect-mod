@@ -22,21 +22,17 @@ namespace RimConnection
         {
             BASE_URL = Settings.BASE_URL;
             client = new RestClient(BASE_URL);
-            baseRequest = new RestRequest("spawn");
+            baseRequest = new RestRequest("command/list");
             baseRequest.AddHeader("Content-Type", "application/json");
             baseRequest.AddHeader("username", Settings.username);
             Log.Message("RequestHandler initialized");
         }
 
-        public string getCommands()
+        public List<Command> getCommands()
         {
             Log.Message("Requesting object from " + BASE_URL);
-            var response = client.Execute<SpawnCommand>(baseRequest);
-            Log.Message("Message response:");
-            Log.Message(response.Data.command);
-            // do we convert to object here?
-            // create a class/typedef for Commands and create a new one from the string
-            return response.Data.command;
+            var response = client.Execute<CommandList>(baseRequest);
+            return response.Data.commands;
         }
     }
 }

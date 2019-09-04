@@ -20,12 +20,12 @@ namespace RimConnection
             var validCommands = Settings.validCommands;
 
             client = new RestClient(BASE_URL);
-            var request = new RestRequest("initialise", Method.POST);
+            var request = new RestRequest("command/valid", Method.POST);
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("username", Settings.username);
             request.AddJsonBody(new { validCommands });
 
-            var response = client.Execute<SpawnCommand>(request);
+            //var response = client.Execute<SpawnCommand>(request);
         }
     }
 }

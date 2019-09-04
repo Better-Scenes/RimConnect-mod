@@ -21,10 +21,11 @@ namespace RimConnection
         {
             Log.Message("Time timed out");
 
-            string res = requester.getCommands();
-            // should return a Command object and not a string
-            Log.Message(res);
-            //DropPodManager should accept a Command object and spawn the specified 
+            var commands = requester.getCommands();
+            foreach (var command in commands)
+            {
+                Log.Message($"could spawn: {command.id} {command.amount}");
+            }
             DropPodManager.createDrop();
         }
 
