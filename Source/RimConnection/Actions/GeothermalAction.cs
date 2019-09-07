@@ -12,7 +12,7 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
-            DropPodManager.createDrop(ThingDefOf.GeothermalGenerator, amount);
+            DropPodManager.createDrop(ThingDefOf.GeothermalGenerator, 1);
         }
     }
 }

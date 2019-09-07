@@ -13,7 +13,8 @@ namespace RimConnection
             new GoldAction(),
             new PlasteelAction(),
             new SolarPanelAction(),
-            new WindTurbineAction()
+            // Currently doesn't spawn correctly
+            //new WindTurbineAction()
         };
 
         public static ValidCommandList ActionListToApi()
