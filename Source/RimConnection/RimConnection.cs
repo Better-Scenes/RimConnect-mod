@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
-using UnityEngine;
-using Verse;
+﻿using Verse;
 
 namespace RimConnection
 {
@@ -13,13 +6,13 @@ namespace RimConnection
     {
         Settings settings;
 
+
         public RimConnection(ModContentPack content) : base(content)
         {
             this.settings = GetSettings<Settings>();
             Log.Message("Hello World!");
 
             new ServerInitialise();
-            new ServerRequester(5000);
         }
 
 

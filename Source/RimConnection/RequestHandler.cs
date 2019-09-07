@@ -1,38 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-
+﻿using System.Collections.Generic;
 using Verse;
-using System.IO;
-
 using RestSharp;
 
 namespace RimConnection
 {
 
-    class RequestHandler
+    public static class RequestHandler
     {
-        private string BASE_URL;
-        private RestClient client;
-        private RestRequest baseRequest;
+        private static string BASE_URL;
+        private static RestClient client;
+        private static RestRequest baseRequest;
 
-        public RequestHandler()
+        static RequestHandler()
         {
             BASE_URL = Settings.BASE_URL;
             client = new RestClient(BASE_URL);
             baseRequest = new RestRequest("command/list");
-            baseRequest.AddHeader("Content-Type", "application/json");
-            baseRequest.AddHeader("username", Settings.username);
-            Log.Message("RequestHandler initialized");
+            baseRequest.AddHeader("Content-Type", "application/json")
+                       .AddHeader("username", Settings.username);
         }
 
-        public List<Command> getCommands()
+        public static List<Command> GetCommands()
         {
+            
             Log.Message("Requesting object from " + BASE_URL);
-            var response = client.Execute<CommandList>(baseRequest);
-            return response.Data.commands;
+            try
+            {
+                var response = client.Execute<CommandList>(baseRequest);
+                return response.Data.commands;
+            } catch
+            {
+                throw;
+            }
+
         }
     }
 }
