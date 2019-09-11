@@ -51,8 +51,8 @@
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
     <Compile Include="Actions\FriendlyPawnAction.cs" />
+    <Compile Include="Actions\FalloutAction.cs" />
     <Compile Include="Actions\WindTurbineAction.cs" />
-    <Compile Include="Actions\GeothermalAction.cs" />
     <Compile Include="Actions\BatteryAction.cs" />
     <Compile Include="Actions\SolarPanelAction.cs" />
     <Compile Include="Actions\PlasteelAction.cs" />
