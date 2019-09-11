@@ -9,10 +9,10 @@ namespace RimConnection
         public static List<Action> actionList = new List<Action> {
             new BatteryAction(),
             new FriendlyPawnAction(),
-            new GeothermalAction(),
             new GoldAction(),
             new PlasteelAction(),
             new SolarPanelAction(),
+            new FalloutAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };
