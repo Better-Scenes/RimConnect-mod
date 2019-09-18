@@ -17,7 +17,7 @@ namespace RimConnection
             client = new RestClient(BASE_URL);
             baseRequest = new RestRequest("command/list");
             baseRequest.AddHeader("Content-Type", "application/json")
-                       .AddHeader("username", Settings.username);
+                       .AddHeader("Authorization", $"Bearer {Settings.token}");
         }
 
         public static List<Command> GetCommands()

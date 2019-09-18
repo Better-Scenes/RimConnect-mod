@@ -57,7 +57,8 @@
     <Compile Include="Actions\SolarPanelAction.cs" />
     <Compile Include="Actions\PlasteelAction.cs" />
     <Compile Include="Actions\GoldAction.cs" />
-    <Compile Include="API\commandValid.cs" />
+    <Compile Include="API\authMod.cs" />
+    <Compile Include="API\validCommand.cs" />
     <Compile Include="ServerPoller.cs" />
     <Compile Include="Managers\PawnCreationManager.cs" />
     <Compile Include="RimConnection.cs" />

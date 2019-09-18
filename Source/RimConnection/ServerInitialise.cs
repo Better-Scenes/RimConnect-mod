@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 
 using Verse;
+using RimWorld;
 
 namespace RimConnection
 {
@@ -15,16 +16,26 @@ namespace RimConnection
         public ServerInitialise()
         {
             Log.Message("Trying to intialise with server");
-            Log.Message($"initialising for {Settings.username}");
             var BASE_URL = Settings.BASE_URL;
 
             client = new RestClient(BASE_URL);
-            var request = new RestRequest("command/valid", Method.POST);
-            request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("username", Settings.username);
-            request.AddJsonBody(ActionList.ActionListToApi());
 
-            var response = client.Execute<ValidCommand>(request);
+            // Get a new JWT from the server based on the secret
+            var authModRequest = new RestRequest("auth/mod", Method.POST);
+            authModRequest.AddHeader("Content-Type", "application/json")
+                          .AddJsonBody(new AuthMod());
+
+            var authModResponse = client.Execute<AuthModResponse>(authModRequest);
+            Settings.token = authModResponse.Data.token;
+            Log.Message(Settings.token);
+
+            // Go and push all the valid commands to the server
+            var validCommandRequest = new RestRequest("command/valid", Method.POST);
+            validCommandRequest.AddHeader("Content-Type", "application/json")
+                   .AddHeader("Authorization", $"Bearer {Settings.token}")
+                   .AddJsonBody(ActionList.ActionListToApi());
+
+            var validCommandResponse = client.Execute<ValidCommand>(validCommandRequest);
         }
     }
 }
