@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using UnityEngine;
+using Verse;
 
 namespace RimConnection
 {
@@ -15,6 +16,10 @@ namespace RimConnection
             new ServerInitialise();
         }
 
+        public override void DoSettingsWindowContents(Rect inRect)
+        {
+            Settings.DoSettingsWindowContents(inRect);
+        }
 
         public override string SettingsCategory()
         {
