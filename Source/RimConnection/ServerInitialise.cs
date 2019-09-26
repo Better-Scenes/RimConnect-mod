@@ -9,16 +9,16 @@ using RimWorld;
 
 namespace RimConnection
 {
-    class ServerInitialise
+    public static class Initialise
     {
-        private RestClient client;
+        static Initialise() { }
 
-        public ServerInitialise()
+        public static void init()
         {
             Log.Message("Trying to intialise with server");
             var BASE_URL = Settings.BASE_URL;
 
-            client = new RestClient(BASE_URL);
+            RestClient client = new RestClient(BASE_URL);
 
             // Get a new JWT from the server based on the secret
             var authModRequest = new RestRequest("auth/mod", Method.POST);

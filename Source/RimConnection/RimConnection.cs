@@ -13,7 +13,7 @@ namespace RimConnection
             this.settings = GetSettings<Settings>();
             Log.Message("Hello World!");
 
-            new ServerInitialise();
+            Initialise.init();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

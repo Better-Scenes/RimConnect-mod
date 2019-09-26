@@ -39,6 +39,12 @@ namespace RimConnection
             {
                 secret = GUIUtility.systemCopyBuffer;
             }
+            if (Widgets.ButtonText(new Rect(70, 70, 100, 20), "Connect"))
+            {
+                Initialise.init();
+                Messages.Message("Do Something", MessageTypeDefOf.PositiveEvent);
+            }
+                
         }
     }
 }
