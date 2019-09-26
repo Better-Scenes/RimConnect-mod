@@ -35,6 +35,10 @@ namespace RimConnection
 
             Widgets.Label(labelRect, "Secret: ");
             secret = Widgets.TextField(inputRect, secret, 16, new Regex("^[a-zA-Z0-9_]*$"));
+            if (Widgets.ButtonText(new Rect(380, 40, 100, 20), "Paste"))
+            {
+                secret = GUIUtility.systemCopyBuffer;
+            }
         }
     }
 }
