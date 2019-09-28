@@ -17,6 +17,7 @@ namespace RimConnection
 
         public static string secret = "";
         public static string token = "";
+        public static bool initialiseSuccessful = false;
 
         public override void ExposeData()
         {
@@ -34,15 +35,22 @@ namespace RimConnection
             var inputRect = new Rect(70, 40, 300, 20);
 
             Widgets.Label(labelRect, "Secret: ");
-            secret = Widgets.TextField(inputRect, secret, 16, new Regex("^[a-zA-Z0-9_]*$"));
+            secret = Widgets.TextField(inputRect, secret, 16, new Regex("^[a-zA-Z0-9_]*$")).Trim();
             if (Widgets.ButtonText(new Rect(380, 40, 100, 20), "Paste"))
             {
                 secret = GUIUtility.systemCopyBuffer;
             }
             if (Widgets.ButtonText(new Rect(70, 70, 100, 20), "Connect"))
             {
-                ServerInitialise.init();
-                Messages.Message("Do Something", MessageTypeDefOf.PositiveEvent);
+                var success = ServerInitialise.init();
+                if(success)
+                {
+                    Messages.Message("Connected!", MessageTypeDefOf.PositiveEvent);
+
+                } else
+                {
+                    Messages.Message("Failed to connect! Check your debug log", MessageTypeDefOf.NegativeEvent);
+                }
             }
                 
         }

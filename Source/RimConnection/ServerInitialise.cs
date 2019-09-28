@@ -13,7 +13,7 @@ namespace RimConnection
     {
         static ServerInitialise() { }
 
-        public static void init()
+        public static bool init()
         {
             var BASE_URL = Settings.BASE_URL;
 
@@ -25,8 +25,19 @@ namespace RimConnection
                           .AddJsonBody(new AuthMod());
 
             var authModResponse = client.Execute<AuthModResponse>(authModRequest);
+
+            // If the request failed, return early and post a message
+            if(authModResponse.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Settings.initialiseSuccessful = false;
+                Log.Message("Failed to connect. Is your secret correct?");
+                return false;
+            } else
+            {
+                Log.Message("Successfully authenticated with server!");
+            }
+
             Settings.token = authModResponse.Data.token;
-            Log.Message(Settings.token);
 
             // Go and push all the valid commands to the server
             var validCommandRequest = new RestRequest("command/valid", Method.POST);
@@ -35,6 +46,15 @@ namespace RimConnection
                    .AddJsonBody(ActionList.ActionListToApi());
 
             var validCommandResponse = client.Execute<ValidCommand>(validCommandRequest);
+
+            if(validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Settings.initialiseSuccessful = false;
+                Log.Message("Failed to provide valid commands to server");
+                return false;
+            }
+            Settings.initialiseSuccessful = true;
+            return true;
         }
     }
 }
