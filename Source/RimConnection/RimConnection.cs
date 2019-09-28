@@ -11,9 +11,7 @@ namespace RimConnection
         public RimConnection(ModContentPack content) : base(content)
         {
             this.settings = GetSettings<Settings>();
-            Log.Message("Hello World!");
-
-            Initialise.init();
+            ServerInitialise.init();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

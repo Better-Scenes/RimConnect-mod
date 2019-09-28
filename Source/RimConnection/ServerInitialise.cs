@@ -9,13 +9,12 @@ using RimWorld;
 
 namespace RimConnection
 {
-    public static class Initialise
+    public static class ServerInitialise
     {
-        static Initialise() { }
+        static ServerInitialise() { }
 
         public static void init()
         {
-            Log.Message("Trying to intialise with server");
             var BASE_URL = Settings.BASE_URL;
 
             RestClient client = new RestClient(BASE_URL);

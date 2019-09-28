@@ -22,7 +22,6 @@ namespace RimConnection
         {
             base.FinalizeInit();
             previousDateTime = DateTime.Now;
-            Log.Message("Ran finalize init");
         }
 
         public override void GameComponentTick()
@@ -42,12 +41,9 @@ namespace RimConnection
 
         private void serverChecker()
         {
-            Log.Message("ServerChecker has been run", true);
-
             var commands = RequestHandler.GetCommands();
             foreach (var command in commands)
             {
-                Log.Message($"could spawn: {command.id} {command.amount}");
                 var action = ActionList.actionList[int.Parse(command.id)];
                 action.execute(command.amount);
             }

@@ -41,7 +41,7 @@ namespace RimConnection
             }
             if (Widgets.ButtonText(new Rect(70, 70, 100, 20), "Connect"))
             {
-                Initialise.init();
+                ServerInitialise.init();
                 Messages.Message("Do Something", MessageTypeDefOf.PositiveEvent);
             }
                 
