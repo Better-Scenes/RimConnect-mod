@@ -9,30 +9,52 @@ namespace RimConnection
     {
         private static string BASE_URL;
         private static RestClient client;
-        private static RestRequest baseRequest;
 
         static RequestHandler()
         {
             BASE_URL = Settings.BASE_URL;
             client = new RestClient(BASE_URL);
-            baseRequest = new RestRequest("command/list");
-            baseRequest.AddHeader("Content-Type", "application/json")
-                       .AddHeader("Authorization", $"Bearer {Settings.token}");
         }
 
         public static List<Command> GetCommands()
         {
-            
-            Log.Message("Requesting object from " + BASE_URL);
+            var baseRequest = new RestRequest("command/list");
+            baseRequest.AddHeader("Content-Type", "application/json")
+                       .AddHeader("Authorization", $"Bearer {Settings.token}");
+
             try
             {
                 var response = client.Execute<CommandList>(baseRequest);
-                return response.Data.commands;
+                var commands = response.Data.commands;
+
+                DeleteCommands(commands.Count);
+                return commands;
             } catch
             {
                 throw;
             }
 
+        }
+
+        private static void DeleteCommands(int number)
+        {
+            if (number <= 0)
+            {
+                return;
+            }
+            try
+            {
+
+                var baseRequest = new RestRequest("command/list", Method.DELETE);
+                baseRequest.AddHeader("Content-Type", "application/json")
+                           .AddHeader("Authorization", $"Bearer {Settings.token}")
+                           .AddParameter("toDelete", number);
+
+                var response = client.Execute(baseRequest);
+            } catch
+            {
+                throw;
+            }
         }
     }
 }
