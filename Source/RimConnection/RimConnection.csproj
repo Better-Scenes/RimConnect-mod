@@ -57,8 +57,8 @@
     <Compile Include="Actions\SolarPanelAction.cs" />
     <Compile Include="Actions\PlasteelAction.cs" />
     <Compile Include="Actions\GoldAction.cs" />
-    <Compile Include="API\authMod.cs" />
-    <Compile Include="API\validCommand.cs" />
+    <Compile Include="API\AuthMod.cs" />
+    <Compile Include="API\ValidCommand.cs" />
     <Compile Include="ServerPoller.cs" />
     <Compile Include="Managers\PawnCreationManager.cs" />
     <Compile Include="RimConnection.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="ServerInitialise.cs" />
     <Compile Include="Actions\Action.cs" />
     <Compile Include="Settings\Settings.cs" />
-    <Compile Include="API\commandList.cs" />
+    <Compile Include="API\CommandList.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

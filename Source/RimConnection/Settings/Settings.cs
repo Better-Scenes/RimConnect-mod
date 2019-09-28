@@ -42,7 +42,7 @@ namespace RimConnection
             }
             if (Widgets.ButtonText(new Rect(70, 70, 100, 20), "Connect"))
             {
-                var success = ServerInitialise.init();
+                var success = ServerInitialise.Init();
                 if(success)
                 {
                     Messages.Message("Connected!", MessageTypeDefOf.PositiveEvent);

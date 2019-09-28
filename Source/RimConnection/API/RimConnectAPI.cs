@@ -16,6 +16,45 @@ namespace RimConnection
             client = new RestClient(BASE_URL);
         }
 
+        public static string AuthSecret(string secret)
+        {
+            // Get a new JWT from the server based on the secret
+            var authModRequest = new RestRequest("auth/mod", Method.POST);
+            authModRequest.AddHeader("Content-Type", "application/json")
+                          .AddJsonBody(new AuthMod());
+
+            var authModResponse = client.Execute<AuthModResponse>(authModRequest);
+
+            // If the request failed, throw and post a message
+            if (authModResponse.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Settings.initialiseSuccessful = false;
+                throw new System.Exception("Failed to connect. Is your secret correct?");
+            }
+
+            Log.Message("Successfully authenticated with server!");
+            return authModResponse.Data.token;
+        }
+
+        public static void PostValidCommands(ValidCommandList commandList)
+        {
+            // Go and push all the valid commands to the server
+            var validCommandRequest = new RestRequest("command/valid", Method.POST);
+            validCommandRequest.AddHeader("Content-Type", "application/json")
+                   .AddHeader("Authorization", $"Bearer {Settings.token}")
+                   .AddJsonBody(commandList);
+
+            var validCommandResponse = client.Execute<ValidCommand>(validCommandRequest);
+
+            if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Settings.initialiseSuccessful = false;
+                Log.Error("Failed to provide valid commands to server");
+                throw new System.Exception("Failed to provide valid commands to server");
+            }
+            Settings.initialiseSuccessful = true;
+        }
+
         public static List<Command> GetCommands()
         {
             var baseRequest = new RestRequest("command/list");
