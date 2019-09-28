@@ -26,17 +26,21 @@ namespace RimConnection
 
         public override void GameComponentTick()
         {
-            base.GameComponentTick();
-            var now = DateTime.Now;
-
-            timeCounterSeconds += (float)(now - previousDateTime).TotalSeconds;
-            if(timeCounterSeconds > waitTimeSeconds)
+            // Only do this stuff if the mod successfully connected to the server
+            if (Settings.initialiseSuccessful)
             {
-                timeCounterSeconds = 0.0f;
-                serverChecker();
-            }
+                base.GameComponentTick();
+                var now = DateTime.Now;
 
-            previousDateTime = now;
+                timeCounterSeconds += (float)(now - previousDateTime).TotalSeconds;
+                if (timeCounterSeconds > waitTimeSeconds)
+                {
+                    timeCounterSeconds = 0.0f;
+                    serverChecker();
+                }
+
+                previousDateTime = now;
+            }
         }
 
         private void serverChecker()
