@@ -5,12 +5,12 @@ using RestSharp;
 namespace RimConnection
 {
 
-    public static class RequestHandler
+    public static class RimConnectAPI
     {
         private static string BASE_URL;
         private static RestClient client;
 
-        static RequestHandler()
+        static RimConnectAPI()
         {
             BASE_URL = Settings.BASE_URL;
             client = new RestClient(BASE_URL);
