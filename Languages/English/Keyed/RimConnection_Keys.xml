@@ -2,5 +2,19 @@
 
 <LanguageData>
     <RimConnectionDroppodMailLabel>Twitch Drop</RimConnectionDroppodMailLabel>
-    <RimConnectionPositiveDroppodMailBody>You have received a gift from wonderful Twitch Viewer {0}</RimConnectionPositiveDroppodMailBody>
+    <RimConnectionPositiveDroppodMailBody>
+        Twitch has sent you a gift (Or a curse?!)
+
+        {0} {1}
+
+        {2}
+    </RimConnectionPositiveDroppodMailBody>
+    <RimConnectionFriendlyPawnLabel>Twitch Drop</RimConnectionFriendlyPawnLabel>
+    <RimConnectionFriendlyPawnMailBody>
+        Twitch has given you new colonist(s)!
+
+        {0} {1}
+
+        {2}
+    </RimConnectionFriendlyPawnMailBody>
 </LanguageData>

@@ -10,7 +10,7 @@
 
         public override void execute(int amount)
         {
-            PawnCreationManager.createPawn(1);
+            PawnCreationManager.createPawn(1, name, description);
         }
     }
 }
