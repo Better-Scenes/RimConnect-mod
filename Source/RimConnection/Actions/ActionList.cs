@@ -19,11 +19,9 @@ namespace RimConnection
 
         public static ValidCommandList ActionListToApi()
         {
-            var nameSortedList = actionList.OrderBy(x => x.name);
             ValidCommandList validCommandList = new ValidCommandList();
-            validCommandList.validCommands = nameSortedList.Select((action, index) => action.toApiCall(index)).ToList<ValidCommand>();
+            validCommandList.validCommands = actionList.Select((action, index) => action.toApiCall(index)).ToList<ValidCommand>();
             return validCommandList;
         }
-
     }
 }

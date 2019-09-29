@@ -45,7 +45,7 @@ namespace RimConnection
 
         private void serverChecker()
         {
-            var commands = RequestHandler.GetCommands();
+            var commands = RimConnectAPI.GetCommands();
             foreach (var command in commands)
             {
                 var action = ActionList.actionList[int.Parse(command.id)];
