@@ -8,7 +8,8 @@ namespace RimConnection
         // Add all your actions in here. If they aren't here, they won't be available
         public static List<Action> actionList = new List<Action> {
             new BatteryAction(),
-            new FriendlyPawnAction(),
+            new DefaultColonistAction(),
+            new AwfulColonistAction(),
             new GoldAction(),
             new PlasteelAction(),
             new SolarPanelAction(),
