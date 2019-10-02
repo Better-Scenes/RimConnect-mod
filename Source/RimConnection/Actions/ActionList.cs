@@ -10,6 +10,7 @@ namespace RimConnection
             new BatteryAction(),
             new DefaultColonistAction(),
             new AwfulColonistAction(),
+            new GoodColonistAction(),
             new GoldAction(),
             new PlasteelAction(),
             new SolarPanelAction(),
