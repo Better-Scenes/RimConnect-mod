@@ -1,16 +1,16 @@
 ﻿namespace RimConnection
 {
-    class FriendlyPawnAction : Action
+    class DefaultColonistAction : Action
     {
-        public FriendlyPawnAction()
+        public DefaultColonistAction()
         {
-            this.name = "Friendly Pawn";
+            this.name = "Generic Colonist";
             this.description = "You don't like me, but I like you. Maybe you could grow to like me?";
         }
 
         public override void execute(int amount)
         {
-            PawnCreationManager.createPawn(1);
+            PawnCreationManager.spawnDefaultColonist(1, name, description);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
-            DropPodManager.createDrop(ThingDefOf.Plasteel, amount);
+            DropPodManager.createDrop(ThingDefOf.Plasteel, amount, name, description);
         }
     }
 }
