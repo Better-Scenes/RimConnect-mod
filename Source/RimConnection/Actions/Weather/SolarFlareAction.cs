@@ -13,7 +13,7 @@ namespace RimConnection
         public SolarFlareAction()
         {
             this.name = "Solar Flare";
-            this.description = "It's a";
+            this.description = "The sun sneezed, not so good for you";
             this.category = "Weather";
         }
 
