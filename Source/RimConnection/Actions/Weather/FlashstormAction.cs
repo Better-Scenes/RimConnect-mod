@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Flashstorm";
             this.description = "Fast as lightning, a little bit frightening";
+            this.category = "Weather";
         }
 
         public override void execute(int amount)

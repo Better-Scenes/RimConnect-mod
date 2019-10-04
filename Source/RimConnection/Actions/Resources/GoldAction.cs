@@ -14,6 +14,7 @@ namespace RimConnection
             this.name = "Gold";
             this.description = "All that glitters is not gold, but this is!";
             this.canSpawnMultiple = true;
+            this.category = "Resources";
         }
 
         public override void execute(int amount)

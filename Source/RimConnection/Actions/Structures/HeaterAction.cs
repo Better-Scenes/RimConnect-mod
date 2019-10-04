@@ -8,6 +8,7 @@ namespace RimConnection
         {
             this.name = "Heater";
             this.description = "It's cold outside";
+            this.category = "Structures";
         }
 
         public override void execute(int amount)

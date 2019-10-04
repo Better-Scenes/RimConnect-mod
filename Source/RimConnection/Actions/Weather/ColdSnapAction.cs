@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Cold Snap";
             this.description = "Better rug up!";
+            this.category = "Weather";
         }
 
         public override void execute(int amount)

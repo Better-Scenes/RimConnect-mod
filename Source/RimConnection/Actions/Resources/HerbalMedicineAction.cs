@@ -14,6 +14,7 @@ namespace RimConnection
             this.name = "Herbal Medicine";
             this.description = "Sticks and stones...";
             this.canSpawnMultiple = true;
+            this.category = "Resources";
         }
 
         public override void execute(int amount)

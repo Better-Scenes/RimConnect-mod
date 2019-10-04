@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Cargo Pods";
             this.description = "A gift from above!";
+            this.category = "Event";
         }
 
         public override void execute(int amount)

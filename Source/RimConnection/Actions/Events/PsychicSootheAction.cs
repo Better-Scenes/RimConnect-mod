@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Psychic Soothe";
             this.description = "Why doesn't everyone just like, chill out";
+            this.category = "Event";
         }
 
         public override void execute(int amount)

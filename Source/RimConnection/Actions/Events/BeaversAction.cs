@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Beavers";
             this.description = "Beavers might be cute, but they're about to mess you up";
+            this.category = "Event";
         }
 
         public override void execute(int amount)

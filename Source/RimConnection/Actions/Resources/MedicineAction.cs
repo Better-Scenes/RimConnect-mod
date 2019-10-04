@@ -14,6 +14,7 @@ namespace RimConnection
             this.name = "Medicine";
             this.description = "Patch yourself up!";
             this.canSpawnMultiple = true;
+            this.category = "Resources";
         }
 
         public override void execute(int amount)

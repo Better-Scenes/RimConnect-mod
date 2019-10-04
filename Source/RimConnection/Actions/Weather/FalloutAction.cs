@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Toxic Fallout";
             this.description = "The wasteland has arrived";
+            this.category = "Weather";
         }
 
         public override void execute(int amount)

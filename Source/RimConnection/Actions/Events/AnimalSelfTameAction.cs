@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Animal Self Tame";
             this.description = "You don't get to choose, hope it was a good one";
+            this.category = "Event";
         }
 
         public override void execute(int amount)

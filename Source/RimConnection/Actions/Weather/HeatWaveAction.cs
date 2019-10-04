@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Heat Wave";
             this.description = "Is it just me or is it hot in here?";
+            this.category = "Weather";
         }
 
         public override void execute(int amount)

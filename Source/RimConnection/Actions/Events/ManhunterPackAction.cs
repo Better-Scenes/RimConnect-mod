@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Manhunter Pack";
             this.description = "They hunger for man-flesh";
+            this.category = "Event";
         }
 
         public override void execute(int amount)

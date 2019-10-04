@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Farm animals join";
             this.description = "Let's just hope the pigs don't take over";
+            this.category = "Event";
         }
 
         public override void execute(int amount)

@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Solar Flare";
             this.description = "It's a";
+            this.category = "Weather";
         }
 
         public override void execute(int amount)

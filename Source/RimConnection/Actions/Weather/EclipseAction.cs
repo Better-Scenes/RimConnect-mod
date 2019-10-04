@@ -14,6 +14,7 @@ namespace RimConnection
         {
             this.name = "Eclipse";
             this.description = "Time to go where the sun don't shine";
+            this.category = "Weather";
         }
 
         public override void execute(int amount)

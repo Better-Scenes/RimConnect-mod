@@ -8,7 +8,7 @@ namespace RimConnection {
     {
         public string name;
         public string description;
-        public string Category = "Other";
+        public string category = "Other";
         public bool canSpawnMultiple = false;
 
         public ValidCommand toApiCall(int id)
