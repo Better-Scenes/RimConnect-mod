@@ -12,7 +12,7 @@
 
         public override void execute(int amount)
         {
-            PawnCreationManager.SpawnAwfulColonist(1, name, description);
+            PawnCreationManager.SpawnAwfulColonist(amount, name, description);
         }
     }
 }

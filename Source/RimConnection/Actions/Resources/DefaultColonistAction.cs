@@ -11,7 +11,7 @@
 
         public override void execute(int amount)
         {
-            PawnCreationManager.spawnDefaultColonist(1, name, description);
+            PawnCreationManager.spawnDefaultColonist(amount, name, description);
         }
     }
 }
