@@ -54,6 +54,8 @@
     <Compile Include="Actions\Events\PsychicDroneAction.cs" />
     <Compile Include="Actions\Events\AssaultAction.cs" />
     <Compile Include="Actions\Events\InfestationAction.cs" />
+    <Compile Include="Actions\Events\ManhunterPackAction.cs" />
+    <Compile Include="Actions\Events\CargoPodAction.cs" />
     <Compile Include="Actions\Events\PsychicSootheAction.cs" />
     <Compile Include="Actions\Events\FarmAnimalsWanderInAction.cs" />
     <Compile Include="Actions\Events\AnimalSelfTameAction.cs" />

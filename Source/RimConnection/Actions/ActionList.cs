@@ -34,7 +34,9 @@ namespace RimConnection
             new AssaultAction(),
             new BeaversAction(),
             new DropAssaultAction(),
-            new InfestationAction()
+            new InfestationAction(),
+            new ManhunterPackAction(),
+            new CargoPodAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };
