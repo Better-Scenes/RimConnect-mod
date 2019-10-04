@@ -30,7 +30,11 @@ namespace RimConnection
             new FarmAnimalsWanderInAction(),
             new AnimalSelfTameAction(),
             new PsychicDroneAction(),
-            new PsychicDroneAction()
+            new PsychicDroneAction(),
+            new AssaultAction(),
+            new BeaversAction(),
+            new DropAssaultAction(),
+            new InfestationAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };
