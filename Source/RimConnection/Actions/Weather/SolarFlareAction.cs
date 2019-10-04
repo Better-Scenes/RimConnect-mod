@@ -8,22 +8,21 @@ using Verse;
 
 namespace RimConnection
 {
-    class FalloutAction : Action
+    class SolarFlareAction : Action
     {
-        public FalloutAction()
+        public SolarFlareAction()
         {
-            this.name = "Toxic Fallout";
-            this.description = "The wasteland has arrived";
+            this.name = "Solar Flare";
+            this.description = "It's a";
         }
 
         public override void execute(int amount)
         {
-            var worker = IncidentDefOf.ToxicFallout;
             var currentMap = Find.CurrentMap;
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            worker.Worker.TryExecute(parms);
+            new IncidentWorker_HeatWave().TryExecute(parms);
         }
     }
 }

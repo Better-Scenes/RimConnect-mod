@@ -14,14 +14,18 @@ namespace RimConnection
             new GoldAction(),
             new PlasteelAction(),
             new SolarPanelAction(),
-            new FalloutAction(),
             new WoodAction(),
             new SteelAction(),
             new SilverAction(),
             new GlitterworldMedicineAction(),
             new HerbalMedicineAction(),
             new MedicineAction(),
-            new UraniumAction()
+            new UraniumAction(),
+            new ColdSnapAction(),
+            new FlashstormAction(),
+            new HeatWaveAction(),
+            new SolarFlareAction(),
+            new FalloutAction(),
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };

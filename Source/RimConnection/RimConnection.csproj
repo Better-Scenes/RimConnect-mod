@@ -60,6 +60,10 @@
     <Compile Include="Actions\Resources\GoodColonistAction.cs" />
     <Compile Include="Actions\Resources\AwfulColonistAction.cs" />
     <Compile Include="Actions\Resources\DefaultColonistAction.cs" />
+    <Compile Include="Actions\Weather\TornadoAction.cs" />
+    <Compile Include="Actions\Weather\SolarFlareAction.cs" />
+    <Compile Include="Actions\Weather\HeatWaveAction.cs" />
+    <Compile Include="Actions\Weather\FlashstormAction.cs" />
     <Compile Include="Actions\Weather\ColdSnapAction.cs" />
     <Compile Include="Actions\Weather\FalloutAction.cs" />
     <Compile Include="Actions\Structures\WindTurbineAction.cs" />

@@ -8,22 +8,21 @@ using Verse;
 
 namespace RimConnection
 {
-    class FalloutAction : Action
+    class FlashstormAction : Action
     {
-        public FalloutAction()
+        public FlashstormAction()
         {
-            this.name = "Toxic Fallout";
-            this.description = "The wasteland has arrived";
+            this.name = "Flashstorm";
+            this.description = "Fast as lightning, a little bit frightening";
         }
 
         public override void execute(int amount)
         {
-            var worker = IncidentDefOf.ToxicFallout;
             var currentMap = Find.CurrentMap;
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            worker.Worker.TryExecute(parms);
+            new IncidentWorker_Flashstorm().TryExecute(parms);
         }
     }
 }
