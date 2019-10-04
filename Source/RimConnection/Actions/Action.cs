@@ -8,7 +8,7 @@ namespace RimConnection {
     {
         public string name;
         public string description;
-        public abstract void execute(int amount);
+        public bool canSpawnMultiple = false;
 
         public ValidCommand toApiCall(int id)
         {
@@ -18,5 +18,8 @@ namespace RimConnection {
             command.description = this.description;
             return command;
         }
+
+        public abstract void execute(int amount);
+
     }
 }

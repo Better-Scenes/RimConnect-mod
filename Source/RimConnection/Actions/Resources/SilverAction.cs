@@ -13,6 +13,7 @@ namespace RimConnection
         {
             this.name = "Silver";
             this.description = "Cash money!";
+            this.canSpawnMultiple = true;
         }
 
         public override void execute(int amount)

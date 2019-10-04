@@ -13,6 +13,7 @@ namespace RimConnection
         {
             this.name = "Wood";
             this.description = "Better than bad its good";
+            this.canSpawnMultiple = true;
         }
 
         public override void execute(int amount)

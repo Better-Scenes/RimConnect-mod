@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
+    <Compile Include="Actions\Events\PsychicDroneAction - Copy.cs" />
+    <Compile Include="Actions\Events\PsychicSootheAction.cs" />
     <Compile Include="Actions\Events\FarmAnimalsWanderInAction.cs" />
+    <Compile Include="Actions\Events\AnimalSelfTameAction.cs" />
     <Compile Include="Actions\Events\BeaversAction.cs" />
     <Compile Include="Actions\Resources\MedicineAction.cs" />
     <Compile Include="Actions\Resources\HerbalMedicineAction.cs" />

@@ -13,6 +13,7 @@ namespace RimConnection
         {
             this.name = "Glitterworld Medicine";
             this.description = "All that glitters is not gold";
+            this.canSpawnMultiple = true;
         }
 
         public override void execute(int amount)

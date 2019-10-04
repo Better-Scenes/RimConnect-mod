@@ -13,6 +13,7 @@ namespace RimConnection
         {
             this.name = "Medicine";
             this.description = "Patch yourself up!";
+            this.canSpawnMultiple = true;
         }
 
         public override void execute(int amount)

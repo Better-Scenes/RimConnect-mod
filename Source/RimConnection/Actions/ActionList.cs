@@ -27,7 +27,10 @@ namespace RimConnection
             new SolarFlareAction(),
             new FalloutAction(),
             new EclipseAction(),
-            new FarmAnimalsWanderInAction()
+            new FarmAnimalsWanderInAction(),
+            new AnimalSelfTameAction(),
+            new PsychicDroneAction(),
+            new PsychicDroneAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };

@@ -13,6 +13,7 @@ namespace RimConnection
         {
             this.name = "Uranium";
             this.description = "Not fit for human consumption";
+            this.canSpawnMultiple = true;
         }
 
         public override void execute(int amount)
