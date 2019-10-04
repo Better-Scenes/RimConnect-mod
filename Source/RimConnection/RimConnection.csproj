@@ -50,15 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
-    <Compile Include="Actions\GoodColonistAction.cs" />
-    <Compile Include="Actions\AwfulColonistAction.cs" />
-    <Compile Include="Actions\DefaultColonistAction.cs" />
-    <Compile Include="Actions\FalloutAction.cs" />
-    <Compile Include="Actions\WindTurbineAction.cs" />
-    <Compile Include="Actions\BatteryAction.cs" />
-    <Compile Include="Actions\SolarPanelAction.cs" />
-    <Compile Include="Actions\PlasteelAction.cs" />
-    <Compile Include="Actions\GoldAction.cs" />
+    <Compile Include="Actions\Resources\WoodAction.cs" />
+    <Compile Include="Actions\Resources\GoodColonistAction.cs" />
+    <Compile Include="Actions\Resources\AwfulColonistAction.cs" />
+    <Compile Include="Actions\Resources\DefaultColonistAction.cs" />
+    <Compile Include="Actions\Weather\FalloutAction.cs" />
+    <Compile Include="Actions\Structures\WindTurbineAction.cs" />
+    <Compile Include="Actions\Structures\BatteryAction.cs" />
+    <Compile Include="Actions\Structures\SolarPanelAction.cs" />
+    <Compile Include="Actions\Resources\PlasteelAction.cs" />
+    <Compile Include="Actions\Resources\GoldAction.cs" />
     <Compile Include="API\AuthMod.cs" />
     <Compile Include="API\ValidCommand.cs" />
     <Compile Include="ServerPoller.cs" />
@@ -77,6 +78,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Actions\Events\" />
+    <Folder Include="Actions\Gear\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

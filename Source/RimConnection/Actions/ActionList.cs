@@ -14,7 +14,8 @@ namespace RimConnection
             new GoldAction(),
             new PlasteelAction(),
             new SolarPanelAction(),
-            new FalloutAction()
+            new FalloutAction(),
+            new WoodAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };

@@ -7,17 +7,17 @@ using RimWorld;
 
 namespace RimConnection
 {
-    class GoldAction : Action
+    class WoodAction : Action
     {
-        public GoldAction()
+        public WoodAction()
         {
-            this.name = "Gold";
-            this.description = "Spawn some gliterring gold";
+            this.name = "Wood";
+            this.description = "Better than bad its good";
         }
 
         public override void execute(int amount)
         {
-            DropPodManager.createDrop(ThingDefOf.Gold, amount, name, description);
+            DropPodManager.createDrop(ThingDefOf.WoodLog, amount, name, description);
         }
     }
 }
