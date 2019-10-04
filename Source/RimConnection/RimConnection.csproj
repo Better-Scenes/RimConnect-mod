@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
+    <Compile Include="Actions\Resources\SilverAction.cs" />
     <Compile Include="Actions\Resources\WoodAction.cs" />
     <Compile Include="Actions\Resources\GoodColonistAction.cs" />
     <Compile Include="Actions\Resources\AwfulColonistAction.cs" />
