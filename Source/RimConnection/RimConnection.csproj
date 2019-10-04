@@ -70,6 +70,8 @@
     <Compile Include="Actions\Resources\GoodColonistAction.cs" />
     <Compile Include="Actions\Resources\AwfulColonistAction.cs" />
     <Compile Include="Actions\Resources\DefaultColonistAction.cs" />
+    <Compile Include="Actions\Structures\CoolerAction.cs" />
+    <Compile Include="Actions\Structures\HeaterAction.cs" />
     <Compile Include="Actions\Weather\EclipseAction.cs" />
     <Compile Include="Actions\Weather\SolarFlareAction.cs" />
     <Compile Include="Actions\Weather\HeatWaveAction.cs" />
