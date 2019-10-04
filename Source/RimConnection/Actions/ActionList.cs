@@ -17,7 +17,10 @@ namespace RimConnection
             new FalloutAction(),
             new WoodAction(),
             new SteelAction(),
-            new SilverAction()
+            new SilverAction(),
+            new GlitterworldMedicineAction(),
+            new HerbalMedicineAction(),
+            new MedicineAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };

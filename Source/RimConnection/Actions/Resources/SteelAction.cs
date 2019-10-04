@@ -17,7 +17,7 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
-            DropPodManager.createDrop(ThingDefOf.Silver, amount, name, description);
+            DropPodManager.createDrop(ThingDefOf.Steel, amount, name, description);
         }
     }
 }
