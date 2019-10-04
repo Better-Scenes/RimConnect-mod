@@ -26,6 +26,8 @@ namespace RimConnection
             new HeatWaveAction(),
             new SolarFlareAction(),
             new FalloutAction(),
+            new EclipseAction(),
+            new FarmAnimalsWanderInAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };
