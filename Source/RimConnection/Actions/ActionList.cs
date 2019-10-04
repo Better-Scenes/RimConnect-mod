@@ -20,7 +20,8 @@ namespace RimConnection
             new SilverAction(),
             new GlitterworldMedicineAction(),
             new HerbalMedicineAction(),
-            new MedicineAction()
+            new MedicineAction(),
+            new UraniumAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };

@@ -55,6 +55,7 @@
     <Compile Include="Actions\Resources\GlitterworldMedicineAction.cs" />
     <Compile Include="Actions\Resources\SteelAction.cs" />
     <Compile Include="Actions\Resources\SilverAction.cs" />
+    <Compile Include="Actions\Resources\UraniumAction.cs" />
     <Compile Include="Actions\Resources\WoodAction.cs" />
     <Compile Include="Actions\Resources\GoodColonistAction.cs" />
     <Compile Include="Actions\Resources\AwfulColonistAction.cs" />
