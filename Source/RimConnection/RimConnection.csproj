@@ -60,6 +60,9 @@
     <Compile Include="Actions\Events\FarmAnimalsWanderInAction.cs" />
     <Compile Include="Actions\Events\AnimalSelfTameAction.cs" />
     <Compile Include="Actions\Events\BeaversAction.cs" />
+    <Compile Include="Actions\Gear\RandomApparelAction.cs" />
+    <Compile Include="Actions\Gear\RandomWeaponAction.cs" />
+    <Compile Include="Actions\Gear\ShieldBeltAction.cs" />
     <Compile Include="Actions\Resources\MedicineAction.cs" />
     <Compile Include="Actions\Resources\HerbalMedicineAction.cs" />
     <Compile Include="Actions\Resources\GlitterworldMedicineAction.cs" />
@@ -103,8 +106,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Actions\Gear\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

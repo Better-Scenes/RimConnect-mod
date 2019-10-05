@@ -30,7 +30,7 @@ namespace RimConnection
             new FarmAnimalsWanderInAction(),
             new AnimalSelfTameAction(),
             new PsychicDroneAction(),
-            new PsychicDroneAction(),
+            new PsychicSootheAction(),
             new AssaultAction(),
             new BeaversAction(),
             new DropAssaultAction(),
@@ -38,7 +38,10 @@ namespace RimConnection
             new ManhunterPackAction(),
             new CargoPodAction(),
             new HeaterAction(),
-            new CoolerAction()
+            new CoolerAction(), 
+            new ShieldBeltAction(),
+            new RandomWeaponAction(),
+            new RandomApparelAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };

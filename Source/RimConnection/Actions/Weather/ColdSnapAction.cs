@@ -23,7 +23,11 @@ namespace RimConnection
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            new IncidentWorker_ColdSnap().TryExecute(parms);
+
+            var snapWorker = new IncidentWorker_MakeGameCondition();
+            snapWorker.def = IncidentDef.Named("ColdSnap");
+
+            snapWorker.TryExecute(parms);
         }
     }
 }

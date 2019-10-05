@@ -23,7 +23,11 @@ namespace RimConnection
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            new IncidentWorker_PsychicSoothe().TryExecute(parms);
+
+            var worker = new IncidentWorker_PsychicSoothe();
+            worker.def = IncidentDef.Named("PsychicSoothe");
+
+            worker.TryExecute(parms);
         }
     }
 }

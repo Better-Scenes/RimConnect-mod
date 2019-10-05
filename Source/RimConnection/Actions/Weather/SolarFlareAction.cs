@@ -23,7 +23,11 @@ namespace RimConnection
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            new IncidentWorker_HeatWave().TryExecute(parms);
+
+            var solarWorker = new IncidentWorker_MakeGameCondition();
+            solarWorker.def = IncidentDef.Named("SolarFlare");
+
+            solarWorker.TryExecute(parms);
         }
     }
 }
