@@ -7,11 +7,13 @@
         {
             this.name = "Awful Colonist";
             this.description = "Well, they might be useful for parts....";
+            this.canSpawnMultiple = true;
+            this.category = "Resources";
         }
 
         public override void execute(int amount)
         {
-            PawnCreationManager.SpawnAwfulColonist(1, name, description);
+            PawnCreationManager.SpawnAwfulColonist(amount, name, description);
         }
     }
 }

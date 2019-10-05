@@ -13,6 +13,7 @@ namespace RimConnection
         {
             this.name = "Solar Panel";
             this.description = "Capture the sun and make it do the work for you";
+            this.category = "Structures";
         }
 
         public override void execute(int amount)

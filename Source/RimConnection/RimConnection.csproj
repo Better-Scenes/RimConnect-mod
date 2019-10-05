@@ -50,17 +50,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
-    <Compile Include="Actions\GoodColonistAction.cs" />
-    <Compile Include="Actions\AwfulColonistAction.cs" />
-    <Compile Include="Actions\DefaultColonistAction.cs" />
-    <Compile Include="Actions\FalloutAction.cs" />
-    <Compile Include="Actions\WindTurbineAction.cs" />
-    <Compile Include="Actions\BatteryAction.cs" />
-    <Compile Include="Actions\SolarPanelAction.cs" />
-    <Compile Include="Actions\PlasteelAction.cs" />
-    <Compile Include="Actions\GoldAction.cs" />
+    <Compile Include="Actions\Events\DropAssaultAction.cs" />
+    <Compile Include="Actions\Events\PsychicDroneAction.cs" />
+    <Compile Include="Actions\Events\AssaultAction.cs" />
+    <Compile Include="Actions\Events\InfestationAction.cs" />
+    <Compile Include="Actions\Events\ManhunterPackAction.cs" />
+    <Compile Include="Actions\Events\CargoPodAction.cs" />
+    <Compile Include="Actions\Events\PsychicSootheAction.cs" />
+    <Compile Include="Actions\Events\FarmAnimalsWanderInAction.cs" />
+    <Compile Include="Actions\Events\AnimalSelfTameAction.cs" />
+    <Compile Include="Actions\Events\BeaversAction.cs" />
+    <Compile Include="Actions\Gear\RandomApparelAction.cs" />
+    <Compile Include="Actions\Gear\RandomWeaponAction.cs" />
+    <Compile Include="Actions\Gear\ShieldBeltAction.cs" />
+    <Compile Include="Actions\Resources\MedicineAction.cs" />
+    <Compile Include="Actions\Resources\HerbalMedicineAction.cs" />
+    <Compile Include="Actions\Resources\GlitterworldMedicineAction.cs" />
+    <Compile Include="Actions\Resources\SteelAction.cs" />
+    <Compile Include="Actions\Resources\SilverAction.cs" />
+    <Compile Include="Actions\Resources\UraniumAction.cs" />
+    <Compile Include="Actions\Resources\WoodAction.cs" />
+    <Compile Include="Actions\Resources\GoodColonistAction.cs" />
+    <Compile Include="Actions\Resources\AwfulColonistAction.cs" />
+    <Compile Include="Actions\Resources\DefaultColonistAction.cs" />
+    <Compile Include="Actions\Structures\CoolerAction.cs" />
+    <Compile Include="Actions\Structures\HeaterAction.cs" />
+    <Compile Include="Actions\Weather\EclipseAction.cs" />
+    <Compile Include="Actions\Weather\SolarFlareAction.cs" />
+    <Compile Include="Actions\Weather\HeatWaveAction.cs" />
+    <Compile Include="Actions\Weather\FlashstormAction.cs" />
+    <Compile Include="Actions\Weather\ColdSnapAction.cs" />
+    <Compile Include="Actions\Weather\FalloutAction.cs" />
+    <Compile Include="Actions\Structures\WindTurbineAction.cs" />
+    <Compile Include="Actions\Structures\BatteryAction.cs" />
+    <Compile Include="Actions\Structures\SolarPanelAction.cs" />
+    <Compile Include="Actions\Resources\PlasteelAction.cs" />
+    <Compile Include="Actions\Resources\GoldAction.cs" />
     <Compile Include="API\AuthMod.cs" />
     <Compile Include="API\ValidCommand.cs" />
+    <Compile Include="IncidentWorkers\IncidentWoker_AlphaBeavers.cs" />
     <Compile Include="ServerPoller.cs" />
     <Compile Include="Managers\PawnCreationManager.cs" />
     <Compile Include="RimConnection.cs" />
@@ -78,5 +106,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

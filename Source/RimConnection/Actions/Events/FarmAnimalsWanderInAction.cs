@@ -8,22 +8,24 @@ using Verse;
 
 namespace RimConnection
 {
-    class FalloutAction : Action
+    class FarmAnimalsWanderInAction : Action
     {
-        public FalloutAction()
+        public FarmAnimalsWanderInAction()
         {
-            this.name = "Fallout";
-            this.description = "The wasteland has arrived";
+            this.name = "Farm animals join";
+            this.description = "Let's just hope the pigs don't take over";
+            this.category = "Event";
         }
 
         public override void execute(int amount)
         {
-            var worker = IncidentDefOf.ToxicFallout;
             var currentMap = Find.CurrentMap;
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            worker.Worker.TryExecute(parms);
+            var animalWorker = new IncidentWorker_FarmAnimalsWanderIn();
+            animalWorker.def = IncidentDef.Named("FarmAnimalsWanderIn");
+            animalWorker.TryExecute(parms);
         }
     }
 }

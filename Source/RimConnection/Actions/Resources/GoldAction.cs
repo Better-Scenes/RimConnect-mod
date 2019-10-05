@@ -12,7 +12,9 @@ namespace RimConnection
         public GoldAction()
         {
             this.name = "Gold";
-            this.description = "Spawn some gliterring gold";
+            this.description = "All that glitters is not gold, but this is!";
+            this.canSpawnMultiple = true;
+            this.category = "Resources";
         }
 
         public override void execute(int amount)

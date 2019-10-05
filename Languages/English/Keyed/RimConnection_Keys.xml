@@ -5,7 +5,7 @@
     <RimConnectionPositiveDroppodMailBody>
         Twitch has sent you a gift (Or a curse?!)
 
-        {0} {1}
+        {1}
 
         {2}
     </RimConnectionPositiveDroppodMailBody>

@@ -12,7 +12,9 @@ namespace RimConnection
         public PlasteelAction()
         {
             this.name = "Plasteel";
-            this.description = "Spawn some dense Plasteel";
+            this.description = "Not quite plastic, not quite steel, but somehow better than the sum of its parts";
+            this.canSpawnMultiple = true;
+            this.category = "Resources";
         }
 
         public override void execute(int amount)

@@ -7,11 +7,13 @@
         {
             this.name = "Good Colonist";
             this.description = "The good, in The Good the bad and the ugly";
+            this.canSpawnMultiple = true;
+            this.category = "Resources";
         }
 
         public override void execute(int amount)
         {
-            PawnCreationManager.SpawnGoodColonist(1, name, description);
+            PawnCreationManager.SpawnGoodColonist(amount, name, description);
         }
     }
 }

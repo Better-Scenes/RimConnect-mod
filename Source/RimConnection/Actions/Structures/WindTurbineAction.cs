@@ -8,6 +8,7 @@ namespace RimConnection
         {
             this.name = "Wind Turbine";
             this.description = "You spin me right round baby, right round, round round";
+            this.category = "Structures";
         }
 
         public override void execute(int amount)

@@ -14,7 +14,35 @@ namespace RimConnection
             new GoldAction(),
             new PlasteelAction(),
             new SolarPanelAction(),
-            new FalloutAction()
+            new WoodAction(),
+            new SteelAction(),
+            new SilverAction(),
+            new GlitterworldMedicineAction(),
+            new HerbalMedicineAction(),
+            new MedicineAction(),
+            new UraniumAction(),
+            new ColdSnapAction(),
+            new FlashstormAction(),
+            new HeatWaveAction(),
+            new SolarFlareAction(),
+            new FalloutAction(),
+            new EclipseAction(),
+            new FarmAnimalsWanderInAction(),
+            new AnimalSelfTameAction(),
+            new PsychicDroneAction(),
+            new PsychicSootheAction(),
+            new AssaultAction(),
+            new BeaversAction(),
+            new DropAssaultAction(),
+            //meh
+            //new InfestationAction(),
+            new ManhunterPackAction(),
+            new CargoPodAction(),
+            new HeaterAction(),
+            new CoolerAction(), 
+            new ShieldBeltAction(),
+            new RandomWeaponAction(),
+            new RandomApparelAction()
             // Currently doesn't spawn correctly
             //new WindTurbineAction()
         };
