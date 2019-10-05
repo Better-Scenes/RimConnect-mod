@@ -21,8 +21,12 @@ namespace RimConnection
         public override void execute(int amount)
         {
             var apparelThingDefs = DefDatabase<ThingDef>.AllDefs.Where(def => { return def.IsApparel; });
+
+            var randomApparelDefList = apparelThingDefs.ToList().TakeRandom(amount);
+
+            var apparelThings = randomApparelDefList.Select(apparelDef => { return ThingMaker.MakeThing(apparelDef); });
             
-            DropPodManager.createDrop(apparelThingDefs.RandomElement(), amount, name, description);
+            DropPodManager.createDropOfThings(apparelThings.ToList(), name, description);
         }
     }
 }

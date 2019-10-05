@@ -22,7 +22,11 @@ namespace RimConnection
         {
             var weaponThingDefs = DefDatabase<ThingDef>.AllDefs.Where(def => { return def.equipmentType == EquipmentType.Primary; });
             
-            DropPodManager.createDrop(weaponThingDefs.RandomElement(), amount, name, description);
+            var randomWeaponDefList = weaponThingDefs.ToList().TakeRandom(amount);
+
+            var apparelThings = randomWeaponDefList.Select(weaponDef => { return ThingMaker.MakeThing(weaponDef); });
+
+            DropPodManager.createDropOfThings(apparelThings.ToList(), name, description);
         }
     }
 }
