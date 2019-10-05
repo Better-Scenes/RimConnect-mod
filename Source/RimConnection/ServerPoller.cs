@@ -6,7 +6,7 @@ namespace RimConnection
     class ServerPoller : GameComponent
     {
         private float timeCounterSeconds = 0.0f;
-        private float waitTimeSeconds = 10.0f;
+        private float waitTimeSeconds = 30.0f;
 
         private DateTime previousDateTime;
 
