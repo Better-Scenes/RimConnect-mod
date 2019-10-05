@@ -23,7 +23,12 @@ namespace RimConnection
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            new IncidentWorker_Infestation().TryExecute(parms);
+            var infestationWorker = new IncidentWorker_Infestation();
+            infestationWorker.def = IncidentDef.Named("Infestation");
+
+            infestationWorker.TryExecute(parms);
+
+
         }
     }
 }

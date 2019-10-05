@@ -34,7 +34,8 @@ namespace RimConnection
             new AssaultAction(),
             new BeaversAction(),
             new DropAssaultAction(),
-            new InfestationAction(),
+            //meh
+            //new InfestationAction(),
             new ManhunterPackAction(),
             new CargoPodAction(),
             new HeaterAction(),
