@@ -24,7 +24,7 @@ namespace RimConnection
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
 
-            var flashWorker = new IncidentWorker_MakeGameCondition();
+            var flashWorker = new IncidentWorker_Flashstorm();
             flashWorker.def = IncidentDef.Named("Flashstorm");
 
             flashWorker.TryExecute(parms);
