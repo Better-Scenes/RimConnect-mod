@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>RimConnection</name>
-  <author>ARealPerson</author>
-  <url>http://rimworldgame.com</url>
-  <description>A connection mod</description>
+  <name>RimConnect</name>
+  <author>InfinitySamurai</author>
+  <url />
   <supportedVersions>
     <li>1.0</li>
   </supportedVersions>
+  <description>Twitch integration with RimConnect extension
+  
+  This mod is still a work in progress and not yet available for Beta testing.
+
+  By using this mod, you can connect to the RimConnect extension and create polls to create events in your game.
+
+  Either the broadcaster or a moderator can create polls, and all users may vote on what they want to happen.  
+  </description>
 </ModMetaData>
