@@ -23,7 +23,9 @@ namespace RimConnection
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            new IncidentWorker_ResourcePodCrash().TryExecute(parms);
+            var podWorker = new IncidentWorker_ResourcePodCrash();
+            podWorker.def = IncidentDef.Named("ResourcePodCrash");
+            podWorker.TryExecute(parms);
         }
     }
 }

@@ -12,8 +12,8 @@ namespace RimConnection
     {
         public BeaversAction()
         {
-            this.name = "Beavers";
-            this.description = "Beavers might be cute, but they're about to mess you up";
+            this.name = "Alpha Beavers";
+            this.description = "Beavers might be cute, but they'll eat all your stuff";
             this.category = "Event";
         }
 
@@ -23,7 +23,9 @@ namespace RimConnection
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            new IncidentWorker_Alphabeavers().TryExecute(parms);
+            var beaverWorker = new IncidentWorker_Alphabeavers();
+            beaverWorker.def = IncidentDef.Named("Alphabeavers");
+            beaverWorker.TryExecute(parms);
         }
     }
 }

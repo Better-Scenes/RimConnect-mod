@@ -24,7 +24,9 @@ namespace RimConnection
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
             parms.raidArrivalMode = PawnsArrivalModeDefOf.CenterDrop;
-            new IncidentWorker_RaidEnemy().TryExecute(parms);
+            var raidWorker = new IncidentWorker_RaidEnemy();
+            raidWorker.def = IncidentDef.Named("RaidEnemy");
+            raidWorker.TryExecute(parms);
         }
     }
 }

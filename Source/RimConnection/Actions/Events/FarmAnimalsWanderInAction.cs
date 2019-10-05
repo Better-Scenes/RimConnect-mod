@@ -23,7 +23,9 @@ namespace RimConnection
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            new IncidentWorker_FarmAnimalsWanderIn().TryExecute(parms);
+            var animalWorker = new IncidentWorker_FarmAnimalsWanderIn();
+            animalWorker.def = IncidentDef.Named("FarmAnimalsWanderIn");
+            animalWorker.TryExecute(parms);
         }
     }
 }
