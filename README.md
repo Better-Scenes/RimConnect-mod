@@ -9,12 +9,12 @@
 - Build using VS by hitting `f6`
 - Create a symlink in your rimworld mods folder to the top level project folder
   - Do this from command prompt, not powershell or git bash
-  - eg `mklink /D D:\games\Steam\steamapps\common\RimWorld\Mods\RimConnection D:\Projects\twitchIntegration\RimConnection-mod`
+  - eg `mklink /D D:\games\Steam\steamapps\common\RimWorld\Mods\RimConnect D:\Projects\twitchIntegration\RimConnection-mod`
   - N.B. You may have to open command prompt as admin
 - Enable the mod
- - Start Rimworld normally
- - Navigate to the Mods menu
- - Enable the mod by ticking the red X (should become a green tick)
+- Start Rimworld normally
+- Navigate to the Mods menu
+- Enable the mod by ticking the red X (should become a green tick)
 
 ## Running
 

@@ -6,12 +6,29 @@
   <supportedVersions>
     <li>1.0</li>
   </supportedVersions>
-  <description>Twitch integration with RimConnect extension
+  <description>Twitch integration with RimConnect extension 
   
-  This mod is still a work in progress and not yet available for Beta testing.
+=== ABOUT ===
 
-  By using this mod, you can connect to the RimConnect extension and create polls to create events in your game.
+With Rimconnect, either you (the Broadcaster) or your Moderators can create polls on what should happen next in your game world. Your viewers then take control by voting on their preferred outcome.
 
-  Either the broadcaster or a moderator can create polls, and all users may vote on what they want to happen.  
+Empower your community to trigger over 40 different events, including weather, raids and supply drops!
+
+Enhance your Rimworld experience by allowing your community to tell the narrative, will they help or hinder? Are they better or worse than Randy Random? 
+
+=== SETUP ===
+
+1. Subscribe/install this mod
+2. Install the Twitch extension, and visit the configuration page (Make sure to enable the extension in your video extension slot!).
+3. From the configuration page, copy the provided secret, make sure not to share this.
+4. Open the Rimworld mod settings for Rimconnect, paste in the secret and click connect.
+5. Start up the game and have your Moderators create polls for your viewers to vote on. 
+
+=== PLANNED FEATURES ===
+
+- Bits!
+- Loyalty Points
+- A.I. Integration
+- More Events
   </description>
 </ModMetaData>

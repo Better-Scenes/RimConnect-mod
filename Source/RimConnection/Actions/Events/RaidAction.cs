@@ -8,11 +8,11 @@ using Verse;
 
 namespace RimConnection
 {
-    class AssaultAction : Action
+    class RaidAction : Action
     {
-        public AssaultAction()
+        public RaidAction()
         {
-            this.name = "Assault";
+            this.name = "Raid";
             this.description = "They don't look too happy";
             this.category = "Event";
         }
@@ -22,8 +22,11 @@ namespace RimConnection
             var currentMap = Find.CurrentMap;
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
+
             parms.forced = true;
             parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
+            parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
+
             var raidWorker = new IncidentWorker_RaidEnemy();
             raidWorker.def = IncidentDef.Named("RaidEnemy");
             raidWorker.TryExecute(parms);
