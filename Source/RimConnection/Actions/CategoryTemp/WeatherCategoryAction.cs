@@ -10,7 +10,7 @@ namespace RimConnection
 {
     class WeatherCategoryAction : Action
     {
-        public WeathersCategoryAction()
+        public WeatherCategoryAction()
         {
             this.name = "Category: Weather";
             this.description = "This is just a category, it doesn't do anything";
