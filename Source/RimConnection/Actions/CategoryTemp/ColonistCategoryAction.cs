@@ -12,7 +12,7 @@ namespace RimConnection
     {
         public ColonistCategoryAction()
         {
-            this.name = "Category: Colonists";
+            this.name = "== Category: Colonists ==";
             this.description = "This is just a category, it doesn't do anything";
             this.category = "Category";
         }
