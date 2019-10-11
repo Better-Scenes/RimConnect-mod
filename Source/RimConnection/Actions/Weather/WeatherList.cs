@@ -14,7 +14,7 @@ namespace RimConnection
             new EclipseAction(),
             new FalloutAction(),
             new FlashstormAction(),
-            new HeaterAction(),
+            new HeatWaveAction(),
             new SolarFlareAction(),
         };
     }

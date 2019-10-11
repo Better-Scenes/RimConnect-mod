@@ -18,7 +18,6 @@ namespace RimConnection
             try
             {
                 Settings.token = RimConnectAPI.AuthSecret(Settings.secret);
-
                 RimConnectAPI.PostValidCommands(ActionList.ActionListToApi());
                 return true;
             } catch (Exception err)

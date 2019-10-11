@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using Verse;
+
 namespace RimConnection
 {
     public static class ActionList
@@ -10,22 +12,22 @@ namespace RimConnection
         {
             List <Action> actionList = new List<Action>();
 
-            actionList.Concat(ColonistList.colonistList);
-            actionList.Concat(EventList.eventList);
-            actionList.Concat(GearList.gearList);
-            actionList.Concat(ResourceList.resourceList);
-            actionList.Concat(StructureList.structureList);
-            actionList.Concat(WeatherList.weatherList);
 
-            return actionList;
+            return actionList.Concat(ColonistList.colonistList)
+            .Concat(EventList.eventList)
+            .Concat(GearList.gearList)
+            .Concat(ResourceList.resourceList)
+            .Concat(StructureList.structureList)
+            .Concat(WeatherList.weatherList).ToList();
         }
 
 
 
         public static ValidCommandList ActionListToApi()
         {
+            actionList().ForEach(action => Log.Message(action.name));
             ValidCommandList validCommandList = new ValidCommandList();
-            validCommandList.validCommands = actionList().Select((action, index) => action.toApiCall(index)).ToList<ValidCommand>();
+            validCommandList.validCommands = actionList().Select((action, index) => action.toApiCall(index)).ToList();
             return validCommandList;
         }
     }
