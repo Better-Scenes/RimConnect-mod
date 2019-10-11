@@ -12,7 +12,7 @@ namespace RimConnection
     {
         public LavishMealAction()
         {
-            this.name = "Lavish Meal";
+            this.name = "Meal: Lavish";
             this.description = "Fit for a king!";
             this.canSpawnMultiple = true;
             this.category = "Resources";

@@ -11,7 +11,7 @@ namespace RimConnection
     {
         public FineMealAction()
         {
-            this.name = "Fine Meal";
+            this.name = "Meal: Fine";
             this.description = "Fancy restaurant grade";
             this.canSpawnMultiple = true;
             this.category = "Resources";

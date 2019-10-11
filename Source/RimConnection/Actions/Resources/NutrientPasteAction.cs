@@ -11,7 +11,7 @@ namespace RimConnection
     {
         public NutrientPasteAction()
         {
-            this.name = "Nutrient Paste";
+            this.name = "Meal: Nutrient Paste";
             this.description = "Not the worst thing to eat, but pretty close";
             this.canSpawnMultiple = true;
             this.category = "Resources";

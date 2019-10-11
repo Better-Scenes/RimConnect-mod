@@ -10,16 +10,16 @@ namespace RimConnection
         public static List<Action> resourceList = new List<Action>
         {
             new ResourcesCategoryAction(),
-            new FineMealAction(),
             new GlitterworldMedicineAction(),
             new GoldAction(),
             new HerbalMedicineAction(),
+            new FineMealAction(),
             new LavishMealAction(),
-            new MedicineAction(),
             new NutrientPasteAction(),
+            new SimpleMealAction(),
+            new MedicineAction(),
             new PlasteelAction(),
             new SilverAction(),
-            new SimpleMealAction(),
             new SteelAction(),
             new UraniumAction(),
             new WoodAction()

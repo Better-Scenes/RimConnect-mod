@@ -11,7 +11,7 @@ namespace RimConnection
     {
         public SimpleMealAction()
         {
-            this.name = "Simple Meal";
+            this.name = "Meal: Simple";
             this.description = "Your basic foodstuffs. Won't brighten your day, but you won't starve";
             this.canSpawnMultiple = true;
             this.category = "Resources";
