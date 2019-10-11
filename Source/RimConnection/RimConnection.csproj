@@ -73,6 +73,10 @@
     <Compile Include="Actions\Gear\RandomApparelAction.cs" />
     <Compile Include="Actions\Gear\RandomWeaponAction.cs" />
     <Compile Include="Actions\Gear\ShieldBeltAction.cs" />
+    <Compile Include="Actions\Resources\LavishMealAction.cs" />
+    <Compile Include="Actions\Resources\FineMealAction.cs" />
+    <Compile Include="Actions\Resources\SimpleMealAction.cs" />
+    <Compile Include="Actions\Resources\NutrientPasteAction.cs" />
     <Compile Include="Actions\Resources\MedicineAction.cs" />
     <Compile Include="Actions\Resources\HerbalMedicineAction.cs" />
     <Compile Include="Actions\Resources\GlitterworldMedicineAction.cs" />

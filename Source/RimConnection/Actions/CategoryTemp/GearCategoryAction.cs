@@ -12,7 +12,7 @@ namespace RimConnection
     {
         public GearCategoryAction()
         {
-            this.name = "Category: Gear";
+            this.name = "== Category: Gear ==";
             this.description = "This is just a category, it doesn't do anything";
             this.category = "Category";
         }
