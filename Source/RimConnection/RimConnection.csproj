@@ -50,6 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
+    <Compile Include="Actions\CategoryTemp\WeatherCategoryAction.cs" />
+    <Compile Include="Actions\CategoryTemp\StructuresCategoryAction.cs" />
+    <Compile Include="Actions\CategoryTemp\ResourcesCategoryAction.cs" />
+    <Compile Include="Actions\CategoryTemp\GearCategoryAction.cs" />
+    <Compile Include="Actions\CategoryTemp\EventsCategoryAction.cs" />
+    <Compile Include="Actions\CategoryTemp\ColonistCategoryAction.cs" />
+    <Compile Include="Actions\Colonists\ColonistList.cs" />
+    <Compile Include="Actions\Events\EventList.cs" />
     <Compile Include="Actions\Events\RaidSiegeAction.cs" />
     <Compile Include="Actions\Events\RaidDropAction.cs" />
     <Compile Include="Actions\Events\PsychicDroneAction.cs" />
@@ -61,21 +69,24 @@
     <Compile Include="Actions\Events\FarmAnimalsWanderInAction.cs" />
     <Compile Include="Actions\Events\AnimalSelfTameAction.cs" />
     <Compile Include="Actions\Events\BeaversAction.cs" />
+    <Compile Include="Actions\Gear\GearList.cs" />
     <Compile Include="Actions\Gear\RandomApparelAction.cs" />
     <Compile Include="Actions\Gear\RandomWeaponAction.cs" />
     <Compile Include="Actions\Gear\ShieldBeltAction.cs" />
     <Compile Include="Actions\Resources\MedicineAction.cs" />
     <Compile Include="Actions\Resources\HerbalMedicineAction.cs" />
     <Compile Include="Actions\Resources\GlitterworldMedicineAction.cs" />
+    <Compile Include="Actions\Resources\ResourceList.cs" />
     <Compile Include="Actions\Resources\SteelAction.cs" />
     <Compile Include="Actions\Resources\SilverAction.cs" />
     <Compile Include="Actions\Resources\UraniumAction.cs" />
     <Compile Include="Actions\Resources\WoodAction.cs" />
-    <Compile Include="Actions\Resources\GoodColonistAction.cs" />
-    <Compile Include="Actions\Resources\AwfulColonistAction.cs" />
-    <Compile Include="Actions\Resources\DefaultColonistAction.cs" />
+    <Compile Include="Actions\Colonists\GoodColonistAction.cs" />
+    <Compile Include="Actions\Colonists\AwfulColonistAction.cs" />
+    <Compile Include="Actions\Colonists\DefaultColonistAction.cs" />
     <Compile Include="Actions\Structures\CoolerAction.cs" />
     <Compile Include="Actions\Structures\HeaterAction.cs" />
+    <Compile Include="Actions\Structures\StructureList.cs" />
     <Compile Include="Actions\Weather\EclipseAction.cs" />
     <Compile Include="Actions\Weather\SolarFlareAction.cs" />
     <Compile Include="Actions\Weather\HeatWaveAction.cs" />
@@ -87,6 +98,7 @@
     <Compile Include="Actions\Structures\SolarPanelAction.cs" />
     <Compile Include="Actions\Resources\PlasteelAction.cs" />
     <Compile Include="Actions\Resources\GoldAction.cs" />
+    <Compile Include="Actions\Weather\WeatherList.cs" />
     <Compile Include="API\AuthMod.cs" />
     <Compile Include="API\ValidCommand.cs" />
     <Compile Include="IncidentWorkers\IncidentWoker_AlphaBeavers.cs" />
