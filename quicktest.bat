@@ -5,4 +5,4 @@ robocopy "%cd%/Assemblies" "D:\games\Steam\steamapps\common\RimWorld\Mods\RimCon
 robocopy "%cd%/About" "D:\games\Steam\steamapps\common\RimWorld\Mods\RimConnect\About" /s
 robocopy "%cd%/Languages" "D:\games\Steam\steamapps\common\RimWorld\Mods\RimConnect\Languages" /s
 
-REM start D:\games\Steam\steamapps\common\RimWorld\RimWorldWin64.exe -quicktest
+start D:\games\Steam\steamapps\common\RimWorld\RimWorldWin64.exe -quicktest

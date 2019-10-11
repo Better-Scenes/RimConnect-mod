@@ -22,10 +22,15 @@ namespace RimConnection
             var currentMap = Find.CurrentMap;
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
+
             parms.forced = true;
             parms.raidArrivalMode = PawnsArrivalModeDefOf.CenterDrop;
+            parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
+
             var raidWorker = new IncidentWorker_RaidEnemy();
             raidWorker.def = IncidentDef.Named("RaidEnemy");
+
+
             raidWorker.TryExecute(parms);
         }
     }
