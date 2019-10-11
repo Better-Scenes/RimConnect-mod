@@ -8,12 +8,12 @@ using Verse;
 
 namespace RimConnection
 {
-    class DropAssaultAction : Action
+    class RaidAction : Action
     {
-        public DropAssaultAction()
+        public RaidAction()
         {
-            this.name = "Drop Assault";
-            this.description = "They were inside the house the whole time!";
+            this.name = "Raid";
+            this.description = "They don't look too happy";
             this.category = "Event";
         }
 
@@ -24,13 +24,11 @@ namespace RimConnection
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
 
             parms.forced = true;
-            parms.raidArrivalMode = PawnsArrivalModeDefOf.CenterDrop;
+            parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
             parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
 
             var raidWorker = new IncidentWorker_RaidEnemy();
             raidWorker.def = IncidentDef.Named("RaidEnemy");
-
-
             raidWorker.TryExecute(parms);
         }
     }

@@ -31,9 +31,10 @@ namespace RimConnection
             new AnimalSelfTameAction(),
             new PsychicDroneAction(),
             new PsychicSootheAction(),
-            new AssaultAction(),
+            new RaidAction(),
             new BeaversAction(),
-            new DropAssaultAction(),
+            new RaidDropAction(),
+            new RaidSiegeAction(),
             //meh
             //new InfestationAction(),
             new ManhunterPackAction(),

@@ -50,9 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
-    <Compile Include="Actions\Events\DropAssaultAction.cs" />
+    <Compile Include="Actions\Events\RaidSiegeAction.cs" />
+    <Compile Include="Actions\Events\RaidDropAction.cs" />
     <Compile Include="Actions\Events\PsychicDroneAction.cs" />
-    <Compile Include="Actions\Events\AssaultAction.cs" />
+    <Compile Include="Actions\Events\RaidAction.cs" />
     <Compile Include="Actions\Events\InfestationAction.cs" />
     <Compile Include="Actions\Events\ManhunterPackAction.cs" />
     <Compile Include="Actions\Events\CargoPodAction.cs" />
