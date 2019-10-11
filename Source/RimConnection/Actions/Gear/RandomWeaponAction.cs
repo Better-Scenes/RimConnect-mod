@@ -20,11 +20,25 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
+            Random random = new Random();
+
             var weaponThingDefs = DefDatabase<ThingDef>.AllDefs.Where(def => { return def.equipmentType == EquipmentType.Primary; });
             
             var randomWeaponDefList = weaponThingDefs.ToList().TakeRandom(amount);
+            var apparelThings = randomWeaponDefList.Select(weaponDef => {
+                var stuffForThing = GenStuff.RandomStuffFor(weaponDef);
+                var thing =  ThingMaker.MakeThing(weaponDef, stuffForThing);
 
-            var apparelThings = randomWeaponDefList.Select(weaponDef => { return ThingMaker.MakeThing(weaponDef); });
+                var thingQualityComp = thing.TryGetComp<CompQuality>();
+                if(thingQualityComp != null)
+                {
+                    Array qualityValues = Enum.GetValues(typeof(QualityCategory));
+                    QualityCategory randomQuality = (QualityCategory)qualityValues.GetValue(random.Next(qualityValues.Length));
+
+                    thingQualityComp.SetQuality(randomQuality, ArtGenerationContext.Colony);
+                }
+                return thing;
+            });
 
             DropPodManager.createDropOfThings(apparelThings.ToList(), name, description);
         }
