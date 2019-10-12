@@ -19,7 +19,8 @@ namespace RimConnection
             new PsychicSootheAction(),
             new RaidAction(),
             new RaidDropAction(),
-            new RaidSiegeAction()
+            new RaidSiegeAction(),
+            new RemoveAllMedicineAction()
         };
     }
 }

@@ -21,12 +21,22 @@ namespace RimConnection
         {
             var colonists = Find.ColonistBar.GetColonistsInOrder();
 
-            var randomColonists = colonists.TakeRandom(amount);
-
+            var randomColonists = colonists.InRandomOrder().Take(amount);
+            var colonistNames = new List<string>();
             foreach (var colonist in randomColonists)
             {
+                colonistNames.Add(colonist.Name.ToStringShort);
                 colonist.Kill(new DamageInfo(DamageDefOf.Crush, 999999));
             }
+
+            var allColonistsExceptOneNames = colonistNames.Take(colonistNames.Count - 1);
+            var lastColonistName = colonistNames[colonistNames.Count];
+
+            var colonistsAsJoinedString = String.Join(", ", allColonistsExceptOneNames.ToArray());
+            colonistsAsJoinedString += $"and {lastColonistName}";
+
+            var label = $"Your twitch viewers decided it was better if {colonistsAsJoinedString} weren't around anymore";
+            Find.LetterStack.ReceiveLetter("Twitch Event", label, LetterDefOf.NegativeEvent);
         }
     }
 }
