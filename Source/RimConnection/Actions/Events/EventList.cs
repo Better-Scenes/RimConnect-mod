@@ -9,6 +9,7 @@ namespace RimConnection
         public static List<Action> eventList = new List<Action>
         {
             new EventCategoryAction(),
+            new AllRangedWeaponsToBowsAction(),
             new AnimalSelfTameAction(),
             new BeaversAction(),
             new CargoPodAction(),
