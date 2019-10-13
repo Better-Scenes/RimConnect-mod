@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace RimConnection
@@ -55,7 +56,7 @@ namespace RimConnection
 
                 GenSpawn.Spawn(newPawn, spawnLocation, currentMap);
 
-                var randomTraits = badTraits.TakeRandom(3);
+                var randomTraits = badTraits.InRandomOrder().Take(3);
                 newPawn.story.traits.allTraits.Clear();
 
                 foreach (Trait trait in randomTraits)
@@ -83,7 +84,7 @@ namespace RimConnection
 
                 GenSpawn.Spawn(newPawn, spawnLocation, currentMap);
 
-                var randomTraits = goodTraits.TakeRandom(3);
+                var randomTraits = goodTraits.InRandomOrder().Take(3);
                 newPawn.story.traits.allTraits.Clear();
 
                 foreach (Trait trait in randomTraits)
