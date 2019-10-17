@@ -29,11 +29,19 @@ namespace RimConnection
                 colonist.Kill(new DamageInfo(DamageDefOf.Crush, 999999));
             }
 
-            var allColonistsExceptOneNames = colonistNames.Take(colonistNames.Count - 1);
-            var lastColonistName = colonistNames[colonistNames.Count - 1];
+            string colonistsAsJoinedString;
+            if (colonistNames.Count == 1)
+            {
+                colonistsAsJoinedString = colonistNames[0];
+            }
+            else
+            {
+                var allColonistsExceptOneNames = colonistNames.Take(colonistNames.Count - 1);
+                var lastColonistName = colonistNames[colonistNames.Count - 1];
 
-            var colonistsAsJoinedString = String.Join(", ", allColonistsExceptOneNames.ToArray());
-            colonistsAsJoinedString += $", and {lastColonistName}";
+                colonistsAsJoinedString = String.Join(", ", allColonistsExceptOneNames.ToArray());
+                colonistsAsJoinedString += $", and {lastColonistName}";
+            }
 
             var label = $"Your twitch viewers decided it was better if {colonistsAsJoinedString} weren't around anymore";
             Find.LetterStack.ReceiveLetter("Twitch Event", label, LetterDefOf.NegativeEvent);
