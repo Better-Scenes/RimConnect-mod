@@ -49,6 +49,10 @@ namespace RimConnection
                 if(colonistPrimary != null && colonistPrimary.def.IsRangedWeapon)
                 {
                     var weaponQuality = colonistPrimary.TryGetComp<CompQuality>().Quality;
+                    if(weaponQuality == null)
+                    {
+                        weaponQuality = QualityCategory.Good;
+                    }
                     colonist.equipment.Remove(colonistPrimary);
                     var newBow = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Bow_Short"));
                     var newBowComp = newBow.TryGetComp<CompQuality>();
