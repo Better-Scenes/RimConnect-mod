@@ -29,6 +29,10 @@ namespace RimConnection
             if (authModResponse.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 Settings.initialiseSuccessful = false;
+                if(BASE_URL.Contains("localhost"))
+                {
+                    throw new System.Exception("The developer is an idiot, and you need to tell him that he left localhost in the settings");
+                }
                 throw new System.Exception("Failed to connect. Is your secret correct?");
             }
 
