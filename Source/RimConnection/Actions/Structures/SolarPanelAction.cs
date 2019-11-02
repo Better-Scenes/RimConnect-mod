@@ -18,7 +18,10 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
-            DropPodManager.createDrop(ThingDefOf.SolarGenerator, 1, name, description);
+            for (int i = 0; i < amount; i++)
+            {
+                DropPodManager.createDrop(ThingDefOf.SolarGenerator, 1, name, description);
+            }
         }
     }
 }
