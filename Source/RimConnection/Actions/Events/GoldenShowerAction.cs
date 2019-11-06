@@ -23,7 +23,7 @@ namespace RimConnection
 
             for(int i = 0; i < amountOfDrops; i ++ )
             {
-                DropPodManager.createDrop(ThingDefOf.Gold, amount, name, description, false);
+                DropPodManager.createDropFromDef(ThingDefOf.Gold, amount, name, description, false);
             }
 
             Find.LetterStack.ReceiveLetter("Twitch Event", "I'm not sure what you'll do with all this", LetterDefOf.NeutralEvent);

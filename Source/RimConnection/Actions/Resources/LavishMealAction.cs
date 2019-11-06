@@ -21,7 +21,7 @@ namespace RimConnection
         public override void execute(int amount)
         {
             var lavishMealDef = ThingDef.Named("MealLavish");
-            DropPodManager.createDrop(lavishMealDef, amount, name, description);
+            DropPodManager.createDropFromDef(lavishMealDef, amount, name, description);
         }
     }
 }

@@ -31,30 +31,30 @@ namespace RimConnection
             var currentMap = Find.CurrentMap;
             IntVec3 spawnLocation = DropCellFinder.TradeDropSpot(currentMap);
 
+            List<Thing> pawnsToSpawn = new List<Thing>();
+
             int i = 0;
             while (i < amount)
             {
                 var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
-                GenSpawn.Spawn(newPawn, spawnLocation, currentMap);
                 i++;
+                pawnsToSpawn.Add(newPawn);
             }
+
             string labelString = "RimConnectionFriendlyPawnLabel".Translate();
             string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, title, desc);
-            Find.LetterStack.ReceiveLetter(labelString, messageString, LetterDefOf.PositiveEvent, new TargetInfo(spawnLocation, currentMap));
+            DropPodManager.createDropOfThings(pawnsToSpawn, labelString, messageString);
 
         }
 
         public static void SpawnAwfulColonist(int amount, string title, string desc)
         {
-            var currentMap = Find.CurrentMap;
-            IntVec3 spawnLocation = DropCellFinder.TradeDropSpot(currentMap);
+            List<Thing> pawnsToSpawn = new List<Thing>();
 
             int i = 0;
             while (i < amount)
             {
                 var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
-
-                GenSpawn.Spawn(newPawn, spawnLocation, currentMap);
 
                 var randomTraits = badTraits.InRandomOrder().Take(3);
                 newPawn.story.traits.allTraits.Clear();
@@ -63,26 +63,23 @@ namespace RimConnection
                 {
                     newPawn.story.traits.GainTrait(trait);
                 }
-
+                pawnsToSpawn.Add(newPawn);
                 i++;
             }
 
             string labelString = "RimConnectionFriendlyPawnLabel".Translate();
             string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, title, desc);
-            Find.LetterStack.ReceiveLetter(labelString, messageString, LetterDefOf.PositiveEvent, new TargetInfo(spawnLocation, currentMap));
+            DropPodManager.createDropOfThings(pawnsToSpawn, labelString, messageString);
         }
 
         public static void SpawnGoodColonist(int amount, string title, string desc)
         {
-            var currentMap = Find.CurrentMap;
-            IntVec3 spawnLocation = DropCellFinder.TradeDropSpot(currentMap);
+            List<Thing> pawnsToSpawn = new List<Thing>();
 
             int i = 0;
             while (i < amount)
             {
                 var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
-
-                GenSpawn.Spawn(newPawn, spawnLocation, currentMap);
 
                 var randomTraits = goodTraits.InRandomOrder().Take(3);
                 newPawn.story.traits.allTraits.Clear();
@@ -92,11 +89,12 @@ namespace RimConnection
                     newPawn.story.traits.GainTrait(trait);
                 }
                 i++;
-            }
 
+                pawnsToSpawn.Add(newPawn);
+            }
             string labelString = "RimConnectionFriendlyPawnLabel".Translate();
             string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, title, desc);
-            Find.LetterStack.ReceiveLetter(labelString, messageString, LetterDefOf.PositiveEvent, new TargetInfo(spawnLocation, currentMap));
+            DropPodManager.createDropOfThings(pawnsToSpawn, labelString, messageString);
         }
 
     }

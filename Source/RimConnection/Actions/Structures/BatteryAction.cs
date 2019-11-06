@@ -13,7 +13,7 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
-            DropPodManager.createDrop(ThingDefOf.Battery, 1, name, description);
+            DropPodManager.createDropFromDef(ThingDefOf.Battery, 1, name, description);
         }
     }
 }
