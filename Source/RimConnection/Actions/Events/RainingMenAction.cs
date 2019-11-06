@@ -20,15 +20,19 @@ namespace RimConnection
         public override void execute(int amount)
         {
             var amountOfDrops = 15;
+            var currentMap = Find.CurrentMap;
 
-            var pawnToDrop = PawnCreationManager.generateDefaultColonists(amountOfDrops, Faction.OfAncients);
-
+            var pawnGenerationRequest = new PawnGenerationRequest(PawnKindDefOf.Colonist, allowDead:true);
             for (int i = 0; i < amountOfDrops; i ++ )
             {
-                var currentMap = Find.CurrentMap;
+                var newPawn = PawnGenerator.GeneratePawn(pawnGenerationRequest);
+
                 IntVec3 dropVector = DropCellFinder.TradeDropSpot(currentMap);
-                TradeUtility.SpawnDropPod(dropVector, currentMap, pawnToDrop[i]);
-                pawnToDrop[i].Kill();
+                TradeUtility.SpawnDropPod(dropVector, currentMap, newPawn);
+
+                HealthUtility.DamageUntilDead(newPawn);
+                newPawn.equipment.DestroyAllEquipment();
+                newPawn.apparel.DestroyAll();
             }
 
             Find.LetterStack.ReceiveLetter("Twitch Event", "It's Raining men, hallelujah!", LetterDefOf.NeutralEvent);
