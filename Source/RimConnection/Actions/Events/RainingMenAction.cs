@@ -22,7 +22,7 @@ namespace RimConnection
             var amountOfDrops = 15;
             var currentMap = Find.CurrentMap;
 
-            var pawnGenerationRequest = new PawnGenerationRequest(PawnKindDefOf.Colonist, allowDead:true);
+            var pawnGenerationRequest = new PawnGenerationRequest(PawnKindDefOf.Colonist, allowDead: true);
             for (int i = 0; i < amountOfDrops; i ++ )
             {
                 var newPawn = PawnGenerator.GeneratePawn(pawnGenerationRequest);
