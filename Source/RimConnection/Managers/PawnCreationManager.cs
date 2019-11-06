@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using UnityEngine;
 
 namespace RimConnection
 {
@@ -37,6 +38,13 @@ namespace RimConnection
             while (i < amount)
             {
                 var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, faction);
+
+                // mid range their skills
+                var pawnSkills = newPawn.skills.skills;
+                pawnSkills.ForEach(skill =>
+                {
+                    skill.Level = Random.Range(2, 7);
+                });
                 pawnList.Add(newPawn);
                 i++;
             }
@@ -53,13 +61,21 @@ namespace RimConnection
             {
                 var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
 
+                // fuck up their traits
                 var randomTraits = badTraits.InRandomOrder().Take(3);
                 newPawn.story.traits.allTraits.Clear();
-
                 foreach (Trait trait in randomTraits)
                 {
                     newPawn.story.traits.GainTrait(trait);
                 }
+
+                // now fuck up their skills
+                var pawnSkills = newPawn.skills.skills;
+                pawnSkills.ForEach(skill =>
+                {
+                    skill.Level = Random.Range(0, 2);
+                });
+
                 pawnList.Add(newPawn);
                 i++;
             }
@@ -78,10 +94,19 @@ namespace RimConnection
                 var randomTraits = goodTraits.InRandomOrder().Take(3);
                 newPawn.story.traits.allTraits.Clear();
 
+                // Make their traits great
                 foreach (Trait trait in randomTraits)
                 {
                     newPawn.story.traits.GainTrait(trait);
                 }
+
+                // Now give them good skills
+                var pawnSkills = newPawn.skills.skills;
+                pawnSkills.ForEach(skill =>
+                {
+                    skill.Level = Random.Range(4, 10);
+                });
+
                 pawnList.Add(newPawn);
                 i++;
             }
