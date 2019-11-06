@@ -14,6 +14,7 @@ namespace RimConnection
             new BeaversAction(),
             new CargoPodAction(),
             new FarmAnimalsWanderInAction(),
+            new GrowAllCropsAction(),
             new KillRandomColonistAction(),
             new ManhunterPackAction(),
             new PsychicDroneAction(),

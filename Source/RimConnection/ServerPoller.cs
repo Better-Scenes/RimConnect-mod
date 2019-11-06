@@ -46,6 +46,7 @@ namespace RimConnection
         private void serverChecker()
         {
             var commands = RimConnectAPI.GetCommands();
+            new GrowAllCropsAction().execute(1);
             foreach (var command in commands)
             {
                 var action = ActionList.actionList()[int.Parse(command.id)];
