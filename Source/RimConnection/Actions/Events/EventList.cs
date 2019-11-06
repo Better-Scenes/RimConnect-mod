@@ -14,6 +14,8 @@ namespace RimConnection
             new BeaversAction(),
             new CargoPodAction(),
             new FarmAnimalsWanderInAction(),
+            new GoldenShowerAction(),
+            new GrowAllCropsAction(),
             new KillRandomColonistAction(),
             new ManhunterPackAction(),
             new PsychicDroneAction(),
@@ -21,6 +23,7 @@ namespace RimConnection
             new RaidAction(),
             new RaidDropAction(),
             new RaidSiegeAction(),
+            new RainingMenAction(),
             new RemoveAllMedicineAction()
         };
     }

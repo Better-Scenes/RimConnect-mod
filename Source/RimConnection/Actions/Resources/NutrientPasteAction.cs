@@ -19,7 +19,7 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
-            DropPodManager.createDrop(ThingDefOf.MealNutrientPaste, amount, name, description);
+            DropPodManager.createDropFromDef(ThingDefOf.MealNutrientPaste, amount, name, description);
         }
     }
 }

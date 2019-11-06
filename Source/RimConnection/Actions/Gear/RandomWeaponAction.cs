@@ -25,7 +25,7 @@ namespace RimConnection
             var weaponThingDefs = DefDatabase<ThingDef>.AllDefs.Where(def => { return def.equipmentType == EquipmentType.Primary; });
             
             var randomWeaponDefList = weaponThingDefs.ToList().TakeRandom(amount);
-            var apparelThings = randomWeaponDefList.Select(weaponDef => {
+            var weaponThings = randomWeaponDefList.Select(weaponDef => {
                 var stuffForThing = GenStuff.RandomStuffFor(weaponDef);
                 var thing =  ThingMaker.MakeThing(weaponDef, stuffForThing);
 
@@ -40,7 +40,7 @@ namespace RimConnection
                 return thing;
             });
 
-            DropPodManager.createDropOfThings(apparelThings.ToList(), name, description);
+            DropPodManager.createDropOfThings(weaponThings.ToList(), name, description);
         }
     }
 }

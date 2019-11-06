@@ -25,7 +25,7 @@ namespace RimConnection
                 {
                     showMessage = false;
                 }
-                DropPodManager.createDrop(ThingDefOf.SolarGenerator, 1, name, description, showMessage);
+                DropPodManager.createDropFromDef(ThingDefOf.SolarGenerator, 1, name, description, showMessage);
             }
         }
     }

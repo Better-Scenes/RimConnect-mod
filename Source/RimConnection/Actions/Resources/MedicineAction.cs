@@ -19,7 +19,7 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
-            DropPodManager.createDrop(ThingDefOf.MedicineIndustrial, amount, name, description);
+            DropPodManager.createDropFromDef(ThingDefOf.MedicineIndustrial, amount, name, description);
         }
     }
 }
