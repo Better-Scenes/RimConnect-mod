@@ -46,7 +46,6 @@ namespace RimConnection
         private void serverChecker()
         {
             var commands = RimConnectAPI.GetCommands();
-            new RatSwarmEvent().execute(1);
             foreach (var command in commands)
             {
                 var action = ActionList.actionList()[int.Parse(command.id)];
