@@ -18,9 +18,14 @@ namespace RimConnection
 
         public override void execute(int amount)
         {
+            var showMessage = true;
             for (int i = 0; i < amount; i++)
             {
-                DropPodManager.createDrop(ThingDefOf.SolarGenerator, 1, name, description);
+                if(i > 0)
+                {
+                    showMessage = false;
+                }
+                DropPodManager.createDrop(ThingDefOf.SolarGenerator, 1, name, description, showMessage);
             }
         }
     }

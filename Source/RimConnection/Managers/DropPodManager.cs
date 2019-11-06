@@ -6,7 +6,7 @@ namespace RimConnection
 {
     class DropPodManager
     {
-        public static void createDrop(ThingDef thingDef, int amount, string title, string desc)
+        public static void createDrop(ThingDef thingDef, int amount, string title, string desc, bool showMessage = true)
         {
             Thing newthing = ThingMaker.MakeThing(thingDef);
             newthing.stackCount = amount;
@@ -17,7 +17,11 @@ namespace RimConnection
                 var currentMap = Find.CurrentMap;
                 IntVec3 dropVector = DropCellFinder.TradeDropSpot(Find.CurrentMap);
                 TradeUtility.SpawnDropPod(dropVector, currentMap, newthing);
-                Find.LetterStack.ReceiveLetter(labelString, messageString, LetterDefOf.PositiveEvent, new TargetInfo(dropVector, currentMap));
+
+                if (showMessage)
+                {
+                    Find.LetterStack.ReceiveLetter(labelString, messageString, LetterDefOf.PositiveEvent, new TargetInfo(dropVector, currentMap));
+                }
             }
         }
 
