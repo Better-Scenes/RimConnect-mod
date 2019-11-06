@@ -1,4 +1,7 @@
-﻿namespace RimConnection
+﻿using Verse;
+using RimWorld;
+
+namespace RimConnection
 {
     class DefaultColonistAction : Action
     {
@@ -12,7 +15,11 @@
 
         public override void execute(int amount)
         {
-            PawnCreationManager.spawnDefaultColonist(amount, name, description);
+            var pawnList = PawnCreationManager.generateDefaultColonists(amount, Faction.OfPlayer);
+
+            string labelString = "RimConnectionFriendlyPawnLabel".Translate();
+            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, name, description);
+            DropPodManager.createDropOfThings(pawnList, labelString, messageString);
         }
     }
 }

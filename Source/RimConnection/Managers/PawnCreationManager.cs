@@ -26,30 +26,27 @@ namespace RimConnection
             new Trait(TraitDefOf.SpeedOffset, 2),
         });
 
-        public static void spawnDefaultColonist(int amount, string title, string desc )
+        public static List<Thing> generateDefaultColonists(int amount, Faction faction)
         {
             var currentMap = Find.CurrentMap;
             IntVec3 spawnLocation = DropCellFinder.TradeDropSpot(currentMap);
 
-            List<Thing> pawnsToSpawn = new List<Thing>();
+            List<Thing> pawnList = new List<Thing>();
 
             int i = 0;
             while (i < amount)
             {
-                var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, faction);
+                pawnList.Add(newPawn);
                 i++;
-                pawnsToSpawn.Add(newPawn);
             }
 
-            string labelString = "RimConnectionFriendlyPawnLabel".Translate();
-            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, title, desc);
-            DropPodManager.createDropOfThings(pawnsToSpawn, labelString, messageString);
-
+            return pawnList;
         }
 
-        public static void SpawnAwfulColonist(int amount, string title, string desc)
+        public static List<Thing> generateAwfulColonists(int amount)
         {
-            List<Thing> pawnsToSpawn = new List<Thing>();
+            List<Thing> pawnList = new List<Thing>();
 
             int i = 0;
             while (i < amount)
@@ -63,18 +60,15 @@ namespace RimConnection
                 {
                     newPawn.story.traits.GainTrait(trait);
                 }
-                pawnsToSpawn.Add(newPawn);
+                pawnList.Add(newPawn);
                 i++;
             }
-
-            string labelString = "RimConnectionFriendlyPawnLabel".Translate();
-            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, title, desc);
-            DropPodManager.createDropOfThings(pawnsToSpawn, labelString, messageString);
+            return pawnList;
         }
 
-        public static void SpawnGoodColonist(int amount, string title, string desc)
+        public static List<Thing> generateGoodColonists(int amount)
         {
-            List<Thing> pawnsToSpawn = new List<Thing>();
+            List<Thing> pawnList = new List<Thing>();
 
             int i = 0;
             while (i < amount)
@@ -88,13 +82,10 @@ namespace RimConnection
                 {
                     newPawn.story.traits.GainTrait(trait);
                 }
+                pawnList.Add(newPawn);
                 i++;
-
-                pawnsToSpawn.Add(newPawn);
             }
-            string labelString = "RimConnectionFriendlyPawnLabel".Translate();
-            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, title, desc);
-            DropPodManager.createDropOfThings(pawnsToSpawn, labelString, messageString);
+            return pawnList;
         }
 
     }

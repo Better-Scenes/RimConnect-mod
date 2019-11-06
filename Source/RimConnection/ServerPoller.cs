@@ -46,11 +46,6 @@ namespace RimConnection
         private void serverChecker()
         {
             var commands = RimConnectAPI.GetCommands();
-            new GoodColonistAction().execute(5);
-            new AwfulColonistAction().execute(5);
-            new DefaultColonistAction().execute(5);
-
-
             foreach (var command in commands)
             {
                 var action = ActionList.actionList()[int.Parse(command.id)];

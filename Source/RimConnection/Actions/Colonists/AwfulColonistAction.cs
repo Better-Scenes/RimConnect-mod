@@ -1,4 +1,6 @@
-﻿namespace RimConnection
+﻿using Verse;
+
+namespace RimConnection
 {
     class AwfulColonistAction : Action
     {
@@ -13,7 +15,11 @@
 
         public override void execute(int amount)
         {
-            PawnCreationManager.SpawnAwfulColonist(amount, name, description);
+            var pawnList = PawnCreationManager.generateAwfulColonists(amount);
+
+            string labelString = "RimConnectionFriendlyPawnLabel".Translate();
+            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, name, description);
+            DropPodManager.createDropOfThings(pawnList, labelString, messageString);
         }
     }
 }
