@@ -23,6 +23,7 @@ namespace RimConnection
             new RaidAction(),
             new RaidDropAction(),
             new RaidSiegeAction(),
+            new RainingMenAction(),
             new RemoveAllMedicineAction()
         };
     }
