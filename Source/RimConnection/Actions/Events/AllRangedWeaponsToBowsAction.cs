@@ -27,7 +27,14 @@ namespace RimConnection
             {
                 if (weapon.def.IsRangedWeapon)
                 {
-                    var weaponQuality = weapon.TryGetComp<CompQuality>().Quality;
+                    var weaponComp = weapon.TryGetComp<CompQuality>();
+                    if(weaponComp == null)
+                    {
+                        return;
+                    }
+                    var weaponQuality = weaponComp.Quality;
+
+                    Log.Message(weaponQuality.ToString());
                     var oldWepPosition = weapon.Position;
                     weapon.Destroy();
                     
@@ -48,11 +55,13 @@ namespace RimConnection
 
                 if(colonistPrimary != null && colonistPrimary.def.IsRangedWeapon)
                 {
-                    var weaponQuality = colonistPrimary.TryGetComp<CompQuality>().Quality;
-                    if(weaponQuality == null)
+                    var weaponComp = colonistPrimary.TryGetComp<CompQuality>();
+                    if(weaponComp == null)
                     {
-                        weaponQuality = QualityCategory.Good;
+                        return;
                     }
+
+                    var weaponQuality = weaponComp.Quality;
                     colonist.equipment.Remove(colonistPrimary);
                     var newBow = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Bow_Short"));
                     var newBowComp = newBow.TryGetComp<CompQuality>();
