@@ -27,7 +27,7 @@ namespace RimConnection
             {
                 var newPawn = PawnGenerator.GeneratePawn(pawnGenerationRequest);
 
-                IntVec3 dropVector = DropCellFinder.TradeDropSpot(currentMap);
+                IntVec3 dropVector = DropCellFinder.RandomDropSpot(currentMap);
                 TradeUtility.SpawnDropPod(dropVector, currentMap, newPawn);
 
                 HealthUtility.DamageUntilDead(newPawn);
