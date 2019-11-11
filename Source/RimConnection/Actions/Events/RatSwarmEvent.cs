@@ -20,13 +20,14 @@ namespace RimConnection
         public override void execute(int amount)
         {
             var currentMap = Find.CurrentMap;
-            var rootEntryCell = CellFinder.RandomEdgeCell(currentMap);
+            IntVec3 rootEntryCell;
+            RCellFinder.TryFindRandomPawnEntryCell(out rootEntryCell, currentMap, 0f);
             var rat = DefDatabase<PawnKindDef>.GetNamed("Rat");
 
             Predicate<IntVec3> validator = (IntVec3 c) => c.InBounds(currentMap) && c.Standable(currentMap);
 
             var colonistCount = Find.ColonistBar.GetColonistsInOrder().Count;
-            var ratCount = 2 * colonistCount;
+            var ratCount = colonistCount;
 
             for (int i = 0; i < ratCount; i++)
             {
