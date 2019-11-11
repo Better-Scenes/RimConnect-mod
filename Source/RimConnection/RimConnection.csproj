@@ -63,7 +63,7 @@
     <Compile Include="Actions\Events\GrowAllCropsAction.cs" />
     <Compile Include="Actions\Events\RemoveAllMedicineAction.cs" />
     <Compile Include="Actions\Events\AllRangedWeaponsToBowsAction.cs" />
-    <Compile Include="Actions\Events\KillRandomColonistAction.cs" />
+    <Compile Include="Actions\Events\HeartAttackRandomColonistAction.cs" />
     <Compile Include="Actions\Events\EventList.cs" />
     <Compile Include="Actions\Events\RaidSiegeAction.cs" />
     <Compile Include="Actions\Events\RaidDropAction.cs" />

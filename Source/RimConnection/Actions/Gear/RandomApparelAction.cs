@@ -29,6 +29,7 @@ namespace RimConnection
             var apparelThings = randomApparelDefList.Select(apparelDef => {
                 var stuffForThing = GenStuff.RandomStuffFor(apparelDef);
                 var thing = ThingMaker.MakeThing(apparelDef, stuffForThing);
+                thing.SetForbidden(true);
 
                 var thingQualityComp = thing.TryGetComp<CompQuality>();
                 if (thingQualityComp != null)

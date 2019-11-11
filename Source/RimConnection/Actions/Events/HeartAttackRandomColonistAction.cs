@@ -8,9 +8,9 @@ using Verse;
 
 namespace RimConnection
 {
-    class KillRandomColonistAction : Action
+    class HeartAttackRandomColonistAction : Action
     {
-        public KillRandomColonistAction()
+        public HeartAttackRandomColonistAction()
         {
             this.name = "Sheer Heart Attack";
             this.description = "Sheeeeeeer Cardiac!";

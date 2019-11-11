@@ -16,7 +16,7 @@ namespace RimConnection
             new FarmAnimalsWanderInAction(),
             new GoldenShowerAction(),
             new GrowAllCropsAction(),
-            new KillRandomColonistAction(),
+            new HeartAttackRandomColonistAction(),
             new ManhunterPackAction(),
             new PsychicDroneAction(),
             new PsychicSootheAction(),

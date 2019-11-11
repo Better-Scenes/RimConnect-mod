@@ -33,6 +33,7 @@ namespace RimConnection
                 HealthUtility.DamageUntilDead(newPawn);
                 newPawn.equipment.DestroyAllEquipment();
                 newPawn.apparel.DestroyAll();
+                newPawn.SetForbidden(true);
             }
 
             Find.LetterStack.ReceiveLetter("Twitch Event", "It's Raining men, hallelujah!", LetterDefOf.NeutralEvent);

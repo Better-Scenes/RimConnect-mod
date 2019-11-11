@@ -10,6 +10,7 @@ namespace RimConnection
         {
             Thing newthing = ThingMaker.MakeThing(thingDef);
             newthing.stackCount = amount;
+            newthing.SetForbidden(true);
             if(newthing != null)
             {
 
