@@ -27,12 +27,13 @@ namespace RimConnection
             {
                 var newPawn = PawnGenerator.GeneratePawn(pawnGenerationRequest);
 
-                IntVec3 dropVector = DropCellFinder.TradeDropSpot(currentMap);
+                IntVec3 dropVector = DropCellFinder.RandomDropSpot(currentMap);
                 TradeUtility.SpawnDropPod(dropVector, currentMap, newPawn);
 
                 HealthUtility.DamageUntilDead(newPawn);
                 newPawn.equipment.DestroyAllEquipment();
                 newPawn.apparel.DestroyAll();
+                newPawn.SetForbidden(true);
             }
 
             Find.LetterStack.ReceiveLetter("Twitch Event", "It's Raining men, hallelujah!", LetterDefOf.NeutralEvent);

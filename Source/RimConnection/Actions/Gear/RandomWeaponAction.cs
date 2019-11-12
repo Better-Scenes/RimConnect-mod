@@ -28,6 +28,7 @@ namespace RimConnection
             var weaponThings = randomWeaponDefList.Select(weaponDef => {
                 var stuffForThing = GenStuff.RandomStuffFor(weaponDef);
                 var thing =  ThingMaker.MakeThing(weaponDef, stuffForThing);
+                thing.SetForbidden(true);
 
                 var thingQualityComp = thing.TryGetComp<CompQuality>();
                 if(thingQualityComp != null)

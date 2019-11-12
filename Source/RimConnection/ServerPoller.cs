@@ -50,6 +50,7 @@ namespace RimConnection
             {
                 var action = ActionList.actionList()[int.Parse(command.id)];
                 action.execute(command.amount);
+                Find.TickManager.slower.SignalForceNormalSpeedShort();
             }
             return;
         }

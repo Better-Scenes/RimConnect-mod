@@ -10,11 +10,12 @@ namespace RimConnection
         {
             Thing newthing = ThingMaker.MakeThing(thingDef);
             newthing.stackCount = amount;
+            newthing.SetForbidden(true);
             if(newthing != null)
             {
 
                 var currentMap = Find.CurrentMap;
-                IntVec3 dropVector = DropCellFinder.TradeDropSpot(Find.CurrentMap);
+                IntVec3 dropVector = DropCellFinder.RandomDropSpot(Find.CurrentMap);
                 TradeUtility.SpawnDropPod(dropVector, currentMap, newthing);
 
                 if (showMessage)
@@ -32,7 +33,7 @@ namespace RimConnection
             {
 
                 var currentMap = Find.CurrentMap;
-                IntVec3 dropVector = DropCellFinder.TradeDropSpot(Find.CurrentMap);
+                IntVec3 dropVector = DropCellFinder.RandomDropSpot(Find.CurrentMap);
                 DropPodUtility.DropThingsNear(dropVector, currentMap, things);
 
                 if (showMessage)
