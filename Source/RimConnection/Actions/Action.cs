@@ -8,9 +8,6 @@ namespace RimConnection {
         public string category = "Other";
         public bool canSpawnMultiple = false;
 
-        private static LetterDef twitchEventLetterDef = DefDatabase<LetterDef>.GetNamed("TwitchEvent");
-        private static LetterDef badTwitchEventLetterDef = DefDatabase<LetterDef>.GetNamed("DangerousTwitchEvent");
-
         public ValidCommand toApiCall(int id)
         {
             var command = new ValidCommand();
