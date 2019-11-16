@@ -26,7 +26,7 @@ namespace RimConnection
                 DropPodManager.createDropFromDef(ThingDefOf.Gold, amount, name, description, false);
             }
 
-            Find.LetterStack.ReceiveLetter("Twitch Event", "I'm not sure what you'll do with all this", LetterDefOf.NeutralEvent);
+            AlertManager.NormalEventNotification("Your viewers have sent a Golden Shower!");
         }
     }
 }

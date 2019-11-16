@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RimConnection
@@ -30,8 +25,8 @@ namespace RimConnection
             var raidWorker = new IncidentWorker_RaidEnemy();
             raidWorker.def = IncidentDef.Named("RaidEnemy");
 
-
             raidWorker.TryExecute(parms);
+            AlertManager.BadEventNotification("Your viewers have sent a siege!");
         }
     }
 }

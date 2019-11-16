@@ -26,6 +26,9 @@ namespace RimConnection
             var animalWorker = new IncidentWorker_FarmAnimalsWanderIn();
             animalWorker.def = IncidentDef.Named("FarmAnimalsWanderIn");
             animalWorker.TryExecute(parms);
+
+            AlertManager.NormalEventNotification("Your viewers have sent some Farm Animals!");
+
         }
     }
 }

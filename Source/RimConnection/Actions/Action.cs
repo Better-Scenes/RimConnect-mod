@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Verse;
 
 namespace RimConnection { 
     public abstract class Action
@@ -10,6 +7,9 @@ namespace RimConnection {
         public string description;
         public string category = "Other";
         public bool canSpawnMultiple = false;
+
+        private static LetterDef twitchEventLetterDef = DefDatabase<LetterDef>.GetNamed("TwitchEvent");
+        private static LetterDef badTwitchEventLetterDef = DefDatabase<LetterDef>.GetNamed("DangerousTwitchEvent");
 
         public ValidCommand toApiCall(int id)
         {

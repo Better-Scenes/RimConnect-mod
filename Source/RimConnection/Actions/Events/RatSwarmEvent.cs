@@ -37,8 +37,8 @@ namespace RimConnection
                 GenSpawn.Spawn(newRat, entryCell, currentMap);
                 newRat.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter);
             }
-           
-            Find.LetterStack.ReceiveLetter("Twitch Event", "A swarm of aggresive rats has appeared. You might need to hide", LetterDefOf.NegativeEvent, new LookTargets(rootEntryCell, currentMap));
+
+            AlertManager.BadEventNotification("A swarm of aggresive rats has appeared. You might need to hide", rootEntryCell);
         }
     }
 }

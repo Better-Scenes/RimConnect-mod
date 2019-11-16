@@ -28,6 +28,8 @@ namespace RimConnection
             solarWorker.def = IncidentDef.Named("SolarFlare");
 
             solarWorker.TryExecute(parms);
+            AlertManager.BadEventNotification("Your viewers have sent a Solar Flare");
+
         }
     }
 }

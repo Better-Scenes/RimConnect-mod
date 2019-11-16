@@ -24,6 +24,7 @@ namespace RimConnection
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
             new IncidentWorker_SelfTame().TryExecute(parms);
+            AlertManager.NormalEventNotification("Your viewers have tamed some animals!");
         }
     }
 }

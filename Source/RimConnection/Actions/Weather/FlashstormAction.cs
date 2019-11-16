@@ -28,6 +28,8 @@ namespace RimConnection
             flashWorker.def = IncidentDef.Named("Flashstorm");
 
             flashWorker.TryExecute(parms);
+            AlertManager.BadEventNotification("Your viewers have sent a Flashstorm");
+
         }
     }
 }

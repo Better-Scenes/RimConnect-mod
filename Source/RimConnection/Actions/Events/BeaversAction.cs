@@ -26,6 +26,9 @@ namespace RimConnection
             var beaverWorker = new IncidentWorker_Alphabeavers();
             beaverWorker.def = IncidentDef.Named("Alphabeavers");
             beaverWorker.TryExecute(parms);
+
+            AlertManager.BadEventNotification("Your viewers have sent Alpha Beavers!");
+
         }
     }
 }

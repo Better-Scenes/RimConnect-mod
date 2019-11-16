@@ -20,9 +20,8 @@ namespace RimConnection
 
                 if (showMessage)
                 {
-                    string labelString = "RimConnectionDroppodMailLabel".Translate();
                     string messageString = "RimConnectionPositiveDroppodMailBody".Translate(amount, title, desc);
-                    Find.LetterStack.ReceiveLetter(labelString, messageString, LetterDefOf.PositiveEvent, new TargetInfo(dropVector, currentMap));
+                    AlertManager.ResourceDropNotification(messageString, dropVector);
                 }
             }
         }
@@ -31,16 +30,14 @@ namespace RimConnection
         {
             if (things.Count > 0)
             {
-
                 var currentMap = Find.CurrentMap;
                 IntVec3 dropVector = DropCellFinder.RandomDropSpot(Find.CurrentMap);
                 DropPodUtility.DropThingsNear(dropVector, currentMap, things);
 
                 if (showMessage)
                 {
-                    string labelString = "RimConnectionDroppodMailLabel".Translate();
                     string messageString = "RimConnectionPositiveDroppodMailBody".Translate("", title, desc);
-                    Find.LetterStack.ReceiveLetter(labelString, messageString, LetterDefOf.PositiveEvent, new TargetInfo(dropVector, currentMap));
+                    AlertManager.ResourceDropNotification(messageString, dropVector);
                 }
             }
         }
