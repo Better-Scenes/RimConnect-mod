@@ -9,9 +9,10 @@ using RimWorld;
 
 namespace RimConnection
 {
+    [StaticConstructorOnStartup]
     public static class ServerInitialise
     {
-        static ServerInitialise() { }
+        static ServerInitialise() { Init(); }
 
         public static bool Init()
         {
