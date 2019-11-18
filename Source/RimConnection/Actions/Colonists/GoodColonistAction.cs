@@ -9,11 +9,11 @@ namespace RimConnection
         {
             this.name = "Good Colonist";
             this.description = "The good, in The Good the bad and the ugly";
-            this.canSpawnMultiple = true;
+            this.shouldShowAmount = true;
             this.category = "Colonists";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             var pawnList = PawnCreationManager.generateGoodColonists(amount);
 

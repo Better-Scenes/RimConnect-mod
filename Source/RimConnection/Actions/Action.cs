@@ -4,23 +4,29 @@ using System.Linq;
 using System.Text;
 
 namespace RimConnection { 
-    public abstract class Action
+    public abstract class Action : IAction
     {
-        public string name;
-        public string description;
-        public string category = "Other";
-        public bool canSpawnMultiple = false;
+        public string name { get; set; }
+        public string description { get; set; }
+        public string category { get; set; } = "Other";
+        public string prefix { get; set; } = "Spawn";
+        public bool shouldShowAmount { get; set; } = false;
 
-        public ValidCommand toApiCall(int id)
+        public ValidCommand ToApiCall(int id)
         {
-            var command = new ValidCommand();
-            command.modId = id.ToString();
-            command.name = this.name;
-            command.description = this.description;
+            var command = new ValidCommand
+            {
+                modId = id.ToString(),
+                name = name,
+                description = description,
+                category = category,
+                prefix = prefix,
+                shouldShowAmount = shouldShowAmount
+            };
             return command;
         }
 
-        public abstract void execute(int amount);
+        public abstract void Execute(int amount);
 
     }
 }

@@ -49,7 +49,7 @@ namespace RimConnection
             foreach (var command in commands)
             {
                 var action = ActionList.actionList()[int.Parse(command.id)];
-                action.execute(command.amount);
+                action.Execute(command.amount);
                 Find.TickManager.slower.SignalForceNormalSpeedShort();
             }
             return;

@@ -16,7 +16,7 @@ namespace RimConnection
             this.category = "Structures";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             var showMessage = true;
             for (int i = 0; i < amount; i++)

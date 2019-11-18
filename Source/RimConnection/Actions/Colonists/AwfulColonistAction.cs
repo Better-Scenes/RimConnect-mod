@@ -7,13 +7,13 @@ namespace RimConnection
 
         public AwfulColonistAction()
         {
-            this.name = "Awful Colonist";
-            this.description = "Well, they might be useful for parts....";
-            this.canSpawnMultiple = true;
-            this.category = "Colonists";
+            name = "Awful Colonist";
+            description = "Well, they might be useful for parts....";
+            shouldShowAmount = true;
+            category = "Colonists";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             var pawnList = PawnCreationManager.generateAwfulColonists(amount);
 

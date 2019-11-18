@@ -7,13 +7,13 @@ namespace RimConnection
     {
         public DefaultColonistAction()
         {
-            this.name = "Generic Colonist";
-            this.description = "You don't like me, but I like you. Maybe you could grow to like me?";
-            this.canSpawnMultiple = true;
-            this.category = "Colonists";
+            name = "Generic Colonist";
+            description = "You don't like me, but I like you. Maybe you could grow to like me?";
+            shouldShowAmount = true;
+            category = "Colonists";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             var pawnList = PawnCreationManager.generateDefaultColonists(amount, Faction.OfPlayer);
 

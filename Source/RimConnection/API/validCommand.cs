@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
+#pragma warning disable IDE1006 // Naming Styles
 namespace RimConnection
 {
     public class ValidCommand
@@ -10,6 +8,9 @@ namespace RimConnection
         public string modId { get; set; }
         public string name { get; set; }
         public string description { get; set; }
+        public string category { get; set; }
+        public string prefix { get; set; }
+        public bool shouldShowAmount { get; set; }
     }
 
     public class ValidCommandList

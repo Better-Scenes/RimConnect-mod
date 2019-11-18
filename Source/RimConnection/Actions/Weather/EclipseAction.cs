@@ -12,12 +12,12 @@ namespace RimConnection
     {
         public EclipseAction()
         {
-            this.name = "Eclipse";
-            this.description = "Time to go where the sun don't shine";
-            this.category = "Weather";
+            name = "Eclipse";
+            description = "Time to go where the sun don't shine";
+            category = "Weather";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             var worker = IncidentDefOf.Eclipse;
             var currentMap = Find.CurrentMap;

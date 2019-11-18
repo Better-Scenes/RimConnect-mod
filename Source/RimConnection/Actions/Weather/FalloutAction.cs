@@ -17,7 +17,7 @@ namespace RimConnection
             this.category = "Weather";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             var worker = IncidentDefOf.ToxicFallout;
             var currentMap = Find.CurrentMap;

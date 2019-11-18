@@ -6,7 +6,7 @@ using System.Text;
 namespace RimConnection
 {
     public static class EventList {
-        public static List<Action> eventList = new List<Action>
+        public static List<IAction> eventList = new List<IAction>
         {
             new EventCategoryAction(),
             new AllRangedWeaponsToBowsAction(),

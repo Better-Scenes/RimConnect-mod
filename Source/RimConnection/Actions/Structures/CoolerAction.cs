@@ -11,7 +11,7 @@ namespace RimConnection
             this.category = "Structures";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             DropPodManager.createDropFromDef(ThingDefOf.Cooler, 1, name, description);
         }

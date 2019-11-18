@@ -6,15 +6,15 @@ namespace RimConnection
     public static class ActionList
     {
         // Bring all the lists together from the categories
-        public static List<Action> actionList()
+        public static List<IAction> actionList()
         {
-            List <Action> actionList = new List<Action>();
+            List<IAction> actionList = new List<IAction>();
 
 
             return actionList.Concat(ColonistList.colonistList)
             .Concat(EventList.eventList)
             .Concat(GearList.gearList)
-            .Concat(ResourceList.resourceList)
+            //.Concat(GenerateAllItmeActions.GenerateThingDefActions())
             .Concat(StructureList.structureList)
             .Concat(WeatherList.weatherList).ToList();
         }
@@ -24,7 +24,7 @@ namespace RimConnection
         public static ValidCommandList ActionListToApi()
         {
             ValidCommandList validCommandList = new ValidCommandList();
-            validCommandList.validCommands = actionList().Select((action, index) => action.toApiCall(index)).ToList();
+            validCommandList.validCommands = actionList().Select((action, index) => action.ToApiCall(index)).ToList();
             return validCommandList;
         }
     }

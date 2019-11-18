@@ -7,7 +7,7 @@ namespace RimConnection
 {
     public static class WeatherList
     {
-        public static List<Action> weatherList = new List<Action>
+        public static List<IAction> weatherList = new List<IAction>
         {
             new WeatherCategoryAction(),
             new ColdSnapAction(),

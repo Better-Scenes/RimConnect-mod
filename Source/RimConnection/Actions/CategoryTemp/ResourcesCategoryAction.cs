@@ -17,7 +17,7 @@ namespace RimConnection
             this.category = "Category";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             return;
         }

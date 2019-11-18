@@ -14,11 +14,11 @@ namespace RimConnection
         {
             this.name = "Random Weapon";
             this.description = "The best defence is a good offence";
-            this.canSpawnMultiple = true;
+            this.shouldShowAmount = true;
             this.category = "Gear";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             Random random = new Random();
 

@@ -7,7 +7,7 @@ namespace RimConnection
 {
     public static class ColonistList
     {
-        public static List<Action> colonistList = new List<Action>
+        public static List<IAction> colonistList = new List<IAction>
         {
             new ColonistCategoryAction(),
             new AwfulColonistAction(),

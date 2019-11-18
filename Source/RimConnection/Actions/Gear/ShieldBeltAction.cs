@@ -13,11 +13,11 @@ namespace RimConnection
         {
             this.name = "Shield Belt";
             this.description = "The only way in or out is a tiny hole at the top";
-            this.canSpawnMultiple = true;
+            this.shouldShowAmount = true;
             this.category = "Gear";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
             DropPodManager.createDropFromDef(ThingDefOf.Apparel_ShieldBelt, amount, name, description);
         }

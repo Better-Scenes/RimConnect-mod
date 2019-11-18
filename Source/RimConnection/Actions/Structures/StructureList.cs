@@ -7,7 +7,7 @@ namespace RimConnection
 {
     public static class StructureList
     {
-        public static List<Action> structureList = new List<Action>
+        public static List<IAction> structureList = new List<IAction>
         {
             new StructuresCategoryAction(),
             new BatteryAction(),

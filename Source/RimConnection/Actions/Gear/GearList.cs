@@ -7,7 +7,7 @@ namespace RimConnection
 {
     public static class GearList
     {
-        public static List<Action> gearList = new List<Action>
+        public static List<IAction> gearList = new List<IAction>
         {
             new GearCategoryAction(),
             new RandomApparelAction(),
