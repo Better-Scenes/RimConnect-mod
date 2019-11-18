@@ -6,7 +6,7 @@ using Verse;
 
 namespace RimConnection
 {
-    public static class GenerateAllItmeActions
+    public static class GenerateAllItemActions
     {
 
         public static List<IAction> GenerateThingDefActions()

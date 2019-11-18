@@ -14,7 +14,7 @@ namespace RimConnection
             return actionList.Concat(ColonistList.colonistList)
             .Concat(EventList.eventList)
             .Concat(GearList.gearList)
-            //.Concat(GenerateAllItmeActions.GenerateThingDefActions())
+            .Concat(GenerateAllItemActions.GenerateThingDefActions())
             .Concat(StructureList.structureList)
             .Concat(WeatherList.weatherList).ToList();
         }

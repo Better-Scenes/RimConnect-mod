@@ -10,7 +10,7 @@ namespace RimConnection
         public string name { get; set; }
         public string description { get; set; }
         public string category { get; set; } = "Item";
-        public string prefix { get; set; } = "Spawn";
+        public string prefix { get; set; } = "Spawn %amount%";
         public bool shouldShowAmount { get; set; } = true;
 
         private string defName;
@@ -20,11 +20,15 @@ namespace RimConnection
         {
             defName = itemDef.defName;
             defLabel = itemDef.label;
+            name = defLabel;
+            description = "SomeDEscription";
         }
 
         public void Execute(int amount)
         {
-            throw new NotImplementedException();
+            var itemDef = DefDatabase<ThingDef>.GetNamed(defName);
+
+            DropPodManager.createDropFromDef(itemDef, amount, "A title", "A desc");
         }
 
 
