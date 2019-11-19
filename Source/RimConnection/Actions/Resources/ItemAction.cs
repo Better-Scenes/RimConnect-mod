@@ -16,19 +16,28 @@ namespace RimConnection
         private string defName;
         private string defLabel;
 
-        public ItemAction(ThingDef itemDef)
+        public ItemAction(ThingDef itemDef, string category = "Item")
         {
             defName = itemDef.defName;
             defLabel = itemDef.label;
             name = defLabel;
             description = "What it says on the tin";
+            shouldShowAmount = true;
+            prefix = "Spawn %amount%";
+            this.category = category;
         }
 
         public void Execute(int amount)
         {
             var itemDef = DefDatabase<ThingDef>.GetNamed(defName);
+            ThingDef itemStuff = null;
 
-            DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+            if(itemDef.MadeFromStuff)
+            {
+                itemStuff = GenStuff.RandomStuffFor(itemDef);
+            }
+
+            DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s", true, itemStuff);
         }
 
 

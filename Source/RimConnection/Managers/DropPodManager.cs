@@ -6,9 +6,9 @@ namespace RimConnection
 {
     class DropPodManager
     {
-        public static void createDropFromDef(ThingDef thingDef, int amount, string title, string desc, bool showMessage = true)
+        public static void createDropFromDef(ThingDef thingDef, int amount, string title, string desc, bool showMessage = true, ThingDef stuff = null )
         {
-            Thing newthing = ThingMaker.MakeThing(thingDef);
+            Thing newthing = ThingMaker.MakeThing(thingDef, stuff ?? null);
             newthing.stackCount = amount;
             newthing.SetForbidden(true);
             if(newthing != null)
