@@ -38,6 +38,8 @@ namespace RimConnection
                 category = "Consumables";
             else if (thingDef.IsMetal)
                 category = "Metal";
+            else if (thingDef.race != null)
+                category = "Animal";
 
             return new ItemAction(thingDef, category);
         }
@@ -47,7 +49,6 @@ namespace RimConnection
             return (
                 (thingDef.tradeability.TraderCanSell() || ThingSetMakerUtility.CanGenerate(thingDef)) &&
                 thingDef.building == null &&
-                (thingDef.FirstThingCategory != null || thingDef.race != null) &&
                 thingDef.BaseMarketValue > 0
                 );
         }

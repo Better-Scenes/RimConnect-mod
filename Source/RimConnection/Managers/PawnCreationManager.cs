@@ -37,7 +37,7 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, faction);
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, faction);
 
                 // mid range their skills
                 var pawnSkills = newPawn.skills.skills;
@@ -59,7 +59,7 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
 
                 // fuck up their traits
                 var randomTraits = badTraits.InRandomOrder().Take(3);
@@ -89,7 +89,7 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = Verse.PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
 
                 var randomTraits = goodTraits.InRandomOrder().Take(3);
                 newPawn.story.traits.allTraits.Clear();

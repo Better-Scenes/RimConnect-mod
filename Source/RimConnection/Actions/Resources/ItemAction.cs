@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -37,7 +37,19 @@ namespace RimConnection
                 itemStuff = GenStuff.RandomStuffFor(itemDef);
             }
 
-            DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s", true, itemStuff);
+            if(itemDef.race != null)
+            {
+                List<Thing> pawnList = new List<Thing>();
+                for (int i = 0; i < amount; i++)
+                {
+                    pawnList.Add(PawnGenerator.GeneratePawn(itemDef.race.AnyPawnKind, null));
+                }
+                DropPodManager.createDropOfThings(pawnList, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+            } else
+            {
+                DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s", true, itemStuff);
+            }
+
         }
 
 
