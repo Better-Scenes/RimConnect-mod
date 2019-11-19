@@ -12,9 +12,11 @@ namespace RimConnection
     {
         public RainingMenAction()
         {
-            this.name = "Raining Men";
-            this.description = "These men are uh.... A little old and unrefigerated";
-            this.category = "Event";
+            name = "Raining Men";
+            description = "These men are uh.... A little old and unrefigerated";
+            category = "Event";
+            shouldShowAmount = false;
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

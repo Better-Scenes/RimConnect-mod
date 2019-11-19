@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public ManhunterPackAction()
         {
-            this.name = "Manhunter Pack";
-            this.description = "They hunger for man-flesh";
-            this.category = "Event";
+            name = "Manhunter Pack";
+            description = "They hunger for man-flesh";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

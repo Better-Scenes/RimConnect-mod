@@ -11,10 +11,11 @@ namespace RimConnection
     {
         public ShieldBeltAction()
         {
-            this.name = "Shield Belt";
-            this.description = "The only way in or out is a tiny hole at the top";
-            this.shouldShowAmount = true;
-            this.category = "Gear";
+            name = "Shield Belt";
+            description = "The only way in or out is a tiny hole at the top";
+            shouldShowAmount = true;
+            category = "Gear";
+            prefix = "Spawn %amount%";
         }
 
         public override void Execute(int amount)

@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public FalloutAction()
         {
-            this.name = "Toxic Fallout";
-            this.description = "The wasteland has arrived";
-            this.category = "Weather";
+            name = "Toxic Fallout";
+            description = "The wasteland has arrived";
+            category = "Weather";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

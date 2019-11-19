@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public PsychicSootheAction()
         {
-            this.name = "Psychic Soothe";
-            this.description = "Why doesn't everyone just like, chill out";
-            this.category = "Event";
+            name = "Psychic Soothe";
+            description = "Why doesn't everyone just like, chill out";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

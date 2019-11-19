@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public FlashstormAction()
         {
-            this.name = "Flashstorm";
-            this.description = "Fast as lightning, a little bit frightening";
-            this.category = "Weather";
+            name = "Flashstorm";
+            description = "Fast as lightning, a little bit frightening";
+            category = "Weather";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

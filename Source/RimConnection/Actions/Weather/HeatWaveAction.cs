@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public HeatWaveAction()
         {
-            this.name = "Heat Wave";
-            this.description = "Is it just me or is it hot in here?";
-            this.category = "Weather";
+            name = "Heat Wave";
+            description = "Is it just me or is it hot in here?";
+            category = "Weather";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

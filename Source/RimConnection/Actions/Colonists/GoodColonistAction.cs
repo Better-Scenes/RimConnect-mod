@@ -7,10 +7,11 @@ namespace RimConnection
 
         public GoodColonistAction()
         {
-            this.name = "Good Colonist";
-            this.description = "The good, in The Good the bad and the ugly";
-            this.shouldShowAmount = true;
-            this.category = "Colonists";
+            name = "Good Colonist";
+            description = "The good, in The Good the bad and the ugly";
+            shouldShowAmount = true;
+            category = "Colonists";
+            prefix = "Spawn %amount%";
         }
 
         public override void Execute(int amount)

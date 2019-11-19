@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public ColdSnapAction()
         {
-            this.name = "Cold Snap";
-            this.description = "Better rug up!";
-            this.category = "Weather";
+            name = "Cold Snap";
+            description = "Better rug up!";
+            category = "Weather";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

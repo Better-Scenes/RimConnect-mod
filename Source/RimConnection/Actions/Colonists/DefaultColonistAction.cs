@@ -11,6 +11,7 @@ namespace RimConnection
             description = "You don't like me, but I like you. Maybe you could grow to like me?";
             shouldShowAmount = true;
             category = "Colonists";
+            prefix = "Spawn %amount%";
         }
 
         public override void Execute(int amount)

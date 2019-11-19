@@ -11,9 +11,10 @@ namespace RimConnection
     {
         public SolarPanelAction()
         {
-            this.name = "Solar Panel";
-            this.description = "Capture the sun and make it do the work for you";
-            this.category = "Structures";
+            name = "Solar Panel";
+            description = "Capture the sun and make it do the work for you";
+            category = "Structures";
+            prefix = "Spawn %amount%";
         }
 
         public override void Execute(int amount)

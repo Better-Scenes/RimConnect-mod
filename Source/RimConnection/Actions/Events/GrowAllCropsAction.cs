@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 using RimWorld;
 using Verse;
@@ -12,9 +9,10 @@ namespace RimConnection
     {
         public GrowAllCropsAction()
         {
-            this.name = "Grow all crops";
-            this.description = "The greek god Demeter was just passing by";
-            this.category = "Event";
+            name = "Grow all crops";
+            description = "The greek god Demeter was just passing by";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

@@ -6,9 +6,11 @@ namespace RimConnection
     {
         public HeaterAction()
         {
-            this.name = "Heater";
-            this.description = "It's cold outside";
-            this.category = "Structures";
+            name = "Heater";
+            description = "It's cold outside";
+            category = "Structures";
+            shouldShowAmount = false;
+            prefix = "Spawn";
         }
 
         public override void Execute(int amount)

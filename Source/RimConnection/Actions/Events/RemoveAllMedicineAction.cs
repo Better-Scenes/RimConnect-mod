@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public RemoveAllMedicineAction()
         {
-            this.name = "Remove all medicine";
-            this.description = "Hope you don't have any injuries any time soon";
-            this.category = "Event";
+            name = "Remove all medicine";
+            description = "Hope you don't have any injuries any time soon";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

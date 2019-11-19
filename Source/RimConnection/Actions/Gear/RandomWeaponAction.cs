@@ -12,10 +12,11 @@ namespace RimConnection
     {
         public RandomWeaponAction()
         {
-            this.name = "Random Weapon";
-            this.description = "The best defence is a good offence";
-            this.shouldShowAmount = true;
-            this.category = "Gear";
+            name = "Random Weapon";
+            description = "The best defence is a good offence";
+            shouldShowAmount = true;
+            category = "Gear";
+            prefix = "Spawn %amount%";
         }
 
         public override void Execute(int amount)

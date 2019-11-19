@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RimConnection
@@ -12,9 +7,10 @@ namespace RimConnection
     {
         public AnimalSelfTameAction()
         {
-            this.name = "Animal Self Tame";
-            this.description = "You don't get to choose, hope it was a good one";
-            this.category = "Event";
+            name = "Animal Self Tame";
+            description = "You don't get to choose, hope it was a good one";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

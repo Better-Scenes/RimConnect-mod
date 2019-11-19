@@ -6,9 +6,11 @@ namespace RimConnection
     {
         public BatteryAction()
         {
-            this.name = "Battery";
-            this.description = "Make sure those electrons don't escape and make them do your bidding";
-            this.category = "Structures";
+            name = "Battery";
+            description = "Make sure those electrons don't escape and make them do your bidding";
+            category = "Structures";
+            shouldShowAmount = false;
+            prefix = "Spawn";
         }
 
         public override void Execute(int amount)

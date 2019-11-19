@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RimConnection
@@ -12,9 +7,10 @@ namespace RimConnection
     {
         public GoldenShowerAction()
         {
-            this.name = "Golden Shower";
-            this.description = "Gold rains from the skies";
-            this.category = "Event";
+            name = "Golden Shower";
+            description = "Gold rains from the skies";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

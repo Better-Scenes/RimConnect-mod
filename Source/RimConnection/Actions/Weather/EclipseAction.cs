@@ -15,6 +15,7 @@ namespace RimConnection
             name = "Eclipse";
             description = "Time to go where the sun don't shine";
             category = "Weather";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

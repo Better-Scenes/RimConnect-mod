@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RimConnection
@@ -12,9 +7,10 @@ namespace RimConnection
     {
         public BeaversAction()
         {
-            this.name = "Alpha Beavers";
-            this.description = "Beavers might be cute, but they'll eat all your stuff";
-            this.category = "Event";
+            name = "Alpha Beavers";
+            description = "Beavers might be cute, but they'll eat all your stuff";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

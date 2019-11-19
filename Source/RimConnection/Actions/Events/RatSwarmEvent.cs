@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public RatSwarmEvent()
         {
-            this.name = "Rat Swarm";
-            this.description = "Rats are smarter than you might think, and these ones are pissed";
-            this.category = "Event";
+            name = "Rat Swarm";
+            description = "Rats are smarter than you might think, and these ones are pissed";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

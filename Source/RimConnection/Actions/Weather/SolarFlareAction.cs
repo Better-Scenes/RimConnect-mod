@@ -12,9 +12,10 @@ namespace RimConnection
     {
         public SolarFlareAction()
         {
-            this.name = "Solar Flare";
-            this.description = "The sun sneezed, not so good for you";
-            this.category = "Weather";
+            name = "Solar Flare";
+            description = "The sun sneezed, not so good for you";
+            category = "Weather";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

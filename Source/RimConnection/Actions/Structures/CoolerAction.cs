@@ -6,9 +6,11 @@ namespace RimConnection
     {
         public CoolerAction()
         {
-            this.name = "Cooler";
-            this.description = "Time to chill out";
-            this.category = "Structures";
+            name = "Cooler";
+            description = "Time to chill out";
+            category = "Structures";
+            shouldShowAmount = false;
+            prefix = "Spawn %amount%";
         }
 
         public override void Execute(int amount)

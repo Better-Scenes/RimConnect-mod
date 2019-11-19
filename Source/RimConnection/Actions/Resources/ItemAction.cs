@@ -21,14 +21,14 @@ namespace RimConnection
             defName = itemDef.defName;
             defLabel = itemDef.label;
             name = defLabel;
-            description = "SomeDEscription";
+            description = "What it says on the tin";
         }
 
         public void Execute(int amount)
         {
             var itemDef = DefDatabase<ThingDef>.GetNamed(defName);
 
-            DropPodManager.createDropFromDef(itemDef, amount, "A title", "A desc");
+            DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s");
         }
 
 

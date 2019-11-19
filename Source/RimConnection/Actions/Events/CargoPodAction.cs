@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RimConnection
@@ -12,9 +7,10 @@ namespace RimConnection
     {
         public CargoPodAction()
         {
-            this.name = "Cargo Pods";
-            this.description = "A gift from above!";
-            this.category = "Event";
+            name = "Cargo Pods";
+            description = "A gift from above!";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)

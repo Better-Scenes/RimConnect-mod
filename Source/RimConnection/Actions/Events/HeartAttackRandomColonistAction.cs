@@ -12,9 +12,11 @@ namespace RimConnection
     {
         public HeartAttackRandomColonistAction()
         {
-            this.name = "Sheer Heart Attack";
-            this.description = "Sheeeeeeer Cardiac!";
-            this.category = "Event";
+            name = "Sheer Heart Attack";
+            description = "Sheeeeeeer Cardiac!";
+            category = "Event";
+            prefix = "Trigger %amount%";
+            shouldShowAmount = true;
         }
 
         public override void Execute(int amount)

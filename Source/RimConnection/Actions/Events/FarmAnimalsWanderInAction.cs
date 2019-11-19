@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RimConnection
@@ -12,9 +7,10 @@ namespace RimConnection
     {
         public FarmAnimalsWanderInAction()
         {
-            this.name = "Farm animals join";
-            this.description = "Let's just hope the pigs don't take over";
-            this.category = "Event";
+            name = "Farm animals join";
+            description = "Let's just hope the pigs don't take over";
+            category = "Event";
+            prefix = "Trigger";
         }
 
         public override void Execute(int amount)
