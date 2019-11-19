@@ -28,7 +28,7 @@ namespace RimConnection
 
             crops.ForEach(crop => crop.Growth = 1);
 
-            Find.LetterStack.ReceiveLetter("Twitch Event", "The greek god Demeter was just passing by, all your grops have grown!", LetterDefOf.PositiveEvent);
+            AlertManager.NormalEventNotification("The greek god Demeter was just passing by, all your crops have grown!");
         }
     }
 }

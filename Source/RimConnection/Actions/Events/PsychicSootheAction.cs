@@ -29,6 +29,7 @@ namespace RimConnection
             worker.def = IncidentDef.Named("PsychicSoothe");
 
             worker.TryExecute(parms);
+            AlertManager.NormalEventNotification("Your viewers have sent a Phsychic Soothe!");
         }
     }
 }

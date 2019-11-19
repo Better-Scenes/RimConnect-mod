@@ -68,8 +68,7 @@ namespace RimConnection
                     colonist.equipment.AddEquipment((ThingWithComps)newBow);
                 }
             });
-
-            Find.LetterStack.ReceiveLetter("Twitch Event", "I hope you like bows, because all your ranged weapons are now bows", LetterDefOf.NegativeEvent);
+            AlertManager.NormalEventNotification("I hope you like bows, because all your ranged weapons are now bows");
         }
     }
 }

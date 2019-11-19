@@ -30,7 +30,7 @@ namespace RimConnection
                 medicineThing.Destroy();
             });
 
-            Find.LetterStack.ReceiveLetter("Twitch Event", "Sorry, but your medicine has been misplaced.... All of it", LetterDefOf.NegativeEvent);
+            AlertManager.BadEventNotification("Sorry, but your medicine has been misplaced.... All of it");
         }
     }
 }

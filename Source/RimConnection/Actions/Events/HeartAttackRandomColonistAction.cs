@@ -32,8 +32,7 @@ namespace RimConnection
                 colonist.health.AddHediff(heartAttackHeDiff);
             }
 
-            var label = $"Your twitch viewers decided it was better if some of your colonists had heart attacks. I'm so sorry....";
-            Find.LetterStack.ReceiveLetter("Twitch Event", label, LetterDefOf.NegativeEvent);
+            AlertManager.BadEventNotification("Your twitch viewers decided it was better if some of your colonists had heart attacks. I'm so sorry....");
         }
     }
 }

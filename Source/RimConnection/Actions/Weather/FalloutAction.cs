@@ -26,6 +26,8 @@ namespace RimConnection
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
             worker.Worker.TryExecute(parms);
+            AlertManager.BadEventNotification("Your viewers have sent a Fallout!");
+
         }
     }
 }

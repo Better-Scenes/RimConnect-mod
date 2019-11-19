@@ -33,6 +33,8 @@ namespace RimConnection
 
 
             raidWorker.TryExecute(parms);
+            AlertManager.BadEventNotification("Your viewers have sent a Drop Raid!");
+
         }
     }
 }

@@ -28,7 +28,7 @@ namespace RimConnection
 
             infestationWorker.TryExecute(parms);
 
-
+            AlertManager.BadEventNotification("Your viewers have sent an Infestation");
         }
     }
 }

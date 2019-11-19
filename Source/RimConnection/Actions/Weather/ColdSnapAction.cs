@@ -27,8 +27,9 @@ namespace RimConnection
 
             var snapWorker = new IncidentWorker_MakeGameCondition();
             snapWorker.def = IncidentDef.Named("ColdSnap");
-
             snapWorker.TryExecute(parms);
+            AlertManager.BadEventNotification("Your viewers have sent a Cold Snap!");
+
         }
     }
 }

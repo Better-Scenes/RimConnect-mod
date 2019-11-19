@@ -29,6 +29,8 @@ namespace RimConnection
             heatwaveWorker.def = IncidentDef.Named("HeatWave");
 
             heatwaveWorker.TryExecute(parms);
+            AlertManager.BadEventNotification("Your viewers have sent a Heat Wave!");
+
         }
     }
 }

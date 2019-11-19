@@ -22,6 +22,8 @@ namespace RimConnection
             var podWorker = new IncidentWorker_ResourcePodCrash();
             podWorker.def = IncidentDef.Named("ResourcePodCrash");
             podWorker.TryExecute(parms);
+            AlertManager.NormalEventNotification("Your viewers have sent a Cargo Pod");
+
         }
     }
 }
