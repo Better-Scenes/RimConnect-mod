@@ -9,7 +9,6 @@ namespace RimConnection
     {
         public static List<IAction> structureList = new List<IAction>
         {
-            new StructuresCategoryAction(),
             new BatteryAction(),
             new CoolerAction(),
             new HeaterAction(),

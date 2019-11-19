@@ -8,7 +8,6 @@ namespace RimConnection
     public static class EventList {
         public static List<IAction> eventList = new List<IAction>
         {
-            new EventCategoryAction(),
             new AllRangedWeaponsToBowsAction(),
             new AnimalSelfTameAction(),
             new BeaversAction(),

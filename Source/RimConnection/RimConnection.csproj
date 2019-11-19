@@ -50,12 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
-    <Compile Include="Actions\CategoryTemp\WeatherCategoryAction.cs" />
-    <Compile Include="Actions\CategoryTemp\StructuresCategoryAction.cs" />
-    <Compile Include="Actions\CategoryTemp\ResourcesCategoryAction.cs" />
-    <Compile Include="Actions\CategoryTemp\GearCategoryAction.cs" />
-    <Compile Include="Actions\CategoryTemp\EventsCategoryAction.cs" />
-    <Compile Include="Actions\CategoryTemp\ColonistCategoryAction.cs" />
     <Compile Include="Actions\Colonists\ColonistList.cs" />
     <Compile Include="Actions\Events\RatSwarmEvent.cs" />
     <Compile Include="Actions\Events\RainingMenAction.cs" />

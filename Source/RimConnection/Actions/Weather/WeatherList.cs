@@ -9,7 +9,6 @@ namespace RimConnection
     {
         public static List<IAction> weatherList = new List<IAction>
         {
-            new WeatherCategoryAction(),
             new ColdSnapAction(),
             new EclipseAction(),
             new FalloutAction(),

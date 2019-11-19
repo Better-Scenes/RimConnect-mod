@@ -9,7 +9,6 @@ namespace RimConnection
     {
         public static List<IAction> colonistList = new List<IAction>
         {
-            new ColonistCategoryAction(),
             new AwfulColonistAction(),
             new DefaultColonistAction(),
             new GoodColonistAction()
