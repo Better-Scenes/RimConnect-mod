@@ -10,8 +10,7 @@ namespace RimConnection
         public static List<IAction> gearList = new List<IAction>
         {
             new RandomApparelAction(),
-            new RandomWeaponAction(),
-            new ShieldBeltAction()
+            new RandomWeaponAction()
         };
     }
 }

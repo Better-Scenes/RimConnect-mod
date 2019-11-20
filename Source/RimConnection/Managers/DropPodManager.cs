@@ -13,7 +13,6 @@ namespace RimConnection
             newthing.SetForbidden(true);
             if(newthing != null)
             {
-
                 var currentMap = Find.CurrentMap;
                 IntVec3 dropVector = DropCellFinder.RandomDropSpot(Find.CurrentMap);
                 TradeUtility.SpawnDropPod(dropVector, currentMap, newthing);

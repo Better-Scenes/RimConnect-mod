@@ -73,7 +73,6 @@
     <Compile Include="Actions\Gear\GearList.cs" />
     <Compile Include="Actions\Gear\RandomApparelAction.cs" />
     <Compile Include="Actions\Gear\RandomWeaponAction.cs" />
-    <Compile Include="Actions\Gear\ShieldBeltAction.cs" />
     <Compile Include="Actions\IAction.cs" />
     <Compile Include="Actions\Resources\GenerateAllItemActions.cs" />
     <Compile Include="Actions\Resources\ItemAction.cs" />
