@@ -13,7 +13,8 @@ namespace RimConnection
         string prefix { get; set; }
         bool shouldShowAmount { get; set; }
 
-        ValidCommand ToApiCall(int id);
+        ValidCommand ToApiCall();
         void Execute(int amount);
+        string ActionHash();
     }
 }
