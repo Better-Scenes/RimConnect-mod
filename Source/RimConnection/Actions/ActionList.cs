@@ -5,6 +5,7 @@ namespace RimConnection
 {
     public static class ActionList
     {
+        // Bring all the lists together from the categories
         public static List<IAction> allActionsList()
         {
             return new List<IAction>()
@@ -16,7 +17,7 @@ namespace RimConnection
                 .Concat(WeatherList.weatherList).ToList();
         }
 
-        // Bring all the lists together from the categories
+        // Make a dictionary lookup of all commands
         public static Dictionary<string, IAction> actionLookup()
         {
             Dictionary<string, IAction> actionLookup = new Dictionary<string, IAction>();
