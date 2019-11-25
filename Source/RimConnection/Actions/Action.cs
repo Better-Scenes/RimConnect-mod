@@ -13,9 +13,13 @@ namespace RimConnection {
 
         public string ActionHash()
         {
-                var input = $"{name}{description}{category}{prefix}";
-                var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input));
-                return string.Concat(hash.Select(b => b.ToString("X2")));
+            var input = $"{name}{description}{category}{prefix}";
+            var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in hash) sb.Append(b.ToString("X2"));
+
+            return sb.ToString();
         }
 
         public ValidCommand ToApiCall()
