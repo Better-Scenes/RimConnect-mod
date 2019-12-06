@@ -15,7 +15,6 @@ namespace RimConnection
             .Concat(EventList.eventList)
             .Concat(GearList.gearList)
             .Concat(GenerateAllItemActions.GenerateThingDefActions())
-            .Concat(StructureList.structureList)
             .Concat(WeatherList.weatherList).ToList();
         }
 

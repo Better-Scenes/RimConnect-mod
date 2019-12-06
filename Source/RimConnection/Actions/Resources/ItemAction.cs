@@ -31,6 +31,7 @@ namespace RimConnection
         {
             var itemDef = DefDatabase<ThingDef>.GetNamed(defName);
 
+
             if(itemDef.race != null)
             {
                 List<Thing> pawnList = new List<Thing>();
@@ -39,44 +40,28 @@ namespace RimConnection
                     pawnList.Add(PawnGenerator.GeneratePawn(itemDef.race.AnyPawnKind, null));
                 }
                 DropPodManager.createDropOfThings(pawnList, defLabel, $"Your viewers have given you {amount} {defLabel}s");
-            } else if (itemDef.MadeFromStuff)
-            {
-                List<Thing> thingsToSpawn = new List<Thing>();
-                for (int i = 0; i < amount; i++)
-                {
-                    ThingDef itemStuff = GenStuff.RandomStuffByCommonalityFor(itemDef);
-                    var realThing = ThingMaker.MakeThing(itemDef, itemStuff);
-                    QualityCategory q = new QualityCategory();
-
-                    if (realThing.TryGetQuality(out q))
-                    {
-                        realThing.TryGetComp<CompQuality>().SetQuality(QualityUtility.GenerateQualityTraderItem(), ArtGenerationContext.Outsider);
-                    }
-
-                    thingsToSpawn.Add(realThing);
-                }
-                DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
             }
             else
             {
-                var testThing = ThingMaker.MakeThing(itemDef);
-                QualityCategory q = new QualityCategory();
-
-                if (testThing.TryGetQuality(out q))
+                List<Thing> thingsToSpawn = new List<Thing>();
+                for (var i = 0; i < amount; i++)
                 {
-                    List<Thing> thingsToSpawn = new List<Thing>();
-                    for (var i = 0; i < amount; i++)
+                    ThingDef itemStuff = null;
+                    if(itemDef.MadeFromStuff)
                     {
-                        var newThing = ThingMaker.MakeThing(itemDef);
-                        newThing.TryGetComp<CompQuality>().SetQuality(QualityUtility.GenerateQualityTraderItem(), ArtGenerationContext.Outsider);
-                        thingsToSpawn.Add(newThing);
+                        itemStuff = GenStuff.RandomStuffByCommonalityFor(itemDef);
                     }
-                    DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+                    
+                    var newThing = ThingMaker.MakeThing(itemDef, itemStuff);
+                    tryAddQualityToThing(newThing);
+
+                    if(itemDef.Minifiable)
+                    {
+                        newThing = newThing.MakeMinified();
+                    }
+                    thingsToSpawn.Add(newThing);
                 }
-                else
-                {
-                    DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s", true);
-                }
+                DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
             }
 
         }
@@ -94,6 +79,18 @@ namespace RimConnection
                 
             };
             return command;
+        }
+
+        private Thing tryAddQualityToThing(Thing thing)
+        {
+            QualityCategory q = new QualityCategory();
+
+            if (thing.TryGetQuality(out q))
+            {
+                thing.TryGetComp<CompQuality>().SetQuality(QualityUtility.GenerateQualityTraderItem(), ArtGenerationContext.Outsider);
+            }
+
+            return thing;
         }
     }
 }
