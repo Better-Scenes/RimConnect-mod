@@ -8,6 +8,7 @@ namespace RimConnection
             new AllRangedWeaponsToBowsAction(),
             new AnimalSelfTameAction(),
             new BeaversAction(),
+            new BionicPlagueAction(),
             new CargoPodAction(),
             new FarmAnimalsWanderInAction(),
             new GoldenShowerAction(),
