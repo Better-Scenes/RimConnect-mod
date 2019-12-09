@@ -43,27 +43,38 @@ namespace RimConnection
             }
             else
             {
-                List<Thing> thingsToSpawn = new List<Thing>();
-                for (var i = 0; i < amount; i++)
+                // If Our item doesn't have stuff, is minifiable, or doesn't have quality
+                // we can spawn it the old way with the itemdef
+                var tempThing = ThingMaker.MakeThing(itemDef, GenStuff.DefaultStuffFor(itemDef));
+                QualityCategory q = new QualityCategory();
+                var tempThingQualityExists = tempThing.TryGetQuality(out q);
+                if (!itemDef.MadeFromStuff && !itemDef.Minifiable && !tempThingQualityExists)
                 {
-                    ThingDef itemStuff = null;
-                    if(itemDef.MadeFromStuff)
+                    DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+                } else
+                {
+                    List<Thing> thingsToSpawn = new List<Thing>();
+                    for (var i = 0; i < amount; i++)
                     {
-                        itemStuff = GenStuff.RandomStuffByCommonalityFor(itemDef);
-                    }
+                        ThingDef itemStuff = null;
+                        if(itemDef.MadeFromStuff)
+                        {
+                            itemStuff = GenStuff.RandomStuffByCommonalityFor(itemDef);
+                        }
                     
-                    var newThing = ThingMaker.MakeThing(itemDef, itemStuff);
-                    tryAddQualityToThing(newThing);
+                        var newThing = ThingMaker.MakeThing(itemDef, itemStuff);
+                        tryAddQualityToThing(newThing);
 
-                    if(itemDef.Minifiable)
-                    {
-                        newThing = newThing.MakeMinified();
+                        if(itemDef.Minifiable)
+                        {
+                            newThing = newThing.MakeMinified();
+                        }
+                        thingsToSpawn.Add(newThing);
                     }
-                    thingsToSpawn.Add(newThing);
+                    DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
                 }
-                DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
             }
-
+        
         }
 
 
@@ -84,7 +95,6 @@ namespace RimConnection
         private Thing tryAddQualityToThing(Thing thing)
         {
             QualityCategory q = new QualityCategory();
-
             if (thing.TryGetQuality(out q))
             {
                 thing.TryGetComp<CompQuality>().SetQuality(QualityUtility.GenerateQualityTraderItem(), ArtGenerationContext.Outsider);
