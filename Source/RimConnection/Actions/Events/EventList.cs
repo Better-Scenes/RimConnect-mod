@@ -13,6 +13,7 @@ namespace RimConnection
             new FarmAnimalsWanderInAction(),
             new GoldenShowerAction(),
             new GrowAllCropsAction(),
+            new HealingNanitesAction(),
             new HeartAttackRandomColonistAction(),
             new ManhunterPackAction(),
             new PsychicDroneAction(),
