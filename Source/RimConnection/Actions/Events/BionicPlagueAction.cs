@@ -13,6 +13,7 @@ namespace RimConnection
             description = "A bionic plague sweeps through all animals and leaves behind components";
             category = "Event";
             prefix = "Trigger";
+            costSilverStore = -1;
         }
 
         public override void Execute(int amount)

@@ -9,6 +9,7 @@ namespace RimConnection
     {
         private string defName;
         private string defLabel;
+        private ThingDef thingDef;
 
         public ItemAction(ThingDef itemDef, string category = "Item")
         {
@@ -19,7 +20,8 @@ namespace RimConnection
             shouldShowAmount = true;
             prefix = "Spawn %amount%";
             this.category = category;
-        }
+            thingDef = itemDef;
+    }
 
         public override void Execute(int amount)
         {
@@ -80,7 +82,11 @@ namespace RimConnection
                 description = description,
                 category = category,
                 prefix = prefix,
-                actionHash = ActionHash()
+                actionHash = ActionHash(),
+                localCooldownSeconds = 30,
+                globalCooldownSeconds = 0,
+                costSilverStore = (int)thingDef.BaseMarketValue,
+                costBitStore = -1
             };
             return command;
         }

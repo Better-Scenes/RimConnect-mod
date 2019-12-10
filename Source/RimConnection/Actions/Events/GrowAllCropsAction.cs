@@ -13,6 +13,7 @@ namespace RimConnection
             description = "The greek god Demeter was just passing by";
             category = "Event";
             prefix = "Trigger";
+            costSilverStore = -1;
         }
 
         public override void Execute(int amount)

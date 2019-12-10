@@ -13,6 +13,7 @@ namespace RimConnection
             description = "All ranged weapons turn into bows";
             category = "Event";
             prefix = "Trigger";
+            costSilverStore = -1;
         }
 
         public override void Execute(int amount)

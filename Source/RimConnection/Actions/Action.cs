@@ -10,6 +10,10 @@ namespace RimConnection {
         public string category { get; set; } = "Other";
         public string prefix { get; set; } = "Spawn";
         public bool shouldShowAmount { get; set; } = false;
+        public int localCooldownSeconds { get; set; } = 120;
+        public int globalCooldownSeconds { get; set; } = 60;
+        public int costSilverStore { get; set; } = 1000;
+        public int costBitStore { get; set; } = 100;
 
         public string ActionHash()
         {
@@ -31,10 +35,16 @@ namespace RimConnection {
                 category = category,
                 prefix = prefix,
                 shouldShowAmount = shouldShowAmount,
-                actionHash = ActionHash()
+                actionHash = ActionHash(),
+                localCooldownSeconds = localCooldownSeconds,
+                globalCooldownSeconds = globalCooldownSeconds,
+                costSilverStore = costSilverStore,
+                costBitStore = costBitStore
             };
             return command;
         }
+
+
 
         public abstract void Execute(int amount);
 
