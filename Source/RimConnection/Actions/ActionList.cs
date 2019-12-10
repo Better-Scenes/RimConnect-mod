@@ -8,13 +8,14 @@ namespace RimConnection
         // Bring all the lists together from the categories
         public static List<IAction> allActionsList()
         {
-            return new List<IAction>()
-                .Concat(ColonistList.colonistList)
-                .Concat(EventList.eventList)
-                .Concat(GearList.gearList)
-                .Concat(GenerateAllItemActions.GenerateThingDefActions())
-                .Concat(StructureList.structureList)
-                .Concat(WeatherList.weatherList).ToList();
+
+            List<IAction> actionList = new List<IAction>();
+
+            return actionList.Concat(ColonistList.colonistList)
+            .Concat(EventList.eventList)
+            .Concat(GearList.gearList)
+            .Concat(GenerateAllItemActions.GenerateThingDefActions())
+            .Concat(WeatherList.weatherList).ToList();
         }
 
         // Make a dictionary lookup of all commands

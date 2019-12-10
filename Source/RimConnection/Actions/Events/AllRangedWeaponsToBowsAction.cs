@@ -10,7 +10,7 @@ namespace RimConnection
         public AllRangedWeaponsToBowsAction()
         {
             name = "Ranged weapons to bows";
-            description = ".....?!";
+            description = "All ranged weapons turn into bows";
             category = "Event";
             prefix = "Trigger";
         }

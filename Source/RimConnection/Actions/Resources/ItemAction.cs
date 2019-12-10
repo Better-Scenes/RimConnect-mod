@@ -25,6 +25,7 @@ namespace RimConnection
         {
             var itemDef = DefDatabase<ThingDef>.GetNamed(defName);
 
+
             if(itemDef.race != null)
             {
                 List<Thing> pawnList = new List<Thing>();
@@ -33,46 +34,67 @@ namespace RimConnection
                     pawnList.Add(PawnGenerator.GeneratePawn(itemDef.race.AnyPawnKind, null));
                 }
                 DropPodManager.createDropOfThings(pawnList, defLabel, $"Your viewers have given you {amount} {defLabel}s");
-            } else if (itemDef.MadeFromStuff)
-            {
-                List<Thing> thingsToSpawn = new List<Thing>();
-                for (int i = 0; i < amount; i++)
-                {
-                    ThingDef itemStuff = GenStuff.RandomStuffByCommonalityFor(itemDef);
-                    var realThing = ThingMaker.MakeThing(itemDef, itemStuff);
-                    QualityCategory q = new QualityCategory();
-
-                    if (realThing.TryGetQuality(out q))
-                    {
-                        realThing.TryGetComp<CompQuality>().SetQuality(QualityUtility.GenerateQualityTraderItem(), ArtGenerationContext.Outsider);
-                    }
-
-                    thingsToSpawn.Add(realThing);
-                }
-                DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
             }
             else
             {
-                var testThing = ThingMaker.MakeThing(itemDef);
+                // If Our item doesn't have stuff, is minifiable, or doesn't have quality
+                // we can spawn it the old way with the itemdef
+                var tempThing = ThingMaker.MakeThing(itemDef, GenStuff.DefaultStuffFor(itemDef));
                 QualityCategory q = new QualityCategory();
-
-                if (testThing.TryGetQuality(out q))
+                var tempThingQualityExists = tempThing.TryGetQuality(out q);
+                if (!itemDef.MadeFromStuff && !itemDef.Minifiable && !tempThingQualityExists)
+                {
+                    DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+                } else
                 {
                     List<Thing> thingsToSpawn = new List<Thing>();
                     for (var i = 0; i < amount; i++)
                     {
-                        var newThing = ThingMaker.MakeThing(itemDef);
-                        newThing.TryGetComp<CompQuality>().SetQuality(QualityUtility.GenerateQualityTraderItem(), ArtGenerationContext.Outsider);
+                        ThingDef itemStuff = null;
+                        if(itemDef.MadeFromStuff)
+                        {
+                            itemStuff = GenStuff.RandomStuffByCommonalityFor(itemDef);
+                        }
+                    
+                        var newThing = ThingMaker.MakeThing(itemDef, itemStuff);
+                        tryAddQualityToThing(newThing);
+
+                        if(itemDef.Minifiable)
+                        {
+                            newThing = newThing.MakeMinified();
+                        }
                         thingsToSpawn.Add(newThing);
                     }
                     DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
                 }
-                else
-                {
-                    DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s", true);
-                }
+            }
+        
+        }
+
+
+        public ValidCommand ToApiCall(int id)
+        {
+            var command = new ValidCommand
+            {
+                modId = id.ToString(),
+                name = name,
+                description = description,
+                category = category,
+                prefix = prefix
+                
+            };
+            return command;
+        }
+
+        private Thing tryAddQualityToThing(Thing thing)
+        {
+            QualityCategory q = new QualityCategory();
+            if (thing.TryGetQuality(out q))
+            {
+                thing.TryGetComp<CompQuality>().SetQuality(QualityUtility.GenerateQualityTraderItem(), ArtGenerationContext.Outsider);
             }
 
+            return thing;
         }
     }
 }
