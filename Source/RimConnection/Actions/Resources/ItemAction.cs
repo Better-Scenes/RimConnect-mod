@@ -76,12 +76,11 @@ namespace RimConnection
         {
             var command = new ValidCommand
             {
-                modId = id.ToString(),
                 name = name,
                 description = description,
                 category = category,
-                prefix = prefix
-                
+                prefix = prefix,
+                actionHash = ActionHash()
             };
             return command;
         }
