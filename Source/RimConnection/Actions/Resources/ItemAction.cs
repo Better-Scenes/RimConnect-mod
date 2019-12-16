@@ -83,8 +83,8 @@ namespace RimConnection
                 category = category,
                 prefix = prefix,
                 actionHash = ActionHash(),
-                localCooldownSeconds = 30,
-                globalCooldownSeconds = 0,
+                localCooldownMs = 30,
+                globalCooldownMs = 0,
                 costSilverStore = (int)thingDef.BaseMarketValue,
                 costBitStore = -1
             };

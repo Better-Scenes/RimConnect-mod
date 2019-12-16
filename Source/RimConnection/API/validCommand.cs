@@ -11,8 +11,8 @@ namespace RimConnection
         public string category { get; set; }
         public string prefix { get; set; }
         public bool shouldShowAmount { get; set; }
-        public int localCooldownSeconds { get; set; }
-        public int globalCooldownSeconds { get; set; }
+        public int localCooldownMs { get; set; }
+        public int globalCooldownMs { get; set; }
         public int costSilverStore { get; set; }
         public int costBitStore { get; set; }
     }

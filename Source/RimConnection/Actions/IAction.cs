@@ -12,6 +12,10 @@ namespace RimConnection
         string category { get; set; }
         string prefix { get; set; }
         bool shouldShowAmount { get; set; }
+        int localCooldownMs { get; set; }
+        int globalCooldownMs { get; set; }
+        int costSilverStore { get; set; }
+        int costBitStore { get; set; }
 
         ValidCommand ToApiCall();
         void Execute(int amount);
