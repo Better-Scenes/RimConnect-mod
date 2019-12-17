@@ -21,6 +21,10 @@ namespace RimConnection
             prefix = "Spawn %amount%";
             this.category = category;
             thingDef = itemDef;
+            localCooldownMs = 30000;
+            globalCooldownMs = 0;
+            costSilverStore = (int)thingDef.BaseMarketValue;
+            costBitStore = costBitStore;
     }
 
         public override void Execute(int amount)
@@ -83,10 +87,10 @@ namespace RimConnection
                 category = category,
                 prefix = prefix,
                 actionHash = ActionHash(),
-                localCooldownMs = 30,
-                globalCooldownMs = 0,
-                costSilverStore = (int)thingDef.BaseMarketValue,
-                costBitStore = -1
+                localCooldownMs = localCooldownMs,
+                globalCooldownMs = globalCooldownMs,
+                costSilverStore = costSilverStore,
+                costBitStore = costBitStore
             };
             return command;
         }

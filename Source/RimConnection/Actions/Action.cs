@@ -10,8 +10,8 @@ namespace RimConnection {
         public string category { get; set; } = "Other";
         public string prefix { get; set; } = "Spawn";
         public bool shouldShowAmount { get; set; } = false;
-        public int localCooldownMs { get; set; } = 120;
-        public int globalCooldownMs { get; set; } = 60;
+        public int localCooldownMs { get; set; } = 120000;
+        public int globalCooldownMs { get; set; } = 60000;
         public int costSilverStore { get; set; } = 1000;
         public int costBitStore { get; set; } = 100;
 
