@@ -12,8 +12,8 @@ namespace RimConnection {
         public bool shouldShowAmount { get; set; } = false;
         public int localCooldownMs { get; set; } = 120000;
         public int globalCooldownMs { get; set; } = 60000;
-        public int costSilverStore { get; set; } = 1000;
-        public int costBitStore { get; set; } = 100;
+        public int costSilverStore { get; set; } = -1;
+        public int costBitStore { get; set; } = 200;
 
         public string ActionHash()
         {
