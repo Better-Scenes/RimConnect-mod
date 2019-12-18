@@ -16,7 +16,6 @@ namespace RimConnection
             description = "They don't look too happy";
             category = "Event";
             costSilverStore = -1;
-            costBitStore = 100;
         }
 
         public override void Execute(int amount)

@@ -12,7 +12,6 @@ namespace RimConnection
             category = "Event";
             prefix = "Trigger";
             costSilverStore = 3000;
-            costBitStore = -1;
         }
 
         public override void Execute(int amount)

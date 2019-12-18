@@ -14,7 +14,7 @@ namespace RimConnection
         public int localCooldownMs { get; set; }
         public int globalCooldownMs { get; set; }
         public int costSilverStore { get; set; }
-        public int costBitStore { get; set; }
+        public string bitStoreSKU { get; set; }
     }
 
     public class ValidCommandList
