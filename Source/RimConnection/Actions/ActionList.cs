@@ -6,10 +6,10 @@ namespace RimConnection
     public static class ActionList
     {
         // Bring all the lists together from the categories
-        public static List<IAction> actionList()
+        public static List<IAction> allActionsList()
         {
-            List<IAction> actionList = new List<IAction>();
 
+            List<IAction> actionList = new List<IAction>();
 
             return actionList.Concat(ColonistList.colonistList)
             .Concat(EventList.eventList)
@@ -18,12 +18,23 @@ namespace RimConnection
             .Concat(WeatherList.weatherList).ToList();
         }
 
+        // Make a dictionary lookup of all commands
+        public static Dictionary<string, IAction> actionLookup()
+        {
+            Dictionary<string, IAction> actionLookup = new Dictionary<string, IAction>();
 
+            allActionsList().ForEach(action =>
+            {
+                actionLookup.Add(action.ActionHash(), action);
+            });
+
+            return actionLookup;
+        }
 
         public static ValidCommandList ActionListToApi()
         {
             ValidCommandList validCommandList = new ValidCommandList();
-            validCommandList.validCommands = actionList().Select((action, index) => action.ToApiCall(index)).ToList();
+            validCommandList.validCommands = allActionsList().Select(action => action.ToApiCall()).ToList();
             return validCommandList;
         }
     }

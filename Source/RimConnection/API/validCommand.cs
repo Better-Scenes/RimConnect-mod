@@ -5,12 +5,16 @@ namespace RimConnection
 {
     public class ValidCommand
     {
-        public string modId { get; set; }
+        public string actionHash { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public string category { get; set; }
         public string prefix { get; set; }
         public bool shouldShowAmount { get; set; }
+        public int localCooldownMs { get; set; }
+        public int globalCooldownMs { get; set; }
+        public int costSilverStore { get; set; }
+        public int costBitStore { get; set; }
     }
 
     public class ValidCommandList

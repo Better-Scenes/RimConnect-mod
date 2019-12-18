@@ -65,7 +65,6 @@
     <Compile Include="Actions\Events\RaidDropAction.cs" />
     <Compile Include="Actions\Events\PsychicDroneAction.cs" />
     <Compile Include="Actions\Events\RaidAction.cs" />
-    <Compile Include="Actions\Events\InfestationAction.cs" />
     <Compile Include="Actions\Events\ManhunterPackAction.cs" />
     <Compile Include="Actions\Events\CargoPodAction.cs" />
     <Compile Include="Actions\Events\PsychicSootheAction.cs" />

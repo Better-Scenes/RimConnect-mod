@@ -11,6 +11,8 @@ namespace RimConnection
             description = "Gold rains from the skies";
             category = "Event";
             prefix = "Trigger";
+            costSilverStore = -1;
+            costBitStore = 200;
         }
 
         public override void Execute(int amount)

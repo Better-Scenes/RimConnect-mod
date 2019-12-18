@@ -16,6 +16,8 @@ namespace RimConnection
             description = "Hope you don't have any injuries any time soon";
             category = "Event";
             prefix = "Trigger";
+            costSilverStore = -1;
+            costBitStore = 400;
         }
 
         public override void Execute(int amount)

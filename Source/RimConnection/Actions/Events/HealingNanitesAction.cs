@@ -16,7 +16,7 @@ namespace RimConnection
             prefix = "Trigger";
         }
 
-            private static List<HediffDef> hediffsDefsToHeal = new List<HediffDef>(new HediffDef[] {
+        private static List<HediffDef> hediffsDefsToHeal = new List<HediffDef>(new HediffDef[] {
                 HediffDefOf.Bite,
                 HediffDefOf.Burn,
                 HediffDefOf.Cut,

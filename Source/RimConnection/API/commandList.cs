@@ -5,7 +5,7 @@ namespace RimConnection
 {
     public class Command
     {
-        public string id { get; set; }
+        public string actionHash { get; set; }
         public int amount { get; set; }
     }
 

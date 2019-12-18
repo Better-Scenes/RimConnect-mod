@@ -5,16 +5,11 @@ using Verse;
 
 namespace RimConnection
 {
-    public class ItemAction: IAction
+    public class ItemAction: Action, IAction
     {
-        public string name { get; set; }
-        public string description { get; set; }
-        public string category { get; set; } = "Item";
-        public string prefix { get; set; } = "Spawn %amount%";
-        public bool shouldShowAmount { get; set; } = true;
-
         private string defName;
         private string defLabel;
+        private ThingDef thingDef;
 
         public ItemAction(ThingDef itemDef, string category = "Item")
         {
@@ -25,9 +20,14 @@ namespace RimConnection
             shouldShowAmount = true;
             prefix = "Spawn %amount%";
             this.category = category;
-        }
+            thingDef = itemDef;
+            localCooldownMs = 30000;
+            globalCooldownMs = 0;
+            costSilverStore = (int)thingDef.BaseMarketValue;
+            costBitStore = costBitStore;
+    }
 
-        public void Execute(int amount)
+        public override void Execute(int amount)
         {
             var itemDef = DefDatabase<ThingDef>.GetNamed(defName);
 
@@ -82,12 +82,15 @@ namespace RimConnection
         {
             var command = new ValidCommand
             {
-                modId = id.ToString(),
                 name = name,
                 description = description,
                 category = category,
-                prefix = prefix
-                
+                prefix = prefix,
+                actionHash = ActionHash(),
+                localCooldownMs = localCooldownMs,
+                globalCooldownMs = globalCooldownMs,
+                costSilverStore = costSilverStore,
+                costBitStore = costBitStore
             };
             return command;
         }

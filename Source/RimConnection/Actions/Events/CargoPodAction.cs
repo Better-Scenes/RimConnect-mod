@@ -11,6 +11,8 @@ namespace RimConnection
             description = "A gift from above!";
             category = "Event";
             prefix = "Trigger";
+            costSilverStore = 300;
+            costBitStore = -1;
         }
 
         public override void Execute(int amount)

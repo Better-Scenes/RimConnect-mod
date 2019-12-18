@@ -11,6 +11,8 @@ namespace RimConnection
             description = "Let's just hope the pigs don't take over";
             category = "Event";
             prefix = "Trigger";
+            costSilverStore = 3000;
+            costBitStore = -1;
         }
 
         public override void Execute(int amount)
