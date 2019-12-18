@@ -13,7 +13,7 @@ namespace RimConnection {
         public int localCooldownMs { get; set; } = 120000;
         public int globalCooldownMs { get; set; } = 60000;
         public int costSilverStore { get; set; } = -1;
-        public int costBitStore { get; set; } = 200;
+        public string bitStoreSKU { get; set; } = "";
 
         public string ActionHash()
         {
@@ -39,7 +39,7 @@ namespace RimConnection {
                 localCooldownMs = localCooldownMs,
                 globalCooldownMs = globalCooldownMs,
                 costSilverStore = costSilverStore,
-                costBitStore = costBitStore
+                bitStoreSKU = bitStoreSKU
             };
             return command;
         }

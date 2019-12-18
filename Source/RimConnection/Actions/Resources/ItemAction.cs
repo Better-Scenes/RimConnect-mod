@@ -24,7 +24,7 @@ namespace RimConnection
             localCooldownMs = 30000;
             globalCooldownMs = 0;
             costSilverStore = (int)thingDef.BaseMarketValue;
-            costBitStore = costBitStore;
+            bitStoreSKU = "";
     }
 
         public override void Execute(int amount)
@@ -90,7 +90,7 @@ namespace RimConnection
                 localCooldownMs = localCooldownMs,
                 globalCooldownMs = globalCooldownMs,
                 costSilverStore = costSilverStore,
-                costBitStore = costBitStore
+                bitStoreSKU = bitStoreSKU
             };
             return command;
         }

@@ -15,7 +15,7 @@ namespace RimConnection
         int localCooldownMs { get; set; }
         int globalCooldownMs { get; set; }
         int costSilverStore { get; set; }
-        int costBitStore { get; set; }
+        string bitStoreSKU { get; set; }
 
         ValidCommand ToApiCall();
         void Execute(int amount);

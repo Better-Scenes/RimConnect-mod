@@ -14,6 +14,7 @@ namespace RimConnection
             description = "A wave of nanites fly through and heal superficial wounds";
             category = "Event";
             prefix = "Trigger";
+            costSilverStore = -1;
         }
 
         private static List<HediffDef> hediffsDefsToHeal = new List<HediffDef>(new HediffDef[] {
