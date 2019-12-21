@@ -14,16 +14,18 @@ namespace RimConnection {
         public int globalCooldownMs { get; set; } = 60000;
         public int costSilverStore { get; set; } = -1;
         public string bitStoreSKU { get; set; } = "";
+        public string actionHash { get; set; } = "";
 
-        public string ActionHash()
+        public string GenerateActionHash(string extraData = "")
         {
-            var input = $"{name}{description}{category}{prefix}";
+            var input = $"{name}{description}{category}{prefix}{extraData}";
             var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input));
 
             StringBuilder sb = new StringBuilder();
             foreach (byte b in hash) sb.Append(b.ToString("X2"));
 
-            return sb.ToString();
+            actionHash = sb.ToString();
+            return actionHash;
         }
 
         public ValidCommand ToApiCall()
@@ -35,7 +37,7 @@ namespace RimConnection {
                 category = category,
                 prefix = prefix,
                 shouldShowAmount = shouldShowAmount,
-                actionHash = ActionHash(),
+                actionHash = GenerateActionHash(),
                 localCooldownMs = localCooldownMs,
                 globalCooldownMs = globalCooldownMs,
                 costSilverStore = costSilverStore,

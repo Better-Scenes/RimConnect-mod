@@ -1,31 +1,46 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+
+using Verse;
 
 namespace RimConnection
 {
     public static class ActionList
     {
+        public static List<IAction> actionList;
+        public static Dictionary<string, IAction> actionLookup;
+
         // Bring all the lists together from the categories
-        public static List<IAction> allActionsList()
+        public static List<IAction> generateActionList()
         {
+            actionList = new List<IAction>();
 
-            List<IAction> actionList = new List<IAction>();
-
-            return actionList.Concat(ColonistList.colonistList)
+            actionList =  actionList.Concat(ColonistList.colonistList)
             .Concat(EventList.eventList)
             .Concat(GearList.gearList)
             .Concat(GenerateAllItemActions.GenerateThingDefActions())
             .Concat(WeatherList.weatherList).ToList();
+
+            return actionList;
         }
 
         // Make a dictionary lookup of all commands
-        public static Dictionary<string, IAction> actionLookup()
+        public static Dictionary<string, IAction> generateActionLookup()
         {
-            Dictionary<string, IAction> actionLookup = new Dictionary<string, IAction>();
+            actionLookup = new Dictionary<string, IAction>();
+            generateActionList();
 
-            allActionsList().ForEach(action =>
+            actionList.ForEach((action) =>
             {
-                actionLookup.Add(action.ActionHash(), action);
+                try
+                {
+                    actionLookup.Add(action.GenerateActionHash(), action);
+                } catch (Exception e)
+                {
+                    Log.Message(e.Message);
+                    Log.Message($"{action.actionHash} {action.name}");
+                }
             });
 
             return actionLookup;
@@ -33,8 +48,11 @@ namespace RimConnection
 
         public static ValidCommandList ActionListToApi()
         {
+            // Make sure the list and dictionary are up to date
+            generateActionLookup();
+
             ValidCommandList validCommandList = new ValidCommandList();
-            validCommandList.validCommands = allActionsList().Select(action => action.ToApiCall()).ToList();
+            validCommandList.validCommands = actionList.Select(action => action.ToApiCall()).ToList();
             return validCommandList;
         }
     }

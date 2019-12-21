@@ -48,7 +48,7 @@ namespace RimConnection
             var commands = RimConnectAPI.GetCommands();
             foreach (var command in commands)
             {
-                var action = ActionList.actionLookup()[command.actionHash];
+                var action = ActionList.actionLookup[command.actionHash];
                 action.Execute(command.amount);
                 Find.TickManager.slower.SignalForceNormalSpeedShort();
             }
