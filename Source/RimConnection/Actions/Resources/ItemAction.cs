@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using RimWorld;
 using Verse;
 
@@ -86,7 +88,7 @@ namespace RimConnection
                 description = description,
                 category = category,
                 prefix = prefix,
-                actionHash = ActionHash(),
+                actionHash = GenerateActionHash($"{thingDef.description}{defName}"),
                 localCooldownMs = localCooldownMs,
                 globalCooldownMs = globalCooldownMs,
                 costSilverStore = costSilverStore,

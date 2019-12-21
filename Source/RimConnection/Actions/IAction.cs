@@ -16,9 +16,10 @@ namespace RimConnection
         int globalCooldownMs { get; set; }
         int costSilverStore { get; set; }
         string bitStoreSKU { get; set; }
+        string actionHash { get; set; }
 
         ValidCommand ToApiCall();
         void Execute(int amount);
-        string ActionHash();
+        string GenerateActionHash(string extraData = "");
     }
 }
