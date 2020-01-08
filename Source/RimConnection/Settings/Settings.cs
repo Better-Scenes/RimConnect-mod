@@ -1,5 +1,5 @@
 ﻿using System.Text.RegularExpressions;
-
+using RimConnection.Settings;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -25,32 +25,60 @@ namespace RimConnection
 
         }
 
+        static int notificationFrames = 0;
+        static string notification = "";
 
         public void DoWindowContents(Rect rect)
         {
-            GUI.BeginGroup(new Rect(0, 60, 600, 200));
-            var labelRect = new Rect(0, 40, 50, 20);
-            var inputRect = new Rect(70, 40, 300, 20);
+            Listing_Standard settings = new Listing_Standard();
+            settings.Begin(rect);
+            settings.ColumnWidth = (rect.width / 1.3f) - 20f;
 
-            Widgets.Label(labelRect, "Secret: ");
-            secret = Widgets.TextField(inputRect, secret, 16, new Regex("^[a-zA-Z0-9_]*$")).Trim();
-            if (Widgets.ButtonText(new Rect(380, 40, 100, 20), "Paste"))
+            if (initialiseSuccessful)
             {
-                secret = GUIUtility.systemCopyBuffer;
+                settings.Label("Connected");
             }
-            if (Widgets.ButtonText(new Rect(70, 70, 100, 20), "Connect"))
+            else
             {
-                var success = ServerInitialise.Init();
-                if(success)
-                {
-                    Messages.Message("Connected!", MessageTypeDefOf.PositiveEvent);
+                settings.Label("Not Connected");
+            }
 
-                } else
+            secret = settings.TextEntryLabeled("Secret: ", secret);
+
+            if (secret != "" && settings.ButtonText("Connect"))
+            {
+                var regexItem = new Regex("^[a-zA-Z0-9_]*$");
+
+                if (regexItem.IsMatch(secret))
                 {
-                    Messages.Message("Failed to connect! Check your debug log", MessageTypeDefOf.NegativeEvent);
+                    var success = ServerInitialise.Init();
+                    if (success)
+                    {
+                        notification = "Establishing Connection";
+                    }
+                    else
+                    {
+                        notification = "Failed to connect! Check your Debug Log";
+                    }
                 }
+                else
+                {
+                    notification = "Invalid Secret";
+                }
+                notificationFrames = 360;
             }
-                
+
+            if (notificationFrames > 0 && notification != "")
+            {
+                settings.Label(notification);
+                notificationFrames--;
+            }
+            else if (notificationFrames == 0)
+            {
+                notification = "";
+            }
+
+            settings.End();
         }
     }
 }

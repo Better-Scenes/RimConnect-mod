@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 using RestSharp;
+using System;
 
 namespace RimConnection
 {
@@ -33,7 +34,7 @@ namespace RimConnection
                 {
                     throw new System.Exception("The developer is an idiot, and you need to tell him that he left localhost in the settings");
                 }
-                throw new System.Exception("Failed to connect. Is your secret correct?");
+                Log.Warning("Failed to connect. Is your secret correct?");
             }
 
             Log.Message("Successfully authenticated with server!");
@@ -50,13 +51,22 @@ namespace RimConnection
 
             var validCommandResponse = client.Execute<ValidCommand>(validCommandRequest);
 
-            if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
+            try
             {
-                RimConnectSettings.initialiseSuccessful = false;
-                Log.Error("Failed to provide valid commands to server");
-                throw new System.Exception("Failed to provide valid commands to server");
+                if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    RimConnectSettings.initialiseSuccessful = false;
+                    Log.Warning("Failed to provide valid commands to server");
+                }
+                else
+                {
+                    RimConnectSettings.initialiseSuccessful = true;
+                }
             }
-            RimConnectSettings.initialiseSuccessful = true;
+            catch(Exception e)
+            {
+                Log.Warning(e.Message);
+            }
         }
 
         public static List<Command> GetCommands()
