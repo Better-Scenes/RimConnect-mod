@@ -32,7 +32,9 @@ namespace RimConnection
         {
             Listing_Standard settings = new Listing_Standard();
             settings.Begin(rect);
-            settings.ColumnWidth = (rect.width / 1.3f) - 20f;
+
+            float width = rect.width;
+            settings.ColumnWidth = width * 0.7f;
 
             if (initialiseSuccessful)
             {
@@ -76,6 +78,16 @@ namespace RimConnection
             else if (notificationFrames == 0)
             {
                 notification = "";
+            }
+
+            settings.NewColumn();
+            settings.ColumnWidth = width * 0.25f;
+
+            if (settings.ButtonText("Item Store"))
+            {
+                Window itemSettings = new ItemSettings();
+                Find.WindowStack.TryRemove(itemSettings.GetType());
+                Find.WindowStack.Add(itemSettings);
             }
 
             settings.End();

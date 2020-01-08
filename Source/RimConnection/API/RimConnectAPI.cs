@@ -43,16 +43,17 @@ namespace RimConnection
 
         public static void PostValidCommands(ValidCommandList commandList)
         {
-            // Go and push all the valid commands to the server
-            var validCommandRequest = new RestRequest("command/valid", Method.POST);
-            validCommandRequest.AddHeader("Content-Type", "application/json")
-                   .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
-                   .AddJsonBody(commandList);
-
-            var validCommandResponse = client.Execute<ValidCommand>(validCommandRequest);
-
             try
             {
+                // Go and push all the valid commands to the server
+                var validCommandRequest = new RestRequest("command/valid", Method.POST);
+                validCommandRequest.AddHeader("Content-Type", "application/json")
+                       .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
+                       .AddJsonBody(commandList);
+
+                var validCommandResponse = client.Execute<ValidCommand>(validCommandRequest);
+
+
                 if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     RimConnectSettings.initialiseSuccessful = false;
