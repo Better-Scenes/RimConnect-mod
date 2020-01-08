@@ -12,7 +12,7 @@ namespace RimConnection
 
         static RimConnectAPI()
         {
-            BASE_URL = Settings.BASE_URL;
+            BASE_URL = RimConnectSettings.BASE_URL;
             client = new RestClient(BASE_URL);
         }
 
@@ -28,7 +28,7 @@ namespace RimConnection
             // If the request failed, throw and post a message
             if (authModResponse.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                Settings.initialiseSuccessful = false;
+                RimConnectSettings.initialiseSuccessful = false;
                 if(BASE_URL.Contains("localhost"))
                 {
                     throw new System.Exception("The developer is an idiot, and you need to tell him that he left localhost in the settings");
@@ -45,25 +45,25 @@ namespace RimConnection
             // Go and push all the valid commands to the server
             var validCommandRequest = new RestRequest("command/valid", Method.POST);
             validCommandRequest.AddHeader("Content-Type", "application/json")
-                   .AddHeader("Authorization", $"Bearer {Settings.token}")
+                   .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
                    .AddJsonBody(commandList);
 
             var validCommandResponse = client.Execute<ValidCommand>(validCommandRequest);
 
             if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                Settings.initialiseSuccessful = false;
+                RimConnectSettings.initialiseSuccessful = false;
                 Log.Error("Failed to provide valid commands to server");
                 throw new System.Exception("Failed to provide valid commands to server");
             }
-            Settings.initialiseSuccessful = true;
+            RimConnectSettings.initialiseSuccessful = true;
         }
 
         public static List<Command> GetCommands()
         {
             var baseRequest = new RestRequest("command/list");
             baseRequest.AddHeader("Content-Type", "application/json")
-                       .AddHeader("Authorization", $"Bearer {Settings.token}");
+                       .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}");
 
             try
             {
@@ -90,7 +90,7 @@ namespace RimConnection
 
                 var baseRequest = new RestRequest("command/list", Method.DELETE);
                 baseRequest.AddHeader("Content-Type", "application/json")
-                           .AddHeader("Authorization", $"Bearer {Settings.token}")
+                           .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
                            .AddParameter("toDelete", number);
 
                 var response = client.Execute(baseRequest);

@@ -27,7 +27,7 @@ namespace RimConnection
         public override void GameComponentTick()
         {
             // Only do this stuff if the mod successfully connected to the server
-            if (Settings.initialiseSuccessful)
+            if (RimConnectSettings.initialiseSuccessful)
             {
                 base.GameComponentTick();
                 var now = DateTime.Now;

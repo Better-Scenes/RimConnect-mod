@@ -6,7 +6,7 @@ using Verse;
 
 namespace RimConnection
 {
-    public class Settings : ModSettings
+    public class RimConnectSettings : ModSettings
     {
         public static string[] validCommands;
 
@@ -26,7 +26,7 @@ namespace RimConnection
         }
 
 
-        public static void DoSettingsWindowContents(Rect rect)
+        public void DoWindowContents(Rect rect)
         {
             GUI.BeginGroup(new Rect(0, 60, 600, 200));
             var labelRect = new Rect(0, 40, 50, 20);
