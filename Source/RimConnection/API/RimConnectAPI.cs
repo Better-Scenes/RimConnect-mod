@@ -63,7 +63,7 @@ namespace RimConnection
                     RimConnectSettings.initialiseSuccessful = true;
 
                     CommandOptionList commandOptionList = new CommandOptionList();
-                    commandOptionList.CommandOptions = validCommandResponse.Data.CommandOptions;
+                    commandOptionList.commandOptions = validCommandResponse.Data.commandOptions;
 
                     Settings.CommandOptionListController.commandOptionList = commandOptionList;
                 }

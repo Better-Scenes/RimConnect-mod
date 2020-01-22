@@ -4,26 +4,43 @@ using System.Linq;
 using System.Text;
 using RestSharp;
 
+#pragma warning disable IDE1006 // Naming Styles
 namespace RimConnection
 {
-    public class CommandOption
+    public class CommandOption : ICloneable
     {
-        public string ActionHash { get; set; }
-        public int LocalCooldownMs { get; set; }
-        public int GlobalCooldownMs { get; set; }
-        public int CostSilverStore { get; set; }
+        public string actionHash { get; set; }
+        public int localCooldownMs { get; set; }
+        public int globalCooldownMs { get; set; }
+        public int costSilverStore { get; set; }
 
-        public IAction Action
+        public IAction Action()
         {
-            get
+                return ActionList.actionLookup[this.actionHash];
+        }
+
+        public object Clone()
+        {
+            return new CommandOption()
             {
-                return ActionList.actionLookup[this.ActionHash];
-            }
+                actionHash = actionHash,
+                localCooldownMs = localCooldownMs,
+                globalCooldownMs = globalCooldownMs,
+                costSilverStore = costSilverStore
+            };
         }
     }
 
-    public class CommandOptionList
+    public class CommandOptionList : ICloneable
     {
-        public List<CommandOption> CommandOptions { get; set; }
+        public List<CommandOption> commandOptions { get; set; }
+
+        public object Clone()
+        {
+            return new CommandOptionList()
+            {
+                commandOptions = commandOptions
+            };
+        }
     }
 }

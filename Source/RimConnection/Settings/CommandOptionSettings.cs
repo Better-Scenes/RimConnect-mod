@@ -14,8 +14,8 @@ namespace RimConnection.Settings
             this.doCloseButton = true;
 
             // Create a copy of the global CommandOptionList
-            this.cachedCommandOptionList.CommandOptions = CommandOptionListController.commandOptionList.CommandOptions;
-            this.commandOptions = cachedCommandOptionList.CommandOptions;
+            this.cachedCommandOptionList = (CommandOptionList)CommandOptionListController.commandOptionList.Clone();
+            this.commandOptions = cachedCommandOptionList.commandOptions.Select(item => (CommandOption)item.Clone()).ToList();
         }
 
         public override void Close(bool doCloseSound = true)
@@ -26,7 +26,7 @@ namespace RimConnection.Settings
 
             CommandOptionList updatedCommandOptions = new CommandOptionList();
 
-            updatedCommandOptions.CommandOptions = commandOptions.Where(commandOption => commandOption.CostSilverStore != CommandOptionListController.commandOptionList.CommandOptions.Find(option => commandOption.ActionHash == option.ActionHash).CostSilverStore)
+            updatedCommandOptions.commandOptions = commandOptions.Where(commandOption => commandOption.costSilverStore != CommandOptionListController.commandOptionList.commandOptions.Where(option => commandOption.actionHash == option.actionHash).First().costSilverStore)
               .ToList();
 
             RimConnectAPI.PostUpdatedCommandOptions(updatedCommandOptions);
@@ -86,7 +86,7 @@ namespace RimConnection.Settings
 
             Rect rect1 = new Rect(num - 100f, 0f, 100f, rect.height);
             rect1 = rect1.Rounded();
-            int newPrice = commandOption.CostSilverStore;
+            int newPrice = commandOption.costSilverStore;
             string label = newPrice.ToString();
             rect1.xMax -= 5f;
             rect1.xMin += 5f;
@@ -103,13 +103,13 @@ namespace RimConnection.Settings
 
 
             Widgets.IntEntry(rect2, ref newPrice, ref label, 50);
-            commandOptions[index].CostSilverStore = newPrice;
+            commandOptions[index].costSilverStore = newPrice;
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Rect rect4 = new Rect(80f, 0f, rect.width - 80f, rect.height);
             Text.WordWrap = false;
             GUI.color = Color.white;
-            Widgets.Label(rect4, commandOption.Action.name.CapitalizeFirst());
+            Widgets.Label(rect4, commandOption.Action().name.CapitalizeFirst());
             Text.WordWrap = true;
 
             GenUI.ResetLabelAlign();
