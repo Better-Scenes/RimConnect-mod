@@ -7,11 +7,32 @@ using Verse;
 
 namespace RimConnection.Settings
 {
-    class ItemSettings : Window
+    class CommandOptionSettings : Window
     {
-        public ItemSettings()
+        public CommandOptionSettings()
         {
             this.doCloseButton = true;
+
+            // Create a copy of the global CommandOptionList
+            this.cachedCommandOptionList.CommandOptions = CommandOptionListController.commandOptionList.CommandOptions;
+            this.commandOptions = cachedCommandOptionList.CommandOptions;
+        }
+
+        public override void Close(bool doCloseSound = true)
+        {
+            base.Close(doCloseSound);
+
+            // Check each CommandOption if it's been modified, add modified options to new CommandOptionList object
+
+            CommandOptionList updatedCommandOptions = new CommandOptionList();
+
+            updatedCommandOptions.CommandOptions = commandOptions.Where(commandOption => commandOption.CostSilverStore != CommandOptionListController.commandOptionList.CommandOptions.Find(option => commandOption.ActionHash == option.ActionHash).CostSilverStore)
+              .ToList();
+
+            RimConnectAPI.PostUpdatedCommandOptions(updatedCommandOptions);
+
+            // Update the global CommandOptionList with the modified CommandOptionList
+            CommandOptionListController.commandOptionList = this.cachedCommandOptionList;
         }
 
         public override void DoWindowContents(Rect inRect)
@@ -20,7 +41,7 @@ namespace RimConnection.Settings
             Rect rect2 = new Rect(inRect.width - 590f, 0f, 590f, 58f);
             GameFont old = Text.Font;
             Text.Font = GameFont.Medium;
-            Widgets.Label(rect2, "Best Item Editor");
+            Widgets.Label(rect2, "<b>Loyalty Store</b> Settings");
             Text.Font = old;
 
             Rect mainRect = new Rect(0f, 58f, inRect.width, inRect.height - 58f - 38f - 20f);
@@ -32,19 +53,19 @@ namespace RimConnection.Settings
         private void FillMainRect(Rect mainRect)
         {
             Text.Font = GameFont.Small;
-            float height = 6f + (float)items.Count * 30f;
+            float height = 6f + (float)commandOptions.Count * 30f;
             Rect viewRect = new Rect(0f, 0f, mainRect.width - 16f, height);
             Widgets.BeginScrollView(mainRect, ref this.scrollPosition, viewRect, true);
             float num = 6f;
             float num2 = this.scrollPosition.y - 30f;
             float num3 = this.scrollPosition.y + mainRect.height;
             int index = 0;
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < commandOptions.Count; i++)
             {
                 if (num > num2 && num < num3)
                 {
                     Rect rect = new Rect(0f, num, viewRect.width, 30f);
-                    DrawItemRow(rect, items.ElementAt(i), index);
+                    DrawItemRow(rect, commandOptions[i], index);
                 }
                 num += 30f;
                 index++;
@@ -52,7 +73,7 @@ namespace RimConnection.Settings
             Widgets.EndScrollView();
         }
 
-        private void DrawItemRow(Rect rect, KeyValuePair<string, IAction> keyValuePair, int index)
+        private void DrawItemRow(Rect rect, CommandOption commandOption, int index)
         {
             if (index % 2 == 1)
             {
@@ -65,7 +86,7 @@ namespace RimConnection.Settings
 
             Rect rect1 = new Rect(num - 100f, 0f, 100f, rect.height);
             rect1 = rect1.Rounded();
-            int newPrice = items.ElementAt(index).Value.costSilverStore;
+            int newPrice = commandOption.CostSilverStore;
             string label = newPrice.ToString();
             rect1.xMax -= 5f;
             rect1.xMin += 5f;
@@ -82,15 +103,13 @@ namespace RimConnection.Settings
 
 
             Widgets.IntEntry(rect2, ref newPrice, ref label, 50);
-            items.ElementAt(index).Value.costSilverStore = newPrice;
-
-
+            commandOptions[index].CostSilverStore = newPrice;
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Rect rect4 = new Rect(80f, 0f, rect.width - 80f, rect.height);
             Text.WordWrap = false;
             GUI.color = Color.white;
-            Widgets.Label(rect4, items.ElementAt(index).Value.name);
+            Widgets.Label(rect4, commandOption.Action.name.CapitalizeFirst());
             Text.WordWrap = true;
 
             GenUI.ResetLabelAlign();
@@ -107,7 +126,8 @@ namespace RimConnection.Settings
 
         private Vector2 scrollPosition = Vector2.zero;
 
-        // Create a copy in case we make changes
-        static private Dictionary<string, IAction> items = new Dictionary<string, IAction>(ActionList.generateActionLookup());
+        private CommandOptionList cachedCommandOptionList = new CommandOptionList();
+
+        private List<CommandOption> commandOptions = new List<CommandOption>();
     }
 }

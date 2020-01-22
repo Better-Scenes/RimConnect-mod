@@ -88,9 +88,11 @@
     <Compile Include="Actions\Weather\FalloutAction.cs" />
     <Compile Include="Actions\Weather\WeatherList.cs" />
     <Compile Include="API\AuthMod.cs" />
+    <Compile Include="API\CommandOption.cs" />
     <Compile Include="API\ValidCommand.cs" />
     <Compile Include="IncidentWorkers\IncidentWoker_AlphaBeavers.cs" />
-    <Compile Include="Settings\ItemSettings.cs" />
+    <Compile Include="Settings\CommandOptionListController.cs" />
+    <Compile Include="Settings\CommandOptionSettings.cs" />
     <Compile Include="Managers\AlertManager.cs" />
     <Compile Include="ServerPoller.cs" />
     <Compile Include="Managers\PawnCreationManager.cs" />

@@ -51,8 +51,7 @@ namespace RimConnection
                        .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
                        .AddJsonBody(commandList);
 
-                var validCommandResponse = client.Execute<ValidCommand>(validCommandRequest);
-
+                var validCommandResponse = client.Execute<CommandOptionList>(validCommandRequest);
 
                 if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
@@ -62,9 +61,42 @@ namespace RimConnection
                 else
                 {
                     RimConnectSettings.initialiseSuccessful = true;
+
+                    CommandOptionList commandOptionList = new CommandOptionList();
+                    commandOptionList.CommandOptions = validCommandResponse.Data.CommandOptions;
+
+                    Settings.CommandOptionListController.commandOptionList = commandOptionList;
                 }
             }
             catch(Exception e)
+            {
+                Log.Warning(e.Message);
+            }
+        }
+
+        public static void PostUpdatedCommandOptions(CommandOptionList updatedCommandOptionList)
+        {
+            // Send Updated CommandOption Settings
+            try
+            {
+                // Go and push all the valid commands to the server
+                var commandOptionRequest = new RestRequest("command/options", Method.POST);
+                commandOptionRequest.AddHeader("Content-Type", "application/json")
+                       .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
+                       .AddJsonBody(updatedCommandOptionList);
+
+                var validCommandResponse = client.Execute<CommandOptionList>(commandOptionRequest);
+
+                if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    Log.Warning("Failed to update command options to server");
+                }
+                else
+                {
+                    Log.Message("Updated command options to server");
+                }
+            }
+            catch (Exception e)
             {
                 Log.Warning(e.Message);
             }

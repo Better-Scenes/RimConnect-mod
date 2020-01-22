@@ -10,8 +10,8 @@ namespace RimConnection
     {
         public static string[] validCommands;
 
-        public static string BASE_URL = "http://rimconnect-backend.herokuapp.com/";
-        //public static string BASE_URL = "http://localhost:8080/";
+        //public static string BASE_URL = "http://rimconnect-backend.herokuapp.com/";
+        public static string BASE_URL = "http://localhost:8080/";
 
         public static string secret = "";
         public static string token = "";
@@ -83,9 +83,9 @@ namespace RimConnection
             settings.NewColumn();
             settings.ColumnWidth = width * 0.25f;
 
-            if (settings.ButtonText("Item Store"))
+            if (settings.ButtonText("Loyalty Store"))
             {
-                Window itemSettings = new ItemSettings();
+                Window itemSettings = new CommandOptionSettings();
                 Find.WindowStack.TryRemove(itemSettings.GetType());
                 Find.WindowStack.Add(itemSettings);
             }
