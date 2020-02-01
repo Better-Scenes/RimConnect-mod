@@ -15,8 +15,11 @@ namespace RimConnection.Settings
             this.doCloseButton = true;
 
             // Create a copy of the global CommandOptionList
+            Messages.Message(new Message("cloning command option list", MessageTypeDefOf.PositiveEvent));
             this.cachedCommandOptionList = (CommandOptionList)CommandOptionListController.commandOptionList.Clone();
+            Messages.Message(new Message("cloning command options", MessageTypeDefOf.PositiveEvent));
             this.commandOptions = cachedCommandOptionList.commandOptions.Select(item => (CommandOption)item.Clone()).ToList();
+            Messages.Message(new Message("filtering rows", MessageTypeDefOf.PositiveEvent));
             this.filteredRows = FilteredRows();
         }
 

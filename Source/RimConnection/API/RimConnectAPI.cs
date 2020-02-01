@@ -69,6 +69,7 @@ namespace RimConnection
                     commandOptionList.commandOptions = validCommandResponse.Data.commandOptions;
 
                     Settings.CommandOptionListController.commandOptionList = commandOptionList;
+                    Log.Message("Provided valid commands to the server");
                 }
             }
             catch(Exception e)

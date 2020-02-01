@@ -83,7 +83,7 @@ namespace RimConnection
             settings.NewColumn();
             settings.ColumnWidth = width * 0.25f;
 
-            if (settings.ButtonText("Loyalty Store"))
+            if (CommandOptionListController.commandOptionList != null && settings.ButtonText("Loyalty Store"))
             {
                 Window itemSettings = new CommandOptionSettings();
                 Find.WindowStack.TryRemove(itemSettings.GetType());

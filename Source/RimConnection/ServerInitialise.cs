@@ -18,6 +18,7 @@ namespace RimConnection
         {
             try
             {
+                Log.Message("Initialising Server");
                 RimConnectSettings.token = RimConnectAPI.AuthSecret(RimConnectSettings.secret);
                 RimConnectAPI.PostValidCommands(ActionList.ActionListToApi());
 
