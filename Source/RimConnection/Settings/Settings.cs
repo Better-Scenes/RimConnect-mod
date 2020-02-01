@@ -38,11 +38,11 @@ namespace RimConnection
 
             if (initialiseSuccessful)
             {
-                settings.Label("Connected");
+                settings.Label("<color=green>Connected</color>");
             }
             else
             {
-                settings.Label("Not Connected");
+                settings.Label("<color=red>Not Connected</color>");
             }
 
             secret = settings.TextEntryLabeled("Secret: ", secret);
@@ -56,18 +56,18 @@ namespace RimConnection
                     var success = ServerInitialise.Init();
                     if (success)
                     {
-                        notification = "Establishing Connection";
+                        notification = "<color=yellow>Reconnecting to RimConnect Services</color>";
                     }
                     else
                     {
-                        notification = "Failed to connect! Check your Debug Log";
+                        notification = "<color=red>Failed to connect! Check your Debug Log</color>";
                     }
                 }
                 else
                 {
-                    notification = "Invalid Secret";
+                    notification = "<color=red>Invalid Secret</color>";
                 }
-                notificationFrames = 360;
+                notificationFrames = 120;
             }
 
             if (notificationFrames > 0 && notification != "")

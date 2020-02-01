@@ -11,7 +11,7 @@ namespace RimConnection
     {
         private string defName;
         private string defLabel;
-        private ThingDef thingDef;
+        public ThingDef thingDef;
 
         public ItemAction(ThingDef itemDef, string category = "Item")
         {

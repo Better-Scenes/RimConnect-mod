@@ -36,8 +36,11 @@ namespace RimConnection
                 }
                 Log.Warning("Failed to connect. Is your secret correct?");
             }
+            else
+            {
+                Log.Message("Successfully authenticated with server!");
+            }
 
-            Log.Message("Successfully authenticated with server!");
             return authModResponse.Data.token;
         }
 
