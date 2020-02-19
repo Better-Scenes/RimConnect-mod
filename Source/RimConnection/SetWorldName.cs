@@ -11,12 +11,14 @@ namespace RimConnection
 
         public SetWorldName()
         {
-            Log.Message($"World name is {Find.World.info.name}");
         }
 
         public override void FinalizeInit()
         {
-            Log.Message($"World name is {Find.World.info.name}");
+            base.FinalizeInit();
+            string worldName = Find.World.info.name;
+            Log.Message($"World name is {worldName}");
+            RimConnectAPI.UpdateWorld(worldName);
         }
     }
 }

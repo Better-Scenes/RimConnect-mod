@@ -125,6 +125,7 @@ namespace RimConnection
 
         }
 
+        // This needs to be updated to specify what command should be deleted instead of a number
         private static void DeleteCommands(int number)
         {
             if (number <= 0)
@@ -139,6 +140,21 @@ namespace RimConnection
                            .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
                            .AddParameter("toDelete", number);
 
+                var response = client.Execute(baseRequest);
+            } catch
+            {
+                throw;
+            }
+        }
+
+        public static void UpdateWorld(string world)
+        {
+            var baseRequest = new RestRequest("mod/world", Method.POST);
+            baseRequest.AddHeader("Content-Type", "application/json")
+                           .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
+                           .AddJsonBody(new PostWorld { world = world});
+            try
+            {
                 var response = client.Execute(baseRequest);
             } catch
             {
