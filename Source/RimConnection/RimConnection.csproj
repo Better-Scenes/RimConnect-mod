@@ -121,6 +121,7 @@
     <Compile Include="Actions\Action.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
+    <Compile Include="Ticker.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
