@@ -91,10 +91,11 @@ namespace RimConnection
                 var baseRequest = new RestRequest("command/list", Method.DELETE);
                 baseRequest.AddHeader("Content-Type", "application/json")
                            .AddHeader("Authorization", $"Bearer {Settings.token}")
-                           .AddParameter("toDelete", number);
+                           .AddQueryParameter("toDelete", number.ToString(), false);
 
                 var response = client.Execute(baseRequest);
-            } catch
+            }
+            catch
             {
                 throw;
             }
