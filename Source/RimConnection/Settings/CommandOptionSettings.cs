@@ -15,12 +15,12 @@ namespace RimConnection.Settings
             this.doCloseButton = true;
 
             // Create a copy of the global CommandOptionList
-            Messages.Message(new Message("cloning command option list", MessageTypeDefOf.PositiveEvent));
             this.cachedCommandOptionList = (CommandOptionList)CommandOptionListController.commandOptionList.Clone();
-            Messages.Message(new Message("cloning command options", MessageTypeDefOf.PositiveEvent));
             this.commandOptions = cachedCommandOptionList.commandOptions.Select(item => (CommandOption)item.Clone()).ToList();
-            Messages.Message(new Message("filtering rows", MessageTypeDefOf.PositiveEvent));
             this.filteredRows = FilteredRows();
+
+            // Sort the actions
+            this.SortFilteredRows(true);
         }
 
         public override void Close(bool doCloseSound = true)
@@ -40,6 +40,11 @@ namespace RimConnection.Settings
                 commandOption.globalCooldownMs != CommandOptionListController.commandOptionList.commandOptions.Where(option => commandOption.actionHash == option.actionHash).First().globalCooldownMs
               )
               .ToList();
+
+            if (updatedCommandOptions.commandOptions.Count <= 0)
+            {
+                return;
+            }
 
             RimConnectAPI.PostUpdatedCommandOptions(updatedCommandOptions);
 
@@ -216,11 +221,11 @@ namespace RimConnection.Settings
             Rect localCooldownLabel = new Rect(silverCostLabel);
             localCooldownLabel.x += localCooldownLabel.width + 75f;
             localCooldownLabel.width = 200f;
-            Widgets.Label(localCooldownLabel, "<b>Local Cooldown(ms)</b>");
+            Widgets.Label(localCooldownLabel, "<b>Local Cooldown(s)</b>");
 
             Rect globalCooldownLabel = new Rect(localCooldownLabel);
             globalCooldownLabel.x += 175f;
-            Widgets.Label(globalCooldownLabel, "<b>Global Cooldown(ms)</b>");
+            Widgets.Label(globalCooldownLabel, "<b>Global Cooldown(s)</b>");
         }
 
         private void FillMainRect(Rect mainRect)
@@ -362,10 +367,10 @@ namespace RimConnection.Settings
             int newPrice = commandOption.costSilverStore;
             string priceLabel = newPrice.ToString();
 
-            int newLocalCooldown = commandOption.localCooldownMs;
+            int newLocalCooldown = commandOption.localCooldownMs /  1000;
             string localCooldownLabel = newLocalCooldown.ToString();
 
-            int newGlobalCooldown = commandOption.globalCooldownMs;
+            int newGlobalCooldown = commandOption.globalCooldownMs / 1000;
             string globalCooldownLabel = newGlobalCooldown.ToString();
 
             // Silver Cost
@@ -377,14 +382,14 @@ namespace RimConnection.Settings
             rect2.x += rect2.width + 75f;
 
             Widgets.TextFieldNumeric(rect2, ref newLocalCooldown, ref localCooldownLabel, 0f);
-            filteredRows[index].localCooldownMs = newLocalCooldown;
+            filteredRows[index].localCooldownMs = newLocalCooldown * 1000;
 
             // Global Cooldown
 
             rect2.x += rect2.width + 100f;
 
             Widgets.TextFieldNumeric(rect2, ref newGlobalCooldown, ref globalCooldownLabel, 0f);
-            filteredRows[index].globalCooldownMs = newGlobalCooldown;
+            filteredRows[index].globalCooldownMs = newGlobalCooldown * 1000;
 
             // Icons for ItemDefs
             Rect rect3 = new Rect(0f, 0f, 27f, 27f);
@@ -428,18 +433,19 @@ namespace RimConnection.Settings
         enum ItemCategory
             {
                 All = 0,
-                Event = 1,
-                Colonists = 2,
-                Apparel = 3,
-                MeleeWeapons = 4,
-                RangedWeapons = 5,
-                Drugs = 6,
-                Meat = 7,
-                Leather = 8,
-                Consumables = 9,
-                Metal = 10,
-                Animal = 11,
-                Furniture = 12
+                Item = 1,
+                Event = 2,
+                Colonists = 3,
+                Apparel = 4,
+                MeleeWeapons = 5,
+                RangedWeapons = 6,
+                Drugs = 7,
+                Meat = 8,
+                Leather = 9,
+                Consumables = 10,
+                Metal = 12,
+                Animal = 13,
+                Furniture = 14
             };
 
         enum SortMethod
@@ -462,7 +468,7 @@ namespace RimConnection.Settings
 
         static SortMethod sortMethod = SortMethod.Name;
 
-        static SortOrder sortOrder = SortOrder.Descending;
+        static SortOrder sortOrder = SortOrder.Ascending;
 
         static string lastSearchQuery = "";
 

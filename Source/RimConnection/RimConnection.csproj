@@ -122,6 +122,7 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
     <Compile Include="Ticker.cs" />
+    <Compile Include="Windows\BugReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

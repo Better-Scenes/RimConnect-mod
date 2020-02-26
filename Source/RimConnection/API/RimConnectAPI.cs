@@ -2,6 +2,7 @@
 using Verse;
 using RestSharp;
 using System;
+using RimConnection.Windows;
 
 namespace RimConnection
 {
@@ -32,8 +33,9 @@ namespace RimConnection
                 RimConnectSettings.initialiseSuccessful = false;
                 if(BASE_URL.Contains("localhost"))
                 {
-                    throw new System.Exception("The developer is an idiot, and you need to tell him that he left localhost in the settings");
+                    Log.Warning("The developer is an idiot, and you need to tell him that he left localhost in the settings");
                 }
+
                 Log.Warning("Failed to connect. Is your secret correct?");
             }
             else
@@ -59,7 +61,7 @@ namespace RimConnection
                 if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     RimConnectSettings.initialiseSuccessful = false;
-                    Log.Warning("Failed to provide valid commands to server");
+                    BugReport.CreateBugReport("Failed to provide valid commands to the server");
                 }
                 else
                 {
@@ -69,12 +71,13 @@ namespace RimConnection
                     commandOptionList.commandOptions = validCommandResponse.Data.commandOptions;
 
                     Settings.CommandOptionListController.commandOptionList = commandOptionList;
-                    Log.Message("Provided valid commands to the server");
+                    Log.Message($"Provided a total of {commandOptionList.commandOptions.Count} valid commands to the server");
                 }
             }
             catch(Exception e)
             {
                 Log.Warning(e.Message);
+                BugReport.CreateBugReport($"Failed to provide valid commands to server. {e.Message}");
             }
         }
 
@@ -94,6 +97,7 @@ namespace RimConnection
                 if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     Log.Warning("Failed to update command options to server");
+                    BugReport.CreateBugReport($"Failed to update command options to server. {validCommandResponse.StatusCode}");
                 }
                 else
                 {
@@ -103,6 +107,7 @@ namespace RimConnection
             catch (Exception e)
             {
                 Log.Warning(e.Message);
+                BugReport.CreateBugReport($"Failed to update command options to server. {e.Message}");
             }
         }
 
@@ -119,8 +124,9 @@ namespace RimConnection
 
                 DeleteCommands(commands.Count);
                 return commands;
-            } catch
+            } catch(Exception e)
             {
+                BugReport.CreateBugReport($"Failed to get commands from server. {e.Message}");
                 throw;
             }
 
@@ -133,17 +139,19 @@ namespace RimConnection
             {
                 return;
             }
+
             try
             {
 
                 var baseRequest = new RestRequest("command/list", Method.DELETE);
                 baseRequest.AddHeader("Content-Type", "application/json")
                            .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
-                           .AddParameter("toDelete", number);
+                           .AddQueryParameter("toDelete", number.ToString(), false);
 
                 var response = client.Execute(baseRequest);
-            } catch
+            } catch (Exception e)
             {
+                BugReport.CreateBugReport($"Failed to delete commands from server. {e.Message}");
                 throw;
             }
         }
@@ -157,8 +165,9 @@ namespace RimConnection
             try
             {
                 var response = client.Execute(baseRequest);
-            } catch
+            } catch(Exception e)
             {
+                BugReport.CreateBugReport($"Failed to provide world info to server. {e.Message}");
                 throw;
             }
         }

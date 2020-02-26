@@ -20,7 +20,7 @@ namespace RimConnection
 
         public override string SettingsCategory()
         {
-            return "RimConnection";
+            return "RimConnect";
         }
     }
 }
