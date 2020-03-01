@@ -121,6 +121,7 @@
     <Compile Include="Actions\Action.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
+    <Compile Include="SetWorldName.cs" />
     <Compile Include="Ticker.cs" />
     <Compile Include="Windows\BugReport.cs" />
   </ItemGroup>
