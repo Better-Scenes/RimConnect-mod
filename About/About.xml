@@ -6,6 +6,7 @@
   <supportedVersions>
     <li>1.0</li>
   </supportedVersions>
+  <packageId>betterscenes.rimconnect</packageId>
   <description>Twitch integration with RimConnect extension 
   
 === ABOUT ===
