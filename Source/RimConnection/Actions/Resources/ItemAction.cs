@@ -25,7 +25,7 @@ namespace RimConnection
             thingDef = itemDef;
             localCooldownMs = 30000;
             globalCooldownMs = 0;
-            costSilverStore = (int)thingDef.BaseMarketValue;
+            costSilverStore = (int)Math.Ceiling(thingDef.BaseMarketValue);
             bitStoreSKU = "";
     }
 
