@@ -12,7 +12,7 @@ namespace RimConnection
             shouldShowAmount = true;
             category = "Colonists";
             prefix = "Spawn %amount%";
-            costSilverStore = 8000;
+            costSilverStore = 4000;
         }
 
         public override void Execute(int amount)
