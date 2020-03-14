@@ -5,22 +5,22 @@ namespace RimConnection
 {
     public class RimConnection: Mod
     {
-        Settings settings;
+        RimConnectSettings settings;
 
 
         public RimConnection(ModContentPack content) : base(content)
         {
-            this.settings = GetSettings<Settings>();
+            this.settings = GetSettings<RimConnectSettings>();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Settings.DoSettingsWindowContents(inRect);
+            this.settings.DoWindowContents(inRect);
         }
 
         public override string SettingsCategory()
         {
-            return "RimConnection";
+            return "RimConnect";
         }
     }
 }

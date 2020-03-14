@@ -11,7 +11,7 @@ namespace RimConnection
     {
         private string defName;
         private string defLabel;
-        private ThingDef thingDef;
+        public ThingDef thingDef;
 
         public ItemAction(ThingDef itemDef, string category = "Item")
         {
@@ -25,7 +25,7 @@ namespace RimConnection
             thingDef = itemDef;
             localCooldownMs = 30000;
             globalCooldownMs = 0;
-            costSilverStore = (int)thingDef.BaseMarketValue;
+            costSilverStore = (int)Math.Ceiling(thingDef.BaseMarketValue);
             bitStoreSKU = "";
     }
 

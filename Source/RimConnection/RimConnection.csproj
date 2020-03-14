@@ -104,8 +104,12 @@
     <Compile Include="Actions\Weather\FalloutAction.cs" />
     <Compile Include="Actions\Weather\WeatherList.cs" />
     <Compile Include="API\AuthMod.cs" />
+    <Compile Include="API\CommandOption.cs" />
+    <Compile Include="API\PostWorld.cs" />
     <Compile Include="API\ValidCommand.cs" />
     <Compile Include="IncidentWorkers\IncidentWoker_AlphaBeavers.cs" />
+    <Compile Include="Settings\CommandOptionListController.cs" />
+    <Compile Include="Settings\CommandOptionSettings.cs" />
     <Compile Include="Managers\AlertManager.cs" />
     <Compile Include="ServerPoller.cs" />
     <Compile Include="Managers\PawnCreationManager.cs" />
@@ -117,6 +121,9 @@
     <Compile Include="Actions\Action.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
+    <Compile Include="SetWorldName.cs" />
+    <Compile Include="Ticker.cs" />
+    <Compile Include="Windows\BugReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
