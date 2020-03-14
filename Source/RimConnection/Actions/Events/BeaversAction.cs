@@ -11,7 +11,6 @@ namespace RimConnection
             description = "Beavers might be cute, but they'll eat all your stuff";
             category = "Event";
             prefix = "Trigger";
-            costSilverStore = -1;
         }
 
         public override void Execute(int amount)

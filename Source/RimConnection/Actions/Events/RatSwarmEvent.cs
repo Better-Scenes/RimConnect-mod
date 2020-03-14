@@ -16,7 +16,6 @@ namespace RimConnection
             description = "Rats are smarter than you might think, and these ones are pissed";
             category = "Event";
             prefix = "Trigger";
-            costSilverStore = -1;
         }
 
         public override void Execute(int amount)
