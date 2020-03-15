@@ -11,7 +11,6 @@ namespace RimConnection
             description = "Looks like they want to stick around";
             category = "Event";
             prefix = "Trigger";
-            costSilverStore = -1;
         }
 
         public override void Execute(int amount)

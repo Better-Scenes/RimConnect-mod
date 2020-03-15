@@ -16,7 +16,7 @@ namespace RimConnection
             description = "Why doesn't everyone just like, chill out";
             category = "Event";
             prefix = "Trigger";
-            costSilverStore = 2000;
+            costSilverStore = 0;
         }
 
         public override void Execute(int amount)

@@ -16,7 +16,6 @@ namespace RimConnection
             description = "They were inside the house the whole time!";
             category = "Event";
             prefix = "Trigger";
-            costSilverStore = -1;
         }
 
         public override void Execute(int amount)
