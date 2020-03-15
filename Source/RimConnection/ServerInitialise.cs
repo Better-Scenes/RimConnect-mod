@@ -20,16 +20,21 @@ namespace RimConnection
             try
             {
                 Log.Message("Initialising Server");
-                RimConnectSettings.token = RimConnectAPI.AuthSecret(RimConnectSettings.secret);
+
+                var authed = RimConnectAPI.AuthSecret(RimConnectSettings.secret, out string Token);
+                if (!authed)
+                {
+                    BugReport.CreateBugReport("Unable to Connect to RimConnect server.");
+                    return false;
+                }
+
+                RimConnectSettings.token = Token;
                 RimConnectAPI.PostValidCommands(ActionList.ActionListToApi());
 
                 return true;
             } catch (Exception err)
             {
                 Log.Error(err.ToString());
-
-                BugReport.CreateBugReport("Unable to Connect to RimConnect server.");
-
 
                 return false;
             }

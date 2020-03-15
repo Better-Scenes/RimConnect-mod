@@ -18,7 +18,7 @@ namespace RimConnection
             client = new RestClient(BASE_URL);
         }
 
-        public static string AuthSecret(string secret)
+        public static bool AuthSecret(string secret, out string response)
         {
             // Get a new JWT from the server based on the secret
             var authModRequest = new RestRequest("auth/mod", Method.POST);
@@ -34,16 +34,18 @@ namespace RimConnection
                 if(BASE_URL.Contains("localhost"))
                 {
                     Log.Warning("The developer is an idiot, and you need to tell him that he left localhost in the settings");
+                    response = null;
+                    return false;
                 }
 
                 Log.Warning("Failed to connect. Is your secret correct?");
-            }
-            else
-            {
-                Log.Message("Successfully authenticated with server!");
+                response = null;
+                return false;
             }
 
-            return authModResponse.Data.token;
+            Log.Message("Successfully authenticated with server!");
+            response = authModResponse.Data.token;
+            return true;
         }
 
         public static void PostValidCommands(ValidCommandList commandList)
