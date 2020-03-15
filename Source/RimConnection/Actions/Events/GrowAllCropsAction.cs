@@ -10,7 +10,7 @@ namespace RimConnection
         public GrowAllCropsAction()
         {
             name = "Grow all crops";
-            description = "The greek god Demeter was just passing by";
+            description = "The Greek goddess Demeter was just passing by";
             category = "Event";
             prefix = "Trigger";
         }
