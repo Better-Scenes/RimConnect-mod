@@ -6,7 +6,6 @@ using System.Text;
 
 using Verse;
 using RimWorld;
-using RimConnection.Windows;
 
 namespace RimConnection
 {
@@ -24,7 +23,7 @@ namespace RimConnection
                 var authed = RimConnectAPI.AuthSecret(RimConnectSettings.secret, out string Token);
                 if (!authed)
                 {
-                    BugReport.CreateBugReport("Unable to Connect to RimConnect server.");
+                    Log.Error("Unable to Connect to RimConnect server.");
                     return false;
                 }
 

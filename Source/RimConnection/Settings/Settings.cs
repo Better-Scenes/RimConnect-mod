@@ -39,19 +39,11 @@ namespace RimConnection
             Widgets.Label(label, "Status:");
 
             Rect status = new Rect(70f, 80f, 100f, 32f);
+            Rect connectButton = new Rect(0f, 105f, 100f, 32f);
             if (initialiseSuccessful)
             {
                 Widgets.Label(status, "<color=green>Connected!</color>");
-            }
-            else
-            {
-                Widgets.Label(status, "<color=red>Not Connected!</color>");
-            }
 
-            Rect connectButton = new Rect(0f, 105f, 100f, 32f);
-
-            if (!initialiseSuccessful)
-            {
                 if (Widgets.ButtonText(connectButton, "Connect"))
                 {
                     ServerInitialise.Init();
@@ -59,6 +51,8 @@ namespace RimConnection
             }
             else
             {
+                Widgets.Label(status, "<color=red>Not Connected!</color>");
+
                 if (Widgets.ButtonText(connectButton, "Reconnect"))
                 {
                     ServerInitialise.Init();
@@ -116,7 +110,7 @@ namespace RimConnection
             loyaltyStore.height = 28f;
             loyaltyStore.width = loyaltyStore.width / 3f;
 
-            if (Widgets.ButtonText(loyaltyStore, "Item Settings"))
+            if (CommandOptionListController.commandOptionList != null && Widgets.ButtonText(loyaltyStore, "Item Settings"))
             {
                 CommandOptionSettings window = new CommandOptionSettings();
                 Find.WindowStack.TryRemove(window.GetType());
