@@ -10,7 +10,6 @@ namespace RimConnection
     {
         public static string[] validCommands;
 
-        //public static string BASE_URL = "https://rimconnect-dev.herokuapp.com/";
         public static string BASE_URL = "http://rimconnect-backend.herokuapp.com/";
         //public static string BASE_URL = "http://localhost:8080/";
 
@@ -44,7 +43,8 @@ namespace RimConnection
             {
                 Widgets.Label(status, "<color=green>Connected!</color>");
 
-                if (Widgets.ButtonText(connectButton, "Connect"))
+
+                if (Widgets.ButtonText(connectButton, "Reconnect"))
                 {
                     ServerInitialise.Init();
                 }
@@ -53,7 +53,7 @@ namespace RimConnection
             {
                 Widgets.Label(status, "<color=red>Not Connected!</color>");
 
-                if (Widgets.ButtonText(connectButton, "Reconnect"))
+                if (Widgets.ButtonText(connectButton, "Connect"))
                 {
                     ServerInitialise.Init();
                 }
