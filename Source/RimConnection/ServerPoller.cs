@@ -40,7 +40,6 @@ namespace RimConnection
                 if (timeCounterSeconds > waitTimeSeconds)
                 {
                     timeCounterSeconds = 0.0f;
-                    Log.Message("Running Server Checker");
                     serverChecker();
                 }
 

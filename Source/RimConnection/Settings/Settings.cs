@@ -10,13 +10,14 @@ namespace RimConnection
     {
         public static string[] validCommands;
 
-        //public static string BASE_URL = "https://rimconnect-dev.herokuapp.com/";
         public static string BASE_URL = "http://rimconnect-backend.herokuapp.com/";
         //public static string BASE_URL = "http://localhost:8080/";
 
         public static string secret = "";
         public static string token = "";
         public static bool initialiseSuccessful = false;
+
+        bool showSecret = false;
 
         public override void ExposeData()
         {
@@ -26,72 +27,97 @@ namespace RimConnection
 
         }
 
-        static int notificationFrames = 0;
-        static string notification = "";
-
         public void DoWindowContents(Rect rect)
         {
-            Listing_Standard settings = new Listing_Standard();
-            settings.Begin(rect);
+            Rect accountLink = new Rect(0f, 32f, rect.width, 64f);
+            Widgets.Label(accountLink, "<size=32>Account Link</size>");
 
-            float width = rect.width;
-            settings.ColumnWidth = width * 0.7f;
+            Widgets.DrawLineHorizontal(0f, 70f, rect.width);
 
+            Rect label = new Rect(0f, 80f, 100f, 32f);
+            Widgets.Label(label, "Status:");
+
+            Rect status = new Rect(70f, 80f, 100f, 32f);
+            Rect connectButton = new Rect(0f, 105f, 100f, 32f);
             if (initialiseSuccessful)
             {
-                settings.Label("<color=green>Connected</color>");
+                Widgets.Label(status, "<color=green>Connected!</color>");
+
+
+                if (Widgets.ButtonText(connectButton, "Reconnect"))
+                {
+                    ServerInitialise.Init();
+                }
             }
             else
             {
-                settings.Label("<color=red>Not Connected</color>");
-            }
+                Widgets.Label(status, "<color=red>Not Connected!</color>");
 
-            secret = settings.TextEntryLabeled("Secret: ", secret);
-
-            if (secret != "" && settings.ButtonText("Connect"))
-            {
-                var regexItem = new Regex("^[a-zA-Z0-9_]*$");
-
-                if (regexItem.IsMatch(secret))
+                if (Widgets.ButtonText(connectButton, "Connect"))
                 {
-                    var success = ServerInitialise.Init();
-                    if (success)
-                    {
-                        notification = "<color=yellow>Reconnecting to RimConnect Services</color>";
-                    }
-                    else
-                    {
-                        notification = "<color=red>Failed to connect! Check your Debug Log</color>";
-                    }
+                    ServerInitialise.Init();
                 }
-                else
+            }
+
+            label.y = 170f;
+
+            Text.Anchor = TextAnchor.MiddleLeft;
+
+            Widgets.Label(label, "<b>Secret</b>: ");
+
+            Rect secretInput = new Rect(70f, 170f, 200f, 32f);
+            Rect hideSecretButton = new Rect(280f, 170f, 60f, 32f);
+
+            if (showSecret)
+            {
+                secret = Widgets.TextField(secretInput, secret);
+                
+                if (Widgets.ButtonText(hideSecretButton, "Hide"))
                 {
-                    notification = "<color=red>Invalid Secret</color>";
+                    showSecret = false;
                 }
-                notificationFrames = 120;
             }
-
-            if (notificationFrames > 0 && notification != "")
+            else
             {
-                settings.Label(notification);
-                notificationFrames--;
+                Widgets.Label(secretInput, new string('*', secret.Length));
+
+                if (Widgets.ButtonText(hideSecretButton, "Show"))
+                {
+                    showSecret = true;
+                }
             }
-            else if (notificationFrames == 0)
+
+            label.y = 200f;
+            label.width = 300f;
+
+            Widgets.Label(label, "<color=red>Warning: Do not show your secret on stream!</color>");
+
+            Rect pasteButton = new Rect(0f, 225f, 200f, 32f);
+
+            if (Widgets.ButtonText(pasteButton, "Paste Secret from Clipboard"))
             {
-                notification = "";
+                secret = GUIUtility.systemCopyBuffer;
             }
 
-            settings.NewColumn();
-            settings.ColumnWidth = width * 0.25f;
 
-            if (CommandOptionListController.commandOptionList != null && settings.ButtonText("Loyalty Store"))
+            Rect loyaltyStore = new Rect(0f, 300f, rect.width, 64f);
+
+            Widgets.Label(loyaltyStore, "<size=32>Loyalty Store</size>");
+
+            Widgets.DrawLineHorizontal(0f, loyaltyStore.y + loyaltyStore.height, rect.width);
+
+            loyaltyStore.y += loyaltyStore.height * 1.2f;
+            loyaltyStore.height = 28f;
+            loyaltyStore.width = loyaltyStore.width / 3f;
+
+            if (CommandOptionListController.commandOptionList != null && Widgets.ButtonText(loyaltyStore, "Item Settings"))
             {
-                Window itemSettings = new CommandOptionSettings();
-                Find.WindowStack.TryRemove(itemSettings.GetType());
-                Find.WindowStack.Add(itemSettings);
+                CommandOptionSettings window = new CommandOptionSettings();
+                Find.WindowStack.TryRemove(window.GetType());
+                Find.WindowStack.Add(window);
             }
 
-            settings.End();
+            Text.Anchor = TextAnchor.UpperLeft;
         }
     }
 }

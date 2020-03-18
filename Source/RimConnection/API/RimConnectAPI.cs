@@ -2,7 +2,6 @@
 using Verse;
 using RestSharp;
 using System;
-using RimConnection.Windows;
 
 namespace RimConnection
 {
@@ -18,7 +17,7 @@ namespace RimConnection
             client = new RestClient(BASE_URL);
         }
 
-        public static string AuthSecret(string secret)
+        public static bool AuthSecret(string secret, out string response)
         {
             // Get a new JWT from the server based on the secret
             var authModRequest = new RestRequest("auth/mod", Method.POST);
@@ -34,16 +33,18 @@ namespace RimConnection
                 if(BASE_URL.Contains("localhost"))
                 {
                     Log.Warning("The developer is an idiot, and you need to tell him that he left localhost in the settings");
+                    response = null;
+                    return false;
                 }
 
                 Log.Warning("Failed to connect. Is your secret correct?");
-            }
-            else
-            {
-                Log.Message("Successfully authenticated with server!");
+                response = null;
+                return false;
             }
 
-            return authModResponse.Data.token;
+            Log.Message("Successfully authenticated with server!");
+            response = authModResponse.Data.token;
+            return true;
         }
 
         public static void PostValidCommands(ValidCommandList commandList)
@@ -61,7 +62,7 @@ namespace RimConnection
                 if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     RimConnectSettings.initialiseSuccessful = false;
-                    BugReport.CreateBugReport("Failed to provide valid commands to the server");
+                    Log.Error("Failed to provide valid commands to the server");
                 }
                 else
                 {
@@ -76,8 +77,7 @@ namespace RimConnection
             }
             catch(Exception e)
             {
-                Log.Warning(e.Message);
-                BugReport.CreateBugReport($"Failed to provide valid commands to server. {e.Message}");
+                Log.Error($"Failed to provide valid commands to server. {e.Message}");
             }
         }
 
@@ -96,8 +96,7 @@ namespace RimConnection
 
                 if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
-                    Log.Warning("Failed to update command options to server");
-                    BugReport.CreateBugReport($"Failed to update command options to server. {validCommandResponse.StatusCode}");
+                    Log.Error($"Failed to update command options to server. {validCommandResponse.StatusCode}");
                 }
                 else
                 {
@@ -106,8 +105,7 @@ namespace RimConnection
             }
             catch (Exception e)
             {
-                Log.Warning(e.Message);
-                BugReport.CreateBugReport($"Failed to update command options to server. {e.Message}");
+                Log.Error($"Failed to update command options to server. {e.Message}");
             }
         }
 
@@ -120,13 +118,15 @@ namespace RimConnection
             try
             {
                 var response = client.Execute<CommandList>(baseRequest);
+                if (response == null) throw new NullReferenceException("Response is null");
                 var commands = response.Data.commands;
+               
 
                 DeleteCommands(commands.Count);
                 return commands;
             } catch(Exception e)
             {
-                BugReport.CreateBugReport($"Failed to get commands from server. {e.Message}");
+                Log.Error($"Failed to get commands from server. {e.Message}");
                 throw;
             }
 
@@ -151,7 +151,7 @@ namespace RimConnection
                 var response = client.Execute(baseRequest);
             } catch (Exception e)
             {
-                BugReport.CreateBugReport($"Failed to delete commands from server. {e.Message}");
+                Log.Error($"Failed to delete commands from server. {e.Message}");
                 throw;
             }
         }
@@ -167,7 +167,7 @@ namespace RimConnection
                 var response = client.Execute(baseRequest);
             } catch(Exception e)
             {
-                BugReport.CreateBugReport($"Failed to provide world info to server. {e.Message}");
+                Log.Error($"Failed to provide world info to server. {e.Message}");
                 throw;
             }
         }
