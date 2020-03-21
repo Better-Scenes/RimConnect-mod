@@ -6,6 +6,7 @@ namespace RimConnection
         public static List<IAction> eventList = new List<IAction>
         {
             new AllRangedWeaponsToBowsAction(),
+            new AnimalMetamorphosisAction(),
             new AnimalSelfTameAction(),
             new BeaversAction(),
             new BionicPlagueAction(),

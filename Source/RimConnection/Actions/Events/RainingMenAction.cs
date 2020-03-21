@@ -21,7 +21,7 @@ namespace RimConnection
 
         public override void Execute(int amount)
         {
-            var amountOfDrops = 15;
+            var amountOfDrops = 20;
             var currentMap = Find.CurrentMap;
 
             var pawnGenerationRequest = new PawnGenerationRequest(PawnKindDefOf.Colonist, allowDead: true);
@@ -29,7 +29,7 @@ namespace RimConnection
             {
                 var newPawn = PawnGenerator.GeneratePawn(pawnGenerationRequest);
 
-                IntVec3 dropVector = DropCellFinder.RandomDropSpot(currentMap);
+                IntVec3 dropVector = DropCellFinder.TradeDropSpot(currentMap);
                 TradeUtility.SpawnDropPod(dropVector, currentMap, newPawn);
 
                 HealthUtility.DamageUntilDead(newPawn);

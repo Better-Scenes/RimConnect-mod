@@ -13,33 +13,43 @@ namespace RimConnection
         public AnimalMetamorphosisAction()
         {
             this.name = "Animal Metamorphosis";
-            this.description = "Turn our your entire map is covered in shapeshifters";
+            this.description = "Turns our your entire map is covered in shapeshifters";
             this.category = "Event";
         }
 
-        public override void execute(int amount)
+        public override void Execute(int amount)
         {
-            var currentMap = Find.CurrentMap;
-            var things = currentMap.listerThings.ThingsInGroup(ThingRequestGroup.Pawn);
+            Map currentMap = Find.CurrentMap;
+            List<Thing> things = currentMap.listerThings.ThingsInGroup(ThingRequestGroup.Pawn);
 
-            var allAnimalDefs = DefDatabase<ThingDef>.AllDefs.Where(def => def.race != null && def.race.Animal ).ToList();
+            var allAnimalDefKinds = DefDatabase<PawnKindDef>.AllDefs.Where(delegate (PawnKindDef x)
+           {
+               return x.RaceProps.Animal;
+           });
 
-            var animals = things.Where(thing => thing is Pawn)
+            List<Pawn> animals = things.Where(thing => thing is Pawn)
                   .Select(pawn => (Pawn)pawn)
-                  .Where(pawn => pawn.def.race.Animal)
+                  .Where(pawn => pawn.AnimalOrWildMan())
                   .ToList();
+
+            Log.Message(animals.Count.ToString());
 
             animals.ForEach(animal =>
             {
-                var animalPos = animal.Position;
-                Log.Message(allAnimalDefs.Count.ToString());
-                var newAnimal = allAnimalDefs.RandomElement();
+                IntVec3 animalPos = animal.Position;
+                PawnKindDef newAnimal = allAnimalDefKinds.RandomElement();
+                var animalRelations = animal.relations;
+                var animalFaction = animal.Faction;
+
                 animal.Destroy();
 
-                GenSpawn.Spawn(newAnimal, animalPos, currentMap);
+                var replacementAnimal = PawnGenerator.GeneratePawn(newAnimal, animalFaction);
+                replacementAnimal.relations = animalRelations;
+
+                GenSpawn.Spawn(replacementAnimal, animalPos, currentMap);
             });
 
-            Find.LetterStack.ReceiveLetter("Twitch Event", "To your great surprise, every animal has morphed into something else", LetterDefOf.NeutralEvent);
+            AlertManager.NormalEventNotification("Your viewers have sent an Animal Metamorphosis");
         }
     }
 }
