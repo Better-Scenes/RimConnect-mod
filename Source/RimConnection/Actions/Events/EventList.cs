@@ -20,6 +20,8 @@ namespace RimConnection
             new HeartAttackRandomColonistAction(),
             new LuciferiumAddictionAction(),
             new ManhunterPackAction(),
+            new MasterworkBedsAction(),
+            new PoorBedsAction(),
             new PsychicDroneAction(),
             new PsychicSootheAction(),
             new RaidAction(),

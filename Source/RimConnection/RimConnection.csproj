@@ -69,6 +69,8 @@
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
     <Compile Include="Actions\Colonists\ColonistList.cs" />
+    <Compile Include="Actions\Events\PoorBedsAction.cs" />
+    <Compile Include="Actions\Events\MasterworkBedsAction.cs" />
     <Compile Include="Actions\Events\ClearAddictionsAction.cs" />
     <Compile Include="Actions\Events\LuciferiumAddictionAction.cs" />
     <Compile Include="Actions\Events\AnimalMetamorphosisAction.cs" />
