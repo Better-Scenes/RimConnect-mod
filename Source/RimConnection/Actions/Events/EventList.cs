@@ -11,6 +11,7 @@ namespace RimConnection
             new BeaversAction(),
             new BionicPlagueAction(),
             new CargoPodAction(),
+            new ClearAddictionsAction(),
             new FarmAnimalsWanderInAction(),
             new GoldenShowerAction(),
             new GrowAllCropsAction(),

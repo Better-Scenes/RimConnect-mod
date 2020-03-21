@@ -58,8 +58,6 @@ namespace RimConnection
 
         public void serverChecker()
         {
-            commandQueue.Enqueue(new Command { actionHash = "0BFE8B3807CAEB228FAB9F0C52D383844AA09989", amount = 1 });
-
             var commands = RimConnectAPI.GetCommands();
             foreach (var command in commands)
             {
