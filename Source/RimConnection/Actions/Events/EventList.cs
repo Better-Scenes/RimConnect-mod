@@ -16,6 +16,7 @@ namespace RimConnection
             new GrowAllCropsAction(),
             new HealingNanitesAction(),
             new HeartAttackRandomColonistAction(),
+            new LuciferiumAddictionAction(),
             new ManhunterPackAction(),
             new PsychicDroneAction(),
             new PsychicSootheAction(),
