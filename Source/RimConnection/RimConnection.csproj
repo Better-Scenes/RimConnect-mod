@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" 
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -49,8 +48,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\games\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\games\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
@@ -64,12 +62,21 @@
       <HintPath>..\..\..\..\..\games\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\..\games\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
     <Compile Include="Actions\Colonists\ColonistList.cs" />
+    <Compile Include="Actions\Events\PoorBedsAction.cs" />
+    <Compile Include="Actions\Events\MasterworkBedsAction.cs" />
+    <Compile Include="Actions\Events\ClearAddictionsAction.cs" />
+    <Compile Include="Actions\Events\LuciferiumAddictionAction.cs" />
+    <Compile Include="Actions\Events\AnimalMetamorphosisAction.cs" />
     <Compile Include="Actions\Events\HealingNanitesAction.cs" />
     <Compile Include="Actions\Events\BionicPlagueAction.cs" />
+    <Compile Include="Actions\Events\CleanAllFilthAction.cs" />
     <Compile Include="Actions\Events\RatSwarmEvent.cs" />
     <Compile Include="Actions\Events\RainingMenAction.cs" />
     <Compile Include="Actions\Events\GoldenShowerAction.cs" />

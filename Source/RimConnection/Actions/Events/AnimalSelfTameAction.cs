@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System.Linq;
 using Verse;
 
 namespace RimConnection
@@ -18,10 +19,24 @@ namespace RimConnection
         {
             var currentMap = Find.CurrentMap;
 
-            var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
-            parms.forced = true;
-            new IncidentWorker_SelfTame().TryExecute(parms);
-            AlertManager.NormalEventNotification("Your viewers have tamed some animals!");
+            var animalCandidates = currentMap.mapPawns.AllPawnsSpawned.Where(delegate (Pawn x)
+            {
+                return x.RaceProps.Animal && x.Faction == null && !x.Position.Fogged(x.Map) && !x.InMentalState && !x.Downed;
+            });
+
+            if(animalCandidates.Count() < 1)
+            {
+                AlertManager.NormalEventNotification("Your viewers tried to tame some animals, but there were none around!");
+            }
+
+            var animalsToTame = animalCandidates.InRandomOrder().Take(amount).ToList();
+
+            animalsToTame.ForEach(animal =>
+            {
+                animal.SetFaction(Faction.OfPlayer);
+            });
+
+            AlertManager.NormalEventNotification("Your viewers have done some taming for you!");
         }
     }
 }
