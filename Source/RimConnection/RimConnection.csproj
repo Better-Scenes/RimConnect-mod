@@ -74,6 +74,7 @@
     <Compile Include="Actions\Events\AnimalMetamorphosisAction.cs" />
     <Compile Include="Actions\Events\HealingNanitesAction.cs" />
     <Compile Include="Actions\Events\BionicPlagueAction.cs" />
+    <Compile Include="Actions\Events\CleanAllFilthAction.cs" />
     <Compile Include="Actions\Events\SpanishInquisitionAction.cs" />
     <Compile Include="Actions\Events\RatSwarmEvent.cs" />
     <Compile Include="Actions\Events\RainingMenAction.cs" />
