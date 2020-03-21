@@ -13,7 +13,7 @@ namespace RimConnection
         public AnimalMetamorphosisAction()
         {
             this.name = "Animal Metamorphosis";
-            this.description = "Turns our your entire map is covered in shapeshifters";
+            this.description = "Turns out your entire map is covered in shapeshifters";
             this.category = "Event";
         }
 
