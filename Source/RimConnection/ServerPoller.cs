@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Verse;
 
 namespace RimConnection
@@ -10,7 +12,7 @@ namespace RimConnection
     {
         private float timeCounterSeconds = 0.0f;
         private float waitTimeSeconds = 30.0f;
-        static Queue<Command> commandQueue = new Queue<Command>();
+        static ConcurrentQueue<Command> commandQueue = new ConcurrentQueue<Command>();
 
         private DateTime previousDateTime;
 
@@ -48,7 +50,7 @@ namespace RimConnection
 
             if (commandQueue.Count > 0)
             {
-                Command command = commandQueue.Dequeue();
+                commandQueue.TryDequeue(out Command command);
 
                 IAction action = ActionList.actionLookup[command.actionHash];
                 action.Execute(command.amount);
@@ -56,13 +58,18 @@ namespace RimConnection
             }
         }
 
-        public void serverChecker()
+        public static async void serverChecker()
         {
-            var commands = RimConnectAPI.GetCommands();
-            foreach (var command in commands)
-            {
-                commandQueue.Enqueue(command);
-            }
+            await Task.Run(() =>
+                {
+                    var commands = RimConnectAPI.GetCommands();
+
+                    foreach (var command in commands)
+                    {
+                        commandQueue.Enqueue(command);
+                    }
+                });
+
             return;
         }
 

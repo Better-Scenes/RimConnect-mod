@@ -71,7 +71,7 @@ namespace RimConnection
         public override void Tick()
         {
             ServerPoller serverPoller = Current.Game.GetComponent<ServerPoller>();
-            serverPoller.serverChecker();
+            if (serverPoller != null) ServerPoller.serverChecker();
 
             Messages.Message(new Message("Polling Server for Commands", MessageTypeDefOf.NeutralEvent));
         }
