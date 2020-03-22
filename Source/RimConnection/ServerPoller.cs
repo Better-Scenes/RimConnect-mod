@@ -10,8 +10,8 @@ namespace RimConnection
 {
     class ServerPoller : GameComponent
     {
-        private float timeCounterSeconds = 0.0f;
-        private float waitTimeSeconds = 30.0f;
+        static DateTime lastGETRequest = DateTime.UtcNow;
+        static readonly TimeSpan waitTimeSeconds = TimeSpan.FromSeconds(30);
         static ConcurrentQueue<Command> commandQueue = new ConcurrentQueue<Command>();
 
         private DateTime previousDateTime;
@@ -20,13 +20,8 @@ namespace RimConnection
         {
         }
 
-        public ServerPoller()
-        {
-        }
-
         public override void FinalizeInit()
         {
-            base.FinalizeInit();
             previousDateTime = DateTime.Now;
         }
 
@@ -35,17 +30,11 @@ namespace RimConnection
             // Only do this stuff if the mod successfully connected to the server
             if (RimConnectSettings.initialiseSuccessful)
             {
-                base.GameComponentTick();
-                var now = DateTime.Now;
-
-                timeCounterSeconds += (float)(now - previousDateTime).TotalSeconds;
-                if (timeCounterSeconds > waitTimeSeconds)
+                if (DateTime.UtcNow - lastGETRequest > waitTimeSeconds)
                 {
-                    timeCounterSeconds = 0.0f;
+                    lastGETRequest = DateTime.UtcNow;
                     serverChecker();
                 }
-
-                previousDateTime = now;
             }
 
             if (commandQueue.Count > 0)
