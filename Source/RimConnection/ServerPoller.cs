@@ -11,8 +11,7 @@ namespace RimConnection
     class ServerPoller : GameComponent
     {
         static DateTime lastGETRequest = DateTime.UtcNow;
-        static readonly double serverPollingPeriodSeconds = 30d;
-        static readonly TimeSpan timeBetweenRequests = TimeSpan.FromSeconds(serverPollingPeriodSeconds);
+        static readonly TimeSpan timeBetweenRequests = TimeSpan.FromSeconds(30d);
         static ConcurrentQueue<Command> commandQueue = new ConcurrentQueue<Command>();
 
         private DateTime previousDateTime;
