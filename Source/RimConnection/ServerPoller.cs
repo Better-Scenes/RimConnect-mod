@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Verse;
 
 namespace RimConnection
 {
     class ServerPoller : GameComponent
     {
-        private float timeCounterSeconds = 0.0f;
-        private float waitTimeSeconds = 30.0f;
-        static Queue<Command> commandQueue = new Queue<Command>();
+        static DateTime lastGETRequest = DateTime.UtcNow;
+        static readonly TimeSpan timeBetweenRequests = TimeSpan.FromSeconds(30d);
+        static ConcurrentQueue<Command> commandQueue = new ConcurrentQueue<Command>();
 
         private DateTime previousDateTime;
 
@@ -18,13 +20,8 @@ namespace RimConnection
         {
         }
 
-        public ServerPoller()
-        {
-        }
-
         public override void FinalizeInit()
         {
-            base.FinalizeInit();
             previousDateTime = DateTime.Now;
         }
 
@@ -33,36 +30,33 @@ namespace RimConnection
             // Only do this stuff if the mod successfully connected to the server
             if (RimConnectSettings.initialiseSuccessful)
             {
-                base.GameComponentTick();
-                var now = DateTime.Now;
-
-                timeCounterSeconds += (float)(now - previousDateTime).TotalSeconds;
-                if (timeCounterSeconds > waitTimeSeconds)
+                if (DateTime.UtcNow - lastGETRequest > timeBetweenRequests)
                 {
-                    timeCounterSeconds = 0.0f;
-                    serverChecker();
+                    lastGETRequest = DateTime.UtcNow;
+                    ServerChecker();
                 }
-
-                previousDateTime = now;
             }
 
-            if (commandQueue.Count > 0)
+            if (commandQueue.TryDequeue(out Command command))
             {
-                Command command = commandQueue.Dequeue();
-
                 IAction action = ActionList.actionLookup[command.actionHash];
                 action.Execute(command.amount);
                 Find.TickManager.slower.SignalForceNormalSpeedShort();
             }
         }
 
-        public void serverChecker()
+        public static async void ServerChecker()
         {
-            var commands = RimConnectAPI.GetCommands();
-            foreach (var command in commands)
-            {
-                commandQueue.Enqueue(command);
-            }
+            await Task.Run(() =>
+                {
+                    List<Command> commands = RimConnectAPI.GetCommands();
+
+                    foreach (Command command in commands)
+                    {
+                        commandQueue.Enqueue(command);
+                    }
+                });
+
             return;
         }
 

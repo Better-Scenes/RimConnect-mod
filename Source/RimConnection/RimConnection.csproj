@@ -24,7 +24,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\RimWorld\Mods\RimConnect\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -130,7 +130,6 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
     <Compile Include="SetWorldName.cs" />
-    <Compile Include="Ticker.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
