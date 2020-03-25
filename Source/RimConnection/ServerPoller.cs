@@ -11,7 +11,8 @@ namespace RimConnection
     class ServerPoller : GameComponent
     {
         static DateTime lastGETRequest = DateTime.UtcNow;
-        static readonly TimeSpan waitTimeSeconds = TimeSpan.FromSeconds(30);
+        static readonly double serverPollingPeriodSeconds = 30d;
+        static readonly TimeSpan timeBetweenRequests = TimeSpan.FromSeconds(serverPollingPeriodSeconds);
         static ConcurrentQueue<Command> commandQueue = new ConcurrentQueue<Command>();
 
         private DateTime previousDateTime;
@@ -30,37 +31,28 @@ namespace RimConnection
             // Only do this stuff if the mod successfully connected to the server
             if (RimConnectSettings.initialiseSuccessful)
             {
-                if (DateTime.UtcNow - lastGETRequest > waitTimeSeconds)
+                if (DateTime.UtcNow - lastGETRequest > timeBetweenRequests)
                 {
                     lastGETRequest = DateTime.UtcNow;
-                    serverChecker();
+                    ServerChecker();
                 }
             }
 
-            if (commandQueue.Count > 0)
+            if (commandQueue.TryDequeue(out Command command))
             {
-                try
-                {
-                    commandQueue.TryDequeue(out Command command);
-
-                    IAction action = ActionList.actionLookup[command.actionHash];
-                    action.Execute(command.amount);
-                    Find.TickManager.slower.SignalForceNormalSpeedShort();
-                }
-                catch (Exception e)
-                {
-                    Log.Error(e.Message);
-                }
+                IAction action = ActionList.actionLookup[command.actionHash];
+                action.Execute(command.amount);
+                Find.TickManager.slower.SignalForceNormalSpeedShort();
             }
         }
 
-        public static async void serverChecker()
+        public static async void ServerChecker()
         {
             await Task.Run(() =>
                 {
-                    var commands = RimConnectAPI.GetCommands();
+                    List<Command> commands = RimConnectAPI.GetCommands();
 
-                    foreach (var command in commands)
+                    foreach (Command command in commands)
                     {
                         commandQueue.Enqueue(command);
                     }
