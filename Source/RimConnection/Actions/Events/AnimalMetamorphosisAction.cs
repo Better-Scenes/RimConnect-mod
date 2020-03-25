@@ -12,9 +12,9 @@ namespace RimConnection
     {
         public AnimalMetamorphosisAction()
         {
-            this.name = "Animal Metamorphosis";
-            this.description = "Turns out your entire map is covered in shapeshifters";
-            this.category = "Event";
+            name = "Animal Metamorphosis";
+            description = "Turns out your entire map is covered in shapeshifters";
+            category = "Event";
         }
 
         public override void Execute(int amount)
@@ -22,7 +22,7 @@ namespace RimConnection
             Map currentMap = Find.CurrentMap;
             List<Thing> things = currentMap.listerThings.ThingsInGroup(ThingRequestGroup.Pawn);
 
-            var allAnimalDefKinds = DefDatabase<PawnKindDef>.AllDefs.Where(delegate (PawnKindDef x)
+            IEnumerable<PawnKindDef> allAnimalDefKinds = DefDatabase<PawnKindDef>.AllDefs.Where(delegate (PawnKindDef x)
            {
                return x.RaceProps.Animal;
            });
@@ -32,19 +32,23 @@ namespace RimConnection
                   .Where(pawn => pawn.AnimalOrWildMan())
                   .ToList();
 
-            Log.Message(animals.Count.ToString());
-
             animals.ForEach(animal =>
             {
                 IntVec3 animalPos = animal.Position;
                 PawnKindDef newAnimal = allAnimalDefKinds.RandomElement();
-                var animalRelations = animal.relations;
-                var animalFaction = animal.Faction;
+                Pawn_RelationsTracker animalRelations = animal.relations;
+                Faction animalFaction = animal.Faction;
+                Name animalName = animal.Name;
 
                 animal.Destroy();
 
-                var replacementAnimal = PawnGenerator.GeneratePawn(newAnimal, animalFaction);
+                Pawn replacementAnimal = PawnGenerator.GeneratePawn(newAnimal, animalFaction);
                 replacementAnimal.relations = animalRelations;
+
+                if (animal.Faction == Faction.OfPlayer)
+                {
+                    replacementAnimal.Name = animalName;
+                }
 
                 GenSpawn.Spawn(replacementAnimal, animalPos, currentMap);
             });
