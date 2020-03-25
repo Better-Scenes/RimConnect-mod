@@ -39,11 +39,18 @@ namespace RimConnection
 
             if (commandQueue.Count > 0)
             {
-                commandQueue.TryDequeue(out Command command);
+                try
+                {
+                    commandQueue.TryDequeue(out Command command);
 
-                IAction action = ActionList.actionLookup[command.actionHash];
-                action.Execute(command.amount);
-                Find.TickManager.slower.SignalForceNormalSpeedShort();
+                    IAction action = ActionList.actionLookup[command.actionHash];
+                    action.Execute(command.amount);
+                    Find.TickManager.slower.SignalForceNormalSpeedShort();
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e.Message);
+                }
             }
         }
 
