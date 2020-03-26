@@ -5,43 +5,43 @@ using System.Text;
 namespace RimConnection { 
     public abstract class Action : IAction
     {
-        public string name { get; set; }
-        public string description { get; set; }
-        public string category { get; set; } = "Other";
-        public string prefix { get; set; } = "Spawn";
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Category { get; set; } = "Other";
+        public string Prefix { get; set; } = "Spawn";
         public bool shouldShowAmount { get; set; } = false;
-        public int localCooldownMs { get; set; } = 120000;
-        public int globalCooldownMs { get; set; } = 60000;
-        public int costSilverStore { get; set; } = -1;
-        public string bitStoreSKU { get; set; } = "";
-        public string actionHash { get; set; } = "";
+        public int LocalCooldownMs { get; set; } = 120000;
+        public int GlobalCooldownMs { get; set; } = 60000;
+        public int CostSilverStore { get; set; } = -1;
+        public string BitStoreSKU { get; set; } = "";
+        public string ActionHash { get; set; } = "";
 
         public string GenerateActionHash(string extraData = "")
         {
-            var input = $"{name}{description}{category}{prefix}{extraData}";
+            var input = $"{Name}{Description}{Category}{Prefix}{extraData}";
             var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input));
 
             StringBuilder sb = new StringBuilder();
             foreach (byte b in hash) sb.Append(b.ToString("X2"));
 
-            actionHash = sb.ToString();
-            return actionHash;
+            ActionHash = sb.ToString();
+            return ActionHash;
         }
 
         public ValidCommand ToApiCall()
         {
             var command = new ValidCommand
             {
-                name = name,
-                description = description,
-                category = category,
-                prefix = prefix,
+                name = Name,
+                description = Description,
+                category = Category,
+                prefix = Prefix,
                 shouldShowAmount = shouldShowAmount,
                 actionHash = GenerateActionHash(),
-                localCooldownMs = localCooldownMs,
-                globalCooldownMs = globalCooldownMs,
-                costSilverStore = costSilverStore,
-                bitStoreSKU = bitStoreSKU
+                localCooldownMs = LocalCooldownMs,
+                globalCooldownMs = GlobalCooldownMs,
+                costSilverStore = CostSilverStore,
+                bitStoreSKU = BitStoreSKU
             };
             return command;
         }

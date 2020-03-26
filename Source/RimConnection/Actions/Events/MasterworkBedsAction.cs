@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public MasterworkBedsAction()
         {
-            name = "Good night's sleep";
-            description = "I feel like a toasty cinnamon bun, I never want to leave this bed";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Good night's sleep";
+            Description = "I feel like a toasty cinnamon bun, I never want to leave this bed";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

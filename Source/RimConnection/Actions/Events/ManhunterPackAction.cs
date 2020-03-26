@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public ManhunterPackAction()
         {
-            name = "Manhunter Pack";
-            description = "They hunger for man-flesh";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Manhunter Pack";
+            Description = "They hunger for man-flesh";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

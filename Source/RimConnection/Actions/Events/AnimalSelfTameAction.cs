@@ -8,11 +8,11 @@ namespace RimConnection
     {
         public AnimalSelfTameAction()
         {
-            name = "Animal Self Tame";
-            description = "You don't get to choose, hope it was a good one";
-            category = "Event";
-            prefix = "Trigger";
-            costSilverStore = 0;
+            Name = "Animal Self Tame";
+            Description = "You don't get to choose, hope it was a good one";
+            Category = "Event";
+            Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount)

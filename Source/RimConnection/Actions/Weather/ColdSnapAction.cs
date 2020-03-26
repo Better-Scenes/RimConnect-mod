@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public ColdSnapAction()
         {
-            name = "Cold Snap";
-            description = "Better rug up!";
-            category = "Weather";
-            prefix = "Trigger";
+            Name = "Cold Snap";
+            Description = "Better rug up!";
+            Category = "Weather";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

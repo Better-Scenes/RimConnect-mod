@@ -12,11 +12,11 @@ namespace RimConnection
     {
         public RandomApparelAction()
         {
-            name = "Random Apparel";
-            description = "Clothing, armour, it's all the same to me";
+            Name = "Random Apparel";
+            Description = "Clothing, armour, it's all the same to me";
             shouldShowAmount = true;
-            category = "Event";
-            prefix = "Spawn %amount%";
+            Category = "Event";
+            Prefix = "Spawn %amount%";
         }
 
         public override void Execute(int amount)
@@ -43,7 +43,7 @@ namespace RimConnection
                 return thing;
             });
             
-            DropPodManager.createDropOfThings(apparelThings.ToList(), name, description);
+            DropPodManager.createDropOfThings(apparelThings.ToList(), Name, Description);
         }
     }
 }

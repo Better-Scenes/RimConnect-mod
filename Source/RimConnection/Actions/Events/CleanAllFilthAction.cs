@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public CleanAllFilthAction()
         {
-            name = "Spring Clean";
-            description = "Heygieia is going to pay a visit";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Spring Clean";
+            Description = "Heygieia is going to pay a visit";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

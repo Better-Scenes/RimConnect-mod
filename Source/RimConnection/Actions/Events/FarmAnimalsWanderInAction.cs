@@ -7,11 +7,11 @@ namespace RimConnection
     {
         public FarmAnimalsWanderInAction()
         {
-            name = "Farm animals join";
-            description = "Let's just hope the pigs don't take over";
-            category = "Event";
-            prefix = "Trigger";
-            costSilverStore = 0;
+            Name = "Farm animals join";
+            Description = "Let's just hope the pigs don't take over";
+            Category = "Event";
+            Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount)

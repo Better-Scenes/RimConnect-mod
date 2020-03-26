@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public HeartAttackRandomColonistAction()
         {
-            name = "Sheer Heart Attack";
-            description = "Sheeeeeeer Cardiac!";
-            category = "Event";
-            prefix = "Trigger %amount%";
+            Name = "Sheer Heart Attack";
+            Description = "Sheeeeeeer Cardiac!";
+            Category = "Event";
+            Prefix = "Trigger %amount%";
             shouldShowAmount = true;
         }
 

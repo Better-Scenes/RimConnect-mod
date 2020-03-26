@@ -106,7 +106,7 @@ namespace RimConnection.Settings
                 switch (sortMethod)
                 {
                     case SortMethod.Name:
-                        filteredRows = filteredRows.OrderBy(commandOption => commandOption.Action().name).ToList();
+                        filteredRows = filteredRows.OrderBy(commandOption => commandOption.Action().Name).ToList();
                         break;
                     case SortMethod.Cost:
                         filteredRows = filteredRows.OrderBy(commandOption => commandOption.costSilverStore).ToList();
@@ -281,15 +281,15 @@ namespace RimConnection.Settings
                 switch(currentCategory)
                 {
                     case ItemCategory.MeleeWeapons:
-                        if (commandOption.Action().category != "Melee Weapons")
+                        if (commandOption.Action().Category != "Melee Weapons")
                             return false;
                         break;
                     case ItemCategory.RangedWeapons:
-                        if (commandOption.Action().category != "Ranged Weapons")
+                        if (commandOption.Action().Category != "Ranged Weapons")
                             return false;
                         break;
                     default:
-                        if (commandOption.Action().category != currentCategory.ToString())
+                        if (commandOption.Action().Category != currentCategory.ToString())
                         {
                             return false;
                         }
@@ -302,7 +302,7 @@ namespace RimConnection.Settings
                 // Does CommandOption fit search query
 
                 // Minify CommandOptionName
-                string commandOptionNameMinified = commandOption.Action().name.Replace(" ", "").ToLower();
+                string commandOptionNameMinified = commandOption.Action().Name.Replace(" ", "").ToLower();
 
                 // Get each section of text separated by spaces
                 List<string> searchQueryMatches = new List<string>();
@@ -407,7 +407,7 @@ namespace RimConnection.Settings
             Rect rect4 = new Rect(80f, 0f, rect.width - 80f, rect.height);
             Text.WordWrap = false;
             GUI.color = Color.white;
-            Widgets.Label(rect4, commandOption.Action().name.CapitalizeFirst());
+            Widgets.Label(rect4, commandOption.Action().Name.CapitalizeFirst());
             Text.WordWrap = true;
 
             GenUI.ResetLabelAlign();

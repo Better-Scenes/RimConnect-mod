@@ -39,7 +39,7 @@ namespace RimConnection
                 } catch (Exception e)
                 {
                     Log.Message(e.Message);
-                    Log.Message($"{action.actionHash} {action.name}");
+                    Log.Message($"{action.ActionHash} {action.Name}");
                 }
             });
 

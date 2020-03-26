@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public PoorBedsAction()
         {
-            name = "Wrong side of the bed";
-            description = "Can't sleep, clown'll eat me";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Wrong side of the bed";
+            Description = "Can't sleep, clown'll eat me";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

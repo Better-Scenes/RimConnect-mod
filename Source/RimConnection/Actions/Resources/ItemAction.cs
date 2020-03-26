@@ -17,16 +17,16 @@ namespace RimConnection
         {
             defName = itemDef.defName;
             defLabel = itemDef.label;
-            name = defLabel;
-            description = "What it says on the tin";
+            Name = defLabel;
+            Description = "What it says on the tin";
             shouldShowAmount = true;
-            prefix = "Spawn %amount%";
-            this.category = category;
+            Prefix = "Spawn %amount%";
+            this.Category = category;
             thingDef = itemDef;
-            localCooldownMs = 30000;
-            globalCooldownMs = 15000;
-            costSilverStore = (int)Math.Ceiling(thingDef.BaseMarketValue);
-            bitStoreSKU = "";
+            LocalCooldownMs = 30000;
+            GlobalCooldownMs = 15000;
+            CostSilverStore = (int)Math.Ceiling(thingDef.BaseMarketValue);
+            BitStoreSKU = "";
     }
 
         public override void Execute(int amount)
@@ -84,15 +84,15 @@ namespace RimConnection
         {
             var command = new ValidCommand
             {
-                name = name,
-                description = description,
-                category = category,
-                prefix = prefix,
+                name = Name,
+                description = Description,
+                category = Category,
+                prefix = Prefix,
                 actionHash = GenerateActionHash($"{thingDef.description}{defName}"),
-                localCooldownMs = localCooldownMs,
-                globalCooldownMs = globalCooldownMs,
-                costSilverStore = costSilverStore,
-                bitStoreSKU = bitStoreSKU
+                localCooldownMs = LocalCooldownMs,
+                globalCooldownMs = GlobalCooldownMs,
+                costSilverStore = CostSilverStore,
+                bitStoreSKU = BitStoreSKU
             };
             return command;
         }

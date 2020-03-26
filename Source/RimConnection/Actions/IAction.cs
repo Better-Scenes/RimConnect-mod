@@ -7,16 +7,16 @@ namespace RimConnection
 {
     public interface IAction
     {
-        string name { get; set; }
-        string description { get; set; }
-        string category { get; set; }
-        string prefix { get; set; }
+        string Name { get; set; }
+        string Description { get; set; }
+        string Category { get; set; }
+        string Prefix { get; set; }
         bool shouldShowAmount { get; set; }
-        int localCooldownMs { get; set; }
-        int globalCooldownMs { get; set; }
-        int costSilverStore { get; set; }
-        string bitStoreSKU { get; set; }
-        string actionHash { get; set; }
+        int LocalCooldownMs { get; set; }
+        int GlobalCooldownMs { get; set; }
+        int CostSilverStore { get; set; }
+        string BitStoreSKU { get; set; }
+        string ActionHash { get; set; }
 
         ValidCommand ToApiCall();
         void Execute(int amount);

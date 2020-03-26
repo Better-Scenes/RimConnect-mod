@@ -12,11 +12,11 @@ namespace RimConnection
     {
         public RainingMenAction()
         {
-            name = "Raining Men";
-            description = "These men are uh.... A little old and unrefigerated";
-            category = "Event";
+            Name = "Raining Men";
+            Description = "These men are uh.... A little old and unrefigerated";
+            Category = "Event";
             shouldShowAmount = false;
-            prefix = "Trigger";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

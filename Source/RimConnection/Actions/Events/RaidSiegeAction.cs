@@ -7,10 +7,10 @@ namespace RimConnection
     {
         public RaidSiegeAction()
         {
-            name = "Raid (Siege)";
-            description = "Looks like they want to stick around";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Raid (Siege)";
+            Description = "Looks like they want to stick around";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

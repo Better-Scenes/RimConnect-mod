@@ -7,10 +7,10 @@ namespace RimConnection
     {
         public BeaversAction()
         {
-            name = "Alpha Beavers";
-            description = "Beavers might be cute, but they'll eat all your stuff";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Alpha Beavers";
+            Description = "Beavers might be cute, but they'll eat all your stuff";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

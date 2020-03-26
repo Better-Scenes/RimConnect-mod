@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public RaidDropAction()
         {
-            name = "Raid (Drop)";
-            description = "They were inside the house the whole time!";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Raid (Drop)";
+            Description = "They were inside the house the whole time!";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

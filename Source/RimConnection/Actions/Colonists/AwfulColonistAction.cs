@@ -7,12 +7,12 @@ namespace RimConnection
 
         public AwfulColonistAction()
         {
-            name = "Awful Colonist";
-            description = "Well, they might be useful for parts....";
+            Name = "Awful Colonist";
+            Description = "Well, they might be useful for parts....";
             shouldShowAmount = true;
-            category = "Colonists";
-            prefix = "Spawn %amount%";
-            costSilverStore = 1000;
+            Category = "Colonists";
+            Prefix = "Spawn %amount%";
+            CostSilverStore = 1000;
     }
 
         public override void Execute(int amount)
@@ -20,7 +20,7 @@ namespace RimConnection
             var pawnList = PawnCreationManager.generateAwfulColonists(amount);
 
             string labelString = "RimConnectionFriendlyPawnLabel".Translate();
-            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, name, description);
+            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, Name, Description);
             DropPodManager.createDropOfThings(pawnList, labelString, messageString);
         }
     }

@@ -10,10 +10,10 @@ namespace RimConnection
     {
         public HealingNanitesAction()
         {
-            name = "Healing Nanites";
-            description = "A wave of nanites fly through and heal superficial wounds";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Healing Nanites";
+            Description = "A wave of nanites fly through and heal superficial wounds";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         private static List<HediffDef> hediffsDefsToHeal = new List<HediffDef>(new HediffDef[] {

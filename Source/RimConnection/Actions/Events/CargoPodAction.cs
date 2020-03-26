@@ -7,11 +7,11 @@ namespace RimConnection
     {
         public CargoPodAction()
         {
-            name = "Cargo Pods";
-            description = "A gift from above!";
-            category = "Event";
-            prefix = "Trigger";
-            costSilverStore = 0;
+            Name = "Cargo Pods";
+            Description = "A gift from above!";
+            Category = "Event";
+            Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount)

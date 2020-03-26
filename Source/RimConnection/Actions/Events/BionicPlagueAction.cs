@@ -9,10 +9,10 @@ namespace RimConnection
     {
         public BionicPlagueAction()
         {
-            name = "Bionic Plague";
-            description = "A bionic plague sweeps through all animals and leaves behind components";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Bionic Plague";
+            Description = "A bionic plague sweeps through all animals and leaves behind components";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

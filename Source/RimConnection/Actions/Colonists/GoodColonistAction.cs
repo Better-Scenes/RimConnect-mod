@@ -7,12 +7,12 @@ namespace RimConnection
 
         public GoodColonistAction()
         {
-            name = "Good Colonist";
-            description = "The good, in The Good the bad and the ugly";
+            Name = "Good Colonist";
+            Description = "The good, in The Good the bad and the ugly";
             shouldShowAmount = true;
-            category = "Colonists";
-            prefix = "Spawn %amount%";
-            costSilverStore = 4000;
+            Category = "Colonists";
+            Prefix = "Spawn %amount%";
+            CostSilverStore = 4000;
         }
 
         public override void Execute(int amount)
@@ -20,7 +20,7 @@ namespace RimConnection
             var pawnList = PawnCreationManager.generateGoodColonists(amount);
 
             string labelString = "RimConnectionFriendlyPawnLabel".Translate();
-            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, name, description);
+            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, Name, Description);
             DropPodManager.createDropOfThings(pawnList, labelString, messageString);
         }
     }

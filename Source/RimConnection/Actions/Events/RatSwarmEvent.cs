@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public RatSwarmEvent()
         {
-            name = "Rat Swarm";
-            description = "Rats are smarter than you might think, and these ones are pissed";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Rat Swarm";
+            Description = "Rats are smarter than you might think, and these ones are pissed";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

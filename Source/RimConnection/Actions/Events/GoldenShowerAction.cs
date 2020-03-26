@@ -7,10 +7,10 @@ namespace RimConnection
     {
         public GoldenShowerAction()
         {
-            name = "Golden Shower";
-            description = "Gold rains from the skies";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Golden Shower";
+            Description = "Gold rains from the skies";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)
@@ -19,7 +19,7 @@ namespace RimConnection
 
             for(int i = 0; i < amountOfDrops; i ++ )
             {
-                DropPodManager.createDropFromDef(ThingDefOf.Gold, amount, name, description, false);
+                DropPodManager.createDropFromDef(ThingDefOf.Gold, amount, Name, Description, false);
             }
 
             AlertManager.NormalEventNotification("Your viewers have sent a Golden Shower!");

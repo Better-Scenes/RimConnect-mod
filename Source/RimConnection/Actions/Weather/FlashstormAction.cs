@@ -12,10 +12,10 @@ namespace RimConnection
     {
         public FlashstormAction()
         {
-            name = "Flashstorm";
-            description = "Fast as lightning, a little bit frightening";
-            category = "Weather";
-            prefix = "Trigger";
+            Name = "Flashstorm";
+            Description = "Fast as lightning, a little bit frightening";
+            Category = "Weather";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

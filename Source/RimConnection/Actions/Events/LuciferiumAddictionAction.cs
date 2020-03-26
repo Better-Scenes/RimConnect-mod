@@ -12,9 +12,9 @@ namespace RimConnection
     {
         public LuciferiumAddictionAction()
         {
-            name = "Luciferium Addction";
-            description = "I don't where the colonists picked this up from";
-            category = "Event";
+            Name = "Luciferium Addction";
+            Description = "I don't where the colonists picked this up from";
+            Category = "Event";
         }
 
         public override void Execute(int amount)
@@ -32,7 +32,7 @@ namespace RimConnection
             });
 
             var amountToDrop = colonists.Count() * amountMultiplier;
-            DropPodManager.createDropFromDef(ThingDefOf.Luciferium, amountToDrop, name, "Your luciferium stock, this should last you for about half a year");
+            DropPodManager.createDropFromDef(ThingDefOf.Luciferium, amountToDrop, Name, "Your luciferium stock, this should last you for about half a year");
 
             AlertManager.NormalEventNotification("Your viewers decided that everyone should have a life threatening addiction, along with some supplies");
         }

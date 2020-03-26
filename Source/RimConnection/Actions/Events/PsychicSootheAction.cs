@@ -12,11 +12,11 @@ namespace RimConnection
     {
         public PsychicSootheAction()
         {
-            name = "Psychic Soothe";
-            description = "Why doesn't everyone just like, chill out";
-            category = "Event";
-            prefix = "Trigger";
-            costSilverStore = 0;
+            Name = "Psychic Soothe";
+            Description = "Why doesn't everyone just like, chill out";
+            Category = "Event";
+            Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount)

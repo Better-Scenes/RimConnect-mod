@@ -7,11 +7,11 @@ namespace RimConnection
     {
         public PsychicDroneAction()
         {
-            name = "Psychic Drone";
-            description = "Can you hear that? Man that's annoying";
-            category = "Event";
-            prefix = "Trigger";
-            costSilverStore = 0;
+            Name = "Psychic Drone";
+            Description = "Can you hear that? Man that's annoying";
+            Category = "Event";
+            Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount)

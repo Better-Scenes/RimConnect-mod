@@ -12,11 +12,11 @@ namespace RimConnection
     {
         public EclipseAction()
         {
-            name = "Eclipse";
-            description = "Time to go where the sun don't shine";
-            category = "Weather";
-            prefix = "Trigger";
-            costSilverStore = 600;
+            Name = "Eclipse";
+            Description = "Time to go where the sun don't shine";
+            Category = "Weather";
+            Prefix = "Trigger";
+            CostSilverStore = 600;
         }
 
         public override void Execute(int amount)

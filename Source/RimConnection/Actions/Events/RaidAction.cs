@@ -12,9 +12,9 @@ namespace RimConnection
     {
         public RaidAction()
         {
-            name = "Raid";
-            description = "They don't look too happy";
-            category = "Event";
+            Name = "Raid";
+            Description = "They don't look too happy";
+            Category = "Event";
         }
 
         public override void Execute(int amount)

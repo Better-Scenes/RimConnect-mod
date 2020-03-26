@@ -12,9 +12,9 @@ namespace RimConnection
     {
         public ClearAddictionsAction()
         {
-            name = "Clear Addictions";
-            description = "All the colonist will suddenly feel free";
-            category = "Event";
+            Name = "Clear Addictions";
+            Description = "All the colonist will suddenly feel free";
+            Category = "Event";
         }
 
         public override void Execute(int amount)

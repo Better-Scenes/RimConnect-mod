@@ -9,10 +9,10 @@ namespace RimConnection
     {
         public AllRangedWeaponsToBowsAction()
         {
-            name = "Ranged weapons to bows";
-            description = "All ranged weapons turn into bows";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Ranged weapons to bows";
+            Description = "All ranged weapons turn into bows";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

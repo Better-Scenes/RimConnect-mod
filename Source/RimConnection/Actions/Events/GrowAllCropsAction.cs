@@ -9,10 +9,10 @@ namespace RimConnection
     {
         public GrowAllCropsAction()
         {
-            name = "Grow all crops";
-            description = "The Greek goddess Demeter was just passing by";
-            category = "Event";
-            prefix = "Trigger";
+            Name = "Grow all crops";
+            Description = "The Greek goddess Demeter was just passing by";
+            Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount)

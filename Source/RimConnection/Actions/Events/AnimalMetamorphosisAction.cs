@@ -12,9 +12,9 @@ namespace RimConnection
     {
         public AnimalMetamorphosisAction()
         {
-            name = "Animal Metamorphosis";
-            description = "Turns out your entire map is covered in shapeshifters";
-            category = "Event";
+            Name = "Animal Metamorphosis";
+            Description = "Turns out your entire map is covered in shapeshifters";
+            Category = "Event";
         }
 
         public override void Execute(int amount)

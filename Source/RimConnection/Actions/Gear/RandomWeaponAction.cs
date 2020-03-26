@@ -12,11 +12,11 @@ namespace RimConnection
     {
         public RandomWeaponAction()
         {
-            name = "Random Weapon";
-            description = "The best defence is a good offence";
+            Name = "Random Weapon";
+            Description = "The best defence is a good offence";
             shouldShowAmount = true;
-            category = "Event";
-            prefix = "Spawn %amount%";
+            Category = "Event";
+            Prefix = "Spawn %amount%";
         }
 
         public override void Execute(int amount)
@@ -42,7 +42,7 @@ namespace RimConnection
                 return thing;
             });
 
-            DropPodManager.createDropOfThings(weaponThings.ToList(), name, description);
+            DropPodManager.createDropOfThings(weaponThings.ToList(), Name, Description);
         }
     }
 }
