@@ -33,7 +33,6 @@ namespace RimConnection
         {
             ThingDef itemDef = DefDatabase<ThingDef>.GetNamed(defName);
 
-
             if(itemDef.race != null)
             {
                 List<Thing> pawnList = new List<Thing>();
@@ -45,35 +44,36 @@ namespace RimConnection
             }
             else
             {
-                // If Our item doesn't have stuff, is minifiable, or doesn't have quality
-                // we can spawn it the old way with the itemdef
                 Thing thing = ThingMaker.MakeThing(itemDef, GenStuff.DefaultStuffFor(itemDef));
                 QualityCategory q = new QualityCategory();
                 bool thingHasQuality = thing.TryGetQuality(out q);
-                if (!itemDef.MadeFromStuff && !itemDef.Minifiable && !thingHasQuality)
-                {
-                    DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s");
-                } else
+                if (itemDef.MadeFromStuff && itemDef.Minifiable && thingHasQuality)
                 {
                     List<Thing> thingsToSpawn = new List<Thing>();
                     for (int i = 0; i < amount; i++)
                     {
                         ThingDef itemStuff = null;
-                        if(itemDef.MadeFromStuff)
+                        if (itemDef.MadeFromStuff)
                         {
                             itemStuff = GenStuff.RandomStuffByCommonalityFor(itemDef);
                         }
-                    
+
                         Thing newThing = ThingMaker.MakeThing(itemDef, itemStuff);
                         TryAddQualityToThing(newThing);
 
-                        if(itemDef.Minifiable)
+                        if (itemDef.Minifiable)
                         {
                             newThing = newThing.MakeMinified();
                         }
                         thingsToSpawn.Add(newThing);
                     }
                     DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+                }
+                // If Our item doesn't have stuff, is minifiable, or doesn't have quality
+                // we can spawn it the old way with the itemdef
+                else
+                {
+                    DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s");
                 }
             }
         
@@ -82,7 +82,7 @@ namespace RimConnection
 
         public ValidCommand ToApiCall(int id)
         {
-            ValidCommand command = new ValidCommand
+            return new ValidCommand
             {
                 name = Name,
                 description = Description,
@@ -94,13 +94,11 @@ namespace RimConnection
                 costSilverStore = CostSilverStore,
                 bitStoreSKU = BitStoreSKU
             };
-            return command;
         }
 
         private Thing TryAddQualityToThing(Thing thing)
         {
-            QualityCategory q = new QualityCategory();
-            if (thing.TryGetQuality(out q))
+            if (thing.TryGetQuality(out QualityCategory qualityCategory))
             {
                 thing.TryGetComp<CompQuality>().SetQuality(QualityUtility.GenerateQualityTraderItem(), ArtGenerationContext.Outsider);
             }
