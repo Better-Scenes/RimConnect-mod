@@ -11,7 +11,7 @@ namespace RimConnection
         string Description { get; set; }
         string Category { get; set; }
         string Prefix { get; set; }
-        bool shouldShowAmount { get; set; }
+        bool ShouldShowAmount { get; set; }
         int LocalCooldownMs { get; set; }
         int GlobalCooldownMs { get; set; }
         int CostSilverStore { get; set; }

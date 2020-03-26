@@ -9,7 +9,7 @@ namespace RimConnection
         {
             Name = "Generic Colonist";
             Description = "You don't like me, but I like you. Maybe you could grow to like me?";
-            shouldShowAmount = true;
+            ShouldShowAmount = true;
             Category = "Colonists";
             Prefix = "Spawn %amount%";
             CostSilverStore = 2000;

@@ -9,7 +9,7 @@ namespace RimConnection {
         public string Description { get; set; }
         public string Category { get; set; } = "Other";
         public string Prefix { get; set; } = "Spawn";
-        public bool shouldShowAmount { get; set; } = false;
+        public bool ShouldShowAmount { get; set; } = false;
         public int LocalCooldownMs { get; set; } = 120000;
         public int GlobalCooldownMs { get; set; } = 60000;
         public int CostSilverStore { get; set; } = -1;
@@ -36,7 +36,7 @@ namespace RimConnection {
                 description = Description,
                 category = Category,
                 prefix = Prefix,
-                shouldShowAmount = shouldShowAmount,
+                shouldShowAmount = ShouldShowAmount,
                 actionHash = GenerateActionHash(),
                 localCooldownMs = LocalCooldownMs,
                 globalCooldownMs = GlobalCooldownMs,

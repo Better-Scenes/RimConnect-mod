@@ -16,7 +16,7 @@ namespace RimConnection
             Description = "Sheeeeeeer Cardiac!";
             Category = "Event";
             Prefix = "Trigger %amount%";
-            shouldShowAmount = true;
+            ShouldShowAmount = true;
         }
 
         public override void Execute(int amount)

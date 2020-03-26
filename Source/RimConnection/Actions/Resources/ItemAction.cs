@@ -19,7 +19,7 @@ namespace RimConnection
             defLabel = itemDef.label;
             Name = defLabel;
             Description = "What it says on the tin";
-            shouldShowAmount = true;
+            ShouldShowAmount = true;
             Prefix = "Spawn %amount%";
             this.Category = category;
             thingDef = itemDef;

@@ -9,7 +9,7 @@ namespace RimConnection
         {
             Name = "Awful Colonist";
             Description = "Well, they might be useful for parts....";
-            shouldShowAmount = true;
+            ShouldShowAmount = true;
             Category = "Colonists";
             Prefix = "Spawn %amount%";
             CostSilverStore = 1000;

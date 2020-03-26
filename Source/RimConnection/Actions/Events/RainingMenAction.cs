@@ -15,7 +15,7 @@ namespace RimConnection
             Name = "Raining Men";
             Description = "These men are uh.... A little old and unrefigerated";
             Category = "Event";
-            shouldShowAmount = false;
+            ShouldShowAmount = false;
             Prefix = "Trigger";
         }
 

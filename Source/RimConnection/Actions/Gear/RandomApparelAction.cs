@@ -14,7 +14,7 @@ namespace RimConnection
         {
             Name = "Random Apparel";
             Description = "Clothing, armour, it's all the same to me";
-            shouldShowAmount = true;
+            ShouldShowAmount = true;
             Category = "Event";
             Prefix = "Spawn %amount%";
         }

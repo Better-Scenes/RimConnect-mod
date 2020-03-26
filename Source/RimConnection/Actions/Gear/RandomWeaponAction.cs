@@ -14,7 +14,7 @@ namespace RimConnection
         {
             Name = "Random Weapon";
             Description = "The best defence is a good offence";
-            shouldShowAmount = true;
+            ShouldShowAmount = true;
             Category = "Event";
             Prefix = "Spawn %amount%";
         }
