@@ -21,7 +21,7 @@ namespace RimConnection
             Description = "What it says on the tin";
             ShouldShowAmount = true;
             Prefix = "Spawn %amount%";
-            this.Category = category;
+            Category = category;
             thingDef = itemDef;
             LocalCooldownMs = 30000;
             GlobalCooldownMs = 15000;
@@ -31,7 +31,7 @@ namespace RimConnection
 
         public override void Execute(int amount)
         {
-            var itemDef = DefDatabase<ThingDef>.GetNamed(defName);
+            ThingDef itemDef = DefDatabase<ThingDef>.GetNamed(defName);
 
 
             if(itemDef.race != null)
@@ -47,16 +47,16 @@ namespace RimConnection
             {
                 // If Our item doesn't have stuff, is minifiable, or doesn't have quality
                 // we can spawn it the old way with the itemdef
-                var tempThing = ThingMaker.MakeThing(itemDef, GenStuff.DefaultStuffFor(itemDef));
+                Thing thing = ThingMaker.MakeThing(itemDef, GenStuff.DefaultStuffFor(itemDef));
                 QualityCategory q = new QualityCategory();
-                var tempThingQualityExists = tempThing.TryGetQuality(out q);
-                if (!itemDef.MadeFromStuff && !itemDef.Minifiable && !tempThingQualityExists)
+                bool thingHasQuality = thing.TryGetQuality(out q);
+                if (!itemDef.MadeFromStuff && !itemDef.Minifiable && !thingHasQuality)
                 {
                     DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s");
                 } else
                 {
                     List<Thing> thingsToSpawn = new List<Thing>();
-                    for (var i = 0; i < amount; i++)
+                    for (int i = 0; i < amount; i++)
                     {
                         ThingDef itemStuff = null;
                         if(itemDef.MadeFromStuff)
@@ -64,8 +64,8 @@ namespace RimConnection
                             itemStuff = GenStuff.RandomStuffByCommonalityFor(itemDef);
                         }
                     
-                        var newThing = ThingMaker.MakeThing(itemDef, itemStuff);
-                        tryAddQualityToThing(newThing);
+                        Thing newThing = ThingMaker.MakeThing(itemDef, itemStuff);
+                        TryAddQualityToThing(newThing);
 
                         if(itemDef.Minifiable)
                         {
@@ -82,7 +82,7 @@ namespace RimConnection
 
         public ValidCommand ToApiCall(int id)
         {
-            var command = new ValidCommand
+            ValidCommand command = new ValidCommand
             {
                 name = Name,
                 description = Description,
@@ -97,7 +97,7 @@ namespace RimConnection
             return command;
         }
 
-        private Thing tryAddQualityToThing(Thing thing)
+        private Thing TryAddQualityToThing(Thing thing)
         {
             QualityCategory q = new QualityCategory();
             if (thing.TryGetQuality(out q))
