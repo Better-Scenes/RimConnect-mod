@@ -9,8 +9,8 @@ namespace RimConnection
 {
     public class ItemAction: Action, IAction
     {
-        private string defName;
-        private string defLabel;
+        private readonly string defName;
+        private readonly string defLabel;
         public ThingDef thingDef;
 
         public ItemAction(ThingDef itemDef, string category = "Item")
@@ -45,8 +45,7 @@ namespace RimConnection
             else
             {
                 Thing thing = ThingMaker.MakeThing(itemDef, GenStuff.DefaultStuffFor(itemDef));
-                QualityCategory q = new QualityCategory();
-                bool thingHasQuality = thing.TryGetQuality(out q);
+                bool thingHasQuality = thing.TryGetQuality(out QualityCategory qualityCategory);
                 if (itemDef.MadeFromStuff && itemDef.Minifiable && thingHasQuality)
                 {
                     List<Thing> thingsToSpawn = new List<Thing>();
