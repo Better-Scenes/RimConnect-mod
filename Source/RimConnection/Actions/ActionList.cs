@@ -12,7 +12,7 @@ namespace RimConnection
         public static Dictionary<string, IAction> actionLookup;
 
         // Bring all the lists together from the categories
-        public static List<IAction> generateActionList()
+        public static List<IAction> GenerateActionList()
         {
             actionList = new List<IAction>();
 
@@ -26,10 +26,10 @@ namespace RimConnection
         }
 
         // Make a dictionary lookup of all commands
-        public static Dictionary<string, IAction> generateActionLookup()
+        public static Dictionary<string, IAction> GenerateActionLookup()
         {
             actionLookup = new Dictionary<string, IAction>();
-            generateActionList();
+            GenerateActionList();
 
             actionList.ForEach((action) =>
             {
@@ -38,8 +38,7 @@ namespace RimConnection
                     actionLookup.Add(action.GenerateActionHash(), action);
                 } catch (Exception e)
                 {
-                    Log.Message(e.Message);
-                    Log.Message($"{action.ActionHash} {action.Name}");
+                    Log.Message($"{action.ActionHash} {action.Name} - {e.Message}");
                 }
             });
 
@@ -49,11 +48,12 @@ namespace RimConnection
         public static ValidCommandList ActionListToApi()
         {
             // Make sure the list and dictionary are up to date
-            generateActionLookup();
+            GenerateActionLookup();
 
-            ValidCommandList validCommandList = new ValidCommandList();
-            validCommandList.validCommands = actionList.Select(action => action.ToApiCall()).ToList();
-            return validCommandList;
+            return new ValidCommandList
+            {
+                validCommands = actionList.Select(action => action.ToApiCall()).ToList()
+            };
         }
     }
 }
