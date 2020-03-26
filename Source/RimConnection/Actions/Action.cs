@@ -30,7 +30,7 @@ namespace RimConnection {
 
         public ValidCommand ToApiCall()
         {
-            var command = new ValidCommand
+            return new ValidCommand
             {
                 name = Name,
                 description = Description,
@@ -43,7 +43,6 @@ namespace RimConnection {
                 costSilverStore = CostSilverStore,
                 bitStoreSKU = BitStoreSKU
             };
-            return command;
         }
 
 
