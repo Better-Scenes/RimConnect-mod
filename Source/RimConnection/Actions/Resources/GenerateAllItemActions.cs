@@ -15,7 +15,6 @@ namespace RimConnection
             List<IAction> allThingActions = allDefs.Select(thingDef => CreateActionFromDef(thingDef)).ToList();
             return allThingActions;
         }
-
         private static IAction CreateActionFromDef(ThingDef thingDef)
         {
             var category = "Item";
