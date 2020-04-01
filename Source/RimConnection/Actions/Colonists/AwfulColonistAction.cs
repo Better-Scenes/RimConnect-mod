@@ -15,7 +15,7 @@ namespace RimConnection
             CostSilverStore = 1000;
     }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             var pawnList = PawnCreationManager.generateAwfulColonists(amount);
 

@@ -19,7 +19,7 @@ namespace RimConnection
             Prefix = "Trigger";
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             var amountOfDrops = 20;
             var currentMap = Find.CurrentMap;

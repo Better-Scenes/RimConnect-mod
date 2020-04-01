@@ -19,7 +19,7 @@ namespace RimConnection
         string ActionHash { get; set; }
 
         ValidCommand ToApiCall();
-        void Execute(int amount);
+        void Execute(int amount, string boughtBy);
         string GenerateActionHash(string extraData = "");
     }
 }

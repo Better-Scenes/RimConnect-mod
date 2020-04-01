@@ -47,7 +47,7 @@ namespace RimConnection {
 
 
 
-        public abstract void Execute(int amount);
+        public abstract void Execute(int amount, string boughtBy);
 
 
     }

@@ -7,6 +7,7 @@ namespace RimConnection
     {
         public string actionHash { get; set; }
         public int amount { get; set; }
+        public string boughtBy { get; set; }
     }
 
     public class CommandList

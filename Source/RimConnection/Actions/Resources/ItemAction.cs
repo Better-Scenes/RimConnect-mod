@@ -29,18 +29,29 @@ namespace RimConnection
             BitStoreSKU = "";
     }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             ThingDef itemDef = DefDatabase<ThingDef>.GetNamed(defName);
+            String dropMessage;
 
-            if(itemDef.race != null)
+            // I hope no viewer uses RC with the name "Poll"
+            if(boughtBy == "Poll")
+            {
+                dropMessage = $"<color=#9147ff>By popular opinion</color>, your channel has gifted you {amount} {defLabel}s for your colony. Enjoy!!";
+            }
+            else
+            {
+                dropMessage = $"<color=#9147ff>{boughtBy}</color> purchased {amount} {defLabel}s for your colony. Enjoy!!";
+            }
+
+            if (itemDef.race != null)
             {
                 List<Thing> pawnList = new List<Thing>();
                 for (int i = 0; i < amount; i++)
                 {
                     pawnList.Add(PawnGenerator.GeneratePawn(itemDef.race.AnyPawnKind, null));
                 }
-                DropPodManager.createDropOfThings(pawnList, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+                DropPodManager.createDropOfThings(pawnList, defLabel, dropMessage);
             }
             else
             {
@@ -66,13 +77,13 @@ namespace RimConnection
                         }
                         thingsToSpawn.Add(newThing);
                     }
-                    DropPodManager.createDropOfThings(thingsToSpawn, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+                    DropPodManager.createDropOfThings(thingsToSpawn, defLabel, dropMessage);
                 }
                 // If Our item doesn't have stuff, is minifiable, or doesn't have quality
                 // we can spawn it the old way with the itemdef
                 else
                 {
-                    DropPodManager.createDropFromDef(itemDef, amount, defLabel, $"Your viewers have given you {amount} {defLabel}s");
+                    DropPodManager.createDropFromDef(itemDef, amount, defLabel, dropMessage);
                 }
             }
         

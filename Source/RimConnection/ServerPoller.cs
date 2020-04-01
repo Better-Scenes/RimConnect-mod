@@ -40,7 +40,7 @@ namespace RimConnection
             if (commandQueue.TryDequeue(out Command command))
             {
                 IAction action = ActionList.actionLookup[command.actionHash];
-                action.Execute(command.amount);
+                action.Execute(command.amount, command.boughtBy);
                 Find.TickManager.slower.SignalForceNormalSpeedShort();
             }
         }
