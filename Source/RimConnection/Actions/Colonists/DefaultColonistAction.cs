@@ -15,7 +15,7 @@ namespace RimConnection
             CostSilverStore = 2000;
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             var pawnList = PawnCreationManager.generateDefaultColonists(amount, Faction.OfPlayer);
 

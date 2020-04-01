@@ -17,7 +17,7 @@ namespace RimConnection
             Category = "Event";
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             var colonists = Find.ColonistBar.GetColonistsInOrder();
 

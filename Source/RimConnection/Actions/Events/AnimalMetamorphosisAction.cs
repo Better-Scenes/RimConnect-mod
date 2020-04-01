@@ -17,7 +17,7 @@ namespace RimConnection
             Category = "Event";
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             Map currentMap = Find.CurrentMap;
             List<Thing> things = currentMap.listerThings.ThingsInGroup(ThingRequestGroup.Pawn);

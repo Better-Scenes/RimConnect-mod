@@ -19,7 +19,7 @@ namespace RimConnection
             Prefix = "Spawn %amount%";
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             Random random = new Random();
 

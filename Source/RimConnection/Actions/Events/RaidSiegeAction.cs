@@ -13,7 +13,7 @@ namespace RimConnection
             Prefix = "Trigger";
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             var currentMap = Find.CurrentMap;
 

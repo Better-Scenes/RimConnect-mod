@@ -19,7 +19,7 @@ namespace RimConnection
             ShouldShowAmount = true;
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             var heartAttackDef = DefDatabase<HediffDef>.GetNamed("HeartAttack");
 

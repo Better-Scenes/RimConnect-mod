@@ -19,7 +19,7 @@ namespace RimConnection
             CostSilverStore = 600;
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             var worker = IncidentDefOf.Eclipse;
             var currentMap = Find.CurrentMap;

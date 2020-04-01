@@ -19,7 +19,7 @@ namespace RimConnection
             CostSilverStore = 0;
         }
 
-        public override void Execute(int amount)
+        public override void Execute(int amount, string boughtBy)
         {
             var currentMap = Find.CurrentMap;
 
