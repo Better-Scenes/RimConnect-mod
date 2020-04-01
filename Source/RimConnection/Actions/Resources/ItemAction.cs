@@ -57,7 +57,7 @@ namespace RimConnection
             {
                 Thing thing = ThingMaker.MakeThing(itemDef, GenStuff.DefaultStuffFor(itemDef));
                 bool thingHasQuality = thing.TryGetQuality(out QualityCategory qualityCategory);
-                if (itemDef.MadeFromStuff && itemDef.Minifiable && thingHasQuality)
+                if (itemDef.MadeFromStuff || itemDef.Minifiable || thingHasQuality)
                 {
                     List<Thing> thingsToSpawn = new List<Thing>();
                     for (int i = 0; i < amount; i++)
