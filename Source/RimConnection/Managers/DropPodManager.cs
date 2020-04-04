@@ -14,7 +14,7 @@ namespace RimConnection
             if(newthing != null)
             {
                 var currentMap = Find.CurrentMap;
-                IntVec3 dropVector = DropCellFinder.RandomDropSpot(Find.CurrentMap);
+                IntVec3 dropVector = DropCellFinder.TradeDropSpot(Find.CurrentMap);
                 TradeUtility.SpawnDropPod(dropVector, currentMap, newthing);
 
                 if (showMessage)
@@ -30,7 +30,7 @@ namespace RimConnection
             if (things.Count > 0)
             {
                 var currentMap = Find.CurrentMap;
-                IntVec3 dropVector = DropCellFinder.RandomDropSpot(Find.CurrentMap);
+                IntVec3 dropVector = DropCellFinder.TradeDropSpot(Find.CurrentMap);
                 DropPodUtility.DropThingsNear(dropVector, currentMap, things);
 
                 if (showMessage)
