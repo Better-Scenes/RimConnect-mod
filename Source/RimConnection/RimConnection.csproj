@@ -87,6 +87,7 @@
     <Compile Include="API\CommandOption.cs" />
     <Compile Include="API\PostWorld.cs" />
     <Compile Include="API\ValidCommand.cs" />
+    <Compile Include="IncidentWorkers\IncidentWorker_ImBlue.cs" />
     <Compile Include="IncidentWorkers\IncidentWorker_AlphaBeavers.cs" />
     <Compile Include="Settings\CommandOptionListController.cs" />
     <Compile Include="Settings\CommandOptionSettings.cs" />
