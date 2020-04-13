@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <IncidentDef>
+    <defName>ImBlue</defName>
+    <label>I'm Blue</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>RimConnection.IncidentWorker_ImBlue</workerClass>
+    <baseChance>0.3</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <minDifficulty>2</minDifficulty>
+  </IncidentDef>
+</Defs>

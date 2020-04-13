@@ -33,6 +33,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Lib.Harmony">
+      <Version>2.0.0.9</Version>
+    </PackageReference>
     <PackageReference Include="RestSharp">
       <Version>106.10.1</Version>
     </PackageReference>
@@ -41,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
     <Compile Include="Actions\Colonists\ColonistList.cs" />
+    <Compile Include="Actions\Events\BlueSkinActionAction.cs" />
     <Compile Include="Actions\Events\PoorBedsAction.cs" />
     <Compile Include="Actions\Events\MasterworkBedsAction.cs" />
     <Compile Include="Actions\Events\ClearAddictionsAction.cs" />
@@ -87,12 +91,15 @@
     <Compile Include="API\CommandOption.cs" />
     <Compile Include="API\PostWorld.cs" />
     <Compile Include="API\ValidCommand.cs" />
+    <Compile Include="GaneComponents\BlueSkinTracker.cs" />
+    <Compile Include="HarmonyPatches - Copy.cs" />
+    <Compile Include="HarmonyPatches.cs" />
     <Compile Include="IncidentWorkers\IncidentWorker_ImBlue.cs" />
     <Compile Include="IncidentWorkers\IncidentWorker_AlphaBeavers.cs" />
     <Compile Include="Settings\CommandOptionListController.cs" />
     <Compile Include="Settings\CommandOptionSettings.cs" />
     <Compile Include="Managers\AlertManager.cs" />
-    <Compile Include="ServerPoller.cs" />
+    <Compile Include="GaneComponents\ServerPoller.cs" />
     <Compile Include="Managers\PawnCreationManager.cs" />
     <Compile Include="RimConnection.cs" />
     <Compile Include="API\RimConnectAPI.cs" />
@@ -102,13 +109,16 @@
     <Compile Include="Actions\Action.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
-    <Compile Include="SetWorldName.cs" />
+    <Compile Include="GaneComponents\SetWorldName.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Defs\IncidentDefs.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

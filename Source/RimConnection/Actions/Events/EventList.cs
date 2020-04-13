@@ -9,6 +9,7 @@ namespace RimConnection
             new AnimalMetamorphosisAction(),
             new AnimalSelfTameAction(),
             new BeaversAction(),
+            new BlueSkinAction(),
             new BionicPlagueAction(),
             new CargoPodAction(),
             new CleanAllFilthAction(),

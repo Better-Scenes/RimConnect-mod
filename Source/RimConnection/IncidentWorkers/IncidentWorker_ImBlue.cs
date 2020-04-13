@@ -1,20 +1,28 @@
-﻿using RimWorld;
+﻿using RimConnection;
+using RimWorld;
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-// Copied from the Rimworld namespace, but made public
-public class IncidentWorker_ImBlue : IncidentWorker
+namespace RimConnection
 {
-    protected override bool CanFireNowSub(IncidentParms parms)
+    public class IncidentWorker_ImBlue : IncidentWorker
     {
-        return true;
-    }
+        protected override bool CanFireNowSub(IncidentParms parms)
+        {
+            return true;
+        }
 
-    protected override bool TryExecuteWorker(IncidentParms parms)
-    {
-        Pawn randomColonist = Find.ColonistBar.GetColonistsInOrder().RandomElement();
+        protected override bool TryExecuteWorker(IncidentParms parms)
+        {
+            BlueSkinTracker blueSkinTracker = Current.Game.GetComponent<BlueSkinTracker>();
+            List<Pawn> colonists = Find.ColonistBar.GetColonistsInOrder();
+            blueSkinTracker.bluePawns = colonists;
 
-        randomColonist.story.SkinColor = new Color(73, 66, 255);
-        return true;
+            colonists[0].Drawer.renderer.graphics.ResolveAllGraphics();
+            Log.Message("Make sure that the execute worker gets after resolve graphcis and before get skin colour");
+            var a = colonists[0].story.SkinColor;
+            return true;
+        }
     }
 }
