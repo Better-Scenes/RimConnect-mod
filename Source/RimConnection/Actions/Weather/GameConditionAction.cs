@@ -7,22 +7,22 @@ using Verse;
 
 namespace RimConnection
 {
-    public class WeatherAction: Action, IAction
+    public class GameConditionAction: Action, IAction
     {
         private readonly string defName;
         private readonly string defLabel;
-        public WeatherDef thingDef;
+        public GameConditionDef thingDef;
 
-        public WeatherAction(WeatherDef weatherDef, string category = "Weather")
+        public GameConditionAction(GameConditionDef ConditionDef, string category = "Game Condition")
         {
-            defName = weatherDef.defName;
-            defLabel = weatherDef.label;
+            defName = ConditionDef.defName;
+            defLabel = ConditionDef.label;
             Name = defLabel;
-            Description = weatherDef.description;
+            Description = ConditionDef.description;
             ShouldShowAmount = true;
             Prefix = "Trigger";
             Category = category;
-            thingDef = weatherDef;
+            thingDef = ConditionDef;
             LocalCooldownMs = 30000;
             GlobalCooldownMs = 15000;
             CostSilverStore = 0;
@@ -31,22 +31,25 @@ namespace RimConnection
 
         public override void Execute(int amount, string boughtBy)
         {
-            WeatherDef WeatherDef = DefDatabase<WeatherDef>.GetNamed(defName);
+            GameConditionDef conditionDef = DefDatabase<GameConditionDef>.GetNamed(defName);
             String notificationMessage;
 
             // I hope no viewer uses RC with the name "Poll"
             if(boughtBy == "Poll")
             {
-                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has triggered {defLabel}, hopefully it helps!";
+                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has triggered {defLabel} for a whole day! Let's hope you get out the other side";
             }
             else
             {
-                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {defLabel} for your colony. Enjoy!!";
+                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {defLabel} for a whole day! Let's hope you get out the other side";
             }
 
             Map map = Find.CurrentMap;
 
-            map.weatherManager.TransitionTo(WeatherDef);
+            GameCondition gameCondition = GameConditionMaker.MakeCondition(conditionDef, 60000);
+            map.gameConditionManager.RegisterCondition(gameCondition);
+
+            //map.weatherManager.TransitionTo(WeatherDef);
 
             AlertManager.NormalEventNotification(notificationMessage);
         }
