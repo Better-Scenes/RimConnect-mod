@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using Multiplayer.API;
+using RimWorld;
 using System.Collections.Generic;
 using Verse;
 
@@ -6,6 +7,7 @@ namespace RimConnection
 {
     class DropPodManager
     {
+        [SyncMethod]
         public static void createDropFromDef(ThingDef thingDef, int amount, string title, string desc, bool showMessage = true, ThingDef stuff = null )
         {
             Thing newthing = ThingMaker.MakeThing(thingDef, stuff ?? null);
@@ -14,7 +16,11 @@ namespace RimConnection
             if(newthing != null)
             {
                 var currentMap = Find.CurrentMap;
+
+                Rand.PushState();
                 IntVec3 dropVector = DropCellFinder.TradeDropSpot(Find.CurrentMap);
+                Rand.PopState();
+
                 TradeUtility.SpawnDropPod(dropVector, currentMap, newthing);
 
                 if (showMessage)

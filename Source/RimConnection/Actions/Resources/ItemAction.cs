@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using Multiplayer.API;
 using RimWorld;
 using Verse;
 
@@ -29,6 +30,7 @@ namespace RimConnection
             BitStoreSKU = "";
     }
 
+        [SyncMethod]
         public override void Execute(int amount, string boughtBy)
         {
             ThingDef itemDef = DefDatabase<ThingDef>.GetNamed(defName);
