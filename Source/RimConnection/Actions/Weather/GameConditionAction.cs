@@ -49,9 +49,7 @@ namespace RimConnection
             GameCondition gameCondition = GameConditionMaker.MakeCondition(conditionDef, 60000);
             map.gameConditionManager.RegisterCondition(gameCondition);
 
-            //map.weatherManager.TransitionTo(WeatherDef);
-
-            AlertManager.NormalEventNotification(notificationMessage);
+            AlertManager.BadEventNotification(notificationMessage);
         }
 
         public ValidCommand ToApiCall(int id)
