@@ -16,6 +16,7 @@ namespace RimConnection
             Description = "The wasteland has arrived";
             Category = "Weather";
             Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount, string boughtBy)

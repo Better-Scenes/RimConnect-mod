@@ -16,6 +16,7 @@ namespace RimConnection
             Description = "Is it just me or is it hot in here?";
             Category = "Weather";
             Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount, string boughtBy)

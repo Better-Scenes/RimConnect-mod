@@ -16,7 +16,7 @@ namespace RimConnection
             Description = "Time to go where the sun don't shine";
             Category = "Weather";
             Prefix = "Trigger";
-            CostSilverStore = 600;
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount, string boughtBy)

@@ -16,6 +16,7 @@ namespace RimConnection
             Description = "Fast as lightning, a little bit frightening";
             Category = "Weather";
             Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount, string boughtBy)

@@ -71,12 +71,14 @@
     <Compile Include="Actions\Gear\RandomApparelAction.cs" />
     <Compile Include="Actions\Gear\RandomWeaponAction.cs" />
     <Compile Include="Actions\IAction.cs" />
-    <Compile Include="Actions\Resources\GenerateAllItemActions.cs" />
+    <Compile Include="Actions\Resources\GenerateItemActions.cs" />
     <Compile Include="Actions\Resources\ItemAction.cs" />
     <Compile Include="Actions\Colonists\GoodColonistAction.cs" />
     <Compile Include="Actions\Colonists\AwfulColonistAction.cs" />
     <Compile Include="Actions\Colonists\DefaultColonistAction.cs" />
     <Compile Include="Actions\Weather\EclipseAction.cs" />
+    <Compile Include="Actions\Weather\GenerateWeatherActions.cs" />
+    <Compile Include="Actions\Weather\WeatherAction.cs" />
     <Compile Include="Actions\Weather\SolarFlareAction.cs" />
     <Compile Include="Actions\Weather\HeatWaveAction.cs" />
     <Compile Include="Actions\Weather\FlashstormAction.cs" />

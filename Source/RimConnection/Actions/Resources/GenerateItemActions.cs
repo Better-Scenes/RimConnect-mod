@@ -11,13 +11,14 @@ namespace RimConnection
 
         public static List<IAction> GenerateThingDefActions()
         {
-            var allDefs = DefDatabase<ThingDef>.AllDefs.Where(SpawnableThingDefsPredicate);
+            IEnumerable<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefs.Where(SpawnableThingDefsPredicate);
             List<IAction> allThingActions = allDefs.Select(thingDef => CreateActionFromDef(thingDef)).ToList();
             return allThingActions;
         }
+
         private static IAction CreateActionFromDef(ThingDef thingDef)
         {
-            var category = "Item";
+            string category = "Item";
 
             if (thingDef.IsApparel)
                 category = "Apparel";
