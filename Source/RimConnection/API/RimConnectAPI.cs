@@ -185,8 +185,6 @@ namespace RimConnection
 
                 if (response == null) throw new NullReferenceException("Response is null");
 
-                Log.Message($"Silvers Per Award {response.Data.silverAwardPoints}");
-
                 RimConnectSettings.config = response.Data;
             }
             catch (Exception e)
