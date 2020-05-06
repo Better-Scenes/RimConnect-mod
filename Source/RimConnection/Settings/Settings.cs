@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using RimConnection.API;
 using RimConnection.Settings;
 using RimWorld;
 using UnityEngine;
@@ -11,14 +12,15 @@ namespace RimConnection
         public static string[] validCommands;
 
         //public static string BASE_URL = "https://rimconnect-dev.herokuapp.com/";
-        public static string BASE_URL = "http://rimconnect-backend.herokuapp.com/";
-        //public static string BASE_URL = "http://localhost:8080/";
+        //public static string BASE_URL = "http://rimconnect-backend.herokuapp.com/";
+        public static string BASE_URL = "http://localhost:8080/";
 
         public static string secret = "";
         public static string token = "";
         public static bool initialiseSuccessful = false;
 
         bool showSecret = false;
+        internal static Config config = null;
 
         public override void ExposeData()
         {
@@ -112,6 +114,13 @@ namespace RimConnection
                 CommandOptionSettings window = new CommandOptionSettings();
                 Find.WindowStack.TryRemove(window.GetType());
                 Find.WindowStack.Add(window);
+            }
+
+            loyaltyStore.y += loyaltyStore.height * 1.2f;
+
+            if (config != null)
+            {
+                Widgets.Label(loyaltyStore, $"Silvers Per Award: {config.silverAwardPoints}");
             }
 
             Text.Anchor = TextAnchor.UpperLeft;

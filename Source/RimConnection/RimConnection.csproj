@@ -85,6 +85,7 @@
     <Compile Include="Actions\Weather\WeatherList.cs" />
     <Compile Include="API\AuthMod.cs" />
     <Compile Include="API\CommandOption.cs" />
+    <Compile Include="API\Config.cs" />
     <Compile Include="API\PostWorld.cs" />
     <Compile Include="API\ValidCommand.cs" />
     <Compile Include="IncidentWorkers\IncidentWorker_AlphaBeavers.cs" />

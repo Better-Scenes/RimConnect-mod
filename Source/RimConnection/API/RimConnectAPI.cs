@@ -2,6 +2,8 @@
 using Verse;
 using RestSharp;
 using System;
+using UnityEngine.VR;
+using RimConnection.API;
 
 namespace RimConnection
 {
@@ -170,6 +172,33 @@ namespace RimConnection
                 Log.Error($"Failed to provide world info to server. {e.Message}");
                 throw;
             }
+        }
+
+        public static void GetConfig()
+        {
+            RestRequest restRequest = new RestRequest("loyalty/config", Method.GET);
+            restRequest.AddHeader("Content-Type", "application/json")
+                .AddHeader("Authorizaiton", $"Bearer {RimConnectSettings.token}");
+
+            try
+            {
+                var response = client.Execute<Config>(restRequest);
+
+                if (response == null) throw new NullReferenceException("Response is null");
+
+                Log.Message($"Silvers Per Award {response.Data.silverAwardPoints}");
+
+                RimConnectSettings.config = response.Data;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+            }
+        }
+
+        public static void PostConfig()
+        {
+
         }
     }
 }
