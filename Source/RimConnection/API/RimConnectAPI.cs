@@ -2,7 +2,6 @@
 using Verse;
 using RestSharp;
 using System;
-using UnityEngine.VR;
 using RimConnection.API;
 
 namespace RimConnection
@@ -178,7 +177,7 @@ namespace RimConnection
         {
             RestRequest restRequest = new RestRequest("loyalty/config", Method.GET);
             restRequest.AddHeader("Content-Type", "application/json")
-                .AddHeader("Authorizaiton", $"Bearer {RimConnectSettings.token}");
+                .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}");
 
             try
             {
