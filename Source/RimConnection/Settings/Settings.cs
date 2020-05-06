@@ -33,8 +33,6 @@ namespace RimConnection
             Rect accountLink = new Rect(0f, 32f, rect.width, 64f);
             Widgets.Label(accountLink, "<size=32>Account Link</size>");
 
-            Widgets.DrawLineHorizontal(0f, 70f, rect.width);
-
             Rect label = new Rect(0f, 80f, 100f, 32f);
             Widgets.Label(label, "Status:");
 
@@ -104,8 +102,6 @@ namespace RimConnection
             Rect loyaltyStore = new Rect(0f, 300f, rect.width, 64f);
 
             Widgets.Label(loyaltyStore, "<size=32>Loyalty Store</size>");
-
-            Widgets.DrawLineHorizontal(0f, loyaltyStore.y + loyaltyStore.height, rect.width);
 
             loyaltyStore.y += loyaltyStore.height * 1.2f;
             loyaltyStore.height = 28f;
