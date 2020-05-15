@@ -16,11 +16,13 @@ namespace RimConnection
         {
             actionList = new List<IAction>();
 
-            actionList =  actionList.Concat(ColonistList.colonistList)
+            actionList = actionList.Concat(ColonistList.colonistList)
             .Concat(EventList.eventList)
             .Concat(GearList.gearList)
             .Concat(GenerateAllItemActions.GenerateThingDefActions())
-            .Concat(WeatherList.weatherList).ToList();
+            .Concat(GenerateWeatherActions.GenerateWeatherDefActions())
+            .Concat(GenerateGameConditionActions.GenerateGameConditionDefActions())
+            .ToList();
 
             return actionList;
         }
