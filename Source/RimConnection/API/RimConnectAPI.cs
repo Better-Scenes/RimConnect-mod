@@ -185,7 +185,7 @@ namespace RimConnection
 
                 if (response == null) throw new NullReferenceException("Response is null");
 
-                RimConnectSettings.config = response.Data;
+                RimConnectSettings.silverAwardPoints = response.Data.silverAwardPoints;
             }
             catch (Exception e)
             {
@@ -195,7 +195,20 @@ namespace RimConnection
 
         public static void PostConfig()
         {
+            RestRequest restRequest = new RestRequest("loyalty/config", Method.POST);
+                restRequest.AddHeader("Content-Type", "application/json")
+                           .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
+                           .AddJsonBody(new Config { silverAwardPoints = RimConnectSettings.silverAwardPoints });
 
+            try
+            {
+                var response = client.Execute(restRequest);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Failed to provide Loyalty Config to server. {e.Message}");
+                throw;
+            }
         }
     }
 }
