@@ -2,6 +2,7 @@
 
 using RimWorld;
 using Verse;
+using Multiplayer.API;
 
 namespace RimConnection
 {
@@ -28,7 +29,18 @@ namespace RimConnection
                 animal.Kill();
 
                 var componentToDrop = ThingMaker.MakeThing(ThingDefOf.ComponentIndustrial);
-                componentToDrop.stackCount = Rand.Range(1, 3);
+
+                if (MP.IsInMultiplayer)
+                {
+                    Rand.PushState();
+                    componentToDrop.stackCount = Rand.Range(1, 3);
+                    Rand.PopState();
+                }
+                else
+                {
+                    componentToDrop.stackCount = Rand.Range(1, 3);
+                }
+                
                 Thing outThing = new Thing();
                 GenThing.TryDropAndSetForbidden(componentToDrop, position, currentMap, ThingPlaceMode.Direct, out outThing, true);
             });

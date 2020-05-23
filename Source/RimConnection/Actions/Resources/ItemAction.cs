@@ -28,9 +28,8 @@ namespace RimConnection
             GlobalCooldownMs = 15000;
             CostSilverStore = (int)Math.Ceiling(thingDef.BaseMarketValue);
             BitStoreSKU = "";
-    }
+        }
 
-        [SyncMethod]
         public override void Execute(int amount, string boughtBy)
         {
             ThingDef itemDef = DefDatabase<ThingDef>.GetNamed(defName);

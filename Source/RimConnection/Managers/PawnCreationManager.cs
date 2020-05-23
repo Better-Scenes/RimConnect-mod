@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using Multiplayer.API;
+using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -27,6 +28,7 @@ namespace RimConnection
             new Trait(TraitDefOf.SpeedOffset, 2),
         });
 
+        [SyncMethod]
         public static List<Thing> generateDefaultColonists(int amount, Faction faction)
         {
             var currentMap = Find.CurrentMap;
@@ -52,6 +54,7 @@ namespace RimConnection
             return pawnList;
         }
 
+        [SyncMethod]
         public static List<Thing> generateAwfulColonists(int amount)
         {
             List<Thing> pawnList = new List<Thing>();
@@ -82,6 +85,7 @@ namespace RimConnection
             return pawnList;
         }
 
+        [SyncMethod]
         public static List<Thing> generateGoodColonists(int amount)
         {
             List<Thing> pawnList = new List<Thing>();
