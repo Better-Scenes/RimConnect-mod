@@ -24,6 +24,7 @@ namespace RimConnection
             {
                 List<Thing> dropList = dropQueue.ToList();
                 dropSpawn(currentMap, dropVector, dropList);
+                dropQueue.Clear();
             }
         }
 
