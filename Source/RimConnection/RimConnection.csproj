@@ -103,6 +103,8 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
     <Compile Include="SetWorldName.cs" />
+    <Compile Include="Voting\StorytellerCompProperties_VotingCategoryMTB.cs" />
+    <Compile Include="Voting\StorytellerComp_VotingCategoryMTB.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -110,5 +112,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
