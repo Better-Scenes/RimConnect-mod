@@ -25,25 +25,21 @@ namespace RimConnection
             }
         }
 
-        [SyncMethod]
         public static void BadEventNotification(string description)
         {
             EventNotification("Twitch Event", description, badTwitchEventLetterDef, null);
         }
 
-        [SyncMethod]
         public static void BadEventNotification(string description, IntVec3 location)
         {
             EventNotification("Twitch Event", description, badTwitchEventLetterDef, location);
         }
 
-        [SyncMethod]
         public static void NormalEventNotification(string description)
         {
             EventNotification("Twitch Event", description, twitchEventLetterDef, null);
         }
 
-        [SyncMethod]
         public static void ResourceDropNotification(string description, IntVec3 location)
         {
             EventNotification("Twitch Drop", description, twitchEventLetterDef, location);

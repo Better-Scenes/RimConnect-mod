@@ -45,7 +45,7 @@ namespace RimConnection
                 var pawnSkills = newPawn.skills.skills;
                 pawnSkills.ForEach(skill =>
                 {
-                    skill.Level = Random.Range(2, 7);
+                    skill.Level = Rand.Range(2, 7);
                 });
                 pawnList.Add(newPawn);
                 i++;
@@ -76,7 +76,7 @@ namespace RimConnection
                 var pawnSkills = newPawn.skills.skills;
                 pawnSkills.ForEach(skill =>
                 {
-                    skill.Level = Random.Range(0, 2);
+                    skill.Level = Rand.Range(0, 2);
                 });
 
                 pawnList.Add(newPawn);
@@ -108,7 +108,7 @@ namespace RimConnection
                 var pawnSkills = newPawn.skills.skills;
                 pawnSkills.ForEach(skill =>
                 {
-                    skill.Level = Random.Range(4, 10);
+                    skill.Level = Rand.Range(4, 10);
                 });
 
                 pawnList.Add(newPawn);
