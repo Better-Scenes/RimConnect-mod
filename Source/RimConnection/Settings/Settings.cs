@@ -58,7 +58,7 @@ namespace RimConnection
             {
                 Widgets.Label(statusLabel, "<color=red>Disconnected</color>");
 
-                if (Widgets.ButtonText(connectionButton, "Disconnect"))
+                if (Widgets.ButtonText(connectionButton, "Connect"))
                 {
                     ServerInitialise.Init();
                 }
