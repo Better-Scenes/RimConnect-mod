@@ -14,23 +14,21 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Assemblies\</OutputPath>
+    <OutputPath>C:\Program Files %28x86%29\Steam\steamapps\common\RimWorld\Mods\RimConnect\Assemblies</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\RimWorld\Mods\RimConnect\</OutputPath>
+    <OutputPath>C:\Program Files %28x86%29\Steam\steamapps\common\RimWorld\Mods\RimConnect\Assemblies</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="RestSharp">
@@ -105,6 +103,11 @@
     <Compile Include="SetWorldName.cs" />
     <Compile Include="Voting\StorytellerCompProperties_VotingCategoryMTB.cs" />
     <Compile Include="Voting\StorytellerComp_VotingCategoryMTB.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ContentWithTargetPath Include="About\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\About\%(Filename)%(Extension)" />
+    <ContentWithTargetPath Include="Defs\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\Defs\%(RecursiveDir)%(Filename)%(Extension)" />
+    <ContentWithTargetPath Include="Languages\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\Languages\%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
