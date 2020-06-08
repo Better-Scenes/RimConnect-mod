@@ -14,38 +14,38 @@ namespace RimConnection.Voting
         {
             get
             {
-                Log.Message("Casting Props");
                 return (StorytellerCompProperties_VotingCategoryMTB)this.props;
             }
         }
 
         public override IEnumerable<FiringIncident> MakeIntervalIncidents(IIncidentTarget target)
         {
-            Log.Message("Making new list");
             List<FiringIncident> incidents = new List<FiringIncident>();
+            List<IncidentDef> defs = new List<IncidentDef>();
 
             float num = this.Props.mtbDays;
             if (this.Props.mtbDaysFactorByDaysPassedCurve != null)
             {
                 num *= this.Props.mtbDaysFactorByDaysPassedCurve.Evaluate(GenDate.DaysPassedFloat);
             }
-            if (Rand.MTBEventOccurs(num, 60000f, 1000f))
+            if (Rand.MTBEventOccurs(num, 60000f, 1000f) || RimConnectSettings.forceRandom)
             {
                 bool failed = false;
 
-                while (incidents.Count < 4 && !failed)
+                while (defs.Count < 4 && !failed)
                 {
                     Log.Message("Running Loop");
                     IncidentParms parms = this.GenerateParms(this.Props.category, target);
                     IncidentDef def;
                     if (base.UsableIncidentsInCategory(this.Props.category, parms)
-                        .Where((y) => incidents.Find((x) => x.def.defName != y.defName) == null)
+                        .Where((y) => !defs.Contains(y))
                         .TryRandomElementByWeight(
                             (IncidentDef incDef) =>
                                 base.IncidentChanceFinal(incDef), out def)
                         )
                     {
                         Log.Message("Adding incident");
+                        defs.Add(def);
                         incidents.Add(new FiringIncident(def, this, parms));
                     }
                     else
@@ -64,6 +64,10 @@ namespace RimConnection.Voting
                         Log.Message($"Generated FiringIncident with def {incident.def.defName}");
                     }
                 }
+            }
+            else
+            {
+                Log.Message("Rand does not occur", true);
             }
 
             yield break;

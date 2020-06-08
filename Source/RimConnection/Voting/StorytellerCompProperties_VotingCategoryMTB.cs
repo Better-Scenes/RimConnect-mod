@@ -12,7 +12,6 @@ namespace RimConnection.Voting
     {
         public StorytellerCompProperties_VotingCategoryMTB()
         {
-            Log.Message("Creating Comp Properties");
             this.compClass = typeof(StorytellerComp_VotingCategoryMTB);
         }
 

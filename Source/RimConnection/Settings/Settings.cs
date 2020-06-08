@@ -153,6 +153,11 @@ namespace RimConnection
             }
 
             GUI.EndGroup();
+
+            Rect forceRand = new Rect(0, silversPerGroup.yMax, rect.width, 24f);
+            Widgets.CheckboxLabeled(forceRand, "Force Rand", ref forceRandom);
         }
+
+        public static bool forceRandom = false;
     }
 }
