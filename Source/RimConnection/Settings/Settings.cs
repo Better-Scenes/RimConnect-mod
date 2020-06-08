@@ -15,6 +15,11 @@ namespace RimConnection
         public static string BASE_URL = "http://rimconnect-backend.herokuapp.com/";
         //public static string BASE_URL = "http://localhost:8080/";
 
+        public static string BaseURL()
+        {
+            return BASE_URL;
+        }
+
         public static string secret = "";
         public static string token = "";
         public static bool initialiseSuccessful = false;

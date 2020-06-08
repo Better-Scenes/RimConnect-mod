@@ -14,7 +14,7 @@ namespace RimConnection
 
         static RimConnectAPI()
         {
-            BASE_URL = RimConnectSettings.BASE_URL;
+            BASE_URL = RimConnectSettings.BaseURL();
             client = new RestClient(BASE_URL);
         }
 

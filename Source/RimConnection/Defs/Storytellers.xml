@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<StorytellerDef ParentName="BaseStoryteller">
+		<defName>RimConnect</defName>
+		<label>RimConnect Voting</label>
+		<description>RimConnecting Voting gives you many different incidents that can occur.</description>
+		<listOrder>50</listOrder>
+		<comps>
+      	<li Class="RimConnection.Voting.StorytellerCompProperties_VotingCategoryMTB">
+	        <category>Misc</category>
+	        <allowedTargetTags>
+	          <li>Map_PlayerHome</li>
+	        </allowedTargetTags>
+	        <minDaysPassed>0</minDaysPassed>
+	        <mtbDays>1</mtbDays>
+      	</li>
+		</comps>
+	</StorytellerDef>
+</Defs>
