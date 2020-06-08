@@ -12,7 +12,7 @@ namespace RimConnection.API
         public int silverAwardPoints { get; set; }
 
 
-        public int silverAwardTimeMs { get; set; }
+        //public int silverAwardTimeMs { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
     }
 }
