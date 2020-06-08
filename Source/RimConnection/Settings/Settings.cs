@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using RimConnection.API;
 using RimConnection.Settings;
 using RimWorld;
 using UnityEngine;
@@ -20,105 +21,138 @@ namespace RimConnection
 
         bool showSecret = false;
 
+        public static int silverAwardPoints = -1;
+
         public override void ExposeData()
         {
             base.ExposeData();
 
             Scribe_Values.Look<string>(ref secret, "secret", "", true);
+            Scribe_Values.Look(ref silverAwardPoints, "silverAwardPoints");
 
         }
 
         public void DoWindowContents(Rect rect)
         {
-            Rect accountLink = new Rect(0f, 32f, rect.width, 64f);
-            Widgets.Label(accountLink, "<size=32>Account Link</size>");
+            Rect accountLinkHeader = new Rect(0, 32f, rect.width, 64f);
+            Widgets.Label(accountLinkHeader, "<size=32>Account Link</size>");
 
-            Widgets.DrawLineHorizontal(0f, 70f, rect.width);
+            Rect statusGroup = new Rect(0, accountLinkHeader.y + accountLinkHeader.height + 10f, rect.width, 48f);
 
-            Rect label = new Rect(0f, 80f, 100f, 32f);
-            Widgets.Label(label, "Status:");
+            GUI.BeginGroup(statusGroup);
 
-            Rect status = new Rect(70f, 80f, 100f, 32f);
-            Rect connectButton = new Rect(0f, 105f, 100f, 32f);
+            Rect statusLabel = new Rect(0, 0, 200f, 24f);
+            Rect connectionButton = new Rect(200f + WidgetRow.LabelGap, 24f, 200f, 24f);
+            Widgets.Label(statusLabel, "Status:");
+            statusLabel.x += statusLabel.width + WidgetRow.LabelGap;
             if (initialiseSuccessful)
             {
-                Widgets.Label(status, "<color=green>Connected!</color>");
+                Widgets.Label(statusLabel, "<color=green>Connected!</color>");
 
-
-                if (Widgets.ButtonText(connectButton, "Reconnect"))
+                if (Widgets.ButtonText(connectionButton, "Reconnect"))
                 {
                     ServerInitialise.Init();
                 }
             }
             else
             {
-                Widgets.Label(status, "<color=red>Not Connected!</color>");
+                Widgets.Label(statusLabel, "<color=red>Disconnected</color>");
 
-                if (Widgets.ButtonText(connectButton, "Connect"))
+                if (Widgets.ButtonText(connectionButton, "Connect"))
                 {
                     ServerInitialise.Init();
                 }
             }
 
-            label.y = 170f;
+            GUI.EndGroup();
 
-            Text.Anchor = TextAnchor.MiddleLeft;
+            Rect secretGroup = new Rect(0, statusGroup.y + statusGroup.height + 20f, rect.width, 72f);
 
-            Widgets.Label(label, "<b>Secret</b>: ");
+            GUI.BeginGroup(secretGroup);
 
-            Rect secretInput = new Rect(70f, 170f, 200f, 32f);
-            Rect hideSecretButton = new Rect(280f, 170f, 60f, 32f);
+            Rect secretLabel = new Rect(0, 0, 200f, 24f);
+            Rect pasteButton = new Rect(200f, 24f, 200f, 24f);
+            Rect warningLabel = new Rect(0, 48, 400f, 24f);
 
+            Widgets.Label(secretLabel, "Secret:");
+            secretLabel.x = secretLabel.width + WidgetRow.LabelGap;
+            
             if (showSecret)
             {
-                secret = Widgets.TextField(secretInput, secret);
-                
-                if (Widgets.ButtonText(hideSecretButton, "Hide"))
-                {
-                    showSecret = false;
-                }
+                secret = Widgets.TextField(secretLabel, secret);
             }
             else
             {
-                Widgets.Label(secretInput, new string('*', secret.Length));
-
-                if (Widgets.ButtonText(hideSecretButton, "Show"))
-                {
-                    showSecret = true;
-                }
+                Widgets.Label(secretLabel, new string('*', secret.Length));
             }
 
-            label.y = 200f;
-            label.width = 300f;
+            secretLabel.x += secretLabel.width + WidgetRow.LabelGap;
+            if (!showSecret && Widgets.ButtonText(secretLabel, "Show"))
+            {
+                showSecret = true;
+            }
+            else if (Widgets.ButtonText(secretLabel, "Hide"))
+            {
+                showSecret = false;
+            }
 
-            Widgets.Label(label, "<color=red>Warning: Do not show your secret on stream!</color>");
-
-            Rect pasteButton = new Rect(0f, 225f, 200f, 32f);
-
-            if (Widgets.ButtonText(pasteButton, "Paste Secret from Clipboard"))
+            if (Widgets.ButtonText(pasteButton, "Paste from Clipboard"))
             {
                 secret = GUIUtility.systemCopyBuffer;
             }
 
+            Widgets.Label(warningLabel, "<color=red>Warning: Do not show your secret on stream!</color>");
 
-            Rect loyaltyStore = new Rect(0f, 300f, rect.width, 64f);
+            GUI.EndGroup();
 
-            Widgets.Label(loyaltyStore, "<size=32>Loyalty Store</size>");
+            Rect loyaltyStoreHeader = new Rect(0, secretGroup.y + secretGroup.height + 10f, rect.width, 64f);
+            Widgets.Label(loyaltyStoreHeader, "<size=32>Loyalty Settings</size>");
 
-            Widgets.DrawLineHorizontal(0f, loyaltyStore.y + loyaltyStore.height, rect.width);
+            Rect itemStoreGroup = new Rect(0, loyaltyStoreHeader.y + loyaltyStoreHeader.height + 10f, rect.width, 24f);
 
-            loyaltyStore.y += loyaltyStore.height * 1.2f;
-            loyaltyStore.height = 28f;
-            loyaltyStore.width = loyaltyStore.width / 3f;
-
-            if (CommandOptionListController.commandOptionList != null && Widgets.ButtonText(loyaltyStore, "Item Settings"))
+            if (CommandOptionListController.commandOptionList != null)
             {
-                CommandOptionSettings window = new CommandOptionSettings();
-                Find.WindowStack.TryRemove(window.GetType());
-                Find.WindowStack.Add(window);
+                GUI.BeginGroup(itemStoreGroup);
+
+                Rect itemLabel = new Rect(0, 0, 200f, 24f);
+                Widgets.Label(itemLabel, "Loyalty Store Items:");
+
+                itemLabel.x += itemLabel.width + WidgetRow.LabelGap;
+
+                if (Widgets.ButtonText(itemLabel, "Items"))
+                {
+                    CommandOptionSettings window = new CommandOptionSettings();
+                    Find.WindowStack.TryRemove(window.GetType());
+                    Find.WindowStack.Add(window);
+                }
+
+                GUI.EndGroup();
+            }
+            else
+            {
+                Widgets.Label(itemStoreGroup, "Cannot edit items without proper connection to RimConnect Servers");
             }
 
-            Text.Anchor = TextAnchor.UpperLeft;
+            Rect silversPerGroup = new Rect(0, itemStoreGroup.y + itemStoreGroup.height + 10f, rect.width, 24f);
+
+            GUI.BeginGroup(silversPerGroup);
+
+            Rect silverLabel = new Rect(0, 0, 200f, 24f);
+            Widgets.Label(silverLabel, "Silvers per Award:");
+
+            silverLabel.x += silverLabel.width + WidgetRow.LabelGap;
+
+            string silverAwardPointsBuffer = silverAwardPoints.ToString();
+            Widgets.TextFieldNumeric(silverLabel, ref silverAwardPoints, ref silverAwardPointsBuffer);
+
+            silverLabel.x += silverLabel.width + WidgetRow.LabelGap;
+
+            if (Widgets.ButtonText(silverLabel, "Update on Server"))
+            {
+                RimConnectAPI.PostConfig();
+            }
+
+            GUI.EndGroup();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Verse;
 using RestSharp;
 using System;
+using RimConnection.API;
 
 namespace RimConnection
 {
@@ -168,6 +169,44 @@ namespace RimConnection
             } catch(Exception e)
             {
                 Log.Error($"Failed to provide world info to server. {e.Message}");
+                throw;
+            }
+        }
+
+        public static void GetConfig()
+        {
+            RestRequest restRequest = new RestRequest("loyalty/config", Method.GET);
+            restRequest.AddHeader("Content-Type", "application/json")
+                .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}");
+
+            try
+            {
+                var response = client.Execute<Config>(restRequest);
+
+                if (response == null) throw new NullReferenceException("Response is null");
+
+                RimConnectSettings.silverAwardPoints = response.Data.silverAwardPoints;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+            }
+        }
+
+        public static void PostConfig()
+        {
+            RestRequest restRequest = new RestRequest("loyalty/config", Method.POST);
+                restRequest.AddHeader("Content-Type", "application/json")
+                           .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
+                           .AddJsonBody(new Config { silverAwardPoints = RimConnectSettings.silverAwardPoints });
+
+            try
+            {
+                var response = client.Execute(restRequest);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Failed to provide Loyalty Config to server. {e.Message}");
                 throw;
             }
         }
