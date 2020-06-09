@@ -35,6 +35,9 @@
       <Version>106.10.1</Version>
     </PackageReference>
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.1.2579" />
+    <PackageReference Include="ShortGuid">
+      <Version>1.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
@@ -98,10 +101,12 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
     <Compile Include="SetWorldName.cs" />
+    <Compile Include="Voting\Poll.cs" />
     <Compile Include="Voting\StorytellerComps\StorytellerCompProperties_VotingCategoryMTB.cs" />
     <Compile Include="Voting\StorytellerComps\StorytellerCompProperties_VotingRandomMain.cs" />
     <Compile Include="Voting\StorytellerComps\StorytellerComp_VotingCategoryMTB.cs" />
     <Compile Include="Voting\StorytellerComps\StorytellerComp_VotingRandomMain.cs" />
+    <Compile Include="Voting\VoteController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ContentWithTargetPath Include="About\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\About\%(Filename)%(Extension)" />

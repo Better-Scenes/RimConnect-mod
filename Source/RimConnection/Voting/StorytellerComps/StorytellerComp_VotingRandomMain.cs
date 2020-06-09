@@ -22,12 +22,13 @@ namespace RimConnection.Voting.StorytellerComps
         {
             List<IncidentDef> incidentDefs = new List<IncidentDef>();
             List<IncidentCategoryDef> categorySkips = new List<IncidentCategoryDef>();
+            List<FiringIncident> firingIncidents = new List<FiringIncident>();
 
             if (Rand.MTBEventOccurs(this.Props.mtbDays, 60000f, 1000f) || RimConnectSettings.forceRandom)
             {
                 bool failed = false;
 
-                while (incidentDefs.Count < 4 && !failed)
+                while (firingIncidents.Count < 4 && !failed)
                 {
                     IncidentCategoryDef incidentCategoryDef = this.ChooseRandomCategory(target, categorySkips);
                     IncidentParms parms = this.GenerateParms(incidentCategoryDef, target);
@@ -43,6 +44,7 @@ namespace RimConnection.Voting.StorytellerComps
                     if (usuableIncidentDefs.TryRandomElementByWeight(new Func<IncidentDef, float>(base.IncidentChanceFinal), out IncidentDef incidentDef))
                     {
                         incidentDefs.Add(incidentDef);
+                        firingIncidents.Add(new FiringIncident(incidentDef, this, parms));
                     }
                     else
                     {
@@ -50,9 +52,22 @@ namespace RimConnection.Voting.StorytellerComps
                     }
                 }
 
-                foreach (IncidentDef incidentDef in incidentDefs)
+                VoteController voteController = Current.Game.GetComponent<VoteController>();
+
+                if (voteController != null && firingIncidents.Count > 1)
                 {
-                    Log.Message($"Generated incident {incidentDef.LabelCap}");
+                    List<CustomVoteOption> voteOptions = new List<CustomVoteOption>();
+
+                    foreach (FiringIncident firingIncident in firingIncidents)
+                    {
+                        voteOptions.Add(new CustomVoteOption(firingIncident.def.LabelCap, firingIncident));
+                    }
+
+                    voteController.RegisterNewPoll(new Poll(voteOptions));
+                }
+                else
+                {
+                    Log.Warning("Failed to generate vote");
                 }
             }
 
