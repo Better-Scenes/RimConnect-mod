@@ -6,14 +6,34 @@
 		<description>RimConnecting Voting gives you many different incidents that can occur.</description>
 		<listOrder>50</listOrder>
 		<comps>
-	      	<li Class="RimConnection.Voting.StorytellerComps.StorytellerCompProperties_VotingCategoryMTB">
+	      	<!--<li Class="RimConnection.Voting.StorytellerComps.StorytellerCompProperties_VotingCategoryMTB">
 		        <category>Misc</category>
 		        <allowedTargetTags>
 		          <li>Map_PlayerHome</li>
 		        </allowedTargetTags>
 		        <minDaysPassed>0</minDaysPassed>
 		        <mtbDays>4.8</mtbDays>
-	      	</li>
+	      	</li>-->
+      
+          <li Class="RimConnection.Voting.StorytellerComps.StorytellerCompProperties_VotingRandomMain">
+            <allowedTargetTags>
+              <li>Map_PlayerHome</li>
+            </allowedTargetTags>
+            <minDaysPassed>1</minDaysPassed>
+            <mtbDays>1.35</mtbDays>
+            <maxThreatBigIntervalDays>13</maxThreatBigIntervalDays>
+            <minIncChancePopulationIntentFactor>0.2</minIncChancePopulationIntentFactor>
+            <randomPointsFactorRange>0.5~1.5</randomPointsFactorRange>
+            <skipThreatBigIfRaidBeacon>true</skipThreatBigIfRaidBeacon>
+            <categoryWeights>
+              <Misc>3.5</Misc>
+              <ThreatBig>1.4</ThreatBig>
+              <OrbitalVisitor>1.1</OrbitalVisitor>
+              <FactionArrival>2.4</FactionArrival>
+              <ThreatSmall>0.6</ThreatSmall>
+              <ShipChunkDrop>0.22</ShipChunkDrop>
+            </categoryWeights>
+          </li>
 		</comps>
 	</StorytellerDef>
 </Defs>

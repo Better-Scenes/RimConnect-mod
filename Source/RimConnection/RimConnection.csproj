@@ -102,7 +102,9 @@
     <Compile Include="API\CommandList.cs" />
     <Compile Include="SetWorldName.cs" />
     <Compile Include="Voting\StorytellerComps\StorytellerCompProperties_VotingCategoryMTB.cs" />
+    <Compile Include="Voting\StorytellerComps\StorytellerCompProperties_VotingRandomMain.cs" />
     <Compile Include="Voting\StorytellerComps\StorytellerComp_VotingCategoryMTB.cs" />
+    <Compile Include="Voting\StorytellerComps\StorytellerComp_VotingRandomMain.cs" />
   </ItemGroup>
   <ItemGroup>
     <ContentWithTargetPath Include="About\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\About\%(Filename)%(Extension)" />
