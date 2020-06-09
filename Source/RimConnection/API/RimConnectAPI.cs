@@ -14,8 +14,14 @@ namespace RimConnection
 
         static RimConnectAPI()
         {
-            BASE_URL = RimConnectSettings.BaseURL();
+            BASE_URL = RimConnectSettings.BASE_URL;
             client = new RestClient(BASE_URL);
+        }
+
+        public static void ChangeBaseURL(string baseUrl)
+        {
+            client = new RestClient(baseUrl);
+            Log.Warning("RimConnectAPI baseurl changed to " + baseUrl);
         }
 
         public static bool AuthSecret(string secret, out string response)
