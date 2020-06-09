@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace RimConnection.Voting
+namespace RimConnection.Voting.StorytellerComps
 {
     public class StorytellerComp_VotingCategoryMTB : StorytellerComp
     {

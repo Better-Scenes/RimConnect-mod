@@ -6,7 +6,7 @@
 		<description>RimConnecting Voting gives you many different incidents that can occur.</description>
 		<listOrder>50</listOrder>
 		<comps>
-	      	<li Class="RimConnection.Voting.StorytellerCompProperties_VotingCategoryMTB">
+	      	<li Class="RimConnection.Voting.StorytellerComps.StorytellerCompProperties_VotingCategoryMTB">
 		        <category>Misc</category>
 		        <allowedTargetTags>
 		          <li>Map_PlayerHome</li>

@@ -101,8 +101,8 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="API\CommandList.cs" />
     <Compile Include="SetWorldName.cs" />
-    <Compile Include="Voting\StorytellerCompProperties_VotingCategoryMTB.cs" />
-    <Compile Include="Voting\StorytellerComp_VotingCategoryMTB.cs" />
+    <Compile Include="Voting\StorytellerComps\StorytellerCompProperties_VotingCategoryMTB.cs" />
+    <Compile Include="Voting\StorytellerComps\StorytellerComp_VotingCategoryMTB.cs" />
   </ItemGroup>
   <ItemGroup>
     <ContentWithTargetPath Include="About\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\About\%(Filename)%(Extension)" />
