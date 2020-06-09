@@ -11,24 +11,24 @@ namespace RimConnection.Voting
 {
     public class Poll
     {
-        public Poll(List<CustomVoteOption> customVoteOptions, int expireInSeconds = 120)
+        public Poll(List<VoteOption> customVoteOptions, int expireInSeconds = 120)
         {
-            voteId = ShortGuid.NewShortGuid().Value;
+            voteId = Guid.NewGuid().ToString();
             this.expireInSeconds = expireInSeconds;
-            this.customVoteOptions = customVoteOptions;
+            this.voteOptions = customVoteOptions;
         }
 
         public string voteId { get; set; }
 
         public int expireInSeconds { get; set; }
 
-        public List<CustomVoteOption> customVoteOptions { get; set; }
+        public List<VoteOption> voteOptions { get; set; }
 
         public bool finished = false;
 
         public void Execute(string winner)
         {
-            CustomVoteOption voteOption = customVoteOptions.Find((inc) => inc.id == winner);
+            VoteOption voteOption = voteOptions.Find((inc) => inc.validCommand == winner);
 
             if (voteOption == null)
             {
@@ -42,16 +42,22 @@ namespace RimConnection.Voting
         }
     }
 
-    public class CustomVoteOption
+    public class VoteOption
     {
-        public CustomVoteOption(string description, FiringIncident firingIncident)
+        public VoteOption(string title, FiringIncident firingIncident)
         {
-            id = ShortGuid.NewShortGuid().Value;
-            this.description = description;
+            validCommand = Guid.NewGuid().ToString();
+            amount = 10;
+            this.title = title;
+            this.description = title;
             this.firingIncident = firingIncident;
         }
 
-        public string id { get; set; }
+        public string validCommand { get; set; }
+
+        public int amount { get; set; }
+
+        public string title { get; set; }
 
         public string description { get; set; }
 

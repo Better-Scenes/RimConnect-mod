@@ -16,24 +16,49 @@ namespace RimConnection.Voting
 
         public void RegisterNewPoll(Poll poll)
         {
-            if (!Polls.Contains(poll))
+            if (Polls.Contains(poll) || (Polls.Count != 0 && allowOnlyOnePoll))
             {
-                Polls.Add(poll);
-
-                Log.Message($"Registered Poll with Id: {poll.voteId}");
+                return;
             }
+
+            Polls.Add(poll);
+
+            RimConnectAPI.PostPoll(poll);
+
+            Log.Message($"Registered Poll with Id: {poll.voteId}");
         }
 
-        public void ExecutePollWinner(string voteId)
+        public void ExecutePollWinner(string voteId, string optionId)
         {
             // For Testing Purposes lets just finish any poll
 
-            foreach (Poll poll in Polls)
+            if (finishAllPolls)
             {
-                poll.Execute(poll.customVoteOptions.RandomElement().id);
+                foreach (Poll p in Polls)
+                {
+                    p.Execute(p.voteOptions.RandomElement().validCommand);
+                }
+
+                return;
+            }
+
+            Poll poll = Polls.Find((p) => p.voteId == voteId);
+
+            if (poll != null)
+            {
+                VoteOption option = poll.voteOptions.Find((o) => o.validCommand == optionId);
+
+                if (option != null)
+                {
+                    option.firingIncident.def.Worker.TryExecute(option.firingIncident.parms);
+                }
             }
         }
 
         List<Poll> Polls { get; set; } = new List<Poll>();
+
+        // Testing options
+        bool allowOnlyOnePoll = true;
+        bool finishAllPolls = true;
     }
 }

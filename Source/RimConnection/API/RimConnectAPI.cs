@@ -3,6 +3,7 @@ using Verse;
 using RestSharp;
 using System;
 using RimConnection.API;
+using RimConnection.Voting;
 
 namespace RimConnection
 {
@@ -213,6 +214,24 @@ namespace RimConnection
             catch (Exception e)
             {
                 Log.Error($"Failed to provide Loyalty Config to server. {e.Message}");
+                throw;
+            }
+        }
+
+        public static void PostPoll(Poll poll)
+        {
+            RestRequest restRequest = new RestRequest("feature/customPoll", Method.POST);
+            restRequest.AddHeader("Content-Type", "application/json")
+                       .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
+                       .AddJsonBody(poll);
+
+            try
+            {
+                var response = client.Execute(restRequest);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Failed to post new poll {poll.voteId}. {e.Message}");
                 throw;
             }
         }

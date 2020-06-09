@@ -56,11 +56,11 @@ namespace RimConnection.Voting.StorytellerComps
 
                 if (voteController != null && firingIncidents.Count > 1)
                 {
-                    List<CustomVoteOption> voteOptions = new List<CustomVoteOption>();
+                    List<VoteOption> voteOptions = new List<VoteOption>();
 
                     foreach (FiringIncident firingIncident in firingIncidents)
                     {
-                        voteOptions.Add(new CustomVoteOption(firingIncident.def.LabelCap, firingIncident));
+                        voteOptions.Add(new VoteOption(firingIncident.def.LabelCap, firingIncident));
                     }
 
                     voteController.RegisterNewPoll(new Poll(voteOptions));

@@ -35,9 +35,6 @@
       <Version>106.10.1</Version>
     </PackageReference>
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.1.2579" />
-    <PackageReference Include="ShortGuid">
-      <Version>1.0.2</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
