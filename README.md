@@ -1,10 +1,10 @@
 # RimConnect mod for RimWorld
 
-This repository is the Mod portion of RimConnect. It contains the code that handles events and what is available for streamers to use in their game. If you want to know more about how it works as a streamer or viewer, you can check out the attached wiki articles over here.
+This repository is the Mod portion of RimConnect. It contains the code that handles events and what is available for streamers to use in their game. If you want to know more about how it works as a streamer or viewer, you can check out the attached wiki articles [over here](https://github.com/Better-Scenes/RimConnect-mod/wiki)
 
 # Contributing
 
-Read the following if you're interested in adding functionality to RimConnect. If you just want to use it as a streamer or viewer, check out the wiki over here
+Read the following if you're interested in adding functionality to RimConnect. If you just want to use it as a streamer or viewer, check out the wiki [over here](https://github.com/Better-Scenes/RimConnect-mod/wiki)
 
 ## Setup
 
