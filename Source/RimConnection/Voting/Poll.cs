@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using Newtonsoft.Json;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,7 @@ namespace RimConnection.Voting
         }
     }
 
+    [JsonObject(MemberSerialization.OptIn)]
     public class VoteOption
     {
         public VoteOption(string title, FiringIncident firingIncident)
@@ -53,12 +55,16 @@ namespace RimConnection.Voting
             this.firingIncident = firingIncident;
         }
 
+        [JsonProperty]
         public string validCommand { get; set; }
 
+        [JsonProperty]
         public int amount { get; set; }
 
+        [JsonProperty]
         public string title { get; set; }
 
+        [JsonProperty]
         public string description { get; set; }
 
         public FiringIncident firingIncident;

@@ -4,6 +4,9 @@ using RestSharp;
 using System;
 using RimConnection.API;
 using RimConnection.Voting;
+using System.Threading;
+using Newtonsoft.Json;
+using RestSharp.Serialization;
 
 namespace RimConnection
 {
@@ -21,7 +24,7 @@ namespace RimConnection
 
         public static void ChangeBaseURL(string baseUrl)
         {
-            client = new RestClient(baseUrl);
+            client.BaseUrl = new Uri(baseUrl);
             Log.Warning("RimConnectAPI baseurl changed to " + baseUrl);
         }
 
@@ -220,10 +223,13 @@ namespace RimConnection
 
         public static void PostPoll(Poll poll)
         {
-            RestRequest restRequest = new RestRequest("feature/customPoll", Method.POST);
+            RestRequest restRequest = new RestRequest("poll/custom", Method.POST);
             restRequest.AddHeader("Content-Type", "application/json")
-                       .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
-                       .AddJsonBody(poll);
+                       .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}");
+
+            restRequest.JsonSerializer = new NewtonsoftRestSerializer();
+
+            restRequest.AddJsonBody(poll);
 
             try
             {
