@@ -8,7 +8,7 @@ Read the following if you're interested in adding functionality to RimConnect. I
 
 ## Setup
 
-- Install Visual Studio (your choice which version)
+- Install Visual Studio (your choice which version, or other IDE if you know how to setup)
 - Clone project
 - Open the project from `source/RimConnection/RimConnection.sln`
 - Build using VS by hitting `f6` or using `build -> build Solution`
@@ -19,9 +19,10 @@ Read the following if you're interested in adding functionality to RimConnect. I
 
 ## Running
 
-To run rimworld to test, you can run it through the exe and add a param to make it quick start
+To run RimWorld quickly, there is a quicktest paramater you can pass to the exectuable from a command line or through steam launch options.
 
-- `./RimWorldWin64 -quicktest`
+- run `./RimWorldWin64 -quicktest` from a console in your RimWorld folder, OR
+- add `-quicktest` to steam launch options, instructions [here](https://support.steampowered.com/kb_article.php?ref=1040-JWMT-2947)
 
 ## Project structure and how things hook up
 
