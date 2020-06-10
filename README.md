@@ -11,8 +11,8 @@ Read the following if you're interested in adding functionality to RimConnect. I
 - Install Visual Studio (your choice which version, or other IDE if you know how to setup)
 - Clone project
 - Open the project from `source/RimConnection/RimConnection.sln`
+- Setup the output directory to be your RimWorld mod folder (currently no way to actually do this, needs fixing)
 - Build using VS by hitting `f6` or using `build -> build Solution`
-- (WIP) Put some step here around how to make sure it builds to the correct location
 - Start Rimworld normally
 - Navigate to the Mods menu
 - Enable the mod by ticking the red X (should become a green tick)
