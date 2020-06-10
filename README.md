@@ -12,7 +12,6 @@ Read the following if you're interested in adding functionality to RimConnect. I
 - Clone project
 - Create a environment variable called `RIMWORD_BASE_PATH` and give it a value of your RimWorld install path. i.e `D:\games\Steam\steamapps\common\RimWorld`
 - Open the project from `source/RimConnection/RimConnection.sln`
-- Setup the output directory to be your RimWorld mod folder (currently no way to actually do this, needs fixing)
 - Build using VS by hitting `f6` or using `build -> build Solution`
 - Start Rimworld normally
 - Navigate to the Mods menu
