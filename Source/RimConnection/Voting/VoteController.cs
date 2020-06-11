@@ -36,7 +36,7 @@ namespace RimConnection.Voting
             {
                 foreach (Poll p in Polls)
                 {
-                    p.Execute(p.voteOptions.RandomElement().validCommand);
+                    p.Execute(p.voteOptions.RandomElement().identifier);
                 }
 
                 return;
@@ -46,7 +46,7 @@ namespace RimConnection.Voting
 
             if (poll != null)
             {
-                VoteOption option = poll.voteOptions.Find((o) => o.validCommand == optionId);
+                VoteOption option = poll.voteOptions.Find((o) => o.identifier == optionId);
 
                 if (option != null)
                 {

@@ -25,6 +25,7 @@ namespace RimConnection
         public static void ChangeBaseURL(string baseUrl)
         {
             client.BaseUrl = new Uri(baseUrl);
+            client.UseSerializer(new Func<NewtonsoftRestSerializer>(() => new NewtonsoftRestSerializer()));
             Log.Warning("RimConnectAPI baseurl changed to " + baseUrl);
         }
 
@@ -231,9 +232,22 @@ namespace RimConnection
 
             restRequest.AddJsonBody(poll);
 
+            Log.Message(JsonConvert.SerializeObject(poll));
+
             try
             {
-                var response = client.Execute(restRequest);
+                var response = client.Execute<Poll>(restRequest);
+
+                Log.Message(response.Content);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Poll pollResponse = response.Data;
+                }
+                else
+                {
+                    throw new Exception($"Posting Poll {poll.voteId} failed.");
+                }
             }
             catch (Exception e)
             {

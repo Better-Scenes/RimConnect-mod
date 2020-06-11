@@ -15,13 +15,13 @@ namespace RimConnection.Voting
         public Poll(List<VoteOption> customVoteOptions, int expireInSeconds = 120)
         {
             voteId = Guid.NewGuid().ToString();
-            this.expireInSeconds = expireInSeconds;
+            this.expiresInSeconds = expireInSeconds;
             this.voteOptions = customVoteOptions;
         }
 
         public string voteId { get; set; }
 
-        public int expireInSeconds { get; set; }
+        public int expiresInSeconds { get; set; }
 
         public List<VoteOption> voteOptions { get; set; }
 
@@ -29,7 +29,7 @@ namespace RimConnection.Voting
 
         public void Execute(string winner)
         {
-            VoteOption voteOption = voteOptions.Find((inc) => inc.validCommand == winner);
+            VoteOption voteOption = voteOptions.Find((inc) => inc.identifier == winner);
 
             if (voteOption == null)
             {
@@ -48,7 +48,7 @@ namespace RimConnection.Voting
     {
         public VoteOption(string title, FiringIncident firingIncident)
         {
-            validCommand = Guid.NewGuid().ToString();
+            identifier = Guid.NewGuid().ToString();
             amount = 10;
             this.title = title;
             this.description = title;
@@ -56,7 +56,9 @@ namespace RimConnection.Voting
         }
 
         [JsonProperty]
-        public string validCommand { get; set; }
+        public string identifier { get; set; }
+
+        public string optionId { get; set; }
 
         [JsonProperty]
         public int amount { get; set; }
