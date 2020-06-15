@@ -12,7 +12,7 @@ namespace RimConnection.Patches
 
             MP.RegisterAll();
 
-            Log.Warning("RCMP2 enabled");
+            Log.Warning("RCMP enabled");
         }
 
         [SyncWorker]
@@ -20,10 +20,6 @@ namespace RimConnection.Patches
         {
             if (sync.isWriting)
             {
-                Log.Warning(type.actionHash);
-                Log.Warning(type.amount.ToString());
-                Log.Warning(type.boughtBy);
-
                 sync.Write(type.actionHash);
                 sync.Write(type.amount);
                 sync.Write(type.boughtBy);
