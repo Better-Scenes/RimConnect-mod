@@ -1,21 +1,28 @@
-# Rimworld Connection mod
+# RimConnect mod for RimWorld
+
+This repository is the Mod portion of RimConnect. It contains the code that handles events and what is available for streamers to use in their game. If you want to know more about how it works as a streamer or viewer, you can check out the attached wiki articles [over here](https://github.com/Better-Scenes/RimConnect-mod/wiki)
+
+# Contributing
+
+Read the following if you're interested in adding functionality to RimConnect. If you just want to use it as a streamer or viewer, check out the wiki [over here](https://github.com/Better-Scenes/RimConnect-mod/wiki)
 
 ## Setup
 
-- Install Visual Studio (your choice which version)
+- Install Visual Studio (your choice which version, or other IDE if you know how to setup)
 - Clone project
+- Create a environment variable called `RIMWORD_BASE_PATH` and give it a value of your RimWorld install path. i.e `D:\games\Steam\steamapps\common\RimWorld`
 - Open the project from `source/RimConnection/RimConnection.sln`
 - Build using VS by hitting `f6` or using `build -> build Solution`
-- (WIP) Put some step here around how to make sure it builds to the correct location
 - Start Rimworld normally
 - Navigate to the Mods menu
 - Enable the mod by ticking the red X (should become a green tick)
 
 ## Running
 
-To run rimworld to test, you can run it through the exe and add a param to make it quick start
+To run RimWorld quickly, there is a quicktest paramater you can pass to the exectuable from a command line or through steam launch options.
 
-- `./RimWorldWin64 -quicktest`
+- run `./RimWorldWin64 -quicktest` from a console in your RimWorld folder, OR
+- add `-quicktest` to steam launch options, instructions [here](https://support.steampowered.com/kb_article.php?ref=1040-JWMT-2947)
 
 ## Project structure and how things hook up
 
