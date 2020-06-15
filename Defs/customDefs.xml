@@ -1,0 +1,19 @@
+<Defs>
+    <LetterDef>
+        <defName>TwitchEvent</defName>
+        <color>(145, 71, 255)</color>
+        <flashColor>(145, 71, 255)</flashColor>
+        <flashInterval>5</flashInterval>
+        <bounce>true</bounce>
+        <arriveSound>LetterArrive</arriveSound>
+    </LetterDef>
+
+    <LetterDef>
+        <defName>DangerousTwitchEvent</defName>
+        <color>(145, 71, 255)</color>
+        <flashColor>(255, 0, 0)</flashColor>
+        <flashInterval>5</flashInterval>
+        <bounce>true</bounce>
+        <arriveSound>LetterArrive_BadUrgent</arriveSound>
+    </LetterDef>
+</Defs>

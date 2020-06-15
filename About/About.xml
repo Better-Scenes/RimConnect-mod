@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>RimConnect</name>
+  <author>InfinitySamurai</author>
+  <url />
+  <supportedVersions>
+    <li>1.1</li>
+  </supportedVersions>
+  <packageId>betterscenes.rimconnect</packageId>
+  <description>Twitch integration with RimConnect extension 
+  
+=== ABOUT ===
+
+With Rimconnect, you give your viewers the ability to directly interact with your game. You or your moderators can set up polls for interesting events to occur in your game like "Raining Men" or "Remove all medicine" for your viewers to vote on. There is a Loyalty Store where viewers can accumulate Silvers to spend to purchase every item in the game, modded or vanilla.
+
+Empower your community to trigger over 40 different events, including weather, raids, 
+
+Get some much needed help to survive with your viewers sending in supply drops of the items you need most! Or maybe just a bunch of poor quality pants....
+
+Enhance your Rimworld experience by allowing your community to tell the narrative, will they help or hinder? Are they better or worse than Randy Random? 
+
+=== SETUP ===
+
+1. Subscribe/install this mod
+2. Install the Twitch extension, and visit the configuration page (Make sure to enable the extension in your video extension slot!).
+3. https://dashboard.twitch.tv/extensions/dpmu4zz6rii0emgay9ajrrhdjcw6ml
+4. From the configuration page, copy the provided secret, make sure not to share this.
+5. Open the Rimworld mod settings for Rimconnect, paste in the secret and click connect.
+6. Start up the game and have your Moderators create polls for your viewers to vote on. 
+
+=== PLANNED FEATURES ===
+
+- Bits!
+- A.I. Integration
+- More Events
+
+=== HELP ===
+
+If you need further help setting up or have questions, first check out our Github Wiki pages: https://github.com/InfinitySamurai/RimConnect/wiki
+
+If you need help that isn't covered in the wiki, something isn't working, or you just have some cool ideas, join us over in the Better Goals discord channel!
+https://discord.gg/HmNA7Sb
+  </description>
+</ModMetaData>
+
