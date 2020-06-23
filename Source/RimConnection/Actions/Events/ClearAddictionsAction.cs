@@ -13,8 +13,9 @@ namespace RimConnection
         public ClearAddictionsAction()
         {
             Name = "Clear Addictions";
-            Description = "All the colonist will suddenly feel free";
+            Description = "All the colonists suddenly feel free";
             Category = "Event";
+            Prefix = "Trigger";
         }
 
         public override void Execute(int amount, string boughtBy)
