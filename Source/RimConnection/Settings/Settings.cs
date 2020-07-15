@@ -140,7 +140,7 @@ namespace RimConnection
             GUI.BeginGroup(silversPerGroup);
 
             Rect silverLabel = new Rect(0, 0, 200f, 24f);
-            Widgets.Label(silverLabel, "Silvers per Award:");
+            Widgets.Label(silverLabel, "Silver per 2 minutes:");
 
             silverLabel.x += silverLabel.width + WidgetRow.LabelGap;
 
