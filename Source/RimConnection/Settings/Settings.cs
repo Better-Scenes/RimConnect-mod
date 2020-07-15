@@ -136,7 +136,6 @@ namespace RimConnection
             }
 
             Rect silversPerGroup = new Rect(0, itemStoreGroup.y + itemStoreGroup.height + 10f, rect.width, 24f);
-
             GUI.BeginGroup(silversPerGroup);
 
             Rect silverLabel = new Rect(0, 0, 200f, 24f);
@@ -152,6 +151,20 @@ namespace RimConnection
             if (Widgets.ButtonText(silverLabel, "Update on Server"))
             {
                 RimConnectAPI.PostConfig();
+            }
+
+            GUI.EndGroup();
+
+            Rect AdditionalInfoGroup = new Rect(0, silversPerGroup.y + 70f, rect.width, 50f);
+            GUI.BeginGroup(AdditionalInfoGroup);
+
+            Rect additionalInfoLabel = new Rect(0, 0, 450f, 24f);
+            Widgets.Label(additionalInfoLabel, "Did you know that the RimConnect mod is now open source?");
+
+            additionalInfoLabel.y += 20f;
+            if(Widgets.ButtonText(additionalInfoLabel, "Check it out here"))
+            {
+                Application.OpenURL("https://github.com/Better-Scenes/RimConnect-mod");
             }
 
             GUI.EndGroup();
