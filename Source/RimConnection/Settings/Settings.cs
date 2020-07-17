@@ -25,6 +25,8 @@ namespace RimConnection
 
         public static int silverAwardPoints = -1;
 
+        private static float defaultWidth = 200f;
+
         public override void ExposeData()
         {
             base.ExposeData();
@@ -43,8 +45,8 @@ namespace RimConnection
 
             GUI.BeginGroup(statusGroup);
 
-            Rect statusLabel = new Rect(0, 0, 200f, 24f);
-            Rect connectionButton = new Rect(200f + WidgetRow.LabelGap, 24f, 200f, 24f);
+            Rect statusLabel = new Rect(0, 0, defaultWidth, 24f);
+            Rect connectionButton = new Rect(defaultWidth + WidgetRow.LabelGap, 24f, defaultWidth, 24f);
             Widgets.Label(statusLabel, "Status:");
             statusLabel.x += statusLabel.width + WidgetRow.LabelGap;
             if (initialiseSuccessful)
@@ -72,8 +74,8 @@ namespace RimConnection
 
             GUI.BeginGroup(secretGroup);
 
-            Rect secretLabel = new Rect(0, 0, 200f, 24f);
-            Rect pasteButton = new Rect(200f, 24f, 200f, 24f);
+            Rect secretLabel = new Rect(0, 0, defaultWidth, 24f);
+            Rect pasteButton = new Rect(defaultWidth, 24f, defaultWidth, 24f);
             Rect warningLabel = new Rect(0, 48, 400f, 24f);
 
             Widgets.Label(secretLabel, "Secret:");
@@ -116,7 +118,7 @@ namespace RimConnection
             {
                 GUI.BeginGroup(itemStoreGroup);
 
-                Rect itemLabel = new Rect(0, 0, 200f, 24f);
+                Rect itemLabel = new Rect(0, 0, defaultWidth, 24f);
                 Widgets.Label(itemLabel, "Loyalty Store Items:");
 
                 itemLabel.x += itemLabel.width + WidgetRow.LabelGap;
@@ -138,7 +140,7 @@ namespace RimConnection
             Rect silversPerGroup = new Rect(0, itemStoreGroup.y + itemStoreGroup.height + 10f, rect.width, 24f);
             GUI.BeginGroup(silversPerGroup);
 
-            Rect silverLabel = new Rect(0, 0, 200f, 24f);
+            Rect silverLabel = new Rect(0, 0, defaultWidth, 24f);
             Widgets.Label(silverLabel, "Silver per 2 minutes:");
 
             silverLabel.x += silverLabel.width + WidgetRow.LabelGap;
@@ -158,11 +160,11 @@ namespace RimConnection
             Rect AdditionalInfoGroup = new Rect(0, silversPerGroup.y + 70f, rect.width, 50f);
             GUI.BeginGroup(AdditionalInfoGroup);
 
-            Rect additionalInfoLabel = new Rect(0, 0, 450f, 24f);
+            Rect additionalInfoLabel = new Rect(0, 0, 2 * defaultWidth, 24f);
             Widgets.Label(additionalInfoLabel, "Did you know that the RimConnect mod is now open source?");
 
-            additionalInfoLabel.y += 20f;
-            if(Widgets.ButtonText(additionalInfoLabel, "Check it out here"))
+            Rect githubLinkLabel = new Rect(2 * defaultWidth + 2 * WidgetRow.LabelGap, 0, defaultWidth, 24f);
+            if(Widgets.ButtonText(githubLinkLabel, "Check it out here"))
             {
                 Application.OpenURL("https://github.com/Better-Scenes/RimConnect-mod");
             }
