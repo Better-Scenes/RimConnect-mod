@@ -103,7 +103,7 @@
   <ItemGroup>
     <ContentWithTargetPath Include="About\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\About\%(Filename)%(Extension)" />
     <ContentWithTargetPath Include="Defs\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\Defs\%(RecursiveDir)%(Filename)%(Extension)" />
-    <ContentWithTargetPath Include="Languages\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\Languages\%(Filename)%(Extension)" />
+    <ContentWithTargetPath Include="Languages\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\Languages\English\Keyed\%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
