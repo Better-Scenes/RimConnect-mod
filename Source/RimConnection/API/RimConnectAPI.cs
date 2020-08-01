@@ -45,6 +45,18 @@ namespace RimConnection
                 }
 
                 Log.Warning("Failed to connect. Is your secret correct?");
+                Log.Warning($"Final 5 characters of secret: {secret.Substring(secret.Length - 5)}");
+                Log.Warning($"URL from Settings:  {BASE_URL}");
+                Log.Warning($"URL from client: {client.BaseUrl}");
+                Log.Warning($"Response URI:  {authModResponse.ResponseUri}");
+                Log.Warning($"HTTP status code: {authModResponse.StatusCode}");
+                Log.Warning($"Error message: {authModResponse.ErrorMessage}");
+                if(authModResponse.ErrorException != null)
+                {
+                    Log.Warning($"Error exception message: {authModResponse.ErrorException.Message}");
+                    Log.Warning(authModResponse.ErrorException.StackTrace);
+                }
+
                 response = null;
                 return false;
             }
