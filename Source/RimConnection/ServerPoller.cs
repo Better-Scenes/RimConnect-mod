@@ -1,5 +1,4 @@
-﻿using Multiplayer.API;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -54,17 +53,12 @@ namespace RimConnection
 
                     foreach (Command command in commands)
                     {
-                        addCommandToQueue(command);
+                        commandQueue.Enqueue(command);
                     }
                 });
 
             return;
         }
 
-        [SyncMethod]
-        public static void addCommandToQueue(Command command)
-        {
-            commandQueue.Enqueue(command);
-        }
     }
 }

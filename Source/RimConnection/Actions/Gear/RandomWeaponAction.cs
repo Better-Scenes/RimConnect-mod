@@ -21,6 +21,8 @@ namespace RimConnection
 
         public override void Execute(int amount, string boughtBy)
         {
+            Random random = new Random();
+
             var weaponThingDefs = DefDatabase<ThingDef>.AllDefs.Where(def => { return def.equipmentType == EquipmentType.Primary; });
             
             var randomWeaponDefList = weaponThingDefs.ToList().TakeRandom(amount);
@@ -33,7 +35,7 @@ namespace RimConnection
                 if(thingQualityComp != null)
                 {
                     Array qualityValues = Enum.GetValues(typeof(QualityCategory));
-                    QualityCategory randomQuality = (QualityCategory)qualityValues.GetValue(Rand.Range(0, qualityValues.Length));
+                    QualityCategory randomQuality = (QualityCategory)qualityValues.GetValue(random.Next(qualityValues.Length));
 
                     thingQualityComp.SetQuality(randomQuality, ArtGenerationContext.Colony);
                 }
