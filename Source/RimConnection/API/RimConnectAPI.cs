@@ -51,7 +51,12 @@ namespace RimConnection
                 Log.Warning($"Response URI:  {authModResponse.ResponseUri}");
                 Log.Warning($"HTTP status code: {authModResponse.StatusCode}");
                 Log.Warning($"Error message: {authModResponse.ErrorMessage}");
-                Log.Warning($"Error exception: {authModResponse.ErrorException}");
+                if(authModResponse.ErrorException != null)
+                {
+                    Log.Warning($"Error exception message: {authModResponse.ErrorException.Message}");
+                    Log.Warning(authModResponse.ErrorException.StackTrace);
+                }
+
                 response = null;
                 return false;
             }
