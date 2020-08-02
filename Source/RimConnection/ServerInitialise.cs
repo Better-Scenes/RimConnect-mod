@@ -16,6 +16,9 @@ namespace RimConnection
 
         public static bool Init()
         {
+            // Generate this before validation so that MP clients have this list available otherwise
+            // desyncs occur
+            ValidCommandList commandList = ActionList.ActionListToApi();
             try
             {
                 Log.Message("Initialising Server");
@@ -28,7 +31,7 @@ namespace RimConnection
                 }
 
                 RimConnectSettings.token = Token;
-                RimConnectAPI.PostValidCommands(ActionList.ActionListToApi());
+                RimConnectAPI.PostValidCommands(commandList);
                 RimConnectAPI.GetConfig();
 
                 return true;
