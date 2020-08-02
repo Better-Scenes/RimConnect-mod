@@ -45,7 +45,10 @@ namespace RimConnection
                 }
 
                 Log.Warning("Failed to connect. Is your secret correct?");
-                Log.Warning($"Final 5 characters of secret: {secret.Substring(secret.Length - 5)}");
+                if(secret.Length > 5)
+                {
+                    Log.Warning($"Final 5 characters of secret: {secret.Substring(secret.Length - 5)}");
+                }
                 Log.Warning($"URL from Settings:  {BASE_URL}");
                 Log.Warning($"URL from client: {client.BaseUrl}");
                 Log.Warning($"Response URI:  {authModResponse.ResponseUri}");
