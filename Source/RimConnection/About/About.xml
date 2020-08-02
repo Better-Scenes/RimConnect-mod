@@ -2,13 +2,23 @@
 <ModMetaData>
   <name>RimConnect</name>
   <author>InfinitySamurai</author>
-  <url />
+  <url>
+    https://github.com/Better-Scenes/RimConnect-mod
+  </url>
   <supportedVersions>
     <li>1.1</li>
   </supportedVersions>
   <packageId>betterscenes.rimconnect</packageId>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>brrainz.harmony</li>
+    <li>rwmt.Multiplayer</li>
+  </loadAfter>
   <description>Twitch integration with RimConnect extension 
   
+Version 1.2
+
 === ABOUT ===
 
 With Rimconnect, you give your viewers the ability to directly interact with your game. You or your moderators can set up polls for interesting events to occur in your game like "Raining Men" or "Remove all medicine" for your viewers to vote on. There is a Loyalty Store where viewers can accumulate Silvers to spend to purchase every item in the game, modded or vanilla.
