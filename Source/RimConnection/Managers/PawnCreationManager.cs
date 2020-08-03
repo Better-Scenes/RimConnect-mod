@@ -146,6 +146,7 @@ namespace RimConnection
                 pawnSkills.ForEach(skill =>
                 {
                     skill.Level = 0;
+                    skill.passion = Passion.None;
                 });
 
                 pawnList.Add(newPawn);
