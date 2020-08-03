@@ -69,7 +69,7 @@ namespace RimConnection
                     return;
                 }
             }
-            AlertManager.NormalEventNotification($"<color=#9147ff>{boughtBy}</color> tried to buy {defLabel} but it failed. Currently there are not refunds :(");
+            AlertManager.NormalEventNotification($"<color=#9147ff>{boughtBy}</color> tried to buy {defLabel} but it failed. Currently there are no refunds :( ");
         }
 
         public ValidCommand ToApiCall(int id)

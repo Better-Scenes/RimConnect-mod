@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionList.cs" />
+    <Compile Include="Actions\ColonistState\GenerateMentalBreakActions.cs" />
     <Compile Include="Actions\ColonistState\GenerateInspirationActions.cs" />
+    <Compile Include="Actions\ColonistState\MentalBreakAction.cs" />
     <Compile Include="Actions\ColonistState\InspirationAction.cs" />
     <Compile Include="Actions\Colonists\ColonistList.cs" />
     <Compile Include="Actions\Events\PoorBedsAction.cs" />
