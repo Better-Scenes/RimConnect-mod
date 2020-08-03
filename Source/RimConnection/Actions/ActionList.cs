@@ -22,6 +22,7 @@ namespace RimConnection
             .Concat(GenerateAllItemActions.GenerateThingDefActions())
             .Concat(GenerateWeatherActions.GenerateWeatherDefActions())
             .Concat(GenerateGameConditionActions.GenerateGameConditionDefActions())
+            .Concat(GenerateInspirationActions.GenerateInspirationDefActions())
             .ToList();
 
             return actionList;

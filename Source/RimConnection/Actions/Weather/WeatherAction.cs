@@ -11,18 +11,18 @@ namespace RimConnection
     {
         private readonly string defName;
         private readonly string defLabel;
-        public WeatherDef thingDef;
+        public WeatherDef weatherDef;
 
-        public WeatherAction(WeatherDef weatherDef, string category = "Weather")
+        public WeatherAction(WeatherDef _weatherDef, string category = "Weather")
         {
-            defName = weatherDef.defName;
-            defLabel = weatherDef.label;
+            defName = _weatherDef.defName;
+            defLabel = _weatherDef.label;
             Name = defLabel;
-            Description = weatherDef.description;
+            Description = _weatherDef.description;
             ShouldShowAmount = true;
             Prefix = "Trigger";
             Category = category;
-            thingDef = weatherDef;
+            this.weatherDef = _weatherDef;
             LocalCooldownMs = 30000;
             GlobalCooldownMs = 15000;
             CostSilverStore = 0;
@@ -59,7 +59,7 @@ namespace RimConnection
                 description = Description,
                 category = Category,
                 prefix = Prefix,
-                actionHash = GenerateActionHash($"{thingDef.description}{defName}"),
+                actionHash = GenerateActionHash($"{weatherDef.description}{defName}"),
                 localCooldownMs = LocalCooldownMs,
                 globalCooldownMs = GlobalCooldownMs,
                 costSilverStore = CostSilverStore,
