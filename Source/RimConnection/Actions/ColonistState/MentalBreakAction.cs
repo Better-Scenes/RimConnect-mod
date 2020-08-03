@@ -37,6 +37,8 @@ namespace RimConnection
 
             foreach(Pawn colonist in randomisedColonists)
             {
+                // TODO revisit this logic to potentially make it more robust,
+                // might just need to wait until refunds are available
                 bool mentalBreakSucces =  mentalBreakDef.Worker.TryStart(colonist, "From RimConnect", false);
                 if(mentalBreakSucces)
                 {

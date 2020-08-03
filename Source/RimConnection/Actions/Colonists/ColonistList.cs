@@ -11,7 +11,8 @@ namespace RimConnection
         {
             new AwfulColonistAction(),
             new DefaultColonistAction(),
-            new GoodColonistAction()
+            new GoodColonistAction(),
+            new WorstColonistAction()
         };
     }
 }

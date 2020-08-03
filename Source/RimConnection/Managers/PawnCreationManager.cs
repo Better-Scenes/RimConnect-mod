@@ -113,5 +113,45 @@ namespace RimConnection
             return pawnList;
         }
 
+
+        public static List<Thing> generateWorstColonists(int amount)
+        {
+            List<Thing> pawnList = new List<Thing>();
+
+            int i = 0;
+            while (i < amount)
+            {
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+
+                if (newPawn.gender == Gender.Male)
+                {
+                    newPawn.Name = new NameTriple("Worst", "Joeru", "Ever");
+                }
+                else if (newPawn.gender == Gender.Female)
+                {
+                    newPawn.Name = new NameTriple("Worst", "Myseenee", "Ever");
+                }
+
+                var randomTraits = badTraits;
+                newPawn.story.traits.allTraits.Clear();
+
+                // Make their traits great
+                foreach (Trait trait in randomTraits)
+                {
+                    newPawn.story.traits.GainTrait(trait);
+                }
+
+                // Now give them good skills
+                var pawnSkills = newPawn.skills.skills;
+                pawnSkills.ForEach(skill =>
+                {
+                    skill.Level = 0;
+                });
+
+                pawnList.Add(newPawn);
+                i++;
+            }
+            return pawnList;
+        }
     }
 }
