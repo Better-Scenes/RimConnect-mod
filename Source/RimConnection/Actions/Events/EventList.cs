@@ -21,6 +21,7 @@ namespace RimConnection
             new LuciferiumAddictionAction(),
             new ManhunterPackAction(),
             new MasterworkBedsAction(),
+            new PawnPornAction(),
             new PoorBedsAction(),
             new PsychicDroneAction(),
             new PsychicSootheAction(),

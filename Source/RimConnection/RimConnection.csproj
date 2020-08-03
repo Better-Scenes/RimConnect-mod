@@ -47,6 +47,7 @@
     <Compile Include="Actions\ColonistState\InspirationAction.cs" />
     <Compile Include="Actions\Colonists\WorstColonistAction.cs" />
     <Compile Include="Actions\Colonists\ColonistList.cs" />
+    <Compile Include="Actions\Events\PawnPornAction.cs" />
     <Compile Include="Actions\Events\PoorBedsAction.cs" />
     <Compile Include="Actions\Events\MasterworkBedsAction.cs" />
     <Compile Include="Actions\Events\ClearAddictionsAction.cs" />
