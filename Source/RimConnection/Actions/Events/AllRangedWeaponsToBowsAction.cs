@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 using RimWorld;
 using Verse;
@@ -46,7 +47,7 @@ namespace RimConnection
             });
 
             // find and replace all the ranged weapons in colonist's inventories
-            var allColonists = Find.ColonistBar.GetColonistsInOrder().ToList();
+            List<Pawn> allColonists = Find.ColonistBar.GetColonistsInOrder().ToList();
             allColonists.ForEach(colonist =>
             {
                 var colonistPrimary = colonist.equipment.Primary;
