@@ -19,11 +19,13 @@ namespace RimConnection
             actionList = actionList.Concat(ColonistList.colonistList)
             .Concat(EventList.eventList)
             .Concat(GearList.gearList)
+            .Concat(OrbitalList.orbitalList)
             .Concat(GenerateAllItemActions.GenerateThingDefActions())
             .Concat(GenerateWeatherActions.GenerateWeatherDefActions())
             .Concat(GenerateGameConditionActions.GenerateGameConditionDefActions())
             .Concat(GenerateInspirationActions.GenerateInspirationDefActions())
             .Concat(GenerateMentalBreakActions.GenerateMentalBreakDefActions())
+
             .ToList();
 
             return actionList;

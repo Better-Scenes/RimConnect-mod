@@ -78,6 +78,8 @@
     <Compile Include="Actions\Gear\RandomApparelAction.cs" />
     <Compile Include="Actions\Gear\RandomWeaponAction.cs" />
     <Compile Include="Actions\IAction.cs" />
+    <Compile Include="Actions\Orbital\OrbitalPowerBeamAction.cs" />
+    <Compile Include="Actions\Orbital\OrbitalList.cs" />
     <Compile Include="Actions\Resources\GenerateItemActions.cs" />
     <Compile Include="Actions\Resources\ItemAction.cs" />
     <Compile Include="Actions\Colonists\GoodColonistAction.cs" />
@@ -86,6 +88,8 @@
     <Compile Include="Actions\Weather\GenerateGameIncidentActions.cs" />
     <Compile Include="Actions\Weather\GenerateWeatherActions.cs" />
     <Compile Include="Actions\Weather\GameConditionAction.cs" />
+    <Compile Include="Actions\Orbital\OrbitalBombardmentAction.cs" />
+    <Compile Include="Actions\Orbital\TornadoAction.cs" />
     <Compile Include="Actions\Weather\WeatherAction.cs" />
     <Compile Include="API\AuthMod.cs" />
     <Compile Include="API\CommandOption.cs" />
