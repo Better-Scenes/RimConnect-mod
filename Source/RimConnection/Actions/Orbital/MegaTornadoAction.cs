@@ -7,12 +7,14 @@ using Verse;
 
 namespace RimConnection
 {
-    public class TornadoAction: Action, IAction
+    public class MegaTornadoAction : Action, IAction
     {
-        public TornadoAction()
+        private int numberToSpawn = 5;
+
+        public MegaTornadoAction()
         {
-            Name = "Tornado";
-            Description = "A destructive force of wind";
+            Name = "Mega Tornado";
+            Description = "This one is pretty terrifying";
             Category = "Orbital";
             Prefix = "Trigger";
         }
@@ -29,9 +31,12 @@ namespace RimConnection
 
             IntVec3 location;
             if(CellFinder.TryFindRandomCellInsideWith(cellRect, (IntVec3 x) => true, out location))
-            {
-                GenSpawn.Spawn(ThingDefOf.Tornado, location, currentMap);
-                AlertManager.BadEventNotification("A Tornado has been summoned. Let's hope it doesn't rip through your base", location);
+            { 
+                for(int i = 0; i < numberToSpawn; i++)
+                {
+                    GenSpawn.Spawn(ThingDefOf.Tornado, location, currentMap);
+                }
+                AlertManager.BadEventNotification("A Mega Tornado has been formed. I'd just suggest as far away as possible", location);
             }
 
         }

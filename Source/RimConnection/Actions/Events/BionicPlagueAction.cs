@@ -20,8 +20,6 @@ namespace RimConnection
             var currentMap = Find.CurrentMap;
             var animals = currentMap.listerThings.ThingsInGroup(ThingRequestGroup.Pawn).Where(nonBondedAnimalPredicate).ToList();
 
-
-
             animals.ForEach(animal =>
             {
                 var position = animal.Position;

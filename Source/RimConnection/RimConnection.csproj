@@ -47,6 +47,7 @@
     <Compile Include="Actions\ColonistState\InspirationAction.cs" />
     <Compile Include="Actions\Colonists\WorstColonistAction.cs" />
     <Compile Include="Actions\Colonists\ColonistList.cs" />
+    <Compile Include="Actions\Events\AnestheticRandomColonistAction.cs" />
     <Compile Include="Actions\Events\PawnPornAction.cs" />
     <Compile Include="Actions\Events\PoorBedsAction.cs" />
     <Compile Include="Actions\Events\MasterworkBedsAction.cs" />
@@ -77,9 +78,12 @@
     <Compile Include="Actions\Gear\GearList.cs" />
     <Compile Include="Actions\Gear\RandomApparelAction.cs" />
     <Compile Include="Actions\Gear\RandomWeaponAction.cs" />
+    <Compile Include="Actions\HeDiff\GenerateHeDiffActions.cs" />
+    <Compile Include="Actions\HeDiff\HeDiffAction.cs" />
     <Compile Include="Actions\IAction.cs" />
     <Compile Include="Actions\Orbital\OrbitalPowerBeamAction.cs" />
     <Compile Include="Actions\Orbital\OrbitalList.cs" />
+    <Compile Include="Actions\Orbital\MegaTornadoAction.cs" />
     <Compile Include="Actions\Resources\GenerateItemActions.cs" />
     <Compile Include="Actions\Resources\ItemAction.cs" />
     <Compile Include="Actions\Colonists\GoodColonistAction.cs" />

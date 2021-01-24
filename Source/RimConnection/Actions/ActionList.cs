@@ -25,7 +25,7 @@ namespace RimConnection
             .Concat(GenerateGameConditionActions.GenerateGameConditionDefActions())
             .Concat(GenerateInspirationActions.GenerateInspirationDefActions())
             .Concat(GenerateMentalBreakActions.GenerateMentalBreakDefActions())
-
+            .Concat(GenerateHeDiffActions.GenerateHeDiffDefActions())
             .ToList();
 
             return actionList;

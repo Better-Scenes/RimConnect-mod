@@ -18,6 +18,7 @@ namespace RimConnection
             new GrowAllCropsAction(),
             new HealingNanitesAction(),
             new HeartAttackRandomColonistAction(),
+            new AnestheticRandomColonistAction(),
             new LuciferiumAddictionAction(),
             new ManhunterPackAction(),
             new MasterworkBedsAction(),

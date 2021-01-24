@@ -12,7 +12,8 @@ namespace RimConnection
         {
             new TornadoAction(),
             new OrbitalBombardmentAction(),
-            new OrbitalPowerBeamAction()
+            new OrbitalPowerBeamAction(),
+            new MegaTornadoAction()
         };
     }
 }
