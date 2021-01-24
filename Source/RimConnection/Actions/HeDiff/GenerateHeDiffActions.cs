@@ -19,7 +19,6 @@ namespace RimConnection
 
         private static IAction CreateActionFromDef(HediffGiver hediffGiver)
         {
-            Log.Message($"Creating def {hediffGiver.hediff.defName}");
             return new HeDiffAction(hediffGiver.hediff);
         }
     }

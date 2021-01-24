@@ -26,7 +26,6 @@ namespace RimConnection
 
             allMedicine.ForEach(medicineThing =>
             {
-                Log.Message("Logging one instance of a medicine thing");
                 medicineThing.Destroy();
             });
 

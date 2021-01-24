@@ -33,7 +33,6 @@ namespace RimConnection
                     }
                     var weaponQuality = weaponComp.Quality;
 
-                    Log.Message(weaponQuality.ToString());
                     var oldWepPosition = weapon.Position;
                     weapon.Destroy();
                     

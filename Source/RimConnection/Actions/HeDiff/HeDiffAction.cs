@@ -28,8 +28,6 @@ namespace RimConnection
             GlobalCooldownMs = 15000;
             CostSilverStore = 0;
             BitStoreSKU = "";
-            Log.Message("finished creating the HeDiffAction");
-
         }
 
         public override void Execute(int amount, string boughtBy)
