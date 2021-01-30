@@ -24,8 +24,7 @@ namespace RimConnection
                 HediffDefOf.Scratch,
                 HediffDefOf.Hangover,
                 HediffDefOf.Bruise,
-                DefDatabase<HediffDef>.GetNamed("Crack"),
-                DefDatabase<HediffDef>.GetNamed("Crush")
+                DefDatabase<HediffDef>.GetNamed("Crack")
         });
 
         public override void Execute(int amount, string boughtBy)
