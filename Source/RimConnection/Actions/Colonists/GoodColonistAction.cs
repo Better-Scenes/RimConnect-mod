@@ -17,11 +17,19 @@ namespace RimConnection
 
         public override void Execute(int amount, string boughtBy)
         {
-            var pawnList = PawnCreationManager.generateGoodColonists(amount);
+            string notificationMessage;
+            if (boughtBy == "Poll")
+            {
+                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has given you {amount} good colonist(s)";
+                boughtBy = null;
+            }
+            else
+            {
+                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {amount} good colonist(s)";
+            }
+            var pawnList = PawnCreationManager.generateGoodColonists(amount, boughtBy);
 
-            string labelString = "RimConnectionFriendlyPawnLabel".Translate();
-            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, Name, Description);
-            DropPodManager.createDropOfThings(pawnList, labelString, messageString);
+            DropPodManager.createDropOfThings(pawnList, "Good Colonist", notificationMessage);
         }
     }
 }

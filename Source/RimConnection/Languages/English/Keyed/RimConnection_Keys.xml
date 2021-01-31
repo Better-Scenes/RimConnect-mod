@@ -9,12 +9,4 @@
 
         {2}
     </RimConnectionPositiveDroppodMailBody>
-    <RimConnectionFriendlyPawnLabel>Twitch Colonist</RimConnectionFriendlyPawnLabel>
-    <RimConnectionFriendlyPawnMailBody>
-        Twitch has given you new colonist(s)!
-
-        {0} {1}
-
-        {2}
-    </RimConnectionFriendlyPawnMailBody>
 </LanguageData>

@@ -27,7 +27,7 @@ namespace RimConnection
             new Trait(TraitDefOf.SpeedOffset, 2),
         });
 
-        public static List<Thing> generateDefaultColonists(int amount, Faction faction)
+        public static List<Thing> generateDefaultColonists(int amount, string name = null)
         {
             var currentMap = Find.CurrentMap;
             IntVec3 spawnLocation = DropCellFinder.TradeDropSpot(currentMap);
@@ -37,7 +37,7 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, faction);
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
 
                 // mid range their skills
                 var pawnSkills = newPawn.skills.skills;
@@ -45,6 +45,12 @@ namespace RimConnection
                 {
                     skill.Level = Rand.Range(2, 7);
                 });
+
+                if (name != null && newPawn.Name is NameTriple nameTriple)
+                {
+                    newPawn.Name = new NameTriple(nameTriple.First, name, nameTriple.Last);
+                }
+
                 pawnList.Add(newPawn);
                 i++;
             }
@@ -52,7 +58,7 @@ namespace RimConnection
             return pawnList;
         }
 
-        public static List<Thing> generateAwfulColonists(int amount)
+        public static List<Thing> generateAwfulColonists(int amount, string name = null)
         {
             List<Thing> pawnList = new List<Thing>();
 
@@ -76,13 +82,18 @@ namespace RimConnection
                     skill.Level = Rand.Range(0, 2);
                 });
 
+                if (name != null && newPawn.Name is NameTriple nameTriple)
+                {
+                    newPawn.Name = new NameTriple(nameTriple.First, name, nameTriple.Last);
+                }
+
                 pawnList.Add(newPawn);
                 i++;
             }
             return pawnList;
         }
 
-        public static List<Thing> generateGoodColonists(int amount)
+        public static List<Thing> generateGoodColonists(int amount, string name = null)
         {
             List<Thing> pawnList = new List<Thing>();
 
@@ -106,6 +117,11 @@ namespace RimConnection
                 {
                     skill.Level = Rand.Range(4, 10);
                 });
+
+                if (name != null && newPawn.Name is NameTriple nameTriple)
+                {
+                    newPawn.Name = new NameTriple(nameTriple.First, name, nameTriple.Last);
+                }
 
                 pawnList.Add(newPawn);
                 i++;
@@ -135,13 +151,11 @@ namespace RimConnection
                 var randomTraits = badTraits;
                 newPawn.story.traits.allTraits.Clear();
 
-                // Make their traits great
                 foreach (Trait trait in randomTraits)
                 {
                     newPawn.story.traits.GainTrait(trait);
                 }
 
-                // Now give them good skills
                 var pawnSkills = newPawn.skills.skills;
                 pawnSkills.ForEach(skill =>
                 {
