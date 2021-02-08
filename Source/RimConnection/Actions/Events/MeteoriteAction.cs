@@ -27,7 +27,6 @@ namespace RimConnection
                 beaverWorker.TryExecute(parms);
             }
 
-
             string notification;
             if (boughtBy == "Poll")
             {
