@@ -32,6 +32,7 @@ namespace RimConnection
             new RainingMenAction(),
             new RatSwarmEvent(),
             new RemoveAllMedicineAction(),
+            new MeteoriteAction()
         };
     }
 }
