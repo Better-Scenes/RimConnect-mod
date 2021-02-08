@@ -84,7 +84,10 @@
     <Compile Include="Actions\Orbital\OrbitalPowerBeamAction.cs" />
     <Compile Include="Actions\Orbital\OrbitalList.cs" />
     <Compile Include="Actions\Orbital\MegaTornadoAction.cs" />
+    <Compile Include="Actions\Resources\GeneratetameAnimalActions.cs" />
+    <Compile Include="Actions\Resources\GenerateUntameAnimalActions.cs" />
     <Compile Include="Actions\Resources\GenerateItemActions.cs" />
+    <Compile Include="Actions\Resources\TameAnimalAction.cs" />
     <Compile Include="Actions\Resources\ItemAction.cs" />
     <Compile Include="Actions\Colonists\GoodColonistAction.cs" />
     <Compile Include="Actions\Colonists\AwfulColonistAction.cs" />

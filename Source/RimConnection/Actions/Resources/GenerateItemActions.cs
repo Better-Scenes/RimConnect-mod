@@ -37,9 +37,7 @@ namespace RimConnection
             else if (thingDef.IsIngestible)
                 category = "Consumables";
             else if (thingDef.IsMetal)
-                category = "Metal";
-            else if (thingDef.race != null)
-                category = "Animal";
+                category = "Metals";
             else if (thingDef.Minifiable)
                 category = "Furniture";
 
@@ -51,7 +49,8 @@ namespace RimConnection
             return (
                 (thingDef.tradeability.TraderCanSell() || ThingSetMakerUtility.CanGenerate(thingDef)) &&
                 (thingDef.building == null || thingDef.Minifiable ) &&
-                thingDef.BaseMarketValue > 0
+                thingDef.BaseMarketValue > 0 &&
+                thingDef.race == null
                 );
         }
     }

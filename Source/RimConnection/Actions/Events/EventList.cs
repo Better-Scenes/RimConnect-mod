@@ -31,7 +31,7 @@ namespace RimConnection
             new RaidSiegeAction(),
             new RainingMenAction(),
             new RatSwarmEvent(),
-            new RemoveAllMedicineAction()
+            new RemoveAllMedicineAction(),
         };
     }
 }
