@@ -10,6 +10,12 @@ namespace RimConnection.Settings
 {
     class CommandOptionSettings : Window
     {
+        private Vector2 scrollPosition = Vector2.zero;
+        private CommandOptionList cachedCommandOptionList = new CommandOptionList();
+        private List<CommandOption> commandOptions = new List<CommandOption>();
+        private List<CommandOption> filteredRows = new List<CommandOption>();
+        private List<string> actionCategories = new List<string>();
+
         public CommandOptionSettings()
         {
             this.doCloseButton = true;
@@ -17,6 +23,7 @@ namespace RimConnection.Settings
             // Create a copy of the global CommandOptionList
             this.cachedCommandOptionList = (CommandOptionList)CommandOptionListController.commandOptionList.Clone();
             this.commandOptions = cachedCommandOptionList.commandOptions.Select(item => (CommandOption)item.Clone()).ToList();
+            this.actionCategories = commandOptions.Select(category => category.Action().Category).Distinct().Prepend("All").ToList();
             this.filteredRows = FilteredRows();
 
             // Sort the actions
@@ -186,7 +193,7 @@ namespace RimConnection.Settings
             float startingXValue = rect.x;
             Rect button = new Rect(rect.x, rect.y, 120f, rect.height);
 
-            foreach (ItemCategory itemCategory in (ItemCategory[]) Enum.GetValues(typeof(ItemCategory)))
+            foreach (string itemCategory in this.actionCategories)
             {
                 if (rect.width - 50 < button.x + button.width)
                 {
@@ -196,14 +203,14 @@ namespace RimConnection.Settings
 
                 if (currentCategory != itemCategory)
                 {
-                    if (Widgets.ButtonText(button, itemCategory.ToString()))
+                    if (Widgets.ButtonText(button, itemCategory))
                     {
                         currentCategory = itemCategory;
                     }
                 }
                 else
                 {
-                    Widgets.ButtonText(button, $"<color=yellow>{itemCategory.ToString()}</color>", true, false, Verse.ColorLibrary.DarkRed, true);
+                    Widgets.ButtonText(button, $"<color=yellow>{itemCategory}</color>", true, false, Verse.ColorLibrary.DarkRed, true);
                 }
 
                 button.x += button.width;
@@ -276,18 +283,10 @@ namespace RimConnection.Settings
         {
             bool included = true;
 
-            if (currentCategory != ItemCategory.All)
+            if (currentCategory != "All")
             {
                 switch(currentCategory)
                 {
-                    case ItemCategory.MeleeWeapons:
-                        if (commandOption.Action().Category != "Melee Weapons")
-                            return false;
-                        break;
-                    case ItemCategory.RangedWeapons:
-                        if (commandOption.Action().Category != "Ranged Weapons")
-                            return false;
-                        break;
                     default:
                         if (commandOption.Action().Category != currentCategory.ToString())
                         {
@@ -422,14 +421,6 @@ namespace RimConnection.Settings
             }
         }
 
-        private Vector2 scrollPosition = Vector2.zero;
-
-        private CommandOptionList cachedCommandOptionList = new CommandOptionList();
-
-        private List<CommandOption> commandOptions = new List<CommandOption>();
-
-        private List<CommandOption> filteredRows = new List<CommandOption>();
-
         enum ItemCategory
             {
                 All = 0,
@@ -464,7 +455,7 @@ namespace RimConnection.Settings
 
         static string searchQuery = "";
 
-        static ItemCategory currentCategory = ItemCategory.All;
+        static string currentCategory = "All";
 
         static SortMethod sortMethod = SortMethod.Name;
 
@@ -472,7 +463,7 @@ namespace RimConnection.Settings
 
         static string lastSearchQuery = "";
 
-        static ItemCategory lastCategory = ItemCategory.All;
+        static string lastCategory = "All";
 
         static SortMethod lastSortMethod = SortMethod.Name;
     }
