@@ -82,13 +82,13 @@ namespace RimConnection.Settings
             DrawTabsRow(tabRow);
 
             // Draw column header row
-            Rect headerRow = new Rect(0f, 160f, inRect.width, 30f);
+            Rect headerRow = new Rect(0f, 180f, inRect.width, 30f);
             DrawHeaderRow(headerRow);
 
             // Check if sort/filters/search should be used
 
             // Draw main list of items
-            Rect mainRect = new Rect(0f, 178f, inRect.width, inRect.height - 58f - 38f - 20f - 120f);
+            Rect mainRect = new Rect(0f, 198f, inRect.width, inRect.height - 58f - 38f - 20f - 120f);
             this.FillMainRect(mainRect);
 
             GUI.EndGroup();
