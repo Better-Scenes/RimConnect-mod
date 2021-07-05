@@ -15,12 +15,12 @@ namespace RimConnection
 
             if(location == null)
             {
-                Find.LetterStack.ReceiveLetter(label, description, letterDef);
+                Find.LetterStack.ReceiveLetter( new TaggedString(label), new TaggedString(description), letterDef);
             } else
             {
                 // Have to make sure that location isn't null otherwise compiler complains
                 var newVector = location.GetValueOrDefault();
-                Find.LetterStack.ReceiveLetter(label, description, letterDef, new LookTargets(newVector, currentMap));
+                Find.LetterStack.ReceiveLetter(new TaggedString(label), new TaggedString(description), letterDef, new LookTargets(newVector, currentMap));
             }
         }
 

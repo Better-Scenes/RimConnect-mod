@@ -52,7 +52,7 @@ namespace RimConnection
 
             foreach (Pawn colonist in orderedColonists)
             {
-                bool colonistInspirationSet = colonist.mindState.inspirationHandler.TryStartInspiration_NewTemp(inspirationDef);
+                bool colonistInspirationSet = colonist.mindState.inspirationHandler.TryStartInspiration(inspirationDef);
                 if(colonistInspirationSet)
                 {
                     String notificationMessage;
