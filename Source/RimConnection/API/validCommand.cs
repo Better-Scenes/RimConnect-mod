@@ -15,6 +15,17 @@ namespace RimConnection
         public int globalCooldownMs { get; set; }
         public int costSilverStore { get; set; }
         public string bitStoreSKU { get; set; }
+
+        public CommandOption toCommandOption()
+        {
+            return new CommandOption()
+            {
+                actionHash = actionHash,
+                localCooldownMs = localCooldownMs,
+                globalCooldownMs = globalCooldownMs,
+                costSilverStore = costSilverStore
+            };
+        }
     }
 
     public class ValidCommandList

@@ -130,6 +130,13 @@ namespace RimConnection
                     Find.WindowStack.Add(window);
                 }
 
+                itemLabel.x += itemLabel.width + WidgetRow.LabelGap;
+                if (Widgets.ButtonText(itemLabel, "Reset")) {
+                    ResetCommandOptionsModal window = new ResetCommandOptionsModal();
+                    Find.WindowStack.TryRemove(window.GetType());
+                    Find.WindowStack.Add(window);
+                }
+
                 GUI.EndGroup();
             }
             else
