@@ -36,7 +36,10 @@ namespace RimConnection
                 animal.SetFaction(Faction.OfPlayer);
             });
 
-            AlertManager.NormalEventNotification("Your viewers have done some taming for you!");
+            if (boughtBy == "Poll") { boughtBy = "Your twitch viewers"; }
+            string notificationMessage = $"<color=#9147ff>{boughtBy}</color> has done some taming for you!";
+
+            AlertManager.NormalEventNotification(notificationMessage);
         }
     }
 }

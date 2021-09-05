@@ -17,11 +17,19 @@ namespace RimConnection
 
         public override void Execute(int amount, string boughtBy)
         {
+            string notificationMessage;
+            if (boughtBy == "Poll")
+            {
+                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has given you {amount} of the worst possible colonist(s)";
+                boughtBy = null;
+            }
+            else
+            {
+                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {amount} of the worst possible colonist(s)";
+            }
             var pawnList = PawnCreationManager.generateWorstColonists(amount);
 
-            string labelString = "RimConnectionFriendlyPawnLabel".Translate();
-            string messageString = "RimConnectionFriendlyPawnMailBody".Translate(amount, Name, Description);
-            DropPodManager.createDropOfThings(pawnList, labelString, messageString);
+            DropPodManager.createDropOfThings(pawnList, "Worst Colonist", notificationMessage);
         }
     }
 }

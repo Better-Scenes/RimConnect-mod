@@ -31,7 +31,10 @@ namespace RimConnection
                 GenThing.TryDropAndSetForbidden(componentToDrop, position, currentMap, ThingPlaceMode.Direct, out outThing, true);
             });
 
-            AlertManager.NormalEventNotification("Every animal on the map has suddenly died to a bionic plague. You'll find they left behind some surprises!");
+            if (boughtBy == "Poll") { boughtBy = "Twitch viewers"; }
+            string notificationMessage = $"(<color=#9147ff>{boughtBy}</color>) Every animal on the map has suddenly died to a bionic plague. You'll find they left behind some surprises!";
+
+            AlertManager.NormalEventNotification(notificationMessage);
         }
 
         // Find all pawns that are an animal and that don't have a relation to a pawn
