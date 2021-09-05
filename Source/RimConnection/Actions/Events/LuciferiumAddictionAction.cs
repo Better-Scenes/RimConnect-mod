@@ -13,7 +13,7 @@ namespace RimConnection
         public LuciferiumAddictionAction()
         {
             Name = "Luciferium Addiction";
-            Description = "I don't where the colonists picked this up from";
+            Description = "I don't know where the colonists picked this up from";
             Category = "Event";
         }
 
