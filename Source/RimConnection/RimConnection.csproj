@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -128,19 +129,19 @@
   <ItemGroup>
     <ContentWithTargetPath Include="About\About.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>..\About\About.xml</TargetPath>
+      <TargetPath>..\..\About\About.xml</TargetPath>
       <SubType>Designer</SubType>
     </ContentWithTargetPath>
     <ContentWithTargetPath Include="About\Preview.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>..\About\Preview.png</TargetPath>
+      <TargetPath>..\..\About\Preview.png</TargetPath>
     </ContentWithTargetPath>
     <ContentWithTargetPath Include="About\PublishedFileId.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>..\About\PublishedFileId.txt</TargetPath>
+      <TargetPath>..\..\About\PublishedFileId.txt</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="Defs\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\Defs\%(RecursiveDir)%(Filename)%(Extension)" />
-    <ContentWithTargetPath Include="Languages\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\Languages\English\Keyed\%(Filename)%(Extension)" />
+    <ContentWithTargetPath Include="Defs\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\..\Defs\%(RecursiveDir)%(Filename)%(Extension)" />
+    <ContentWithTargetPath Include="Languages\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\..\Languages\English\Keyed\%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -151,10 +152,6 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\games\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\games\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
