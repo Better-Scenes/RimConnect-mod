@@ -27,7 +27,7 @@ namespace RimConnection
                 colonist.apparel.DropAll(colonist.Position, false);
             }
 
-            AlertManager.NormalEventNotification("Everyone decided that clothes weren't a thing they needed to wear anymore.");
+            AlertManager.NormalEventNotification("({0}) Everyone decided that clothes weren't a thing they needed to wear anymore.", boughtBy);
         }
     }
 }

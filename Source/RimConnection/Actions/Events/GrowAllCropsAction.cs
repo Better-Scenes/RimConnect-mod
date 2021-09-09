@@ -28,7 +28,7 @@ namespace RimConnection
 
             crops.ForEach(crop => crop.Growth = 1);
 
-            AlertManager.NormalEventNotification("The greek god Demeter was just passing by, all your crops have grown!");
+            AlertManager.NormalEventNotification("({0}) The greek god Demeter was just passing by, all your crops have grown!", boughtBy);
         }
     }
 }

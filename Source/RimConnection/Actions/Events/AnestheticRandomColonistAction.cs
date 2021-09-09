@@ -32,10 +32,7 @@ namespace RimConnection
                 colonist.health.AddHediff(AnestheticHeDiff);
             }
 
-            if (boughtBy == "Poll") { boughtBy = "Your twitch viewers"; }
-            string notificationMessage = $"<color=#9147ff>{boughtBy}</color> decided some people should have a rest";
-
-            AlertManager.BadEventNotification(notificationMessage);
+            AlertManager.BadEventNotification("{0} decided some people should have a rest", boughtBy);
         }
     }
 }

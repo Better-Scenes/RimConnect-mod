@@ -26,7 +26,7 @@ namespace RimConnection
 
             if(animalCandidates.Count() < 1)
             {
-                AlertManager.NormalEventNotification("Your viewers tried to tame some animals, but there were none around!");
+                AlertManager.NormalEventNotification("{0} tried to tame some animals, but there were none around!", boughtBy);
             }
 
             var animalsToTame = animalCandidates.InRandomOrder().Take(amount).ToList();
@@ -36,10 +36,7 @@ namespace RimConnection
                 animal.SetFaction(Faction.OfPlayer);
             });
 
-            if (boughtBy == "Poll") { boughtBy = "Your twitch viewers"; }
-            string notificationMessage = $"<color=#9147ff>{boughtBy}</color> has done some taming for you!";
-
-            AlertManager.NormalEventNotification(notificationMessage);
+            AlertManager.NormalEventNotification("{0} did some taming for you!", boughtBy);
         }
     }
 }

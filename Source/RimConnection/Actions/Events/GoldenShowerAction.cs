@@ -22,7 +22,7 @@ namespace RimConnection
                 DropPodManager.createDropFromDef(ThingDefOf.Gold, amount, Name, Description, false);
             }
 
-            AlertManager.NormalEventNotification("Your viewers have sent a Golden Shower!");
+            AlertManager.NormalEventNotification("{0} sent a Golden Shower!", boughtBy);
         }
     }
 }

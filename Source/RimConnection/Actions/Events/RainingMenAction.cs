@@ -37,7 +37,7 @@ namespace RimConnection
                 newPawn.apparel.DestroyAll();
             }
 
-            AlertManager.NormalEventNotification("It's Raining men, hallelujah!");
+            AlertManager.NormalEventNotification("({0}) It's Raining men, hallelujah!", boughtBy);
         }
     }
 }

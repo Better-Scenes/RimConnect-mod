@@ -31,7 +31,7 @@ namespace RimConnection
             if(CellFinder.TryFindRandomCellInsideWith(cellRect, (IntVec3 x) => true, out location))
             {
                 GenSpawn.Spawn(ThingDefOf.Tornado, location, currentMap);
-                AlertManager.BadEventNotification("A Tornado has been summoned. Let's hope it doesn't rip through your base", location);
+                AlertManager.BadEventNotification("A Tornado has been summoned by {0}. Let's hope it doesn't rip through your base", location, boughtBy);
             }
 
         }

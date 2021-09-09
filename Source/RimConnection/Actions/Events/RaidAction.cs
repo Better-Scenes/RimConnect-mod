@@ -31,7 +31,7 @@ namespace RimConnection
             raidWorker.def = IncidentDef.Named("RaidEnemy");
             raidWorker.TryExecute(parms);
 
-            AlertManager.BadEventNotification("Your viewers have sent a Raid!");
+            AlertManager.BadEventNotification("{0} sent a Raid!", boughtBy);
         }
     }
 }

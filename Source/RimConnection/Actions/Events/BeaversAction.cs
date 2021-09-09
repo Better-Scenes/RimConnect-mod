@@ -23,10 +23,7 @@ namespace RimConnection
             beaverWorker.def = IncidentDef.Named("Alphabeavers");
             beaverWorker.TryExecute(parms);
 
-            if (boughtBy == "Poll") { boughtBy = "Your twitch viewers"; }
-            string notificationMessage = $"<color=#9147ff>{boughtBy}</color> has sent Alpha Beavers!";
-
-            AlertManager.BadEventNotification(notificationMessage);
+            AlertManager.BadEventNotification("{0} sent Alpha Beavers!", boughtBy);
 
         }
     }

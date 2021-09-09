@@ -37,7 +37,7 @@ namespace RimConnection
                 healableHediffs.ForEach(hediff => colonist.health.RemoveHediff(hediff));
             });
 
-            AlertManager.NormalEventNotification("A wave of nanites has flown through you colony and healed everyone's superficial wounds!");
+            AlertManager.NormalEventNotification("({0}) A wave of nanites has flown through you colony and healed everyone's superficial wounds!", boughtBy);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace RimConnection
             raidWorker.def = IncidentDef.Named("RaidFriendly");
             raidWorker.TryExecute(parms);
 
-            AlertManager.NormalEventNotification("Your viewers have sent help from ");
+            AlertManager.NormalEventNotification("{0} have sent help from ", boughtBy); //The message cuts off? TODO
         }
     }
 }

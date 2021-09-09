@@ -39,7 +39,7 @@ namespace RimConnection
                 newRat.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter);
             }
 
-            AlertManager.BadEventNotification("A swarm of aggresive rats has appeared. You might need to hide", rootEntryCell);
+            AlertManager.BadEventNotification("({0}) A swarm of aggresive rats has appeared. You might need to hide", rootEntryCell, boughtBy);
         }
     }
 }

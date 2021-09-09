@@ -23,25 +23,54 @@ namespace RimConnection
                 Find.LetterStack.ReceiveLetter(new TaggedString(label), new TaggedString(description), letterDef, new LookTargets(newVector, currentMap));
             }
         }
-
+        
         public static void BadEventNotification(string description)
         {
             EventNotification("Twitch Event", description, badTwitchEventLetterDef, null );
         }
-
+        
         public static void BadEventNotification(string description, IntVec3 location)
         {
             EventNotification("Twitch Event", description, badTwitchEventLetterDef, location);
         }
 
+        // Not sure if duplicating the notification event is better or worse than making it call itself but this looked neater to me. -Alice
+        public static void BadEventNotification(string description, string boughtBy) 
+        {
+            EventNotification("Twitch Event", ParseNotificationMessage(description, boughtBy), badTwitchEventLetterDef, null);
+        }
+
+        public static void BadEventNotification(string description, IntVec3 location, string boughtBy) 
+        {
+            EventNotification("Twitch Event", ParseNotificationMessage(description, boughtBy), badTwitchEventLetterDef, location);
+        }
+        
         public static void NormalEventNotification(string description)
         {
             EventNotification("Twitch Event", description, twitchEventLetterDef, null);
         }
-
+        
         public static void ResourceDropNotification(string description, IntVec3 location)
         {
             EventNotification("Twitch Drop", description, twitchEventLetterDef, location);
         }
+
+        public static void NormalEventNotification(string description, string boughtBy)
+        {
+            EventNotification("Twitch Event", ParseNotificationMessage(description, boughtBy), twitchEventLetterDef, null);
+        }
+
+        public static void ResourceDropNotification(string description, IntVec3 location, string boughtBy)
+        {
+            EventNotification("Twitch Drop", ParseNotificationMessage(description, boughtBy), twitchEventLetterDef, location);
+        }
+        
+        public static string ParseNotificationMessage(string message, string boughtBy) 
+        {
+            if (boughtBy == "Poll") { boughtBy = "Your twitch viewers"; }
+            boughtBy = $"<color=#9147ff>{boughtBy}</color>"; 
+            return string.Format(message, boughtBy);
+        }
+
     }
 }

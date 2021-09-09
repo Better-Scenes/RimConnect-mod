@@ -53,10 +53,7 @@ namespace RimConnection
                 GenSpawn.Spawn(replacementAnimal, animalPos, currentMap);
             });
 
-            if (boughtBy == "Poll") { boughtBy = "Your twitch viewers"; }
-            string notificationMessage = $"<color=#9147ff>{boughtBy}</color> has sent an Animal Metamorphosis";
-
-            AlertManager.NormalEventNotification(notificationMessage);
+            AlertManager.NormalEventNotification("{0} sent an Animal Metamorphosis", boughtBy);
         }
     }
 }

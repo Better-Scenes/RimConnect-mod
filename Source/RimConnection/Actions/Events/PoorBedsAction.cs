@@ -29,7 +29,7 @@ namespace RimConnection
                 bed.TryGetComp<CompQuality>().SetQuality(QualityCategory.Poor, ArtGenerationContext.Outsider);
             });
 
-            AlertManager.NormalEventNotification("Can't sleep, clown'll eat me. All your beds are now terrible");
+            AlertManager.NormalEventNotification("({0}) Can't sleep, clown'll eat me. All your beds are now terrible", boughtBy);
         }
     }
 }
