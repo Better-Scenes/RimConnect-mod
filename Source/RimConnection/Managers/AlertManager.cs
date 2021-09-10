@@ -34,7 +34,6 @@ namespace RimConnection
             EventNotification("Twitch Event", description, badTwitchEventLetterDef, location);
         }
 
-        // Not sure if duplicating the notification event is better or worse than making it call itself but this looked neater to me. -Alice
         public static void BadEventNotification(string description, string boughtBy) 
         {
             EventNotification("Twitch Event", ParseNotificationMessage(description, boughtBy), badTwitchEventLetterDef, null);
