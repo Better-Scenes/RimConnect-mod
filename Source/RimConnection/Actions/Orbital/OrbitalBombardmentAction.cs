@@ -32,7 +32,7 @@ namespace RimConnection
             {
                 Bombardment bombardment = (Bombardment) GenSpawn.Spawn(ThingDefOf.Bombardment, location, currentMap);
                 bombardment.StartStrike();
-                AlertManager.BadEventNotification("A bombardment from space", location);
+                AlertManager.BadEventNotification("{0} send a bombardment from space!", location, boughtBy);
             }
 
         }

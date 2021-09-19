@@ -27,7 +27,7 @@ namespace RimConnection
                 colonist.health.hediffSet.GetHediffs<Hediff_Addiction>().ToList().ForEach(hediff => { colonist.health.RemoveHediff(hediff); });
             });
 
-            AlertManager.NormalEventNotification("Your viewers wanted to help you out this time and removed all addictions");
+            AlertManager.NormalEventNotification("{0} wanted to help you out this time and removed all addictions", boughtBy);
         }
     }
 }

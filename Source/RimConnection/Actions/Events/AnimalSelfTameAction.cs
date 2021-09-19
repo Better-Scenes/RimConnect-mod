@@ -26,7 +26,7 @@ namespace RimConnection
 
             if(animalCandidates.Count() < 1)
             {
-                AlertManager.NormalEventNotification("Your viewers tried to tame some animals, but there were none around!");
+                AlertManager.NormalEventNotification("{0} tried to tame some animals, but there were none around!", boughtBy);
             }
 
             var animalsToTame = animalCandidates.InRandomOrder().Take(amount).ToList();
@@ -36,7 +36,7 @@ namespace RimConnection
                 animal.SetFaction(Faction.OfPlayer);
             });
 
-            AlertManager.NormalEventNotification("Your viewers have done some taming for you!");
+            AlertManager.NormalEventNotification("{0} did some taming for you!", boughtBy);
         }
     }
 }

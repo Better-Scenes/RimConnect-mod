@@ -33,7 +33,7 @@ namespace RimConnection
                 PowerBeam powerBeam = (PowerBeam) GenSpawn.Spawn(ThingDefOf.PowerBeam, location, currentMap);
                 powerBeam.duration = 600;
                 powerBeam.StartStrike();
-                AlertManager.BadEventNotification("A bombardment from space", location);
+                AlertManager.BadEventNotification("{0} requested a bombardment from space!", location, boughtBy);
             }
 
         }

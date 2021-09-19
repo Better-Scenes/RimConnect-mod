@@ -23,7 +23,7 @@ namespace RimConnection
             beaverWorker.def = IncidentDef.Named("Alphabeavers");
             beaverWorker.TryExecute(parms);
 
-            AlertManager.BadEventNotification("Your viewers have sent Alpha Beavers!");
+            AlertManager.BadEventNotification("{0} sent Alpha Beavers!", boughtBy);
 
         }
     }

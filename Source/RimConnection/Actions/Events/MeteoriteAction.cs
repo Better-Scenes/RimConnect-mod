@@ -27,17 +27,7 @@ namespace RimConnection
                 beaverWorker.TryExecute(parms);
             }
 
-            string notification;
-            if (boughtBy == "Poll")
-            {
-                notification = $"<color=#9147ff>Your viewers</color> have dislodged a chunk of asteroid from orbit";
-            }
-            else
-            {
-                notification = $"<color=#9147ff>{boughtBy}</color> has dislodged a chunk of asteroid from orbit";
-            }
-
-            AlertManager.NormalEventNotification(notification);
+            AlertManager.NormalEventNotification("{0} dislodged a chunk of asteroid from orbit", boughtBy);
 
         }
     }

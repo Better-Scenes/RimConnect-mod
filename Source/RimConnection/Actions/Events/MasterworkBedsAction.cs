@@ -29,7 +29,7 @@ namespace RimConnection
                 bed.TryGetComp<CompQuality>().SetQuality(QualityCategory.Masterwork, ArtGenerationContext.Outsider);
             });
 
-            AlertManager.NormalEventNotification("I feel like a toasty cinnamon bun, I never want to leave this bed. All your beds are masterwork!");
+            AlertManager.NormalEventNotification("({0}) I feel like a toasty cinnamon bun, I never want to leave this bed. All your beds are masterwork!", boughtBy);
         }
     }
 }

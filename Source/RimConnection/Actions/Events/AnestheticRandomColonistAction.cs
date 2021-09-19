@@ -32,7 +32,7 @@ namespace RimConnection
                 colonist.health.AddHediff(AnestheticHeDiff);
             }
 
-            AlertManager.BadEventNotification("Your twitch viewers decided some people should have a rest");
+            AlertManager.BadEventNotification("{0} decided some people should have a rest", boughtBy);
         }
     }
 }

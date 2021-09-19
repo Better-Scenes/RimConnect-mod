@@ -29,7 +29,7 @@ namespace RimConnection
                 medicineThing.Destroy();
             });
 
-            AlertManager.BadEventNotification("Sorry, but your medicine has been misplaced.... All of it");
+            AlertManager.BadEventNotification("Sorry, but {0} seems to have misplaced all your medicine!", boughtBy);
         }
     }
 }
