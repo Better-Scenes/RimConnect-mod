@@ -27,12 +27,21 @@ namespace RimConnection
                 if (!authed)
                 {
                     Log.Error("Unable to Connect to RimConnect server.");
+                    RimConnectSettings.token = "";
                     return false;
                 }
 
                 RimConnectSettings.token = Token;
                 RimConnectAPI.PostValidCommands(commandList);
                 RimConnectAPI.GetConfig();
+
+                //string worldName = Find.World.info.name;
+                var world = Find.World;
+                if(world != null)
+                {
+                    Log.Message($"World name is {world.info.name}");
+                    RimConnectAPI.UpdateWorld(world.info.name);
+                }
 
                 return true;
             } catch (Exception err)
