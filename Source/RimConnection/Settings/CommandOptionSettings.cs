@@ -272,7 +272,11 @@ namespace RimConnection.Settings
             {
                 if (RowIncludedInFiltering(commandOption))
                 {
-                    filteredRows.Add(commandOption);
+                    // remove anything that is a premium event (cost -1)
+                    if(commandOption.costSilverStore >= 0)
+                    {
+                        filteredRows.Add(commandOption);
+                    }
                 }
             }
 
