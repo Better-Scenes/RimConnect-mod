@@ -377,7 +377,7 @@ namespace RimConnection.Settings
             string globalCooldownLabel = newGlobalCooldown.ToString();
 
             // Silver Cost
-            Widgets.TextFieldNumeric(rect2, ref newPrice, ref priceLabel, -1f);
+            Widgets.TextFieldNumeric(rect2, ref newPrice, ref priceLabel, 0f);
             filteredRows[index].costSilverStore = newPrice;
 
             // Local Cooldown
