@@ -11,6 +11,7 @@ namespace RimConnection
             Description = "A chunk of asteroid";
             Category = "Event";
             Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount, string boughtBy)
