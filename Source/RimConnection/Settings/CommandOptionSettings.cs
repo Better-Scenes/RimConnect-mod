@@ -399,6 +399,14 @@ namespace RimConnection.Settings
                 Widgets.ThingIcon(rect3, thingDef);
                 Widgets.InfoCardButton(40f, 0f, thingDef);
             }
+            // duplicated code for getting the tame animal images and descriptions
+            if (commandOption.Action() is TameAnimalAction)
+            {
+                TameAnimalAction itemAction = (TameAnimalAction)commandOption.Action();
+                ThingDef thingDef = itemAction.thingDef;
+                Widgets.ThingIcon(rect3, thingDef);
+                Widgets.InfoCardButton(40f, 0f, thingDef);
+            }
 
             // Label for item/event
 

@@ -15,6 +15,7 @@ namespace RimConnection
             Name = "Raid";
             Description = "They don't look too happy";
             Category = "Event";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount, string boughtBy)

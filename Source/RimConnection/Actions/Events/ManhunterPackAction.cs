@@ -16,6 +16,7 @@ namespace RimConnection
             Description = "They hunger for man-flesh";
             Category = "Event";
             Prefix = "Trigger";
+            CostSilverStore = 0;
         }
 
         public override void Execute(int amount, string boughtBy)
