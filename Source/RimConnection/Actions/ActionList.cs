@@ -53,15 +53,12 @@ namespace RimConnection
             return actionLookup;
         }
 
-        public static ValidCommandList ActionListToApi()
+        public static ValidCommandPayloadGenerator ActionListToApi()
         {
             // Make sure the list and dictionary are up to date
             GenerateActionLookup();
-
-            return new ValidCommandList
-            {
-                validCommands = actionList.Select(action => action.ToApiCall()).ToList()
-            };
+            List <ValidCommand> commands = actionList.Select(action => action.ToApiCall()).ToList();
+            return new ValidCommandPayloadGenerator(commands);
         }
     }
 }

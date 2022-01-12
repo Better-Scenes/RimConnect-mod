@@ -18,7 +18,7 @@ namespace RimConnection
         {
             // Generate this before validation so that MP clients have this list available otherwise
             // desyncs occur
-            ValidCommandList commandList = ActionList.ActionListToApi();
+            ValidCommandPayloadGenerator validCommandPayloadGenerator = ActionList.ActionListToApi();
             try
             {
                 Log.Message("Initialising Server");
@@ -32,7 +32,7 @@ namespace RimConnection
                 }
 
                 RimConnectSettings.token = Token;
-                RimConnectAPI.PostValidCommands(commandList);
+                RimConnectAPI.PostValidCommands(validCommandPayloadGenerator);
                 RimConnectAPI.GetConfig();
 
                 //string worldName = Find.World.info.name;

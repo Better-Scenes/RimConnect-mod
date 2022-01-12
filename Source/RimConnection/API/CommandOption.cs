@@ -43,4 +43,10 @@ namespace RimConnection
             };
         }
     }
+
+
+    public class ValidCommandPostResponse
+    {
+        public bool success;
+    }
 }

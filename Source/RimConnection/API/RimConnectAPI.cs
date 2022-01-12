@@ -69,33 +69,39 @@ namespace RimConnection
             return true;
         }
 
-        public static void PostValidCommands(ValidCommandList commandList)
+        public static void PostValidCommands(ValidCommandPayloadGenerator commandPayloadGenerator)
         {
             try
             {
-                // Go and push all the valid commands to the server
-                var validCommandRequest = new RestRequest("command/valid", Method.POST);
-                validCommandRequest.AddHeader("Content-Type", "application/json")
-                       .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
-                       .AddJsonBody(commandList);
-
-                var validCommandResponse = client.Execute<CommandOptionList>(validCommandRequest);
-
-                if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
+                while(commandPayloadGenerator.isThereAnotherChunk())
                 {
-                    RimConnectSettings.initialiseSuccessful = false;
-                    Log.Error("Failed to provide valid commands to the server");
-                }
-                else
-                {
-                    RimConnectSettings.initialiseSuccessful = true;
+                    ValidCommandListPostPayload payloadChunk = commandPayloadGenerator.getNextChunk();
+                    var validCommandRequest = new RestRequest("command/valid", Method.POST);
+                    validCommandRequest.AddHeader("Content-Type", "application/json")
+                           .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
+                           .AddJsonBody(payloadChunk);
 
-                    CommandOptionList commandOptionList = new CommandOptionList();
-                    commandOptionList.commandOptions = validCommandResponse.Data.commandOptions;
+                    var validCommandResponse = client.Execute<ValidCommandPostResponse>(validCommandRequest);
 
-                    Settings.CommandOptionListController.commandOptionList = commandOptionList;
-                    Log.Message($"Provided a total of {commandOptionList.commandOptions.Count} valid commands to the server");
+                    if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
+                    {
+                        RimConnectSettings.initialiseSuccessful = false;
+                        Log.Error("Failed to provide valid commands to the server");
+                        return;
+                    }
                 }
+
+
+                // Then go and fetch the commands from the server seperately
+                var commands = GetValidCommands();
+
+                RimConnectSettings.initialiseSuccessful = true;
+
+                CommandOptionList commandOptionList = new CommandOptionList();
+                commandOptionList.commandOptions = GetValidCommands();
+
+                Settings.CommandOptionListController.commandOptionList = commandOptionList;
+                Log.Message($"Provided a total of {commandOptionList.commandOptions.Count} valid commands to the server");
             }
             catch(Exception e)
             {
@@ -113,9 +119,7 @@ namespace RimConnection
                 commandOptionRequest.AddHeader("Content-Type", "application/json")
                        .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
                        .AddJsonBody(updatedCommandOptionList);
-
-                var validCommandResponse = client.Execute<CommandOptionList>(commandOptionRequest);
-
+                var validCommandResponse = client.Execute(commandOptionRequest);
                 if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     Log.Error($"Failed to update command options to server. {validCommandResponse.StatusCode}");
@@ -128,6 +132,27 @@ namespace RimConnection
             catch (Exception e)
             {
                 Log.Error($"Failed to update command options to server. {e.Message}");
+            }
+        }
+
+        public static  List<CommandOption> GetValidCommands()
+        {
+            var baseRequest = new RestRequest("command/valid");
+            baseRequest.AddHeader("Content-Type", "application/json")
+                       .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}");
+
+            try
+            {
+                var response = client.Execute<ValidCommandGetResponse>(baseRequest);
+                if (response == null) throw new NullReferenceException("Response is null");
+                var validCommands = response.Data.commands;
+
+                return validCommands;
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Failed to get commands from server. {e.Message}");
+                throw;
             }
         }
 
