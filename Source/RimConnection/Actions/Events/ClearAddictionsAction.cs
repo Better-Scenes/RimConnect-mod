@@ -24,7 +24,9 @@ namespace RimConnection
 
             colonists.ForEach(colonist =>
             {
-                colonist.health.hediffSet.GetHediffs<Hediff_Addiction>().ToList().ForEach(hediff => { colonist.health.RemoveHediff(hediff); });
+                List<Hediff_Addiction> hediffs = new List<Hediff_Addiction>();
+                colonist.health.hediffSet.GetHediffs(ref hediffs);
+                hediffs.ForEach(hediff => { colonist.health.RemoveHediff(hediff); });
             });
 
             AlertManager.NormalEventNotification("{0} wanted to help you out this time and removed all addictions", boughtBy);
