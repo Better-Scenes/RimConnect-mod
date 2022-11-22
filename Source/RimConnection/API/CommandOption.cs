@@ -7,6 +7,7 @@ using RestSharp;
 #pragma warning disable IDE1006 // Naming Styles
 namespace RimConnection
 {
+    [Serializable]
     public class CommandOption : ICloneable
     {
         public string actionHash { get; set; }

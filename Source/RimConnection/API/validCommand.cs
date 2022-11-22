@@ -4,6 +4,7 @@ using System.Collections.Generic;
 #pragma warning disable IDE1006 // Naming Styles
 namespace RimConnection
 {
+    [Serializable]
     public class ValidCommand
     {
         public string actionHash { get; set; }

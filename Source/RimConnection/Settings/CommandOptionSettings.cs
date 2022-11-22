@@ -1,8 +1,8 @@
-﻿using RimWorld;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using Verse;
 
@@ -153,6 +153,7 @@ namespace RimConnection.Settings
             {
                 searchQuery = "";
             }
+            
 
             Rect sortMethodButton = new Rect(rect.x + rect.width - 240f, rect.y, 200f, rect.height);
 
@@ -167,6 +168,26 @@ namespace RimConnection.Settings
                 sortMethod = (SortMethod)Enum.Parse(typeof(SortMethod), sortMethodIndex.ToString());
 
                 SortFilteredRows();
+            }
+
+            Rect loadButton = new Rect(sortMethodButton.x - 100f, rect.y, 100f, rect.height);
+
+            if (Widgets.ButtonText(loadButton, "Load File"))
+            {
+
+                using (StreamReader file = File.OpenText(@"d:\test.json"))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    this.commandOptions = (List<CommandOption>)serializer.Deserialize(file, typeof(List<CommandOption>));
+                }
+            }
+
+            Rect saveButton = new Rect(loadButton.x - 100f, rect.y, 100f, rect.height);
+
+            if (Widgets.ButtonText(saveButton, "Save File"))
+            {
+                string options = JsonUtility.ToJson(this.commandOptions);
+                File.WriteAllText(@"d:\test.json", options);
             }
 
             Rect sortOrderbutton = new Rect(sortMethodButton.x + sortMethodButton.width, rect.y, 40f, rect.height);
