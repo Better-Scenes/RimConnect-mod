@@ -37,7 +37,8 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
+                newPawn.SetFaction(Faction.OfPlayer);
 
                 // mid range their skills
                 var pawnSkills = newPawn.skills.skills;
@@ -65,7 +66,8 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
+                newPawn.SetFaction(Faction.OfPlayer);
 
                 // fuck up their traits
                 var randomTraits = badTraits.InRandomOrder().Take(3);
@@ -100,7 +102,8 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
+                newPawn.SetFaction(Faction.OfPlayer);
 
                 var randomTraits = goodTraits.InRandomOrder().Take(3);
                 newPawn.story.traits.allTraits.Clear();
@@ -137,7 +140,8 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
+                newPawn.SetFaction(Faction.OfPlayer);
 
                 if (newPawn.gender == Gender.Male)
                 {
