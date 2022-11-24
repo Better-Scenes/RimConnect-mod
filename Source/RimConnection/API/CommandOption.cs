@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RestSharp;
+using System.Runtime.Serialization;
 
 #pragma warning disable IDE1006 // Naming Styles
 namespace RimConnection
 {
-    [Serializable]
+    [DataContract]
     public class CommandOption : ICloneable
     {
+        [DataMember(Name="actionHash")]
         public string actionHash { get; set; }
+        [DataMember(Name="localCooldownMs")]
         public int localCooldownMs { get; set; }
+        [DataMember(Name="globalCooldownMs")]
         public int globalCooldownMs { get; set; }
+        [DataMember(Name="costSilverStore")]
         public int costSilverStore { get; set; }
 
         public IAction Action()

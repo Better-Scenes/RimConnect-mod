@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using JsonFx.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -174,19 +174,20 @@ namespace RimConnection.Settings
 
             if (Widgets.ButtonText(loadButton, "Load File"))
             {
-
-                using (StreamReader file = File.OpenText(@"d:\test.json"))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    this.commandOptions = (List<CommandOption>)serializer.Deserialize(file, typeof(List<CommandOption>));
-                }
+                JsonReader reader = new JsonReader();
+                string fileJson = File.ReadAllText(@"d:\test.json");
+                Verse.Log.Message(fileJson);
+                UpdateFilteredRows();
+                Verse.Log.Message("Updating filtered rows");
+                Verse.Log.Message(reader.Read<List<CommandOption>>(fileJson).ToString());
             }
 
             Rect saveButton = new Rect(loadButton.x - 100f, rect.y, 100f, rect.height);
 
             if (Widgets.ButtonText(saveButton, "Save File"))
             {
-                string options = JsonUtility.ToJson(this.commandOptions);
+                JsonWriter writer = new JsonWriter();
+                string options = writer.Write(commandOptions);
                 File.WriteAllText(@"d:\test.json", options);
             }
 

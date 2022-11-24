@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
+    <PackageReference Include="JsonFx">
+      <Version>2.0.1209.2802</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
       <Version>106.11.4</Version>
