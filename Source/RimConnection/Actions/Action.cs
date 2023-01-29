@@ -12,7 +12,7 @@ namespace RimConnection {
         public bool ShouldShowAmount { get; set; } = false;
         public int LocalCooldownMs { get; set; } = 120000;
         public int GlobalCooldownMs { get; set; } = 60000;
-        public int CostSilverStore { get; set; } = -1;
+        public int CostSilverStore { get; set; } = 0;
         public string BitStoreSKU { get; set; } = "";
         public string ActionHash { get; set; } = "";
 
