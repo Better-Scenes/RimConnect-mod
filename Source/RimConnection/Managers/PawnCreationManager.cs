@@ -50,6 +50,7 @@ namespace RimConnection
             new Trait(TraitDefOf.Kind),
             new Trait(DefDatabase<TraitDef>.GetNamed("Nimble")),
             new Trait(DefDatabase<TraitDef>.GetNamed("QuickSleeper")),
+            new Trait(DefDatabase<TraitDef>.GetNamed("NightOwl")),
         });
 
         public static List<Thing> generateDefaultColonists(int amount, string name = null)
