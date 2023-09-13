@@ -19,12 +19,24 @@ namespace RimConnection
         });
 
         private static List<Trait> goodTraits = new List<Trait>(new Trait[] {
+            new Trait(TraitDefOf.Beauty, 1),
+            new Trait(TraitDefOf.NaturalMood, 1),
+            new Trait(TraitDefOf.Nerves, 1),
+            new Trait(TraitDefOf.Industriousness, 1),
+            new Trait(TraitDefOf.SpeedOffset, 1),
             new Trait(TraitDefOf.Beauty, 2),
             new Trait(TraitDefOf.NaturalMood, 2),
             new Trait(TraitDefOf.Nerves, 2),
             new Trait(TraitDefOf.Industriousness, 2),
-            new Trait(TraitDefOf.Cannibal),
             new Trait(TraitDefOf.SpeedOffset, 2),
+            new Trait(TraitDefOf.Cannibal),
+            new Trait(TraitDefOf.GreatMemory),
+            new Trait(TraitDefOf.Tough),
+            new Trait(DefDatabase<TraitDef>.GetNamed("Immunity"), 1),
+            new Trait(DefDatabase<TraitDef>.GetNamed("FastLearner")),
+            new Trait(TraitDefOf.Kind),
+            new Trait(DefDatabase<TraitDef>.GetNamed("Nimble")),
+            new Trait(DefDatabase<TraitDef>.GetNamed("QuickSleeper")),
         });
 
         public static List<Thing> generateDefaultColonists(int amount, string name = null)
@@ -105,11 +117,32 @@ namespace RimConnection
                 var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
                 newPawn.SetFaction(Faction.OfPlayer);
 
-                var randomTraits = goodTraits.InRandomOrder().Take(3);
-                newPawn.story.traits.allTraits.Clear();
+                // Create a dictionary to store available traits for each trait type
+                Dictionary<TraitDef, List<Trait>> availableTraits = new Dictionary<TraitDef, List<Trait>>();
+                foreach (Trait trait in goodTraits)
+                {
+                    if (!availableTraits.ContainsKey(trait.def))
+                    {
+                        availableTraits[trait.def] = new List<Trait>();
+                    }
+                    availableTraits[trait.def].Add(trait);
+                }
 
-                // Make their traits great
-                foreach (Trait trait in randomTraits)
+                List<Trait> selectedTraits = new List<Trait>();
+
+                // Randomly select 3 different trait types
+                while (selectedTraits.Count < 3 && availableTraits.Count > 0)
+                {
+                    TraitDef randomTraitDef = availableTraits.Keys.RandomElement();
+                    List<Trait> traitsForType = availableTraits[randomTraitDef];
+                    Trait selectedTrait = traitsForType.RandomElement();
+                    selectedTraits.Add(selectedTrait);
+                    availableTraits.Remove(randomTraitDef);
+                }
+
+                newPawn.story.traits.allTraits.Clear();
+                // Add the selected traits to the pawn
+                foreach (Trait trait in selectedTraits)
                 {
                     newPawn.story.traits.GainTrait(trait);
                 }
