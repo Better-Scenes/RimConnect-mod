@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace RimConnection
@@ -51,7 +52,7 @@ namespace RimConnection
                 Pawn newAnimal = PawnGenerator.GeneratePawn(itemDef.race.AnyPawnKind, Faction.OfPlayer);
                 if(boughtBy != "Poll")
                 {
-                    newAnimal.Name = new NameTriple("", boughtBy, "");
+                    newAnimal.Name = new NameSingle(boughtBy);
                 }
                 pawnList.Add(newAnimal);
             }
