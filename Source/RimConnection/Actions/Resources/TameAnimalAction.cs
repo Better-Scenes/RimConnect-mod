@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using RimWorld;
-using RimWorld.Planet;
 using Verse;
 
 namespace RimConnection
