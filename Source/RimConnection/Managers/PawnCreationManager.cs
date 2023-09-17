@@ -8,6 +8,9 @@ namespace RimConnection
 {
     class PawnCreationManager
     {
+        private static Dictionary<TraitDef, List<Trait>> badTraitDict;
+        private static Dictionary<TraitDef, List<Trait>> goodTraitDict;
+
         private static List<Trait> badTraits = new List<Trait>(new Trait[] {
             new Trait(TraitDefOf.Beauty, -2),
             new Trait(TraitDefOf.NaturalMood, -2),
@@ -53,6 +56,48 @@ namespace RimConnection
             new Trait(DefDatabase<TraitDef>.GetNamed("NightOwl")),
         });
 
+        private static Dictionary<TraitDef, List<Trait>> InitializeTraitDictionary(List<Trait> traits)
+        {
+            Dictionary<TraitDef, List<Trait>> traitDict = new Dictionary<TraitDef, List<Trait>>();
+            foreach (Trait trait in traits)
+            {
+                if (!traitDict.ContainsKey(trait.def))
+                {
+                    traitDict[trait.def] = new List<Trait>();
+                }
+                traitDict[trait.def].Add(trait);
+            }
+            return traitDict;
+        }
+
+        static PawnCreationManager()
+        {
+            // Initialize the good and bad trait dictionaries
+            goodTraitDict = InitializeTraitDictionary(goodTraits);
+            badTraitDict = InitializeTraitDictionary(badTraits);
+        }
+
+        private static List<Trait> SelectRandomTraits(Dictionary<TraitDef, List<Trait>> traitDictionary, int numTraitsToSelect)
+        {
+            List<Trait> selectedTraits = new List<Trait>();
+
+            // Create a new copy of the trait dictionary for each colonist
+            Dictionary<TraitDef, List<Trait>> traitDictionaryCopy = new Dictionary<TraitDef, List<Trait>>(traitDictionary);
+
+
+            // Randomly select traits until the desired number is reached or no more traits are available
+            while (selectedTraits.Count < numTraitsToSelect && traitDictionaryCopy.Count > 0)
+            {
+                TraitDef randomTraitDef = traitDictionaryCopy.Keys.RandomElement();
+                List<Trait> traitsForType = traitDictionaryCopy[randomTraitDef];
+                Trait selectedTrait = traitsForType.RandomElement();
+                selectedTraits.Add(selectedTrait);
+                traitDictionaryCopy.Remove(randomTraitDef);
+            }
+
+            return selectedTraits;
+        }
+
         public static List<Thing> generateDefaultColonists(int amount, string name = null)
         {
             var currentMap = Find.CurrentMap;
@@ -95,28 +140,8 @@ namespace RimConnection
                 var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
                 newPawn.SetFaction(Faction.OfPlayer);
 
-                // Create a dictionary to store available traits for each trait type
-                Dictionary<TraitDef, List<Trait>> availableTraits = new Dictionary<TraitDef, List<Trait>>();
-                foreach (Trait trait in badTraits)
-                {
-                    if (!availableTraits.ContainsKey(trait.def))
-                    {
-                        availableTraits[trait.def] = new List<Trait>();
-                    }
-                    availableTraits[trait.def].Add(trait);
-                }
-
-                List<Trait> selectedTraits = new List<Trait>();
-
-                // Randomly select 3 different trait types
-                while (selectedTraits.Count < 3 && availableTraits.Count > 0)
-                {
-                    TraitDef randomTraitDef = availableTraits.Keys.RandomElement();
-                    List<Trait> traitsForType = availableTraits[randomTraitDef];
-                    Trait selectedTrait = traitsForType.RandomElement();
-                    selectedTraits.Add(selectedTrait);
-                    availableTraits.Remove(randomTraitDef);
-                }
+                // Generate 3 bad traits for the colonist
+                List<Trait> selectedTraits = SelectRandomTraits(badTraitDict, 3);
 
                 newPawn.story.traits.allTraits.Clear();
                 // Add the selected traits to the pawn
@@ -153,28 +178,8 @@ namespace RimConnection
                 var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
                 newPawn.SetFaction(Faction.OfPlayer);
 
-                // Create a dictionary to store available traits for each trait type
-                Dictionary<TraitDef, List<Trait>> availableTraits = new Dictionary<TraitDef, List<Trait>>();
-                foreach (Trait trait in goodTraits)
-                {
-                    if (!availableTraits.ContainsKey(trait.def))
-                    {
-                        availableTraits[trait.def] = new List<Trait>();
-                    }
-                    availableTraits[trait.def].Add(trait);
-                }
-
-                List<Trait> selectedTraits = new List<Trait>();
-
-                // Randomly select 3 different trait types
-                while (selectedTraits.Count < 3 && availableTraits.Count > 0)
-                {
-                    TraitDef randomTraitDef = availableTraits.Keys.RandomElement();
-                    List<Trait> traitsForType = availableTraits[randomTraitDef];
-                    Trait selectedTrait = traitsForType.RandomElement();
-                    selectedTraits.Add(selectedTrait);
-                    availableTraits.Remove(randomTraitDef);
-                }
+                // Generate 3 good traits for the colonist
+                List<Trait> selectedTraits = SelectRandomTraits(goodTraitDict, 3);
 
                 newPawn.story.traits.allTraits.Clear();
                 // Add the selected traits to the pawn
@@ -221,28 +226,8 @@ namespace RimConnection
                     newPawn.Name = new NameTriple("Worst", "Myseenee", "Ever");
                 }
 
-                // Create a dictionary to store available traits for each trait type
-                Dictionary<TraitDef, List<Trait>> availableTraits = new Dictionary<TraitDef, List<Trait>>();
-                foreach (Trait trait in badTraits)
-                {
-                    if (!availableTraits.ContainsKey(trait.def))
-                    {
-                        availableTraits[trait.def] = new List<Trait>();
-                    }
-                    availableTraits[trait.def].Add(trait);
-                }
-
-                List<Trait> selectedTraits = new List<Trait>();
-
-                // Randomly select 5 different trait types
-                while (selectedTraits.Count < 5 && availableTraits.Count > 0)
-                {
-                    TraitDef randomTraitDef = availableTraits.Keys.RandomElement();
-                    List<Trait> traitsForType = availableTraits[randomTraitDef];
-                    Trait selectedTrait = traitsForType.RandomElement();
-                    selectedTraits.Add(selectedTrait);
-                    availableTraits.Remove(randomTraitDef);
-                }
+                // Generate 5 bad traits for the colonist
+                List<Trait> selectedTraits = SelectRandomTraits(badTraitDict, 5);
 
                 newPawn.story.traits.allTraits.Clear();
                 // Add the selected traits to the pawn
