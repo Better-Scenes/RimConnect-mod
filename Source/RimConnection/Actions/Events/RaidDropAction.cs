@@ -34,7 +34,7 @@ namespace RimConnection
 
 
             raidWorker.TryExecute(parms);
-            AlertManager.BadEventNotification("{0} sent a Drop Raid!", boughtBy);
+            AlertManager.BadEventNotification("{0} sent a drop raid!", boughtBy);
 
         }
     }

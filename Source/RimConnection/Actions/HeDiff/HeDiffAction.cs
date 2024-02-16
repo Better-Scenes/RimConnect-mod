@@ -41,11 +41,11 @@ namespace RimConnection
             // I hope no viewer uses RC with the name "Poll"
             if (boughtBy == "Poll")
             {
-                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has triggered {defLabel} on random colonists";
+                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has triggered {defLabel} on random colonists.";
             }
             else
             {
-                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {defLabel} for a random colonist";
+                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {defLabel} for a random colonist.";
             }
 
             var colonists = Find.ColonistBar.GetColonistsInOrder().Where(colonist => !colonist.Dead);
@@ -59,11 +59,11 @@ namespace RimConnection
             string additionalMessage = "";
             if(amount == 1)
             {
-                additionalMessage = $"{randomColonists.First().Name.ToStringFull} has been given {heDiffGiver.hediff.label}";
+                additionalMessage = $"{randomColonists.First().Name.ToStringFull} has been given {heDiffGiver.hediff.label}.";
             } else
             {
                 IEnumerable<String> colonistNames = randomColonists.Select((Pawn colonist) => colonist.Name.ToStringFull);
-                additionalMessage = $"{String.Join(", ", colonistNames)} have been given {heDiffGiver.hediff.label}";
+                additionalMessage = $"{String.Join(", ", colonistNames)} have been given {heDiffGiver.hediff.label}.";
             }
 
             AlertManager.BadEventNotification($"{notificationMessage}\n\n{additionalMessage}");

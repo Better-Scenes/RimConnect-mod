@@ -40,7 +40,7 @@ namespace RimConnection.Settings
 
                 // Update the global CommandOptionList with the modified CommandOptionList
                 CommandOptionListController.commandOptionList = commandOptionList;
-                Log.Message("Rimconnect items have been reset");
+                Log.Message("RimConnect items have been reset");
             }
 
             GUI.EndGroup();

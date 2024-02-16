@@ -46,11 +46,11 @@ namespace RimConnection
                     // I hope no viewer uses RC with the name "Poll"
                     if (boughtBy == "Poll")
                     {
-                        notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has triggered {defLabel} for {colonist.Name}, hope your colony isn't a house of cards!";
+                        notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has triggered {defLabel} for {colonist.Name}. Hope your colony isn't a house of cards!";
                     }
                     else
                     {
-                        notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {defLabel} for {colonist.Name}. hope your colony isn't a house of cards!";
+                        notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {defLabel} for {colonist.Name}. Hope your colony isn't a house of cards!";
                     }
                     AlertManager.BadEventNotification(notificationMessage);
                     return;

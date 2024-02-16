@@ -28,7 +28,7 @@ namespace RimConnection
                 beaverWorker.TryExecute(parms);
             }
 
-            AlertManager.NormalEventNotification("{0} dislodged a chunk of asteroid from orbit", boughtBy);
+            AlertManager.NormalEventNotification("{0} dislodged a chunk of asteroid from orbit.", boughtBy);
 
         }
     }

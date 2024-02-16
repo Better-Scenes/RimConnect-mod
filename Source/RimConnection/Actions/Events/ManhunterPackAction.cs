@@ -29,7 +29,7 @@ namespace RimConnection
             manhunterWorker.def = IncidentDef.Named("ManhunterPack");
 
             manhunterWorker.TryExecute(parms);
-            AlertManager.BadEventNotification("{0} sent a Manhunter Pack!", boughtBy);
+            AlertManager.BadEventNotification("{0} sent a manhunter pack!", boughtBy);
 
         }
     }

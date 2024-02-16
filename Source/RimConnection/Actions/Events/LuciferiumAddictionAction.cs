@@ -34,7 +34,7 @@ namespace RimConnection
             var amountToDrop = colonists.Count() * amountMultiplier;
             DropPodManager.createDropFromDef(ThingDefOf.Luciferium, amountToDrop, Name, "Your luciferium stock, this should last you for about half a year");
 
-            AlertManager.NormalEventNotification("{0} decided that everyone should have a life threatening addiction, along with some supplies", boughtBy);
+            AlertManager.NormalEventNotification("{0} decided that everyone should have a life threatening addiction, along with some supplies.", boughtBy);
         }
     }
 }

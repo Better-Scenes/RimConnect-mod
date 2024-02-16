@@ -13,7 +13,7 @@ namespace RimConnection
         public RainingMenAction()
         {
             Name = "Raining Men";
-            Description = "These men are uh.... A little old and unrefigerated";
+            Description = "These men are uh.... A little old and unrefrigerated";
             Category = "Event";
             ShouldShowAmount = false;
             Prefix = "Trigger";
@@ -37,7 +37,7 @@ namespace RimConnection
                 newPawn.apparel.DestroyAll();
             }
 
-            AlertManager.NormalEventNotification("({0}) It's Raining men, hallelujah!", boughtBy);
+            AlertManager.NormalEventNotification("({0}) It's Raining Men, hallelujah!", boughtBy);
         }
     }
 }

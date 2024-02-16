@@ -36,7 +36,7 @@ namespace RimConnection
                 {
                     GenSpawn.Spawn(ThingDefOf.Tornado, location, currentMap);
                 }
-                AlertManager.BadEventNotification("({0}) A Mega Tornado has been formed. I'd suggest staying as far away as possible", location, boughtBy);
+                AlertManager.BadEventNotification("({0}) A mega tornado has been formed. I'd suggest staying as far away as possible.", location, boughtBy);
             }
 
         }

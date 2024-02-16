@@ -37,11 +37,11 @@ namespace RimConnection
             // I hope no viewer uses RC with the name "Poll"
             if(boughtBy == "Poll")
             {
-                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has triggered {defLabel} for a whole day! Let's hope you get out the other side";
+                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has triggered {defLabel} for a whole day! Let's hope you get out the other side.";
             }
             else
             {
-                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {defLabel} for a whole day! Let's hope you get out the other side";
+                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {defLabel} for a whole day! Let's hope you get out the other side.";
             }
 
             Map map = Find.CurrentMap;

@@ -20,11 +20,11 @@ namespace RimConnection
             string notificationMessage;
             if (boughtBy == "Poll")
             {
-                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has given you {amount} awful colonist(s)";
+                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has given you {amount} awful colonist(s).";
                 boughtBy = null;
             } else
             {
-                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {amount} awful colonist(s)";
+                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {amount} awful colonist(s).";
             }
             var pawnList = PawnCreationManager.generateAwfulColonists(amount, boughtBy);
 
