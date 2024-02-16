@@ -31,13 +31,13 @@ Version 1.3.1
 
 === ABOUT ===
 
-With Rimconnect, you give your viewers the ability to directly interact with your game. You or your moderators can set up polls for interesting events to occur in your game like "Raining Men" or "Remove all medicine" for your viewers to vote on. There is a Loyalty Store where viewers can accumulate Silvers to spend to purchase every item in the game, modded or vanilla.
+With RimConnect, you give your viewers the ability to directly interact with your game. You or your moderators can set up polls for interesting events to occur in your game like "Raining Men" or "Remove all medicine" for your viewers to vote on. There is a Loyalty Store where viewers can accumulate Silver to spend to purchase every item in the game, modded or vanilla.
 
-Empower your community to trigger over 40 different events, including weather, raids, 
+Empower your community to trigger over 40 different events, including weather, raids, incidents, and custom built!
 
-Get some much needed help to survive with your viewers sending in supply drops of the items you need most! Or maybe just a bunch of poor quality pants....
+Get some much needed help to survive with your viewers sending in supply drops of the items you need most! Or maybe just a bunch of poor quality pants...
 
-Enhance your Rimworld experience by allowing your community to tell the narrative, will they help or hinder? Are they better or worse than Randy Random? 
+Enhance your RimWorld experience by allowing your community to tell the narrative. Will they help or hinder? Are they better or worse than Randy Random? 
 
 === SETUP ===
 
@@ -45,7 +45,7 @@ Enhance your Rimworld experience by allowing your community to tell the narrativ
 2. Install the Twitch extension, and visit the configuration page (Make sure to enable the extension in your video extension slot!).
 3. https://dashboard.twitch.tv/extensions/dpmu4zz6rii0emgay9ajrrhdjcw6ml
 4. From the configuration page, copy the provided secret, make sure not to share this.
-5. Open the Rimworld mod settings for Rimconnect, paste in the secret and click connect.
+5. Open the RimWorld mod settings for RimConnect, paste in the secret and click connect.
 6. Start up the game and have your Moderators create polls for your viewers to vote on. 
 
 === PLANNED FEATURES ===
