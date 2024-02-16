@@ -25,7 +25,7 @@ namespace RimConnection
             worker.def = IncidentDef.Named("PsychicDrone");
 
             worker.TryExecute(parms);
-            AlertManager.BadEventNotification("{0} sent a Phsychic Drone", boughtBy);
+            AlertManager.BadEventNotification("{0} sent a Psychic Drone", boughtBy);
         }
     }
 }
