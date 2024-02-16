@@ -29,7 +29,7 @@ namespace RimConnection
                 filthThing.Destroy();
             });
 
-            AlertManager.NormalEventNotification("({0}) The Greek goddess Higieia passed through and took pity on your disgusting base", boughtBy);
+            AlertManager.NormalEventNotification("({0}) The Greek goddess Hygieia passed through and took pity on your disgusting base", boughtBy);
         }
     }
 }
