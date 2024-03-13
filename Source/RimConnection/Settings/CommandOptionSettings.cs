@@ -159,7 +159,6 @@ namespace RimConnection.Settings
             {
                 searchQuery = "";
             }
-            
 
             Rect sortMethodButton = new Rect(rect.x + rect.width - 240f, rect.y, 200f, rect.height);
 
