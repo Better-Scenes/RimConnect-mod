@@ -14,13 +14,12 @@ namespace RimConnection
             if(newthing != null)
             {
                 var currentMap = Find.CurrentMap;
-                IntVec3 dropVector = DropCellFinder.TradeDropSpot(Find.CurrentMap);
-                TradeUtility.SpawnDropPod(dropVector, currentMap, newthing);
-
+                IntVec3? dropVector = DropCellFinder.TryFindSafeLandingSpotCloseToColony(Find.CurrentMap, IntVec2.Two);
+                TradeUtility.SpawnDropPod(dropVector ?? DropCellFinder.TradeDropSpot(Find.CurrentMap), currentMap, newthing);
                 if (showMessage)
                 {
                     string messageString = "RimConnectionPositiveDroppodMailBody".Translate(amount, title, desc);
-                    AlertManager.ResourceDropNotification(messageString, dropVector);
+                    AlertManager.ResourceDropNotification(messageString, dropVector ?? DropCellFinder.TradeDropSpot(Find.CurrentMap));
                 }
             }
         }
@@ -30,13 +29,13 @@ namespace RimConnection
             if (things.Count > 0)
             {
                 var currentMap = Find.CurrentMap;
-                IntVec3 dropVector = DropCellFinder.TradeDropSpot(Find.CurrentMap);
-                DropPodUtility.DropThingsNear(dropVector, currentMap, things);
+                IntVec3? dropVector = DropCellFinder.TryFindSafeLandingSpotCloseToColony(Find.CurrentMap, IntVec2.Two);
+                DropPodUtility.DropThingsNear(dropVector ?? DropCellFinder.TradeDropSpot(Find.CurrentMap), currentMap, things, canRoofPunch: false);
 
                 if (showMessage)
                 {
                     string messageString = "RimConnectionPositiveDroppodMailBody".Translate("", title, desc);
-                    AlertManager.ResourceDropNotification(messageString, dropVector);
+                    AlertManager.ResourceDropNotification(messageString, dropVector ?? DropCellFinder.TradeDropSpot(Find.CurrentMap));
                 }
             }
         }
