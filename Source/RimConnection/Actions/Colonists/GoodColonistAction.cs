@@ -8,7 +8,7 @@ namespace RimConnection
         public GoodColonistAction()
         {
             Name = "Good Colonist";
-            Description = "The good, in The Good the bad and the ugly";
+            Description = "The Good in 'The Good, the Bad and the Ugly'";
             ShouldShowAmount = true;
             Category = "Colonists";
             Prefix = "Spawn %amount%";
@@ -20,12 +20,12 @@ namespace RimConnection
             string notificationMessage;
             if (boughtBy == "Poll")
             {
-                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has given you {amount} good colonist(s)";
+                notificationMessage = $"<color=#9147ff>By popular opinion</color>, your channel has given you {amount} good colonist(s).";
                 boughtBy = null;
             }
             else
             {
-                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {amount} good colonist(s)";
+                notificationMessage = $"<color=#9147ff>{boughtBy}</color> purchased {amount} good colonist(s).";
             }
             var pawnList = PawnCreationManager.generateGoodColonists(amount, boughtBy);
 

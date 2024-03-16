@@ -53,7 +53,7 @@ namespace RimConnection
                 GenSpawn.Spawn(replacementAnimal, animalPos, currentMap);
             });
 
-            AlertManager.NormalEventNotification("{0} sent an Animal Metamorphosis", boughtBy);
+            AlertManager.NormalEventNotification("{0} sent an animal metamorphosis.", boughtBy);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace RimConnection
                 hediffs.ForEach(hediff => { colonist.health.RemoveHediff(hediff); });
             });
 
-            AlertManager.NormalEventNotification("{0} wanted to help you out this time and removed all addictions", boughtBy);
+            AlertManager.NormalEventNotification("{0} wanted to help you out this time and removed all addictions.", boughtBy);
         }
     }
 }

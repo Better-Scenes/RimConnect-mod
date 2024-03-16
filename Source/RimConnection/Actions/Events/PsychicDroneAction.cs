@@ -8,7 +8,7 @@ namespace RimConnection
         public PsychicDroneAction()
         {
             Name = "Psychic Drone";
-            Description = "Can you hear that? Man that's annoying";
+            Description = "Can you hear that? Man, that's annoying";
             Category = "Event";
             Prefix = "Trigger";
             CostSilverStore = 0;
@@ -25,7 +25,7 @@ namespace RimConnection
             worker.def = IncidentDef.Named("PsychicDrone");
 
             worker.TryExecute(parms);
-            AlertManager.BadEventNotification("{0} sent a Phsychic Drone", boughtBy);
+            AlertManager.BadEventNotification("{0} sent a psychic drone.", boughtBy);
         }
     }
 }

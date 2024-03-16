@@ -13,13 +13,13 @@ Read the following if you're interested in adding functionality to RimConnect. I
 - Create a environment variable called `RIMWORLD_BASE_PATH` and give it a value of your RimWorld install path. i.e `D:\games\Steam\steamapps\common\RimWorld`
 - Open the project from `source/RimConnection/RimConnection.sln`
 - Build using VS by hitting `f6` or using `build -> build Solution`
-- Start Rimworld normally
+- Start RimWorld normally
 - Navigate to the Mods menu
 - Enable the mod by ticking the red X (should become a green tick)
 
 ## Running
 
-To run RimWorld quickly, there is a quicktest paramater you can pass to the exectuable from a command line or through steam launch options.
+To run RimWorld quickly, there is a quicktest parameter you can pass to the executable from a command line or through steam launch options.
 
 - run `./RimWorldWin64 -quicktest` from a console in your RimWorld folder, OR
 - add `-quicktest` to steam launch options, instructions [here](https://support.steampowered.com/kb_article.php?ref=1040-JWMT-2947)
@@ -39,5 +39,5 @@ There are 3 major component that make RimConnect work. The server and extension 
 
 - https://marketplace.visualstudio.com/items?itemName=pragmatrix.BuildOnSave
   - Build the project every time you save
-- Original modding tutorial setup from Rimworld wiki
+- Original modding tutorial setup from RimWorld wiki
   - https://rimworldwiki.com/wiki/Modding_Tutorials/Setting_up_a_solution

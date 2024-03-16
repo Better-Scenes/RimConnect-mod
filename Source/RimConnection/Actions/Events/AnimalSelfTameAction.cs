@@ -9,7 +9,7 @@ namespace RimConnection
         public AnimalSelfTameAction()
         {
             Name = "Animal Self Tame";
-            Description = "You don't get to choose, hope it was a good one";
+            Description = "You don't get to choose, hope it's a good one";
             Category = "Event";
             Prefix = "Trigger";
             CostSilverStore = 0;

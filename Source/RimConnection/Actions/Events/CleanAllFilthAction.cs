@@ -13,7 +13,7 @@ namespace RimConnection
         public CleanAllFilthAction()
         {
             Name = "Spring Clean";
-            Description = "Heygieia is going to pay a visit";
+            Description = "Hygieia is going to pay a visit";
             Category = "Event";
             Prefix = "Trigger";
         }
@@ -29,7 +29,7 @@ namespace RimConnection
                 filthThing.Destroy();
             });
 
-            AlertManager.NormalEventNotification("({0}) The Greek goddess Higieia passed through and took pity on your disgusting base", boughtBy);
+            AlertManager.NormalEventNotification("({0}) The Greek goddess Hygieia passed through and took pity on your disgusting base.", boughtBy);
         }
     }
 }

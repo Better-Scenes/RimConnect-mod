@@ -68,7 +68,7 @@ namespace RimConnection
                     colonist.equipment.AddEquipment((ThingWithComps)newBow);
                 }
             });
-            AlertManager.NormalEventNotification("({0}) I hope you like bows, because all your ranged weapons are now bows", boughtBy);
+            AlertManager.NormalEventNotification("({0}) I hope you like bows, because all your ranged weapons are now bows.", boughtBy);
         }
     }
 }

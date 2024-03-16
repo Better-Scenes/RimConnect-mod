@@ -24,7 +24,7 @@ namespace RimConnection
             animalWorker.def = IncidentDef.Named("FarmAnimalsWanderIn");
             animalWorker.TryExecute(parms);
 
-            AlertManager.NormalEventNotification("{0} sent some Farm Animals!", boughtBy);
+            AlertManager.NormalEventNotification("{0} sent some farm animals!", boughtBy);
 
         }
     }
