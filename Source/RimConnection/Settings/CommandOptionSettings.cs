@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using Verse;
+using static Mono.Security.X509.X520;
 
 namespace RimConnection.Settings
 {
@@ -187,13 +188,20 @@ namespace RimConnection.Settings
                 var floatMenuOptions = Directory.GetFiles(CONFIG_PATH)
                     .Select((filePath) => {
                         string fileName = Path.GetFileNameWithoutExtension(filePath);
-                        return new FloatMenuOption(fileName, () => {
-                            Verse.Log.Message("Clicked on: " + fileName);
+                        void okCallback()
+                        {
                             Scribe.loader.InitLoading(filePath);
                             Scribe.EnterNode("ModOptions");
                             ExposeData();
                             Scribe.loader.FinalizeLoading();
                             UpdateFilteredRows(true);
+                        }
+                        return new FloatMenuOption(fileName, () => {
+                            Verse.Log.Message("Clicked on: " + fileName);
+                            Dialog_MessageBox confirmation = new Dialog_MessageBox("Are you sure you want to load " + fileName + "?", "OK",
+                            okCallback,
+                            "Cancel", null, null, true, okCallback,
+                            null);
                         });
                     })
                     .ToList();
