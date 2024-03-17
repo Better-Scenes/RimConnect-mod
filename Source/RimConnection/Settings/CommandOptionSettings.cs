@@ -202,6 +202,7 @@ namespace RimConnection.Settings
                             okCallback,
                             "Cancel", null, null, true, okCallback,
                             null);
+                            Find.WindowStack.Add(confirmation);
                         });
                     })
                     .ToList();
