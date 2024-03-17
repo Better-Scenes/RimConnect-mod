@@ -13,6 +13,7 @@ namespace RimConnection.Settings
         public Dialog_Save_ModOptions(List<CommandOption> commandOptions)
         {
             this.commandOptions = commandOptions;
+            curName = "File Name (Saved as xml)";
         }
 
         protected override void SetName(string name)
@@ -73,6 +74,8 @@ namespace RimConnection.Settings
                 Scribe.saver.InitSaving(filePath, "ModOptions");
                 ExposeData();
                 Scribe.saver.FinalizeSaving();
+                Dialog_MessageBox savedDialog = new Dialog_MessageBox("Saved to " + filePath, "OK");
+                Find.WindowStack.Add(savedDialog);
                 return true;
             }
             catch (Exception e)

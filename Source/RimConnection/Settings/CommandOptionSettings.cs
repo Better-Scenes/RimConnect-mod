@@ -178,7 +178,7 @@ namespace RimConnection.Settings
 
             Rect loadButton = new Rect(sortMethodButton.x - 100f, rect.y, 100f, rect.height);
 
-            if (Widgets.ButtonText(loadButton, "Load File"))
+            if (Widgets.ButtonText(loadButton, "Load Settings"))
             {
                 if (!Directory.Exists(CONFIG_PATH))
                 {
@@ -204,7 +204,7 @@ namespace RimConnection.Settings
 
             Rect saveButton = new Rect(loadButton.x - 100f, rect.y, 100f, rect.height);
 
-            if (Widgets.ButtonText(saveButton, "Save File"))
+            if (Widgets.ButtonText(saveButton, "Save Settings"))
             {
                 Find.WindowStack.Add(new Dialog_Save_ModOptions(commandOptions));
             }
