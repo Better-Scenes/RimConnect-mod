@@ -1,15 +1,17 @@
-﻿using RimWorld;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using Verse;
+using static Mono.Security.X509.X520;
 
 namespace RimConnection.Settings
 {
     class CommandOptionSettings : Window
     {
+        private static readonly string CONFIG_PATH = Path.Combine(GenFilePaths.ConfigFolderPath, "RimConnect");
+
         private Vector2 scrollPosition = Vector2.zero;
         private CommandOptionList cachedCommandOptionList = new CommandOptionList();
         private List<CommandOption> commandOptions = new List<CommandOption>();
@@ -94,9 +96,9 @@ namespace RimConnection.Settings
             GUI.EndGroup();
         }
 
-        private void UpdateFilteredRows()
+        private void UpdateFilteredRows(bool force = false)
         {
-            if (searchQuery != lastSearchQuery || currentCategory != lastCategory)
+            if (searchQuery != lastSearchQuery || currentCategory != lastCategory || force)
             {
                 filteredRows = FilteredRows();
                 SortFilteredRows(true);
@@ -140,6 +142,11 @@ namespace RimConnection.Settings
             filteredRows.Reverse();
         }
 
+        private void ExposeData()
+        {
+            Scribe_Collections.Look(ref commandOptions, "ItemConfigData");
+        }
+
         private void DrawFiltersRow(Rect rect)
         {
             Rect searchBar = new Rect(-70f, rect.y, 400f, rect.height);
@@ -167,6 +174,47 @@ namespace RimConnection.Settings
                 sortMethod = (SortMethod)Enum.Parse(typeof(SortMethod), sortMethodIndex.ToString());
 
                 SortFilteredRows();
+            }
+
+            Rect loadButton = new Rect(sortMethodButton.x - 100f, rect.y, 100f, rect.height);
+
+            if (Widgets.ButtonText(loadButton, "Import Settings"))
+            {
+                if (!Directory.Exists(CONFIG_PATH))
+                {
+                    Directory.CreateDirectory(CONFIG_PATH);
+                }
+
+                var floatMenuOptions = Directory.GetFiles(CONFIG_PATH)
+                    .Select((filePath) => {
+                        string fileName = Path.GetFileNameWithoutExtension(filePath);
+                        void okCallback()
+                        {
+                            Scribe.loader.InitLoading(filePath);
+                            Scribe.EnterNode("ModOptions");
+                            ExposeData();
+                            Scribe.loader.FinalizeLoading();
+                            UpdateFilteredRows(true);
+                        }
+                        return new FloatMenuOption(fileName, () => {
+                            Verse.Log.Message("Clicked on: " + fileName);
+                            Dialog_MessageBox confirmation = new Dialog_MessageBox("Are you sure you want to load " + fileName + "?", "OK",
+                            okCallback,
+                            "Cancel", null, null, true, okCallback,
+                            null);
+                            Find.WindowStack.Add(confirmation);
+                        });
+                    })
+                    .ToList();
+
+                Find.WindowStack.Add(new FloatMenu(floatMenuOptions));
+            }
+
+            Rect saveButton = new Rect(loadButton.x - 100f, rect.y, 100f, rect.height);
+
+            if (Widgets.ButtonText(saveButton, "Export Settings"))
+            {
+                Find.WindowStack.Add(new Dialog_Save_ModOptions(commandOptions));
             }
 
             Rect sortOrderbutton = new Rect(sortMethodButton.x + sortMethodButton.width, rect.y, 40f, rect.height);
