@@ -28,6 +28,7 @@ namespace RimConnection
             .Concat(GenerateHeDiffActions.GenerateHeDiffDefActions())
             .Concat(GenerateTameAnimalActions.GeneratetameAnimalDefActions())
             .Concat(GenerateUntameAnimalActions.GenerateUntameAnimalDefActions())
+            .Concat(CustomList.Actions)
             .ToList();
 
             return actionList;
