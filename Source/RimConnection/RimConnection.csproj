@@ -107,6 +107,8 @@
     <Compile Include="API\Config.cs" />
     <Compile Include="API\PostWorld.cs" />
     <Compile Include="API\ValidCommand.cs" />
+    <Compile Include="Customs\CustomActionDef.cs" />
+    <Compile Include="Customs\CustomList.cs" />
     <Compile Include="IncidentWorkers\IncidentWorker_AlphaBeavers.cs" />
     <Compile Include="Patches\MPCompat.cs" />
     <Compile Include="Settings\CommandOptionListController.cs" />
@@ -153,6 +155,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Customs\custom_example_cs.txt" />
+    <Content Include="Customs\custom_example_xml.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
