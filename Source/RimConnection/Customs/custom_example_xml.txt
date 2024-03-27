@@ -1,0 +1,10 @@
+<Defs>
+	<RimConnection.CustomActionDef>
+        <defName>CustomExample</defName>
+		<Action Class="RimConnectExpansionExample.CustomExample"></Action>
+		<name>Custom Example</name>
+		<category>Customs</category>
+		<prefix>Action</prefix>
+		<shouldShowAmount>true</shouldShowAmount>
+    </RimConnection.CustomActionDef>
+</Defs>

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RimConnection
 {
-    static class AlertManager
+    public static class AlertManager
     {
         private static LetterDef twitchEventLetterDef = DefDatabase<LetterDef>.GetNamed("TwitchEvent");
         private static LetterDef badTwitchEventLetterDef = DefDatabase<LetterDef>.GetNamed("DangerousTwitchEvent");
