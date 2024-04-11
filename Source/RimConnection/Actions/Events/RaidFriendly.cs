@@ -18,7 +18,6 @@ namespace RimConnection
             
 
             IncidentParms parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.Special, currentMap);
-            Log.Message(parms);
             parms.forced = true;
             //parms.raidArrivalMode = PawnsArrivalModeDefOf.CenterDrop;
             //parms.raidStrategy = RaidStrategyDefOf.ImmediateAttackFriendly;
