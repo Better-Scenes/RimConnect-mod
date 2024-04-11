@@ -25,7 +25,7 @@ namespace RimConnection
 
             var parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, currentMap);
             parms.forced = true;
-            var manhunterWorker = new IncidentWorker_ManhunterPack();
+            var manhunterWorker = new IncidentWorker_AggressiveAnimals();
             manhunterWorker.def = IncidentDef.Named("ManhunterPack");
 
             manhunterWorker.TryExecute(parms);

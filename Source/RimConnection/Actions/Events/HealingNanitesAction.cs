@@ -18,12 +18,12 @@ namespace RimConnection
 
         private static List<HediffDef> hediffsDefsToHeal = new List<HediffDef>(new HediffDef[] {
                 HediffDefOf.Bite,
-                HediffDefOf.Burn,
+                DefDatabase<HediffDef>.GetNamed("Burn"),
                 HediffDefOf.Cut,
-                HediffDefOf.Stab,
-                HediffDefOf.Scratch,
+                DefDatabase<HediffDef>.GetNamed("Stab"),
+                DefDatabase<HediffDef>.GetNamed("Scratch"),
                 HediffDefOf.Hangover,
-                HediffDefOf.Bruise,
+                DefDatabase<HediffDef>.GetNamed("Bruise"),
                 DefDatabase<HediffDef>.GetNamed("Crack")
         });
 

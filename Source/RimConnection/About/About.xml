@@ -6,7 +6,7 @@
     https://github.com/Better-Scenes/RimConnect-mod
   </url>
   <supportedVersions>
-    <li>1.4</li>
+    <li>1.5</li>
   </supportedVersions>
   <packageId>betterscenes.rimconnect</packageId>
   <modDependencies>
@@ -27,7 +27,7 @@
   </loadAfter>
   <description>Twitch integration with RimConnect extension 
   
-Version 1.4.0
+Version 1.5.0
 
 === ABOUT ===
 
