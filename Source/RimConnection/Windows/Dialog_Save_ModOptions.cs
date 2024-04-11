@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RimConnection.Windows;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,21 +7,25 @@ using Verse;
 
 namespace RimConnection.Settings
 {
-    public class Dialog_Save_ModOptions : Dialog_Rename
+    public class Dialog_Save_ModOptions : TextInputWindow
     {
         private List<CommandOption> commandOptions;
 
         public Dialog_Save_ModOptions(List<CommandOption> commandOptions)
         {
+            title = "Enter File Name (will be saved as an xml)";
+            curText = "";
             this.commandOptions = commandOptions;
-            curName = "File Name (Saved as xml)";
         }
 
-        protected override void SetName(string name)
+        protected override bool Accept()
         {
-            Save(name);
+            if(curText.Length == 0)
+                return false;
+
+            return Save(curText);
         }
-        protected override AcceptanceReport NameIsValid(string name)
+        protected override AcceptanceReport Validate(string name)
         {
             if (name.Length < 1)
             {

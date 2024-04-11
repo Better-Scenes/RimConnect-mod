@@ -28,6 +28,7 @@ namespace RimConnection
             new PsychicSootheAction(),
             new RaidAction(),
             new RaidDropAction(),
+            new RaidFriendly(),
             new RaidSiegeAction(),
             new RainingMenAction(),
             new RatSwarmEvent(),

@@ -34,7 +34,7 @@ namespace RimConnection
             { 
                 for(int i = 0; i < numberToSpawn; i++)
                 {
-                    GenSpawn.Spawn(ThingDefOf.Tornado, location, currentMap);
+                    GenSpawn.Spawn(DefDatabase<ThingDef>.GetNamed("Tornado"), location, currentMap);
                 }
                 AlertManager.BadEventNotification("({0}) A mega tornado has been formed. I'd suggest staying as far away as possible.", location, boughtBy);
             }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RimConnection
@@ -22,8 +17,7 @@ namespace RimConnection
             Map currentMap = Find.CurrentMap;
             
 
-            IncidentParms parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.AllyAssistance, currentMap);
-
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.Special, currentMap);
             parms.forced = true;
             //parms.raidArrivalMode = PawnsArrivalModeDefOf.CenterDrop;
             //parms.raidStrategy = RaidStrategyDefOf.ImmediateAttackFriendly;
@@ -34,8 +28,12 @@ namespace RimConnection
             var raidWorker = new IncidentWorker_RaidFriendly();
             raidWorker.def = IncidentDef.Named("RaidFriendly");
             raidWorker.TryExecute(parms);
-
-            AlertManager.NormalEventNotification("{0} have sent help from ", boughtBy); //The message cuts off? TODO
+            if(parms.faction != null) {
+                AlertManager.NormalEventNotification($"{{0}} has sent help from {parms.faction}", boughtBy);
+            } else {
+                AlertManager.NormalEventNotification("{0} has tried to send help but you don't have any allies", boughtBy);
+            }
+            
         }
     }
 }
