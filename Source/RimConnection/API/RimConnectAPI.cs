@@ -76,6 +76,10 @@ namespace RimConnection
                 while(commandPayloadGenerator.isThereAnotherChunk())
                 {
                     ValidCommandListPostPayload payloadChunk = commandPayloadGenerator.getNextChunk();
+                    if (payloadChunk.description == null || !(payloadChunk.description is string))
+                    {
+                        payloadChunk.description = ""; 
+                    }
                     var validCommandRequest = new RestRequest("command/valid", Method.POST);
                     validCommandRequest.AddHeader("Content-Type", "application/json")
                            .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
