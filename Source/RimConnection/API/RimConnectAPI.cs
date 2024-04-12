@@ -76,9 +76,12 @@ namespace RimConnection
                 while(commandPayloadGenerator.isThereAnotherChunk())
                 {
                     ValidCommandListPostPayload payloadChunk = commandPayloadGenerator.getNextChunk();
-                    if (payloadChunk.description == null || !(payloadChunk.description is string))
+                    foreach (var command in payloadChunk.validCommands)
                     {
-                        payloadChunk.description = ""; 
+                        if (string.IsNullOrEmpty(command.description))
+                        {
+                            command.description = "";
+                        }
                     }
                     var validCommandRequest = new RestRequest("command/valid", Method.POST);
                     validCommandRequest.AddHeader("Content-Type", "application/json")
