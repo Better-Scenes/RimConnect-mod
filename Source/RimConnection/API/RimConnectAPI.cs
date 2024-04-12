@@ -80,7 +80,7 @@ namespace RimConnection
                     {
                         if (string.IsNullOrEmpty(command.description))
                         {
-                            command.description = "";
+                            command.description = "description missing";
                         }
                     }
                     var validCommandRequest = new RestRequest("command/valid", Method.POST);
