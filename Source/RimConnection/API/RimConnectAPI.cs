@@ -81,6 +81,7 @@ namespace RimConnection
                         if (string.IsNullOrEmpty(command.description))
                         {
                             command.description = "description missing";
+                            Log.Warning($"Description missing for {command.name}");
                         }
                     }
                     var validCommandRequest = new RestRequest("command/valid", Method.POST);
