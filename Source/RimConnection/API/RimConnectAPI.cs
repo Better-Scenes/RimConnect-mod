@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Verse;
 using RestSharp;
 using System;
@@ -76,6 +76,14 @@ namespace RimConnection
                 while(commandPayloadGenerator.isThereAnotherChunk())
                 {
                     ValidCommandListPostPayload payloadChunk = commandPayloadGenerator.getNextChunk();
+                    foreach (var command in payloadChunk.validCommands)
+                    {
+                        if (string.IsNullOrEmpty(command.description))
+                        {
+                            command.description = "description missing";
+                            Log.Warning($"Description missing for {command.name}");
+                        }
+                    }
                     var validCommandRequest = new RestRequest("command/valid", Method.POST);
                     validCommandRequest.AddHeader("Content-Type", "application/json")
                            .AddHeader("Authorization", $"Bearer {RimConnectSettings.token}")
@@ -86,7 +94,8 @@ namespace RimConnection
                     if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                     {
                         RimConnectSettings.initialiseSuccessful = false;
-                        Log.Error("Failed to provide valid commands to the server");
+                        string commandDetails = validCommandResponse.Content ?? "Payload chunk is null";
+                        Log.Error($"Failed to provide valid commands to server. Response Details: {commandDetails}");
                         return;
                     }
                 }
