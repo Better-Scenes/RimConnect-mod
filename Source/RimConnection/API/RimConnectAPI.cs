@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Verse;
 using RestSharp;
 using System;
@@ -86,7 +86,8 @@ namespace RimConnection
                     if (validCommandResponse.StatusCode != System.Net.HttpStatusCode.OK)
                     {
                         RimConnectSettings.initialiseSuccessful = false;
-                        Log.Error("Failed to provide valid commands to the server");
+                        string commandDetails = validCommandResponse.Content ?? "Payload chunk is null";
+                        Log.Error($"Failed to provide valid commands to server. Response Details: {commandDetails}");
                         return;
                     }
                 }
