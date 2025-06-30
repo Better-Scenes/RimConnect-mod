@@ -48,7 +48,7 @@ namespace RimConnection
             List<Thing> pawnList = new List<Thing>();
             for (int i = 0; i < amount; i++)
             {
-                Pawn newAnimal = PawnGenerator.GeneratePawn(itemDef.race.AnyPawnKind, Faction.OfPlayer);
+                Pawn newAnimal = PawnGenerator.GeneratePawn(new PawnGenerationRequest(itemDef.race.AnyPawnKind, Faction.OfPlayer));
                 if(boughtBy != "Poll")
                 {
                     newAnimal.Name = new NameSingle(boughtBy);

@@ -49,7 +49,7 @@ namespace RimConnection
                 List<Thing> pawnList = new List<Thing>();
                 for (int i = 0; i < amount; i++)
                 {
-                    pawnList.Add(PawnGenerator.GeneratePawn(itemDef.race.AnyPawnKind, null));
+                    pawnList.Add(PawnGenerator.GeneratePawn(new PawnGenerationRequest(itemDef.race.AnyPawnKind, null)));
                 }
                 DropPodManager.createDropOfThings(pawnList, defLabel, dropMessage);
             }

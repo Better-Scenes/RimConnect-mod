@@ -37,7 +37,7 @@ public class IncidentWorker_Alphabeavers : IncidentWorker
         for (int i = 0; i < num; i++)
         {
             IntVec3 loc = CellFinder.RandomClosewalkCellNear(result, map, 10);
-            Pawn newThing = PawnGenerator.GeneratePawn(alphabeaver);
+            Pawn newThing = PawnGenerator.GeneratePawn(new PawnGenerationRequest(alphabeaver));
             Pawn pawn = (Pawn)GenSpawn.Spawn(newThing, loc, map);
             pawn.needs.food.CurLevelPercentage = 1f;
         }

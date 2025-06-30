@@ -108,7 +108,7 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
+                var newPawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist));
                 newPawn.SetFaction(Faction.OfPlayer);
 
                 // mid range their skills
@@ -137,7 +137,7 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
+                var newPawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist));
                 newPawn.SetFaction(Faction.OfPlayer);
 
                 // Generate 3 bad traits for the colonist
@@ -175,7 +175,7 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
+                var newPawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist));
                 newPawn.SetFaction(Faction.OfPlayer);
 
                 // Generate 3 good traits for the colonist
@@ -214,7 +214,7 @@ namespace RimConnection
             int i = 0;
             while (i < amount)
             {
-                var newPawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
+                var newPawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist));
                 newPawn.SetFaction(Faction.OfPlayer);
 
                 if (newPawn.gender == Gender.Male)
