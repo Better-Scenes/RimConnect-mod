@@ -146,6 +146,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>..\..\About\PublishedFileId.txt</TargetPath>
     </ContentWithTargetPath>
+    <ContentWithTargetPath Include="LoadFolders.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>..\..\LoadFolders.xml</TargetPath>
+    </ContentWithTargetPath>
     <ContentWithTargetPath Include="Defs\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\..\Defs\%(RecursiveDir)%(Filename)%(Extension)" />
     <ContentWithTargetPath Include="Languages\**" CopyToOutputDirectory="PreserveNewest" TargetPath="..\..\Languages\English\Keyed\%(Filename)%(Extension)" />
   </ItemGroup>
