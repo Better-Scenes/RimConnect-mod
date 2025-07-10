@@ -22,12 +22,15 @@ namespace RimConnection
         {
             var currentMap = Find.CurrentMap;
 
-            var allBeds = currentMap.listerThings.ThingsInGroup(ThingRequestGroup.Bed).ToList();
-
-            allBeds.ForEach(bed =>
+            var allBeds = currentMap.listerThings.ThingsInGroup(ThingRequestGroup.Bed);
+            foreach (var thing in allBeds)
             {
-                bed.TryGetComp<CompQuality>().SetQuality(QualityCategory.Poor, ArtGenerationContext.Outsider);
-            });
+                var compQuality = thing.TryGetComp<CompQuality>();
+                if (compQuality != null)
+                {
+                    compQuality.SetQuality(QualityCategory.Poor, ArtGenerationContext.Outsider);
+                }
+            }
 
             AlertManager.NormalEventNotification("({0}) Can't sleep, clown'll eat me. All your beds are now terrible.", boughtBy);
         }

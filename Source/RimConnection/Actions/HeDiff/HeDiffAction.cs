@@ -33,8 +33,16 @@ namespace RimConnection
         public override void Execute(int amount, string boughtBy)
         {
             //HediffDef heDiffDef = DefDatabase<HediffDef>.GetNamed(thingDef.defName);
-            HediffGiver heDiffGiver = PawnKindDefOf.Colonist.RaceProps.hediffGiverSets.SelectMany((HediffGiverSetDef set) => set.hediffGivers).Where((HediffGiver
-                hediffGiver) => hediffGiver.hediff.Equals(this.thingDef)).First();
+            var heDiffGiver = PawnKindDefOf.Colonist.RaceProps
+                .hediffGiverSets
+                .SelectMany(set => set.hediffGivers)
+                .FirstOrDefault(hg => hg.hediff == this.thingDef);
+            if (heDiffGiver == null)
+            {
+                Log.Error($"[HeDiffAction] No HediffGiver found for {thingDef.defName}");
+                return;
+            }
+
 
             String notificationMessage;
 

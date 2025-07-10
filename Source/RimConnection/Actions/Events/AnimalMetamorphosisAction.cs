@@ -42,7 +42,7 @@ namespace RimConnection
 
                 animal.Destroy();
 
-                Pawn replacementAnimal = PawnGenerator.GeneratePawn(newAnimal, animalFaction);
+                Pawn replacementAnimal = PawnGenerator.GeneratePawn(new PawnGenerationRequest(newAnimal, animalFaction));
                 replacementAnimal.relations = animalRelations;
 
                 if (animal.Faction == Faction.OfPlayer)

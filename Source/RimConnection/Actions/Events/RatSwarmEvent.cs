@@ -34,7 +34,7 @@ namespace RimConnection
             {
                 IntVec3 entryCell;
                 CellFinder.TryFindRandomCellNear(rootEntryCell, currentMap, 5, validator, out entryCell);
-                var newRat = Verse.PawnGenerator.GeneratePawn(rat);
+                var newRat = Verse.PawnGenerator.GeneratePawn(new PawnGenerationRequest(rat));
                 GenSpawn.Spawn(newRat, entryCell, currentMap);
                 newRat.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter);
             }
